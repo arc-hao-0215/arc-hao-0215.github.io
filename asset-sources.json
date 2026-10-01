@@ -1,0 +1,202 @@
+{
+  "jakarta-hero": {
+    "page": 8,
+    "width": 1521,
+    "height": 923
+  },
+  "jakarta-flood": {
+    "page": 9,
+    "width": 1521,
+    "height": 923
+  },
+  "jakarta-dry-section": {
+    "page": 6,
+    "width": 1917,
+    "height": 686
+  },
+  "jakarta-flood-section": {
+    "page": 6,
+    "width": 1917,
+    "height": 686
+  },
+  "jakarta-assembly": {
+    "page": 7,
+    "width": 1012,
+    "height": 1347
+  },
+  "jakarta-long-section": {
+    "page": 8,
+    "width": 2306,
+    "height": 442
+  },
+  "jakarta-context": {
+    "page": 3,
+    "width": 1525,
+    "height": 923
+  },
+  "kailash-hero": {
+    "page": 13,
+    "width": 2304,
+    "height": 1405
+  },
+  "kailash-map": {
+    "page": 12,
+    "width": 1134,
+    "height": 1404
+  },
+  "kailash-research": {
+    "page": 11,
+    "width": 1130,
+    "height": 1405
+  },
+  "kailash-lodge": {
+    "page": 14,
+    "width": 1522,
+    "height": 1404
+  },
+  "kailash-interior": {
+    "page": 15,
+    "width": 1134,
+    "height": 919
+  },
+  "kailash-landscape": {
+    "page": 16,
+    "width": 2308,
+    "height": 1400
+  },
+  "kailash-gallery": {
+    "page": 17,
+    "width": 2304,
+    "height": 1404
+  },
+  "books-hero": {
+    "page": 18,
+    "width": 1526,
+    "height": 923
+  },
+  "books-section": {
+    "page": 21,
+    "width": 2304,
+    "height": 1404
+  },
+  "books-model": {
+    "page": 23,
+    "width": 743,
+    "height": 1400
+  },
+  "erdai-hero": {
+    "page": 29,
+    "width": 1917,
+    "height": 923
+  },
+  "erdai-aerial": {
+    "page": 24,
+    "width": 1526,
+    "height": 923
+  },
+  "erdai-map": {
+    "page": 25,
+    "width": 1526,
+    "height": 923
+  },
+  "erdai-plan": {
+    "page": 27,
+    "width": 1526,
+    "height": 923
+  },
+  "erdai-trench": {
+    "page": 26,
+    "width": 743,
+    "height": 442
+  },
+  "erdai-court": {
+    "page": 27,
+    "width": 743,
+    "height": 442
+  },
+  "erdai-gallery": {
+    "page": 27,
+    "width": 743,
+    "height": 442
+  },
+  "erdai-chamber": {
+    "page": 28,
+    "width": 1917,
+    "height": 923
+  },
+  "erdai-section": {
+    "page": 28,
+    "width": 2308,
+    "height": 408
+  },
+  "teaching": {
+    "page": 30,
+    "width": 739,
+    "height": 442
+  },
+  "teaching-plan": {
+    "page": 30,
+    "width": 526,
+    "height": 313
+  },
+  "teaching-model": {
+    "page": 30,
+    "width": 347,
+    "height": 289
+  },
+  "their-story": {
+    "page": 31,
+    "width": 1132,
+    "height": 708
+  },
+  "watercolour": {
+    "page": 31,
+    "width": 636,
+    "height": 919
+  },
+  "ink": {
+    "page": 31,
+    "width": 473,
+    "height": 923
+  },
+  "performance": {
+    "page": 31,
+    "width": 558,
+    "height": 437
+  },
+  "dance": {
+    "page": 31,
+    "width": 876,
+    "height": 601
+  },
+  "cover": {
+    "page": 32,
+    "width": 739,
+    "height": 921
+  },
+  "photo": {
+    "page": 32,
+    "width": 739,
+    "height": 921
+  },
+  "still-life": {
+    "page": 32,
+    "width": 739,
+    "height": 924
+  },
+  "print": {
+    "page": 32,
+    "width": 739,
+    "height": 442
+  },
+  "photo-architecture": {
+    "page": 32,
+    "width": 347,
+    "height": 442
+  },
+  "museum-exhibition": {
+    "page": 32,
+    "width": 829,
+    "height": 493
+  }
+}
