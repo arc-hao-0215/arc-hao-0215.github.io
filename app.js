@@ -31,7 +31,7 @@ if(atlas){
  function local(clientX,clientY){const p=new DOMPoint(clientX,clientY);return p.matrixTransform(atlas.getScreenCTM().inverse())}
  function zoom(factor,cx=box.x+box.w/2,cy=box.y+box.h/2){const w=Math.max(125,Math.min(1000,box.w*factor)),f=w/box.w;box={x:cx-(cx-box.x)*f,y:cy-(cy-box.y)*f,w,h:w/2};render()}
  function reset(){box={x:0,y:0,w:1000,h:500};render()}
- $$('[data-map-action]').forEach(b=>b.addEventListener('click',()=>{switch(b.dataset.mapAction){case'in':zoom(.7);break;case'out':zoom(1/.7);break;case'world':reset();break;case'sites':box={x:670,y:118,w:240,h:120};render();break}}));
+ $$('[data-map-action]').forEach(b=>b.addEventListener('click',()=>{switch(b.dataset.mapAction){case'in':zoom(.7);break;case'out':zoom(1/.7);break;case'world':reset();break;case'sites':box={x:620,y:120,w:320,h:160};render();break}}));
  atlas.addEventListener('wheel',e=>{if(!e.ctrlKey&&!e.metaKey)return;e.preventDefault();const p=local(e.clientX,e.clientY);zoom(Math.exp(e.deltaY*.002),p.x,p.y)},{passive:false});
  atlas.addEventListener('keydown',e=>{if(e.target!==atlas)return;const step=box.w*.08;if(['+','=','-','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))e.preventDefault();switch(e.key){case'+':case'=':zoom(.7);break;case'-':zoom(1/.7);break;case'ArrowLeft':box.x-=step;render();break;case'ArrowRight':box.x+=step;render();break;case'ArrowUp':box.y-=step;render();break;case'ArrowDown':box.y+=step;render();break;case'Home':reset();break}});
  atlas.addEventListener('pointerdown',e=>{if(e.button!==0)return;dragged=false;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(!e.target.closest('a'))atlas.setPointerCapture(e.pointerId)});
