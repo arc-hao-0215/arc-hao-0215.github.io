@@ -1,0 +1,295 @@
+[
+  {
+    "asset": "gaoligong-route",
+    "source": "张皓_2020010070_毕设推优_汇报ppt(3).pdf",
+    "extract": {
+      "pdf_page": 4,
+      "normalized_crop": [
+        0.37,
+        0.29,
+        0.99,
+        0.99
+      ]
+    },
+    "width": 1800,
+    "height": 1437
+  },
+  {
+    "asset": "gaoligong-slope",
+    "source": "张皓_2020010070_毕设推优_汇报ppt(3).pdf",
+    "extract": {
+      "pdf_page": 14,
+      "normalized_crop": [
+        0.01,
+        0.32,
+        0.99,
+        0.99
+      ]
+    },
+    "width": 1800,
+    "height": 871
+  },
+  {
+    "asset": "gaoligong-vegetation",
+    "source": "张皓_2020010070_毕设推优_汇报ppt(3).pdf",
+    "extract": {
+      "pdf_page": 16,
+      "normalized_crop": [
+        0.01,
+        0.32,
+        0.99,
+        0.99
+      ]
+    },
+    "width": 1800,
+    "height": 871
+  },
+  {
+    "asset": "gaoligong-network",
+    "source": "张皓_2020010070_毕设推优_汇报ppt(3).pdf",
+    "extract": {
+      "pdf_page": 28,
+      "normalized_crop": [
+        0.01,
+        0.32,
+        0.99,
+        0.99
+      ]
+    },
+    "width": 1800,
+    "height": 871
+  },
+  {
+    "asset": "gaoligong-construction",
+    "source": "张皓_2020010070_毕设推优_汇报ppt(3).pdf",
+    "extract": {
+      "pdf_page": 52,
+      "normalized_crop": [
+        0.01,
+        0.28,
+        0.99,
+        0.99
+      ]
+    },
+    "width": 1800,
+    "height": 922
+  },
+  {
+    "asset": "gaoligong-assembly",
+    "source": "张皓_2020010070_毕设推优_汇报ppt(3).pdf",
+    "extract": {
+      "pdf_page": 54,
+      "normalized_crop": [
+        0.01,
+        0.27,
+        0.99,
+        0.99
+      ]
+    },
+    "width": 1800,
+    "height": 935
+  },
+  {
+    "asset": "gaoligong-project",
+    "source": "张皓_2020010070_毕设推优_汇报ppt(3).pdf",
+    "extract": {
+      "pdf_page": 49,
+      "normalized_crop": [
+        0.01,
+        0.27,
+        0.99,
+        0.99
+      ]
+    },
+    "width": 1800,
+    "height": 935
+  },
+  {
+    "asset": "kailash-density",
+    "source": "1227汇报.pdf",
+    "extract": {
+      "pdf_page": 25,
+      "normalized_crop": [
+        0.34,
+        0.08,
+        0.67,
+        0.88
+      ]
+    },
+    "width": 1101,
+    "height": 1500
+  },
+  {
+    "asset": "kailash-elements",
+    "source": "1227汇报.pdf",
+    "extract": {
+      "pdf_page": 26,
+      "normalized_crop": [
+        0.03,
+        0.24,
+        0.97,
+        0.81
+      ]
+    },
+    "width": 1800,
+    "height": 615
+  },
+  {
+    "asset": "kailash-taxonomy",
+    "source": "1227汇报.pdf",
+    "extract": {
+      "pdf_page": 29,
+      "normalized_crop": [
+        0.12,
+        0.15,
+        0.92,
+        0.86
+      ]
+    },
+    "width": 1800,
+    "height": 900
+  },
+  {
+    "asset": "kailash-survey",
+    "source": "1227汇报.pdf",
+    "extract": {
+      "pdf_page": 32,
+      "normalized_crop": [
+        0.06,
+        0.29,
+        0.94,
+        0.71
+      ]
+    },
+    "width": 1800,
+    "height": 484
+  },
+  {
+    "asset": "kailash-layers",
+    "source": "1227汇报.pdf",
+    "extract": {
+      "pdf_page": 37,
+      "normalized_crop": [
+        0.3,
+        0.09,
+        0.74,
+        0.98
+      ]
+    },
+    "width": 1319,
+    "height": 1500
+  },
+  {
+    "asset": "kailash-siting",
+    "source": "1227汇报.pdf",
+    "extract": {
+      "pdf_page": 48,
+      "normalized_crop": [
+        0.34,
+        0.1,
+        0.67,
+        0.86
+      ]
+    },
+    "width": 1158,
+    "height": 1500
+  },
+  {
+    "asset": "shichahai-plan",
+    "source": "画板 1.jpg",
+    "extract": {
+      "normalized_crop": [
+        0.024,
+        0.01,
+        0.976,
+        0.485
+      ]
+    },
+    "width": 820,
+    "height": 973
+  },
+  {
+    "asset": "shichahai-history",
+    "source": "画板 1.jpg",
+    "extract": {
+      "normalized_crop": [
+        0.505,
+        0.49,
+        0.979,
+        0.607
+      ]
+    },
+    "width": 408,
+    "height": 240
+  },
+  {
+    "asset": "shichahai-analysis",
+    "source": "画板 1.jpg",
+    "extract": {
+      "normalized_crop": [
+        0.025,
+        0.654,
+        0.491,
+        0.858
+      ]
+    },
+    "width": 401,
+    "height": 418
+  },
+  {
+    "asset": "shichahai-seam",
+    "source": "画板 1.jpg",
+    "extract": {
+      "normalized_crop": [
+        0.024,
+        0.873,
+        0.975,
+        0.99
+      ]
+    },
+    "width": 819,
+    "height": 240
+  },
+  {
+    "asset": "shichahai-courtyard",
+    "source": "画板 3.jpg",
+    "extract": {
+      "normalized_crop": [
+        0.025,
+        0.502,
+        0.981,
+        0.56
+      ]
+    },
+    "width": 823,
+    "height": 118
+  },
+  {
+    "asset": "shichahai-section",
+    "source": "画板 3.jpg",
+    "extract": {
+      "normalized_crop": [
+        0.024,
+        0.872,
+        0.979,
+        0.99
+      ]
+    },
+    "width": 822,
+    "height": 242
+  },
+  {
+    "asset": "shichahai-before-after",
+    "source": "画板 2.jpg",
+    "extract": {
+      "normalized_crop": [
+        0.024,
+        0.503,
+        0.977,
+        0.59
+      ]
+    },
+    "width": 821,
+    "height": 178
+  }
+]
