@@ -1,3 +1,7 @@
+# Editorial evidence register
+
+This file records source material used during editing. The public essays’ References sections contain external scholarship and professional publications; personal reports and scripts are evidence for authored material, not bibliography entries.
+
 # Research sources and editorial record
 
 Updated 2 October 2026. This register accompanies the six published enquiries. The PDF/DOCX originals were consulted as evidence; their complete contents are not republished. The site uses authored analysis, source references and selected project drawings.
@@ -83,3 +87,14 @@ Info page additions were checked against the publicly indexed LinkedIn profile s
 ## Build
 
 Run `python3 build.py`. Research prose is in `research-studies.json`; `research-content.py` renders the atlas, index and essays. Existing research URLs are preserved.
+
+## October 2026 additions
+
+- Netherlands: the 17-day essay brief, existing Living with Water atlas records and their evidence review; professional sources by De Urbanisten, Marlies Rohmer, Space&Matter and Gemeente Utrecht. Atlas remains a separate linked project.
+- Italy: field essay brief and the Via Francigena slide in the graduation presentation; official Courmayeur and Politecnico di Torino programme pages. No invented transcripts or household statistics.
+- Hong Kong: supplied Beyond Buildings reflection, verified against HKPM and Swire programme releases. Interpretive statements remain the author’s reflection.
+- Rurbanity: supplied 農地種工廠 and Niyaro’ glossary entries, including their scholarly references and image credits; Harvard GSD conference context verified. Only the Planting Factories entry is described as selected.
+- Theater: 2020010070_张皓_汇报.pdf (35 pages), 讲稿.docx, and 2025 spring studio brief. The Condenser is an academic project, not a commission.
+- First Teaching Building: 0130汇报.pdf (16 pages), dated 30 January 2026. Commissioned project; the shown third-floor scope is 682 m². Renderings remain labelled as proposals.
+- New image provenance: research-figures-v3.json.
+- Project order: descending latest documented design year, with Selected Other Work last. Original project URLs remain available.

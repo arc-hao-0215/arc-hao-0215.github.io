@@ -1,0 +1,248 @@
+[
+  {
+    "asset": "theater-hero",
+    "source": "2020010070_张皓_汇报.pdf",
+    "extract": {
+      "pdf_page": 33,
+      "normalized_crop": [
+        0.03,
+        0.035,
+        0.97,
+        0.96
+      ]
+    },
+    "width": 1800,
+    "height": 1252
+  },
+  {
+    "asset": "theater-section",
+    "source": "2020010070_张皓_汇报.pdf",
+    "extract": {
+      "pdf_page": 22,
+      "normalized_crop": [
+        0.03,
+        0.36,
+        0.97,
+        0.64
+      ]
+    },
+    "width": 1800,
+    "height": 380
+  },
+  {
+    "asset": "theater-axon",
+    "source": "2020010070_张皓_汇报.pdf",
+    "extract": {
+      "pdf_page": 19,
+      "normalized_crop": [
+        0.285,
+        0.035,
+        0.71,
+        0.91
+      ]
+    },
+    "width": 1031,
+    "height": 1500
+  },
+  {
+    "asset": "theater-ground",
+    "source": "2020010070_张皓_汇报.pdf",
+    "extract": {
+      "pdf_page": 23,
+      "normalized_crop": [
+        0.03,
+        0.15,
+        0.97,
+        0.86
+      ]
+    },
+    "width": 1800,
+    "height": 961
+  },
+  {
+    "asset": "theater-foyer",
+    "source": "2020010070_张皓_汇报.pdf",
+    "extract": {
+      "pdf_page": 28,
+      "normalized_crop": [
+        0.03,
+        0.035,
+        0.97,
+        0.94
+      ]
+    },
+    "width": 1800,
+    "height": 1225
+  },
+  {
+    "asset": "theater-stairs",
+    "source": "2020010070_张皓_汇报.pdf",
+    "extract": {
+      "pdf_page": 30,
+      "normalized_crop": [
+        0.03,
+        0.035,
+        0.97,
+        0.94
+      ]
+    },
+    "width": 1800,
+    "height": 1225
+  },
+  {
+    "asset": "theater-hall",
+    "source": "2020010070_张皓_汇报.pdf",
+    "extract": {
+      "pdf_page": 32,
+      "normalized_crop": [
+        0.03,
+        0.035,
+        0.97,
+        0.94
+      ]
+    },
+    "width": 1800,
+    "height": 1225
+  },
+  {
+    "asset": "first-teaching-hero",
+    "source": "0130汇报.pdf",
+    "extract": {
+      "pdf_page": 12,
+      "normalized_crop": [
+        0.135,
+        0.15,
+        0.65,
+        0.85
+      ]
+    },
+    "width": 1800,
+    "height": 1377
+  },
+  {
+    "asset": "first-teaching-plan",
+    "source": "0130汇报.pdf",
+    "extract": {
+      "pdf_page": 7,
+      "normalized_crop": [
+        0.07,
+        0.25,
+        0.94,
+        0.76
+      ]
+    },
+    "width": 1800,
+    "height": 595
+  },
+  {
+    "asset": "first-teaching-corridor",
+    "source": "0130汇报.pdf",
+    "extract": {
+      "pdf_page": 8,
+      "normalized_crop": [
+        0.13,
+        0.15,
+        0.65,
+        0.84
+      ]
+    },
+    "width": 1800,
+    "height": 1344
+  },
+  {
+    "asset": "first-teaching-flexible",
+    "source": "0130汇报.pdf",
+    "extract": {
+      "pdf_page": 14,
+      "normalized_crop": [
+        0.13,
+        0.15,
+        0.65,
+        0.84
+      ]
+    },
+    "width": 1800,
+    "height": 1344
+  },
+  {
+    "asset": "first-teaching-lounge",
+    "source": "0130汇报.pdf",
+    "extract": {
+      "pdf_page": 15,
+      "normalized_crop": [
+        0.13,
+        0.15,
+        0.65,
+        0.84
+      ]
+    },
+    "width": 1800,
+    "height": 1344
+  },
+  {
+    "asset": "italy-route",
+    "source": "张皓_2020010070_毕设推优_汇报ppt(3).pdf",
+    "extract": {
+      "pdf_page": 9,
+      "normalized_crop": [
+        0.01,
+        0.28,
+        0.6,
+        0.985
+      ]
+    },
+    "width": 1775,
+    "height": 1500
+  },
+  {
+    "asset": "italy-production",
+    "source": "张皓_2020010070_毕设推优_汇报ppt(3).pdf",
+    "extract": {
+      "pdf_page": 9,
+      "normalized_crop": [
+        0.606,
+        0.29,
+        0.983,
+        0.978
+      ]
+    },
+    "width": 1163,
+    "height": 1500
+  },
+  {
+    "asset": "netherlands-oudegracht",
+    "source": "Andy Li, CC0. View of Oudegracht from Vollersbrug, Utrecht, 2024-11-28. Wikimedia Commons; representative image, not a fieldwork photograph.",
+    "extract": {
+      "type": "image extraction"
+    },
+    "width": 964,
+    "height": 1280
+  },
+  {
+    "asset": "rurban-niyaro",
+    "source": "New Taipei City Government, Water Resources Department, 2022; reproduced in Hao Chang’s glossary submission.",
+    "extract": {
+      "type": "image extraction"
+    },
+    "width": 1200,
+    "height": 798
+  },
+  {
+    "asset": "rurban-factories-photo",
+    "source": "Tsai Chia-yang, Changhua Environmental Protection Union, 2016; source: CEPU / Citizens of the Earth, Taiwan.",
+    "extract": {
+      "type": "image extraction"
+    },
+    "width": 1000,
+    "height": 750
+  },
+  {
+    "asset": "rurban-factories-map",
+    "source": "Hao Chang, 2026, based on Taiwan Ministry of Agriculture Agricultural and Farmland Resources Inventory Map.",
+    "extract": {
+      "type": "image extraction"
+    },
+    "width": 1267,
+    "height": 939
+  }
+]
