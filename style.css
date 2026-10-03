@@ -30,7 +30,7 @@
 @media(max-width:640px){.research-destination{padding:19px}.research-destination .line-link{font-size:16px}.research-card-meta{min-height:48px}.editorial-grid .card-caption .award{display:block;font-size:9px!important}}
 
 /* One unboxed treatment for commissions and recognition. */
-.recognition,.award,.project-status{color:var(--accent);border:0!important;background:none!important;box-shadow:none!important;border-radius:0!important;padding:0!important;font-weight:400;text-transform:none;letter-spacing:normal}
+.recognition,.award,.project-status{color:var(--accent)!important;border:0!important;background:none!important;box-shadow:none!important;border-radius:0!important;padding:0!important;font-weight:400;text-transform:none;letter-spacing:normal}
 .card-caption .recognition{display:block;margin-top:9px;font:11px/1.55 Arial,Helvetica,sans-serif}
 .project-meta span:nth-child(2){color:inherit}.project-meta .recognition{color:var(--accent)!important}
 .project-statement .recognition{font:13px/1.65 Arial,Helvetica,sans-serif;margin-top:20px}
