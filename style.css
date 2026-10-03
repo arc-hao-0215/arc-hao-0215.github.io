@@ -23,8 +23,29 @@
 
 /* Project recognition stays visible at every screen size. */
 .editorial-grid .card-caption .award{display:block;color:var(--accent);font-size:10px!important;line-height:1.55}.project-meta span:nth-child(2){color:var(--accent)}
-.card-caption .project-status{display:inline-block;border:1px solid var(--line);padding:3px 6px;margin-top:8px;font-size:10px;color:var(--accent)}
+.card-caption .project-status{display:block;border:0;padding:0;margin-top:8px;font-size:10px;color:var(--accent)}
 .research-destination{border:1px solid var(--line);padding:24px;margin:28px 0;background:#eeede7}.research-destination .line-link{font-size:18px}.essay-body .research-destination p{font:12px/1.6 Arial,Helvetica,sans-serif;margin:12px 0 0;color:var(--grey)}
 .research-authorship-block{border-top:1px solid var(--line);padding-top:25px}.essay-body .research-authorship{font:13px/1.8 Arial,Helvetica,sans-serif;margin-top:16px}.reference-url{display:inline-block;font-size:11px;border-bottom:1px solid var(--line);margin-top:10px!important}.atlas-key{grid-template-columns:repeat(5,minmax(0,1fr));font-size:11px}.research-card-question{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 @media(max-width:800px){.atlas-key{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.research-destination{padding:19px}.research-destination .line-link{font-size:16px}.research-card-meta{min-height:48px}.editorial-grid .card-caption .award{display:block;font-size:9px!important}}
+
+/* One unboxed treatment for commissions and recognition. */
+.recognition,.award,.project-status{color:var(--accent);border:0!important;background:none!important;box-shadow:none!important;border-radius:0!important;padding:0!important;font-weight:400;text-transform:none;letter-spacing:normal}
+.card-caption .recognition{display:block;margin-top:9px;font:11px/1.55 Arial,Helvetica,sans-serif}
+.project-meta span:nth-child(2){color:inherit}.project-meta .recognition{color:var(--accent)!important}
+.project-statement .recognition{font:13px/1.65 Arial,Helvetica,sans-serif;margin-top:20px}
+.index-row h2 .recognition{display:block;font:11px/1.5 Arial,Helvetica,sans-serif;margin-top:6px}
+.editorial-grid .card-caption{display:grid;grid-template-columns:1fr auto;align-content:start;gap:9px 8px}
+.editorial-grid .card-caption>.eyebrow{display:block;grid-column:1;grid-row:1;color:var(--grey);font-size:10px}
+.editorial-grid .card-caption>div{grid-column:1 / -1;grid-row:2}
+.editorial-grid .card-caption>.year{grid-column:2;grid-row:1;margin:0}
+.chapter-prose{font:17px/1.8 Georgia,'Times New Roman',serif;max-width:650px}.chapter-prose p+p{margin-top:18px}
+.project-statement>div>.eyebrow{display:block;margin-bottom:15px}
+.design-detail{display:grid;grid-template-columns:1fr 1fr;gap:8%;padding:45px 0;border-top:1px solid var(--line)}.design-detail h2{font-size:30px;font-weight:400;letter-spacing:-.025em}.design-detail p{font:18px/1.85 Georgia,'Times New Roman',serif}.design-detail p+p{margin-top:20px}
+.design-scope{display:grid;grid-template-columns:1fr 2fr;gap:8%;border-top:1px solid var(--line);padding:30px 0;margin-top:45px}.design-scope p{font:13px/1.8 Arial,Helvetica,sans-serif;max-width:760px;color:var(--grey)}
+.essay-subtitle{font:22px/1.5 Georgia,'Times New Roman',serif;max-width:800px;margin:24px 0 30px;color:var(--grey)}
+.method-lens{border-left:2px solid var(--accent);padding:2px 0 2px 18px;margin:30px 0}.essay-body .method-lens p{font:13px/1.65 Arial,Helvetica,sans-serif;margin:10px 0 0}.method-lens .eyebrow{color:var(--accent)}
+@media(max-width:800px){.design-detail{gap:5%}.chapter-prose{font-size:16px}.essay-subtitle{font-size:20px}}
+@media(max-width:640px){.design-detail,.design-scope{display:block}.design-detail h2{font-size:26px;margin-bottom:20px}.design-scope p{margin-top:14px}.card-caption .recognition{font-size:10px}.chapter-prose p{font-size:16px;line-height:1.8}.essay-subtitle{font-size:19px}.index-row h2 .recognition{font-size:10px}}
+@media(max-width:1000px){.chapter-heading .chapter-prose{grid-column:2}}
+@media(max-width:640px){.chapter-heading .chapter-prose{grid-column:1/-1}}

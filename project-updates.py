@@ -13,3 +13,9 @@ projects.extend([
 # Newest work first; the cross-media collection remains the final entry.
 import re
 projects.sort(key=lambda p:(p['slug']=='selected-studies',-max(map(int,re.findall(r'20\d{2}',p['year'])))))
+# Display numbering follows the current chronological catalogue, never storage order.
+places={'rising-tides':'Kampung Melayu · Jakarta','erdai':'Fenggui Peninsula · Penghu Archipelago','spirited-a-way':'Mount Kailash','books-above-bustles':'Beijing','teaching-building':'Tsinghua University · Beijing','their-story':'Hong Kong','ancient-trails':'Gaoligong Mountains','waterfront-plus':'Shichahai · Beijing','theater-design':'Wudaokou · Beijing','first-teaching-building':'Tsinghua University · Beijing'}
+for number,p in enumerate(projects,1):
+ p['id']=f'{number:02}'
+ p['place']=places.get(p['slug'],p['place'])
+ if p['slug']=='teaching-building':p['type']='Competition proposal'

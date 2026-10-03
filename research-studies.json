@@ -1,17 +1,17 @@
 [
   {
     "slug": "research-netherlands",
-    "title": "Learning to live with water.",
+    "title": "Who Keeps the Water Out?",
     "theme": "Water / Infrastructure / Governance",
-    "place": "The Netherlands",
+    "place": "Dutch Delta & Canal Cities",
     "year": "2026",
     "image": "netherlands-oudegracht",
     "lon": 4.9,
     "lat": 52.1,
-    "proposition": "Water resilience is a relationship between protective systems, shared space and the institutions that keep both working.",
+    "proposition": "A floating house is only as independent as its mooring, its service connections and the institutions maintaining the water around it.",
     "question": "What changes when water becomes a condition around which everyday urban life is organised?",
     "opening": "Seventeen days of research in the Netherlands, within my SOM Foundation Fellowship, became a study of connections across scales: between a dwelling and its mooring, a street and its drainage, a public square and its storage capacity, a polder and its operating institutions. The journey is documented in Living with Water, an interactive field atlas. This essay draws out the architectural argument that links its individual places.",
-    "credit": "Research and synthesis · Hao Chang · SOM Foundation Fellow<br>Netherlands field research · September 2026 · 17 days",
+    "credit": "Research and synthesis · Hao Chang · SOM Foundation Fellow<br>Field research in the Netherlands · September 2026 · 17 days",
     "sections": [
       {
         "id": "framework",
@@ -51,6 +51,16 @@
         }
       },
       {
+        "id": "reading-water",
+        "title": "From the impressive object to the ordinary connection",
+        "paragraphs": [
+          "De Urbanisten’s Benthemplein offers a useful comparative method: follow runoff through a public place and examine how hydraulic work coincides with daily occupation. I extend that reading from the square to canals, jetties and regional defences. The point is to draw dependencies, including those outside the photograph. A basin can be visible while its maintenance budget remains invisible. <a class=\"source-cite\" href=\"#ref-N4\" aria-label=\"Reference N4\">[N4]</a>",
+          "Across the field atlas, I distinguish three conditions: a space that excludes water, a space designed to receive it temporarily, and an inhabited structure that moves with it. They cannot be ranked on a single scale of innovation. Each distributes risk differently. A floating dwelling still needs a stable point of access; a floodable square needs a route that remains usable when its basin is occupied; a barrier shifts attention to decisions about closure and reopening.",
+          "This produces a more demanding question than whether a place “lives with water”: which relationship is allowed to change, and which must be kept dependable? The answer is often a small junction between systems. The gangway, threshold, inlet and service connection are therefore central research objects, rather than minor details that follow the masterplan."
+        ],
+        "table": null
+      },
+      {
         "id": "territory",
         "title": "Infrastructure extends beyond the visible object.",
         "paragraphs": [
@@ -77,6 +87,43 @@
         ]
       },
       {
+        "id": "dependency-register",
+        "title": "The jetty is a collective agreement",
+        "paragraphs": [
+          "Reading a floating neighbourhood as a collection of houses conceals the shared work carried by its access structure. I use a dependency register to connect a spatial component with an everyday need, a possible failure and a responsible actor. This is an analytical proposal for comparing the documented cases; it is not an audit of their actual service performance.",
+          "The distinction also changes how affordability should be investigated. Purchase cost alone cannot describe the burden of a waterside home. Repair access, shared charges, insurance and the ability to remain during servicing can determine who can sustain occupation. The field material does not establish those costs, but it identifies the questions that a design comparison would otherwise omit."
+        ],
+        "table": {
+          "headers": [
+            "Interface",
+            "Dependency to investigate",
+            "Consequence for a resident"
+          ],
+          "rows": [
+            [
+              "House / jetty",
+              "Mooring, flexible services and level changes",
+              "A dwelling must remain reachable as conditions change"
+            ],
+            [
+              "Jetty / street",
+              "Accessible gradient, deliveries and emergency approach",
+              "Collective infrastructure affects who can live there"
+            ],
+            [
+              "Basin / public ground",
+              "Cleaning, drainage and reopening after rainfall",
+              "Storage capacity and usable public time are linked"
+            ],
+            [
+              "Local system / regional defence",
+              "Operating authority and failure procedures",
+              "Local adaptation cannot replace territorial protection"
+            ]
+          ]
+        }
+      },
+      {
         "id": "public-space",
         "title": "Storage can become a public room.",
         "paragraphs": [
@@ -88,9 +135,18 @@
         "id": "exchange",
         "title": "Institutions are part of the field.",
         "paragraphs": [
-          "The atlas includes exchanges at MVRDV, PosadMaxwan and TU Delft. Their relevance is the opportunity to consider how spatial ideas move among research, professional practice, public decisions and delivery. The visits sit alongside built cases rather than serving as a list of prestigious destinations.",
-          "Specific statements are not attributed to participants without a recorded basis. Instead, the enquiry carries a common question across these settings: what forms of evidence allow an architectural proposition to become a decision that institutions can implement and sustain? This extends water research from physical form to the organisation of knowledge."
+          "The field atlas includes exchanges at MVRDV, PosadMaxwan and TU Delft. I place these visits beside the built cases because infrastructure is also produced through professional and institutional decisions. The research question is how a drawing becomes a brief, a funded project and an arrangement that can be maintained.",
+          "The interpretive value lies in connecting those stages, rather than assigning unrecorded statements to the people encountered. For each case, the next layer of research would identify who commissions, operates, repairs and evaluates the system. These roles can be distributed among several organisations even when the architecture appears continuous."
         ]
+      },
+      {
+        "id": "transfer",
+        "title": "What travels from Rotterdam to Jakarta?",
+        "paragraphs": [
+          "A useful transfer preserves the question while changing the answer. Benthemplein suggests comparing public use before, during and after a water event. It does not imply that an equivalent basin belongs beneath a Jakarta viaduct. The rainfall regime, contaminated water, available ground, tenure and maintenance arrangements have to be reconsidered at the receiving site.",
+          "For the Jakarta proposal, the transferable instrument is a paired drawing with an additional recovery state. The test is whether refuge, access and sanitation remain connected when routine occupation is interrupted. Dutch fieldwork therefore sharpens the design brief without making the Netherlands a universal destination toward which other water cultures must progress."
+        ],
+        "table": null
       },
       {
         "id": "synthesis",
@@ -137,18 +193,20 @@
     "cta_label": "Explore Living with Water Atlas ↗",
     "cta_note": "Sites, field readings, maps and original published drawings",
     "image_credit": "Andy Li · CC0",
-    "number": "01"
+    "number": "01",
+    "subtitle": "Water management as a spatial and institutional contract",
+    "method": "De Urbanisten · Follow the water through public space"
   },
   {
     "slug": "research-italy",
-    "title": "Walking the Via Francigena.",
+    "title": "The Trail Has to Earn Its Keep",
     "theme": "Heritage / Production / Rural life",
-    "place": "Valle d’Aosta, Italy",
+    "place": "Valle d’Aosta",
     "year": "2026",
     "image": "italy-production",
     "lon": 7.15,
     "lat": 45.78,
-    "proposition": "The future of an ancient trail depends on whether the territories it connects can continue to be inhabited.",
+    "proposition": "A restored path can remain economically peripheral. The architectural question is what gives residents a recurring reason to use and maintain the territory around it.",
     "question": "How can architecture help a historic route sustain contemporary rural life?",
     "opening": "In April 2026, I joined the Tsinghua University–Politecnico di Torino field investigation in Valle d’Aosta. The Italian work formed a counterpart to research along the Tea Horse Trail in Yunnan. It reframed the route as a way to read connections among settlements, production, landscape and services, with architecture operating between those scales.",
     "credit": "Field research and comparative synthesis · Hao Chang<br>Tsinghua University / Politecnico di Torino · April 2026<br>Joint programme: Martijn de Geus, Roberto Dini, Lidia Preti and Yi Shen",
@@ -172,6 +230,16 @@
         ]
       },
       {
+        "id": "transect",
+        "title": "Walk the service route as well as the visitor route",
+        "paragraphs": [
+          "The joint research programme, with Roberto Dini, Lidia Preti, Martijn de Geus and Yi Shen, provides a comparative frame in which Alpine routes are examined through contemporary rural life. I use that frame to move from a scenic itinerary toward a transect of work: arrival, supply, making, storage, exchange and departure. This is the method developed in this essay, rather than a quotation of a participant’s position. <a class=\"source-cite\" href=\"#ref-I1\" aria-label=\"Reference I1\">[I1]</a>",
+          "Walking reveals the effort between destinations. A map can place two buildings close together while a steep approach, a closed gate or a loading requirement makes their practical relation difficult. The relevant section therefore includes the service edge and the stopping place, not only the panorama. The same journey should be read from the position of someone carrying supplies and someone visiting without a burden.",
+          "That distinction is especially useful when examining reuse. An empty room is not automatically available capacity: it may be poorly connected to the activity expected to support it. The field observations establish physical questions. Interviews with operators and recurring seasonal records would be needed to establish whether the proposed connection is viable."
+        ],
+        "table": null
+      },
+      {
         "id": "production",
         "title": "Production gives the route another reason to be used.",
         "paragraphs": [
@@ -182,12 +250,31 @@
         "caption": "Productive spaces along the Alpine enquiry · Images documented in the graduation presentation connect local food production with the route; original individual photographer credits were not recorded in the slide."
       },
       {
+        "id": "calendar",
+        "title": "The missing drawing is a working calendar",
+        "paragraphs": [
+          "Food production brings different durations into the trail. Making, maturing, storing, selling and visiting do not occupy the same hours or seasons. A room serving more than one of these activities needs a negotiated timetable as much as a flexible plan. Public access may be appropriate at the edge of production while remaining incompatible with a clean work zone or a delivery period.",
+          "I propose reading a stopping place against three calendars: the resident’s ordinary week, the production cycle and the visitor season. Where all three coincide, shared facilities may have a strong everyday base. Where only the visitor season activates a building, the project risks adding another maintenance obligation to a territory with intermittent revenue. The observations do not yet establish an operating balance; the calendar is the next evidence needed to test it.",
+          "This makes modest interventions consequential. A covered waiting place, accessible store or shared washing facility may support an existing cycle more reliably than a new exhibition room. Architectural value can be assessed through the work made easier and the relationships kept in use, alongside the experience offered to a visitor."
+        ],
+        "table": null
+      },
+      {
         "id": "inhabitation",
         "title": "Tourism is one condition of inhabitation.",
         "paragraphs": [
           "Courmayeur complicates a simple narrative of rural decline. A territory can attract substantial visitor activity while still raising questions about housing, services and the continuity of permanent community life. Here these are research questions, not a claim that the field visit established household displacement or measured seasonal vacancy.",
           "For architecture, the useful distinction is between an intervention that draws attention to a place and one that expands its capacity to be lived in. Reuse, everyday services and shared facilities deserve to be considered alongside visitor accommodation. Their value may be less spectacular but more continuous."
         ]
+      },
+      {
+        "id": "two-economies",
+        "title": "Attention is not the same as livelihood",
+        "paragraphs": [
+          "Tourism can give a workshop an audience while changing what it makes, when it opens and whose needs organise the space. The productive encounter can become a staged demonstration. This is a tension to examine, not an accusation about the visited businesses. A comparative study should ask whether visitors supplement an existing economy or gradually become its condition of survival.",
+          "A counterfactual makes the distinction concrete: if visitor numbers fell for a season, which part of the proposed intervention would still be useful to residents? The answer may identify the most durable element of the brief. It also challenges the assumption that a stronger visual identity is sufficient to reactivate a rural place. A recognisable destination and an inhabitable territory are different achievements."
+        ],
+        "table": null
       },
       {
         "id": "comparison",
@@ -261,20 +348,22 @@
     "kind": "Field research",
     "project": "ancient-trails",
     "cta_label": "View Gaoligong design →",
-    "number": "02"
+    "number": "02",
+    "subtitle": "Walking, production and the everyday economy of the Via Francigena",
+    "method": "Roberto Dini and the joint Alpine programme · Read routes through inhabitation"
   },
   {
     "number": "03",
     "slug": "research-gaoligong",
-    "title": "A trail as a living system.",
+    "title": "A Working Mountain",
     "theme": "Heritage / Production / Ecology",
-    "place": "Gaoligong Mountain, Yunnan",
+    "place": "Gaoligong Mountains",
     "year": "2026",
     "project": "ancient-trails",
     "image": "gaoligong-network",
     "lon": 98.65,
     "lat": 24.98,
-    "proposition": "A historic trail remains alive through the relationships between movement, production, settlement and ecology.",
+    "proposition": "The ancient trail will not regain continuity through scenery alone. Its future depends on the work, access and care that give people reasons to return.",
     "question": "How can architecture reconnect a fragmented historic trail, local production and ecological experience without turning the landscape into another object of development?",
     "opening": "The Yongchang Trail is read here as a territorial system rather than an isolated heritage route. At Fenglaoye Ancient Tea Garden, its continuity depends on the working relationships between the path, tea production and the forest. The architectural task is to repair those relationships with a degree of intervention that changes across the site.",
     "credit": "Individual graduation research and design · Hao Chang · Tsinghua University, 2026<br>Instructor: Martijn de Geus · Comparative research with Politecnico di Torino",
@@ -290,6 +379,16 @@
         "caption": "01 / Trail and dispersed heritage traces. Extracted from Hao Chang’s graduation presentation, PDF p. 4. The regional map establishes the research territory; it is not a cadastral survey.",
         "table": null,
         "statement": null
+      },
+      {
+        "id": "production-first",
+        "title": "The factory is an anchor, not a backdrop",
+        "paragraphs": [
+          "Xu Tiantian’s Brown Sugar Factory in Songyang is a useful methodological comparison because an existing productive activity gives the architectural brief its substance. DnA describes production, village use and public observation within a shared building. I take from this the question of what an intervention enables people to keep doing, rather than borrowing its appearance. <a class=\"source-cite\" href=\"#ref-G5\" aria-label=\"Reference G5\">[G5]</a>",
+          "At Fenglaoye, the tea factory should therefore be read as an operating anchor. The relation between factory, garden and accommodation is not merely a sequence of visitor experiences. It also concerns the movement of people and material, the distinction between work and leisure, and the attention demanded by cultivation. A visitor path is successful only if it can meet these activities without turning every productive space into a performance.",
+          "The comparison has a limit. A compact workshop and a dispersed mountain landscape distribute access and maintenance differently. Here, the connecting path itself is an extensive piece of infrastructure. The research must ask whether each new destination justifies the route, servicing and labour required to keep it open."
+        ],
+        "table": null
       },
       {
         "id": "comparison",
@@ -345,6 +444,16 @@
         "statement": "Architecture becomes lighter as ecological sensitivity increases."
       },
       {
+        "id": "footprint",
+        "title": "A small cabin can have a large territorial footprint",
+        "paragraphs": [
+          "The footprint shown in plan is only one part of disturbance. Bringing components to a slope, installing foundations, supplying water, removing waste and replacing a failed element all require movement across the site. Several small buildings may distribute these demands over a larger area than a carefully located shared facility. “Small” is consequently an insufficient environmental criterion.",
+          "I read the proposal through a disturbance chain: access, installation, occupation, maintenance and eventual removal. The northern ground can accommodate more collective activity because access and terrain differ from the southern tea woodland. That is a conditional spatial argument, not a claim that the resulting construction is impact-free. Mapped trees need root-zone assessment; point foundations still require a site-specific installation strategy.",
+          "The same analysis produces a test for the network. If a distant unit cannot be serviced without repeatedly damaging a path or increasing vehicle access, its programme should be reduced, relocated or omitted. The right to leave a location unbuilt belongs inside the design method, rather than appearing only as an environmental qualification after the layout is fixed."
+        ],
+        "table": null
+      },
+      {
         "id": "translation",
         "title": "Architectural acupuncture, from network to joint.",
         "paragraphs": [
@@ -355,6 +464,15 @@
         "caption": "03 / Cabin construction study. Hao Chang, graduation presentation, PDF p. 52. Point supports and an elevated floor translate site sensitivity into a construction strategy.",
         "table": null,
         "statement": null
+      },
+      {
+        "id": "work-and-leisure",
+        "title": "Where the public route stops",
+        "paragraphs": [
+          "A connected landscape does not require universal access to every space. The factory, shared reception, accommodation and bathing facilities have different relationships to work, privacy and service. The design research asks where a common route should branch, where a threshold should slow movement and where a view can replace physical entry.",
+          "This differentiates continuity from exposure. A visitor can understand tea production without entering a work area; a guest can be connected to a shared facility without the room becoming part of a public promenade. The network is strongest when it makes these relationships readable. Its social success would depend on an operating agreement that protects production and allocates the benefits and costs of visitor use."
+        ],
+        "table": null
       },
       {
         "id": "limits",
@@ -383,19 +501,28 @@
         "detail": "Joint Tsinghua University / Politecnico di Torino research programme; Courmayeur, 12–13 April 2026.",
         "url": "https://www.fondazionecourmayeur.it/evento/ancient-trails-and-their-possible-future/",
         "kind": "Reference"
+      },
+      {
+        "code": "G5",
+        "title": "DnA / Xu Tiantian. Brown Sugar Factory, Xing Village, Songyang.",
+        "url": "https://www.designandarchitecture.net/project/1526017753",
+        "detail": "Architect’s project account. Comparative reading of production, public access and an existing village economy.",
+        "kind": "Comparative reference"
       }
-    ]
+    ],
+    "subtitle": "Tea production, access and the cost of a lighter footprint",
+    "method": "Xu Tiantian / DnA · Begin with a productive relationship"
   },
   {
     "slug": "research-rurbanity",
-    "title": "A glossary of rurbanity.",
+    "title": "Planting Factories, Moving Villages",
     "theme": "Language / Territory / Governance",
-    "place": "Taiwan",
+    "place": "Taichung · Changhua · Xindian",
     "year": "2026",
     "image": "rurban-factories-map",
     "lon": 120.44,
     "lat": 24.06,
-    "proposition": "The words used to name a territory can reveal relationships that land-use categories leave out.",
+    "proposition": "A land-use map can show where a factory or a house stands while leaving out the networks and collective rights that make its location matter.",
     "question": "What do local terms make visible where the city and countryside coexist?",
     "opening": "Two glossary entries approach Taiwan’s rurban territories through language. 農地種工廠 names an incremental process of industrialisation on farmland. Niyaro’ describes community through collective territory and relations rather than rural location alone. Read together, the terms ask how architecture can respond to mixed territories without reducing them to an incomplete version of either city or countryside.",
     "credit": "Glossary essays and territorial reading · Hao Chang · 2026<br>Developed for the Glossary of Rurbanity open call, Harvard GSD<br>“Planting Factories on Farmland” · Selected contribution; companion entry: Niyaro’",
@@ -407,6 +534,16 @@
           "The Glossary of Rurbanity forms part of Harvard GSD’s Carrots and Sticks: Incentives Shaping the “Rurban” Interface conference, held on 11 September 2026. The call brings keywords, short essays and images into a comparative discussion of how urban and rural conditions are named in different languages. <a class=\"source-cite\" href=\"#ref-R1\" aria-label=\"Reference R1\">[R1]</a>",
           "The value of a glossary is not simply translation. A word can indicate what must be explained: a process, a shared territory, a mode of production or an institutional mismatch. These entries move from meaning to spatial condition and then to a design question."
         ]
+      },
+      {
+        "id": "counter-map",
+        "title": "Follow the relation that the category cannot contain",
+        "paragraphs": [
+          "AMO’s Countryside research treats nonurban territory as a site of contemporary transformation, including production, technology and political decisions. It provides a useful invitation to investigate what a familiar category leaves out. The local meanings of 農地種工廠 and Niyaro’ come from their own scholarship and communities, however; an international exhibition cannot define them. <a class=\"source-cite\" href=\"#ref-R10\" aria-label=\"Reference R10\">[R10]</a>",
+          "My glossary method has four steps. Identify what the term names; establish the scale at which it operates; trace the relations extending beyond that scale; then ask what a conventional plan would fail to protect. The industrial parcel extends through subcontracting, roads and water. The dwelling extends through cultivation, kinship, ritual and shared territory. Each word therefore changes the unit of analysis.",
+          "This is why the entries remain separate. A factory operating on farmland and an Indigenous community facing relocation cannot be placed on one ladder from informal to formal. Their histories, powers and claims differ. The comparison is about the limits of spatial categories, not an equivalence between the groups who occupy them."
+        ],
+        "table": null
       },
       {
         "id": "factories",
@@ -429,6 +566,16 @@
         "caption": "Parcel structure in Dingfanpo · Diagram by Hao Chang, 2026, based on the Taiwan Ministry of Agriculture’s Agricultural and Farmland Resources Inventory Map."
       },
       {
+        "id": "externalities",
+        "title": "The boundary of ownership is not the boundary of impact",
+        "paragraphs": [
+          "A parcel-by-parcel response can make individual sites administratively legible while leaving the shared landscape fragmented. Water crosses property lines; delivery vehicles use common roads; agricultural work depends on connections that an isolated building permit cannot represent. The research unit must therefore include the path of a burden, as well as the boundary of the activity producing it.",
+          "For a future spatial study, I would overlay the production network with drainage, cultivated land, freight access and sensitive neighbouring uses. The purpose would be to identify where an individual improvement is inadequate and a collective intervention becomes necessary. No pollution measurements or completed environmental assessment are claimed here. The glossary establishes why those measurements must be related spatially.",
+          "That distinction prevents an architectural proposal from treating a tidier facade or a landscaped setback as resolution. A change should be judged against the relation it repairs: whether it separates conflicting movement, reduces exposure or maintains an agricultural connection. Otherwise visual improvement may conceal the same distribution of costs."
+        ],
+        "table": null
+      },
+      {
         "id": "niyaro",
         "title": "Niyaro’ — Community beyond a rural location.",
         "paragraphs": [
@@ -445,6 +592,15 @@
           "Relocation is more than moving dwelling units. If community is sustained through livelihood, ecology, collective space and ritual, then retaining a building count is an incomplete measure of continuity. The design question is what must move with the houses for a niyaro’ to remain a niyaro’.",
           "This entry is a reading of published scholarship and public project documentation, not a claim to speak for Xizhou residents. Questions of cultural meaning and acceptable change require the community’s own authority. Architecture can make the spatial stakes visible without assuming that a plan settles them."
         ]
+      },
+      {
+        "id": "continuity",
+        "title": "A relocation plan needs a second inventory",
+        "paragraphs": [
+          "The first inventory counts houses and facilities. The second records which relations depend on proximity: who shares cultivation, where collective preparation occurs, how a gathering moves between indoor and outdoor space, and how access to the river supports memory or livelihood. These are questions for community-led documentation, not a checklist an outside architect can complete alone.",
+          "The two inventories can disagree. A rehousing scheme may improve the dwelling while weakening an activity that had no dedicated room in the original settlement. Conversely, reproducing an old spatial arrangement without addressing risk can also fail its inhabitants. The design problem is to negotiate material improvement and collective continuity together, with the people concerned deciding which relations are indispensable."
+        ],
+        "table": null
       },
       {
         "id": "synthesis",
@@ -519,25 +675,34 @@
         "detail": "Municipal project account of the Xizhou relocation and community facilities.",
         "url": "https://wedid.ntpc.gov.tw/governance/detail/bRpVL33oL5qj",
         "kind": "Reference"
+      },
+      {
+        "code": "R10",
+        "title": "Guggenheim Museum. Countryside, The Future — teaching materials.",
+        "url": "https://www.guggenheim.org/teaching-materials/countryside-the-future",
+        "detail": "Research framework accompanying the exhibition by Rem Koolhaas and AMO, directed by Samir Bantal. Comparative method, not a source for the two local terms.",
+        "kind": "Comparative reference"
       }
     ],
     "kind": "Glossary / Research essays",
     "cta_url": "https://www.gsd.harvard.edu/event/carrots-and-sticks-incentives-shaping-the-rurban-interface/",
     "cta_label": "View GSD conference & glossary call ↗",
-    "number": "04"
+    "number": "04",
+    "subtitle": "Two words that unsettle the map of city and countryside",
+    "method": "AMO / Countryside · Trace the systems behind a territorial category"
   },
   {
     "number": "05",
     "slug": "research-water",
-    "title": "Adaptation as an everyday practice.",
+    "title": "When the River Occupies the Street",
     "theme": "Water / Collective life",
-    "place": "Kampung Melayu, Jakarta",
+    "place": "Kampung Melayu · Jakarta",
     "year": "2025",
     "project": "rising-tides",
     "image": "jakarta-research",
     "lon": 106.866,
     "lat": -6.224,
-    "proposition": "Adaptation already exists before the architect arrives. Infrastructure must learn from the practices that sustain everyday life.",
+    "proposition": "Raising a floor protects a room. Keeping a neighbourhood habitable requires the route, the toilet, the supply point and the means to repair them to remain connected.",
     "question": "How can civic infrastructure learn from the everyday adaptations already practised in Kampung Melayu, allowing access, livelihood, care and collective life to continue as water levels change?",
     "opening": "Flood resilience begins with the routines that keep a neighbourhood functioning. Raising a floor, moving possessions, sharing shelter and maintaining access are spatial practices as well as acts of care. The research translates a reading of these practices into a framework that can change with the river.",
     "credit": "Individual design research · Hao Chang · 2025<br>Instructor: Martijn de Geus · SOM China Fellowship recipient",
@@ -595,6 +760,16 @@
         "statement": "Adaptation is not the return to a fixed normal. It is the capacity for everyday life to continue through change."
       },
       {
+        "id": "collective-capacity",
+        "title": "Who has the capacity to adapt?",
+        "paragraphs": [
+          "Kéré’s Atelier Gando makes skills and material experimentation part of architectural production. As a comparative method, this shifts attention from the finished component to who can make, maintain and alter it. The Jakarta proposal’s modular assembly must be tested on those terms: a component is not locally repairable simply because its diagram is simple. <a class=\"source-cite\" href=\"#ref-J7\" aria-label=\"Reference J7\">[J7]</a>",
+          "The Friendship Centre by Kashef Chowdhury / URBANA offers another comparison. Its flood response is tied to the economics and spatial organisation of a specific institution. That prompts a cost-and-responsibility question here, rather than a recommendation to reproduce its embankment beside the Ciliwung. Moving water away from one site can change exposure elsewhere. <a class=\"source-cite\" href=\"#ref-J8\" aria-label=\"Reference J8\">[J8]</a>",
+          "These comparisons expose a danger in celebrating informal resilience. The ability to keep adapting may depend on unpaid labour, spare space, social support and resources that households possess unequally. A shared refuge must reduce these burdens rather than assume an inexhaustible capacity to absorb them. Community participation is a design commitment to organise, not an achievement established by the unbuilt scheme."
+        ],
+        "table": null
+      },
+      {
         "id": "method",
         "title": "A stable datum, changing occupation.",
         "paragraphs": [
@@ -626,6 +801,38 @@
         "statement": null
       },
       {
+        "id": "third-section",
+        "title": "The third section: after the water recedes",
+        "paragraphs": [
+          "The paired seasonal drawings show occupation before and during inundation. A third state is necessary to test recovery. A market that becomes a shelter must eventually become a market again; stored goods, deposited sediment, contaminated surfaces and interrupted services can delay that return. A dry floor alone does not establish that a room is ready for use.",
+          "I therefore read each shared space through a chain of dependencies. Who closes it, what remains accessible, where supplies are stored, who cleans it and what allows it to reopen? These are proposed evaluation questions, not a completed emergency plan. Their spatial implications are specific: separate clean storage from flood-contact areas, maintain a legible route between refuge and services, and leave access for repair."
+        ],
+        "table": {
+          "headers": [
+            "State",
+            "Critical connection",
+            "Evidence needed to test the proposal"
+          ],
+          "rows": [
+            [
+              "Ordinary use",
+              "Market, workshop, sanitation and street",
+              "Daily access patterns and operating responsibilities"
+            ],
+            [
+              "Inundation",
+              "Refuge, landing and essential supplies",
+              "Water-level scenarios, structural review and access testing"
+            ],
+            [
+              "Recovery",
+              "Cleaning, waste removal and reopening",
+              "Recovery sequence, service isolation and maintenance capacity"
+            ]
+          ]
+        }
+      },
+      {
         "id": "water-cycle",
         "title": "Water security extends beyond the flood event.",
         "paragraphs": [
@@ -641,8 +848,9 @@
         "id": "limits",
         "title": "A framework to test with residents.",
         "paragraphs": [
-          "The 2025 application proposal and itinerary describe intended comparative research. They are not evidence that every listed visit, interview or activity was completed. The later LinkedIn profile records international field research, but the supplied documents do not include a complete field log or interview dataset. No first-person resident testimony is invented here.",
-          "The Jakarta proposal establishes questions that continue in the later Netherlands field research: how access, shared infrastructure and water management can support ordinary life through change. The <a href=\"research-netherlands.html\">Netherlands enquiry</a> and its linked field atlas develop that comparison without treating Dutch projects as ready-made solutions for Jakarta."
+          "The viaduct is a spatial reference, not an automatically available foundation or guaranteed safe datum. Structural independence, transport-authority requirements, clearance and maintenance access need to be resolved before the elevated public spine can be treated as feasible. Flood levels, water velocity and debris loads also require engineering evidence beyond the architectural sections.",
+          "A meaningful next stage would bring residents, service providers and the relevant authorities into a comparison of alternatives: improve existing local facilities, add a shared elevated route, or concentrate support at fewer accessible nodes. The proposal should be revised if its maintenance demands exceed the capacity of those expected to run it.",
+          "The argument is consequently about continuity rather than invulnerability. The <a href=\"research-netherlands.html\">Netherlands field enquiry</a> extends the comparison by asking how spatial systems and operating responsibilities are connected. It supplies questions for Jakarta, not a ready-made institutional or technical answer."
         ],
         "figure": null,
         "caption": null,
@@ -664,21 +872,163 @@
         "detail": "Disaster Prevention and Management, 33(4). Community knowledge and the relationship between adaptation and planning.",
         "url": "https://www.emerald.com/dpm/article/33/4/383/1225924/Urban-planning-approaches-to-support-community",
         "kind": "Reference"
+      },
+      {
+        "code": "J7",
+        "title": "Kéré Architecture. Atelier Gando.",
+        "url": "https://www.kerearchitecture.com/work/knowledge/atelier-gando",
+        "detail": "Architect’s account of learning, material experimentation and construction skills. Comparative method; not evidence of participation in the Jakarta proposal.",
+        "kind": "Comparative reference"
+      },
+      {
+        "code": "J8",
+        "title": "Aga Khan Award for Architecture. Friendship Centre — Kashef Chowdhury / URBANA.",
+        "url": "https://the.akdn/en/en/how-we-work/our-agencies/aga-khan-trust-culture/akaa/friendship-centre",
+        "detail": "Award documentation of a flood-conscious institutional project in Gaibandha. Its protection strategy is not assumed transferable to a river corridor.",
+        "kind": "Comparative reference"
+      }
+    ],
+    "subtitle": "Flood adaptation, collective services and the work of recovery",
+    "method": "Kéré + Kashef Chowdhury / URBANA · Test spatial economy against collective capacity"
+  },
+  {
+    "number": "06",
+    "slug": "research-theater",
+    "title": "Before the Curtain Rises",
+    "subtitle": "The theatre as a public building during its non-performance hours",
+    "theme": "Performance / Programme / Public access",
+    "place": "Wudaokou · Beijing",
+    "year": "2025",
+    "project": "theater-design",
+    "image": "theater-section",
+    "lon": 116.338,
+    "lat": 39.994,
+    "kind": "Typological research",
+    "method": "OMA / Rem Koolhaas and David Gianotten · Analyse programme, circulation and institutional thresholds",
+    "proposition": "The theatre’s most public room may be the one that does not require a performance. The research begins with the hours when the auditorium is closed.",
+    "question": "How can a theatre support independent everyday use while maintaining the acoustic, technical and access requirements of performance?",
+    "opening": "Wudaokou brings university, workplace and residential rhythms into close proximity. The Condenser asks what a theatre can contribute to that mixture between scheduled events. Its research treats the building as an arrangement of programmes, routes and opening conditions. The design then tests that argument through a raised ground, shared foyers, stairs and a roof landscape.",
+    "credit": "Individual typological research and design · Hao Chang · Spring 2025<br>Tsinghua University · Large-scale Public Building Design Studio<br>Comparative readings extend the original project argument; they do not imply collaboration with the referenced practices.",
+    "sources": [
+      {
+        "code": "T1",
+        "title": "OMA. Taipei Performing Arts Center.",
+        "url": "https://www.oma.com/projects/taipei-performing-arts-center",
+        "detail": "Architect’s project statement. Rem Koolhaas and David Gianotten. Comparative research into the public role and programme of the contemporary theatre.",
+        "kind": "Comparative reference"
+      },
+      {
+        "code": "T2",
+        "title": "Taipei Performing Arts Center. Experience TPAC — Public Loop.",
+        "url": "https://tpac.org.taipei/en/tour-publicloop",
+        "detail": "Institutional account of the public circulation route. Operational arrangements belong to that project and are not assumed for The Condenser.",
+        "kind": "Comparative reference"
+      }
+    ],
+    "sections": [
+      {
+        "id": "institution",
+        "title": "Start with the institution’s timetable",
+        "paragraphs": [
+          "A conventional reading begins with auditorium capacity, stage requirements and the movement of a ticketed audience. Those remain essential. A second reading begins with the surrounding city: a student between classes, a worker on a break, a resident taking a walk. Their demand for somewhere to meet does not necessarily coincide with the programme inside the hall.",
+          "The original design argument identifies openness and shared use as responses to that mismatch. The sharper research question is how much of the building can remain useful without a ticket, a scheduled event or the expense of operating every performance space. The empty hours are not simply a programming failure; they reveal the limits of organising a civic building around a single institutional rhythm."
+        ],
+        "table": null
+      },
+      {
+        "id": "oma",
+        "title": "Treat the programme as something to argue with",
+        "paragraphs": [
+          "OMA’s account of the Taipei Performing Arts Center questions the standardised composition and public role of the contemporary theatre. The Public Loop, documented by the institution, provides a specific comparison for circulation that is not confined to the conventional audience sequence. I take these as research operations: challenge the inherited brief and examine who can enter which parts of the building. <a class=\"source-cite\" href=\"#ref-T1\" aria-label=\"Reference T1\">[T1]</a> <a class=\"source-cite\" href=\"#ref-T2\" aria-label=\"Reference T2\">[T2]</a>",
+          "The Condenser does not reproduce that project’s organisation. Its enquiry concerns the productive distance between enclosed performance rooms and a looser civic interior. The key drawing is a programme relationship diagram: which uses need isolation, which can share support, and which can invite unscheduled occupation?",
+          "Calling this a social condenser is only the beginning of the argument. Co-presence does not guarantee exchange. People can occupy the same building without a reason to meet, or be forced into contact they would prefer to avoid. The architecture needs places for encounter and places to withdraw, with enough distinction that neither use invalidates the other."
+        ],
+        "table": null
+      },
+      {
+        "id": "three-publics",
+        "title": "Three publics, more than one route",
+        "paragraphs": [
+          "I distinguish the ticketed audience, the everyday visitor and the people making the performance. They overlap, but their requirements are not interchangeable. The audience needs orientation and a coordinated arrival; an everyday visitor needs an intelligible place to go without entering the ticketed sequence; performers and technicians need dependable working access.",
+          "The distinction prevents openness from becoming a demand that every route be shared. Backstage privacy, equipment movement and acoustic separation are necessary parts of the institution. The research instead asks where selected adjacencies can make performance perceptible without interrupting its production. A view, a foyer or a shared edge can connect uses without merging their circulation."
+        ],
+        "table": {
+          "headers": [
+            "User / activity",
+            "Spatial requirement",
+            "Question for the public building"
+          ],
+          "rows": [
+            [
+              "Everyday visitor",
+              "A route and destination independent of the event",
+              "What remains open when the hall is closed?"
+            ],
+            [
+              "Ticketed audience",
+              "Orientation, waiting and coordinated entry",
+              "Can a crowd assemble without occupying every shared route?"
+            ],
+            [
+              "Performer / technician",
+              "Controlled working and loading access",
+              "Where can production remain protected from public movement?"
+            ],
+            [
+              "Informal group",
+              "A place to meet, watch or present",
+              "Can an activity occur without taking over circulation?"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "section",
+        "title": "The stair is a room only if movement can continue",
+        "paragraphs": [
+          "The design uses stairs at several scales, culminating in a gathering stair between levels three and four. This converts a change in level into a place for discussion, informal viewing and pause. Its value is not the visual drama of a crowded rendering. The test is whether someone can remain while someone else passes, and whether the gathering has a legible edge.",
+          "A sectional reading exposes the trade-off. More shared volume can increase contact while transmitting noise and making supervision harder. A roof destination can extend occupation while adding weather exposure and a dependence on vertical access. The architectural proposition must therefore be evaluated with parallel routes, acoustic boundaries and closure scenarios.",
+          "The current sections establish possible relationships. They do not certify egress, accessibility or acoustic performance. A subsequent iteration would test the same public sequence during an ordinary afternoon, an event arrival and an interval, retaining comparable routes so that congestion and conflicts become visible."
+        ],
+        "table": null,
+        "figure": "theater-section",
+        "caption": "The Condenser · Long section. Hao Chang, 2025. The drawing tests relations between enclosed performance, shared circulation and the roof; it is a design proposal."
+      },
+      {
+        "id": "envelope",
+        "title": "Visibility is not permission",
+        "paragraphs": [
+          "The blue and orange performance volumes and translucent polycarbonate envelope give occupation a presence after dark. They make the institution perceptible from outside and relate its different parts to the surrounding urban conditions. The research distinguishes this visual invitation from the ability to enter or use a space.",
+          "A transparent or luminous facade can advertise an activity that remains inaccessible. Conversely, a modest entrance can provide an effective public threshold if its destination and rules are clear. The envelope should therefore be read beside entry, signage and operating hours. The question is whether the building’s visible promise corresponds to an available form of use."
+        ],
+        "table": null,
+        "figure": "theater-axon",
+        "caption": "The Condenser · Exploded programme and circulation study. Hao Chang, 2025."
+      },
+      {
+        "id": "non-event",
+        "title": "A test without a show",
+        "paragraphs": [
+          "The decisive scenario removes the performance. The auditoria are closed, technical work is limited and there is no audience to populate the foyer. Can the ground, stair and roof sequence still form a useful civic place? Which parts could operate independently, and which would require staffing or environmental systems disproportionate to their use?",
+          "This test makes shared space an accountable part of the brief. Independent access, a clear boundary to controlled rooms, places to sit and a feasible maintenance arrangement are more persuasive than a general claim of flexibility. If a proposed public area cannot remain open under these conditions, its public role should be described more narrowly.",
+          "The research produces criteria rather than proof of social transformation. The <a href=\"theater-design.html\">design page</a> shows how the proposal arranges entrances, performance volumes, the gathering stair and roof. Those decisions can now be evaluated against a specific promise: a theatre that contributes to urban life before the curtain rises, with the limits of that promise made explicit."
+        ],
+        "table": null
       }
     ]
   },
   {
-    "number": "06",
+    "number": "07",
     "slug": "research-ground",
-    "title": "Ground as an archive.",
+    "title": "After the Battery",
     "theme": "Memory / Landscape",
-    "place": "Fenggui Peninsula, Penghu",
+    "place": "Fenggui Peninsula · Penghu Archipelago",
     "year": "2024",
     "project": "erdai",
     "image": "erdai-map",
     "lon": 119.545,
     "lat": 23.538,
-    "proposition": "The ground is not simply the setting of the archive. The ground itself is the archive.",
+    "proposition": "An art museum enters a landscape built for concealment and command. Its task is to change how that ground is encountered without making its military history disappear.",
     "question": "How can architecture translate the layered spatial memory of a military landscape into contemporary cultural life without reconstructing a single past or erasing the traces between them?",
     "opening": "The military landscape is an arrangement of visibility, concealment, supply and movement. Ruins preserve parts of this arrangement; missing structures and altered ground also carry evidence. The museum study asks how another cultural use can enter that record without making its different moments appear complete or simultaneous.",
     "credit": "Individual studio and design research · Hao Chang · 2024<br>Instructor: Li Xiaodong · Historical and conservation evidence credited separately below",
@@ -754,6 +1104,16 @@
         "statement": null
       },
       {
+        "id": "scarpa",
+        "title": "A new route is already an interpretation",
+        "paragraphs": [
+          "Carlo Scarpa’s work at Castelvecchio brings the design of a museum into direct relation with the adaptation of a historic fortress. I use that relationship as a comparative question: how does a contemporary route disclose the inherited building, and where does the display apparatus become another layer to read? This is a method of close examination, not a vocabulary of details to reproduce. <a class=\"source-cite\" href=\"#ref-P5\" aria-label=\"Reference P5\">[P5]</a>",
+          "At the Dashan battery, concealment and exposure were operational relationships. A trench protected movement; a high point extended a view; an enclosed chamber separated occupation from the weather and the horizon. Turning them into a cultural itinerary changes their purpose. The museum cannot claim to reveal an untouched truth simply by following an existing path.",
+          "The critical drawing is therefore a junction drawing. It should identify what survives, what has been removed, what is uncertain and what is proposed. A new handrail, floor, opening or lighting element should not blur that distinction. Legibility can be produced through a gap, a change of material or a different alignment, but the appropriate detail depends on verified fabric and conservation requirements."
+        ],
+        "table": null
+      },
+      {
         "id": "translation",
         "title": "Preserve, reuse, translate.",
         "paragraphs": [
@@ -766,6 +1126,16 @@
         "statement": "Preservation is not the completion of the past. It is the careful addition of another layer."
       },
       {
+        "id": "absence",
+        "title": "Do not complete every missing wall",
+        "paragraphs": [
+          "An incomplete ruin can make time visible. Completing it to recover a coherent silhouette may remove precisely the evidence that distinguishes abandonment, alteration and loss. Conversely, leaving everything untouched can make a site inaccessible or accelerate damage. The useful opposition is not intervention versus non-intervention, but the purpose and reversibility of each action.",
+          "I distinguish three kinds of absence. A documented lost element can be interpreted without necessarily being reconstructed. An uncertain element should remain explicitly uncertain. A removal required by the new use must be justified as a contemporary decision. Recording these separately would allow the museum to show its own involvement in the history it presents.",
+          "This also gives the artwork an active role. The collection does not have to illustrate military chronology. Its juxtaposition with a buried room, a court or a distant sea view can open another register of attention. The curatorial sequence should nevertheless avoid turning the former battery into a neutral picturesque container in which its earlier uses are no longer readable."
+        ],
+        "table": null
+      },
+      {
         "id": "section",
         "title": "The section turns evidence into experience.",
         "paragraphs": [
@@ -776,6 +1146,15 @@
         "caption": "02 / Section through the proposed museum. New cultural space is inserted into the ground; the sequence of courts, galleries and sea views tests a contemporary reading of the inherited terrain.",
         "table": null,
         "statement": null
+      },
+      {
+        "id": "two-routes",
+        "title": "The visitor’s experience and the object’s conditions",
+        "paragraphs": [
+          "The sequence of dark passage, court and horizon is compelling as an experience of the body. A collection, however, has another route: delivery, storage, handling, installation and conservation. These two itineraries need to meet selectively. The proposal’s section should be tested against both, especially where coastal exposure and changes of level make movement or environmental control more difficult.",
+          "Daylight is similarly double-sided. A framed view can orient a visitor while exposing an object to light that is inappropriate for its medium. The next iteration should separate the view offered to a person from the light reaching a work. The resulting architecture may depend on the depth and orientation of a threshold, rather than simply the size of an opening."
+        ],
+        "table": null
       },
       {
         "id": "limits",
@@ -809,21 +1188,30 @@
         "detail": "Sections on cultural significance, reuse suitability, risk, building services, structural safety and long-term maintenance. Independent professional report.",
         "url": "",
         "kind": "Reference"
+      },
+      {
+        "code": "P5",
+        "title": "Comune di Verona. Museo di Castelvecchio — Carlo Scarpa’s museum intervention.",
+        "url": "https://www.comune.verona.it/Vivere-il-comune/Luoghi/Museo-di-Castelvecchio2",
+        "detail": "Institutional documentation. A comparative reference for the relationship between restoration, display and visitor movement.",
+        "kind": "Comparative reference"
       }
-    ]
+    ],
+    "subtitle": "Reading a coastal fortress through its remains, gaps and new uses",
+    "method": "Carlo Scarpa · Examine the joint between inherited fabric and a new route"
   },
   {
-    "number": "07",
+    "number": "08",
     "slug": "research-ritual",
-    "title": "An infrastructure of care.",
+    "title": "The Right to Remain Unbuilt",
     "theme": "Ritual / Ecology",
-    "place": "Mount Kailash, Ngari",
+    "place": "Mount Kailash",
     "year": "2024",
     "project": "spirited-a-way",
     "image": "kailash-density",
     "lon": 81.31,
     "lat": 31.07,
-    "proposition": "Care is not the provision of more infrastructure. It is the calibration of intervention.",
+    "proposition": "A route can need better care without needing more architectural attention. Safety, sacred meaning and ecological disturbance must be evaluated separately before they are brought into one siting decision.",
     "question": "How can architectural infrastructure along the Mount Kailash kora be located, scaled and operated to meet essential needs without weakening its ritual sequence, sacred landscape and ecological integrity?",
     "opening": "The kora is at once a ritual sequence, a physically demanding journey and an ecological setting. The research brings landscape perception, facility evaluation and territorial conditions together to ask not only what is needed, but where architecture should keep its distance, adapt, retain or add as little as possible.",
     "credit": "Collaborative studio research · Hao Chang & Mengzhe Lee · 2024<br>Instructor: Yue Cao · Hao’s portfolio role: research, modelling, renderings and diagrams",
@@ -881,6 +1269,16 @@
         "statement": null
       },
       {
+        "id": "atmosphere",
+        "title": "Atmosphere cannot vote on behalf of a community",
+        "paragraphs": [
+          "Peter Zumthor’s Bruder Klaus chapel provides a focused comparison for reading how approach, enclosure and construction give a small building its presence. The comparison stops at that architectural question. A commissioned chapel in one religious setting cannot establish what is appropriate on the Kailash kora. <a class=\"source-cite\" href=\"#ref-K6\" aria-label=\"Reference K6\">[K6]</a>",
+          "This limit matters because a restrained appearance can be mistaken for ethical restraint. A low, earth-coloured structure may still occupy a culturally sensitive place, alter a view associated with ritual or introduce servicing that changes the route. Conversely, a visually ordinary facility may provide indispensable support. Appearance, necessity and cultural authority are different forms of evidence.",
+          "The visual survey should therefore be used to generate questions rather than a league table of acceptable architecture. A negative score might relate to scale, maintenance, colour, use or placement. Without separating these factors, replacing the building with a more attractive object could preserve the actual problem."
+        ],
+        "table": null
+      },
+      {
         "id": "overlays",
         "title": "Perception alone cannot select a site.",
         "paragraphs": [
@@ -891,6 +1289,43 @@
         "caption": "03 / Natural-condition overlays used in node selection. Team presentation, p. 48. These research layers guide a design test; they do not constitute an engineering hazard assessment.",
         "table": null,
         "statement": null
+      },
+      {
+        "id": "decision-order",
+        "title": "Some constraints should not be averaged away",
+        "paragraphs": [
+          "Layered mapping can create an impression that every criterion is commensurable. A favourable view, gentle slope and existing path may add up to a persuasive location even when one cultural or ecological constraint should rule it out. The method needs an order of decisions, not only a composite score.",
+          "I propose beginning with exclusions established through custodial knowledge and specialist risk assessment. Within the remaining territory, compare access, servicing, existing facilities and the needs of different users. Only then should the visual and experiential qualities of a site help calibrate an intervention. The current research does not establish those exclusion boundaries; it identifies the necessity of agreeing them."
+        ],
+        "table": {
+          "headers": [
+            "Decision",
+            "What it asks",
+            "What the current evidence cannot decide"
+          ],
+          "rows": [
+            [
+              "Whether to build",
+              "Is the need unmet, and is construction acceptable here?",
+              "Custodial consent and definitive ecological exclusions"
+            ],
+            [
+              "Where to support",
+              "Can an existing facility or accessible node meet the need?",
+              "Verified hazard and seasonal service capacity"
+            ],
+            [
+              "How much to add",
+              "What is the smallest workable provision?",
+              "An agreed operating and maintenance brief"
+            ],
+            [
+              "How to appear",
+              "How do scale, material and approach affect experience?",
+              "Cultural acceptance inferred from visual preference alone"
+            ]
+          ]
+        }
       },
       {
         "id": "presence",
@@ -927,6 +1362,16 @@
         "statement": "Care is the method by which architecture decides whether, where and how strongly it should exist."
       },
       {
+        "id": "service-shadow",
+        "title": "Every shelter casts a service footprint",
+        "paragraphs": [
+          "A remote supply station occupies more than the area under its roof. Deliveries, waste storage, wastewater, fuel, repairs and the paths used to reach it can extend its effect across the landscape. A small pavilion supplied frequently may be more demanding than an improvement to an established facility. The study must compare these chains rather than equate compactness with low impact.",
+          "The lodge, supply station and interpretation hall consequently need different operating arguments. A lodge supports sustained occupation; a supply point should answer a specific gap along the route; a hall must justify why interpretation requires a building at that location. If the same purpose can be met farther from a sensitive place, distance becomes a positive architectural decision.",
+          "The claim of care is strongest when the proposal can accept subtraction. An unsuccessful siting test should be able to remove a building, not merely make it smaller. The unbuilt option is part of the research outcome."
+        ],
+        "table": null
+      },
+      {
         "id": "limits",
         "title": "Care continues after construction.",
         "paragraphs": [
@@ -954,21 +1399,30 @@
         "detail": "IUCN Best Practice Protected Area Guidelines Series No. 16.",
         "url": "https://portals.iucn.org/library/efiles/documents/PAG-016.pdf",
         "kind": "Reference"
+      },
+      {
+        "code": "K6",
+        "title": "Bruder-Klaus-Feldkapelle. Zur Entstehung der Feldkapelle.",
+        "url": "https://www.feldkapelle.de/entstehung/",
+        "detail": "Commissioning community’s account of the chapel designed by Peter Zumthor. A limited comparison for approach and material presence, not a model for another religious landscape.",
+        "kind": "Comparative reference"
       }
-    ]
+    ],
+    "subtitle": "Evidence, restraint and the limits of facility provision on the Kailash kora",
+    "method": "Peter Zumthor · Close reading of approach, enclosure and material presence"
   },
   {
-    "number": "08",
+    "number": "09",
     "slug": "research-shichahai",
-    "title": "The waterfront as an urban seam.",
+    "title": "Whose Waterfront?",
     "theme": "Water / Heritage / Public life",
-    "place": "Shichahai, Beijing",
+    "place": "Shichahai · Beijing",
     "year": "2024",
     "project": "waterfront-plus",
     "image": "shichahai-seam",
     "lon": 116.386,
     "lat": 39.939,
-    "proposition": "The waterfront is wider than the water’s edge. It connects water, heritage, commerce and everyday neighbourhood life.",
+    "proposition": "Opening a route to the lake can enlarge public life and intensify pressure on the people living beside it. The design must specify whose access improves, and on what terms.",
     "question": "How can a historic waterfront become an urban seam that reconnects water, neighbourhood life, cultural memory and contemporary commerce without reducing the district to a tourist landscape?",
     "opening": "Waterfront+ begins with discontinuities around the Fire God Temple, Di’anmen and Baimi Xiejie: between water and hutongs, commercial frontages and residential space, historic landmarks and everyday routes. The research treats these breaks as different kinds of permeability to be repaired, rather than a shoreline to be opened uniformly.",
     "credit": "Collaborative urban-design research · Hao Chang & Mengzhe Lee · 2024<br>Waterfront+ · Supporting academic studies are credited separately and are not the authors’ fieldwork",
@@ -999,11 +1453,21 @@
         "statement": null
       },
       {
+        "id": "courtyard",
+        "title": "Begin with an occupied unit, not an empty diagram",
+        "paragraphs": [
+          "Zhang Ke’s Hutong Children’s Library & Art Centre provides a useful comparison because a small shared programme is placed within an inherited courtyard condition. The relevant method is close attention to what can coexist at that scale. The precedent does not demonstrate that an entire waterfront district will respond in the same way. <a class=\"source-cite\" href=\"#ref-S5\" aria-label=\"Reference S5\">[S5]</a>",
+          "For Waterfront+, the courtyard is both a physical unit and a set of thresholds among people. Its entrance, circulation and shared surfaces cannot be read as vacant capacity merely because they appear open on a plan. A proposed passage may cross a place of domestic work, waiting or informal supervision. These relationships require observation and negotiation before they can become a public route.",
+          "The implication is to redraw the district as a series of differentiated permissions. Some connections can be public through-routes; others should be shared locally, open at certain times or remain private. The design gains precision when it can explain a retained boundary as clearly as a new opening."
+        ],
+        "table": null
+      },
+      {
         "id": "method",
         "title": "Four permeabilities; three publics.",
         "paragraphs": [
           "The project’s own analysis compares urban form, transport, building character, condition, public space and programme. Cross-reading character with condition informs decisions to retain, repair, adapt, open or insert. A courtyard provides an incremental unit; linked routes and water-facing spaces allow interventions to operate at the scale of point, line and area.",
-          "The research is organised here through four kinds of permeability. They are a framework for evaluating the supplied drawings, not four measured performance scores."
+          "The research is organised here through four kinds of permeability. They are a framework for evaluating the project drawings, not four measured performance scores."
         ],
         "figure": "shichahai-analysis",
         "caption": "02 / Existing-condition mappings, cropped from Waterfront+ board 1. Urban form, green space, transport, building condition and programme are read together.",
@@ -1051,6 +1515,16 @@
         "statement": "The aim is not simply to bring people closer to the water, but to bring the water back into the everyday structure of the city."
       },
       {
+        "id": "opening-hours",
+        "title": "Publicness has a timetable and a cost",
+        "paragraphs": [
+          "The resident returning home, the child going to an activity room and the visitor following the lake share parts of the same network but do not ask the same things of it. Their routes differ in repetition, time, speed and tolerance for crowding. A continuous promenade can improve visitor orientation while making an ordinary trip longer or noisier for a resident.",
+          "A useful evaluation therefore follows these journeys separately through the proposed plan. It asks which doors must remain open, which facilities can be reached without a purchase and which uses survive outside peak visitor hours. This is a proposed test of the design, not a claim to have measured its outcomes.",
+          "Commercial activity may finance maintenance and attract use, but it can also make free occupation conditional. The proposal’s community library, dining and activity spaces should be assessed through access rules and running costs, not only their programme labels. A room called “community” has not yet established who can book it, who can enter or who pays to keep it available."
+        ],
+        "table": null
+      },
+      {
         "id": "translation",
         "title": "Waterfront+ as a sequence of repairs.",
         "paragraphs": [
@@ -1066,8 +1540,9 @@
         "id": "limits",
         "title": "Commercial vitality without a tourist monoculture.",
         "paragraphs": [
-          "The proposal does not demonstrate that new public space will prevent displacement or preserve local businesses. Tenure, affordability, access rules, maintenance and the distribution of commercial benefit require further investigation. Demolition, building reuse, transport changes and waterfront interventions would also require detailed conservation and engineering review.",
-          "The supplied boards are sufficient to examine the spatial argument, but their small text is resolution-limited. The article therefore uses focused crops and English captions. No new interviews, resident preferences, visitor counts or post-occupancy outcomes are invented."
+          "A staged renewal strategy should begin with interventions that can improve ordinary access and shared use without depending on a complete commercial redevelopment. Each stage would need a record of affected uses, conservation constraints and the people responsible for operation. The courtyard unit makes such staging imaginable; it does not remove the need to negotiate ownership and occupancy.",
+          "The project does not demonstrate that spatial improvements prevent displacement. Tenure, affordability, business continuity and the distribution of commercial benefit remain decisive. A credible assessment would compare conditions before and after each stage, including who remains and who gains access, rather than treating greater visitor activity as a sufficient measure of success.",
+          "The research conclusion is selective permeability: open the connections that support shared life, retain the thresholds that make inhabitation possible, and attach an operating commitment to every new public room."
         ],
         "figure": null,
         "caption": null,
@@ -1093,13 +1568,22 @@
         "kind": "Journal article",
         "title": "Bian Lanchun & Jing Zhongjie / 边兰春、井忠杰, 2005.",
         "detail": "“历史街区保护规划的探索和思考——以什刹海烟袋斜街地区保护规划为例”, Urban Planning / 城市规划, 29(9). Courtyard-level records, classification and conservation guidance."
+      },
+      {
+        "code": "S5",
+        "title": "Aga Khan Award for Architecture. Hutong Children’s Library & Art Centre — ZAO/standardarchitecture.",
+        "url": "https://the.akdn/en/en/how-we-work/our-agencies/aga-khan-trust-culture/akaa/hutong-childrens-library-art-centre",
+        "detail": "Award documentation. Comparative precedent for inserting shared use within an inherited courtyard fabric.",
+        "kind": "Comparative reference"
       }
-    ]
+    ],
+    "subtitle": "Access, residential thresholds and the uneven benefits of urban renewal",
+    "method": "Zhang Ke / ZAO–standardarchitecture · Work through the occupied courtyard"
   },
   {
-    "number": "09",
+    "number": "10",
     "slug": "research-civic",
-    "title": "Knowledge as civic infrastructure.",
+    "title": "The Public Floor",
     "theme": "Knowledge / Public life",
     "place": "Beijing",
     "year": "2024",
@@ -1107,7 +1591,7 @@
     "image": "books-section",
     "lon": 116.4,
     "lat": 39.9,
-    "proposition": "A public institution is made through relationships of access, shared knowledge and collective occupation—not through programme alone.",
+    "proposition": "Suspending a library can release the ground. Whether that ground becomes public depends on its connections, its uses and the rules that remain after the architectural gesture.",
     "question": "How can the section of a library connect urban access, collective learning and environmental systems into a continuous civic interior?",
     "opening": "Between Chang’an Avenue and the hutongs, the library study treats the section as a research instrument. Ground, suspended volumes, gardens and bridges are read together to test how a place of knowledge can remain connected to the city through movement, shared use and environmental exchange.",
     "credit": "Collaborative studio and design research · Hao Chang & Mengzhe Lee · 2024<br>Hao’s role: lead concept, diagrams, modelling and sections · Instructor: Martijn de Geus",
@@ -1123,6 +1607,16 @@
         "caption": null,
         "table": null,
         "statement": null
+      },
+      {
+        "id": "thresholds",
+        "title": "From the common hall to the metropolitan interior",
+        "paragraphs": [
+          "Hertzberger describes the classrooms of the Delft Montessori school as identifiable places along a shared hall. The comparison helps distinguish collective space from an undifferentiated open plan: people need a place from which to participate, as well as a space in which to meet. <a class=\"source-cite\" href=\"#ref-B3\" aria-label=\"Reference B3\">[B3]</a>",
+          "Applied to the library, this suggests examining the edges between reading, circulation, discussion and retreat. A large continuous interior can be visually democratic while making it difficult to concentrate or to occupy a place without feeling exposed. Publicness requires options at different scales: the individual seat, the small group, the shared route and the institution as a whole.",
+          "The research therefore reads the section as a set of invitations and separations. A bridge is more than a connection if it offers somewhere to pause without obstructing movement. A garden contributes to shared use only if its approach, seating and maintenance allow it to be occupied. These relationships can be tested without assuming that maximum openness is always desirable."
+        ],
+        "table": null
       },
       {
         "id": "method",
@@ -1176,6 +1670,16 @@
         "statement": "The civic value of a room depends partly on the relationships that make it accessible."
       },
       {
+        "id": "access-chain",
+        "title": "Follow the person who did not come for a book",
+        "paragraphs": [
+          "A civic library also receives someone seeking a quiet place, a meeting, information or a route through the district. To test the public floor, I trace an arrival from the street through entry, orientation, vertical movement and a destination. The chain is only as accessible as its most restrictive threshold. A generous room at the top cannot compensate for an uncertain entrance below.",
+          "This reading distinguishes an urban shortcut from admission to the institution. They may share a ground plane while requiring different hours and degrees of supervision. The design should make that boundary explicit, so that closing a reading area does not unnecessarily close the common route. The drawings suggest a spatial opportunity; the operating brief would have to secure it.",
+          "A second chain follows a person who cannot use the prominent stair. Equivalent access involves more than providing a lift somewhere in the building. It includes legibility, distance, continuity and arrival at the same civic places. These are criteria for the next design test, not certified results of the present scheme."
+        ],
+        "table": null
+      },
+      {
         "id": "translation",
         "title": "Structure makes a public promise.",
         "paragraphs": [
@@ -1200,6 +1704,15 @@
         "statement": null
       },
       {
+        "id": "conflicts",
+        "title": "A system drawing must also show disagreement",
+        "paragraphs": [
+          "The four readings of the section are most useful where they conflict. An atrium may connect floors while transmitting noise. A glazed edge can admit daylight and produce glare. A planted interior needs water and maintenance routes beside places intended for books and sustained concentration. Suspending a volume opens space below while increasing the demands on structure and servicing.",
+          "Rather than presenting those systems as automatically complementary, the research identifies the interfaces that require a choice. Which reading areas need acoustic separation? Where should shading protect occupation? Can garden maintenance occur without closing the public route? The architectural argument becomes stronger when its celebrated sectional continuity can survive these ordinary demands."
+        ],
+        "table": null
+      },
+      {
         "id": "limits",
         "title": "A public building needs an operating model.",
         "paragraphs": [
@@ -1219,19 +1732,28 @@
         "detail": "Public libraries as institutions for education, culture, information and inclusion.",
         "url": "https://www.ifla.org/public-library-manifesto/",
         "kind": "Reference"
+      },
+      {
+        "code": "B3",
+        "title": "Herman Hertzberger. Timeline — Montessori School Delft and reflections on space and learning.",
+        "url": "https://www.hertzberger.nl/index.php/en/biografie/tijdlijn",
+        "detail": "Architect’s published reflections. Comparative reading of rooms, shared circulation and the possibility of individual occupation.",
+        "kind": "Comparative reference"
       }
-    ]
+    ],
+    "subtitle": "Can an elevated library extend the city’s common ground?",
+    "method": "Herman Hertzberger · Read institutions through thresholds and appropriation"
   },
   {
     "slug": "research-hong-kong",
-    "title": "Beyond buildings.",
+    "title": "Culture After the Ribbon-Cutting",
     "theme": "Culture / Placemaking / Stewardship",
     "place": "Hong Kong",
     "year": "2024",
     "image": "their-story",
     "lon": 114.17,
     "lat": 22.3,
-    "proposition": "A place’s cultural life depends on relationships that continue long after the building is finished.",
+    "proposition": "The opening of a cultural building is one event. Its civic value is made repeatedly through access, tenancy, maintenance and the freedom of people to use the spaces around it.",
     "question": "How do architecture, development and everyday stewardship produce a cultural ecosystem?",
     "opening": "I joined the third Bi-City Youth Cultural Leadership Programme expecting to learn about museums and cultural institutions. The experience expanded into a question about how culture is produced by a city. Encounters with Swire Properties were especially influential: they made the decisions between design and daily life—management, programming, tenancy, maintenance and public access—part of my architectural enquiry.",
     "credit": "Field reflection and urban research · Hao Chang · 2024<br>Third Bi-City Youth Cultural Leadership Programme<br>Organised by Hong Kong Palace Museum · Lead sponsor: Swire Properties",
@@ -1251,6 +1773,16 @@
           "My exchanges with Swire Properties challenged a narrow understanding of developers as actors who finance and deliver buildings. The programme presented placemaking as an ongoing relationship among art, local culture, development and management. Swire’s published account makes this institutional ambition explicit. <a class=\"source-cite\" href=\"#ref-H2\" aria-label=\"Reference H2\">[H2]</a>",
           "For me, the important shift was temporal. An architect may be involved through a defined period of design and delivery; an owner or developer may continue shaping a district for decades. Tenant selection, access rules, landscape care and cultural programming can change the meaning of a place as profoundly as its initial plan. Development therefore becomes a subject of architectural research, rather than only a condition outside it."
         ]
+      },
+      {
+        "id": "actors",
+        "title": "Control can be mapped as carefully as circulation",
+        "paragraphs": [
+          "The encounter with development practice changed the scale of the brief for me. Instead of ending with a completed space, I began tracing the decisions that continually produce it: who selects tenants, approves events, maintains planting, changes opening hours and responds to a conflict over use. These decisions do not necessarily belong to the same actor.",
+          "A spatially continuous district can therefore contain discontinuous rights. Walking across a plaza, remaining there and organising an activity may be governed differently. A future study should map those permissions beside the pedestrian network. This would allow generous physical provision and restrictive use rules to be assessed together, rather than assuming one cancels out the other.",
+          "The comparison with ordinary neighbourhood space is not a claim that unmanaged conditions are automatically more inclusive. Informal territories also have exclusions and hierarchies. The question is whether people can understand, negotiate and influence the rules through which either kind of space operates."
+        ],
+        "table": null
       },
       {
         "id": "public",
@@ -1293,6 +1825,16 @@
         ]
       },
       {
+        "id": "situations",
+        "title": "Draw a situation rather than a landmark",
+        "paragraphs": [
+          "Atelier Bow-Wow’s research, including Made in Tokyo and Pet Architecture, examines urban combinations that conventional building categories can overlook. I use this as a comparative method for attending to relationships between use and setting. It sharpens the Hong Kong reflection without recasting a personal walk as a completed ethnographic survey. <a class=\"source-cite\" href=\"#ref-H3\" aria-label=\"Reference H3\">[H3]</a>",
+          "The research unit becomes a recurring situation: someone waiting where a passage widens, a shop edge that supports conversation, a route between a housing estate and a market. Its drawing would include the activity, physical support, time and governing rule. The same bench can support a brief pause, a daily meeting or a managed event; the difference lies partly beyond its form.",
+          "Repetition matters because an exceptional festival and an ordinary weekday reveal different capacities. A proper next stage would revisit selected transitions at comparable times and record what changes. The present reflection identifies those situations as questions; it does not supply invented counts, interviews or claims about all residents."
+        ],
+        "table": null
+      },
+      {
         "id": "comparison",
         "title": "Chengdu and Beijing sharpened the question.",
         "paragraphs": [
@@ -1309,6 +1851,15 @@
         ],
         "figure": "their-story",
         "caption": "Their Story · Eastern District community calendar project. Field research and a shared cultural record developed in the Bi-City programme context."
+      },
+      {
+        "id": "representation",
+        "title": "Who gets to become the story of a place?",
+        "paragraphs": [
+          "A community calendar makes this question tangible. Editorial selection gives some experiences visibility and leaves others outside the frame. The design work must distinguish a person’s account from the editor’s interpretation, and an individual story from a claim about a whole neighbourhood. The calendar is a situated cultural object, not a substitute for collective representation.",
+          "This brings the larger discussion of placemaking back to a modest scale. Cultural value is not produced only by commissioning prominent art or programming an event. It also depends on the means through which people can describe their own place, disagree with its public image and keep a record that lasts beyond a campaign. Stewardship includes who can revise that record."
+        ],
+        "table": null
       },
       {
         "id": "stewardship",
@@ -1334,10 +1885,19 @@
         "detail": "Programme conclusion, 22 August 2024. Institutional account of placemaking and cultural exchange, read critically alongside the author’s reflection.",
         "url": "https://www.swireproperties.com/en/media/press-releases/2024/20240822_hkpm/",
         "kind": "Reference"
+      },
+      {
+        "code": "H3",
+        "title": "Canadian Centre for Architecture. Learning from… Tokyo — Atelier Bow-Wow.",
+        "url": "https://www.cca.qc.ca/en/events/2820/learning-from-tokyo",
+        "detail": "Institutional account of research into overlooked urban combinations and everyday building use.",
+        "kind": "Comparative reference"
       }
     ],
     "kind": "Field research / Reflection",
     "project": "their-story",
-    "number": "10"
+    "number": "11",
+    "subtitle": "Who makes a district public after the architect leaves?",
+    "method": "Atelier Bow-Wow · Read urban life through recurring situations"
   }
 ]

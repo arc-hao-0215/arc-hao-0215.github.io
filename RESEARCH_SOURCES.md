@@ -98,3 +98,25 @@ Run `python3 build.py`. Research prose is in `research-studies.json`; `research-
 - First Teaching Building: 0130汇报.pdf (16 pages), dated 30 January 2026. Commissioned project; the shown third-floor scope is 682 m². Renderings remain labelled as proposals.
 - New image provenance: research-figures-v3.json.
 - Project order: descending latest documented design year, with Selected Other Work last. Original project URLs remain available.
+
+## October 2026 editorial revision: method and design
+
+The catalogue now uses chronological display numbers 01–11, independently of page slugs. Location labels describe sites, cities or geographic regions; official institution names and bibliographic titles remain intact. Commissions and awards share the unboxed `recognition` treatment.
+
+Research titles and arguments were revised, and a theatre enquiry was added. Comparative references are contemporary editorial readings, not claims that the original projects were designed with, endorsed by, or historically influenced by the named practices. The essays distinguish observations, documented secondary evidence, architectural interpretations and proposed future tests. No new field interviews, simulations or measured results were created.
+
+| Enquiry | Comparative method |
+| --- | --- |
+| Who Keeps the Water Out? | De Urbanisten: follow water through shared space and operating dependencies |
+| The Trail Has to Earn Its Keep | Roberto Dini and the joint Alpine programme: routes, production and inhabitation |
+| A Working Mountain | Xu Tiantian / DnA: an existing productive relationship as an architectural brief |
+| Planting Factories, Moving Villages | AMO: examine systems concealed by territorial categories |
+| When the River Occupies the Street | Kéré and Kashef Chowdhury / URBANA: capacity, economy, maintenance and collective provision |
+| Before the Curtain Rises | OMA: interrogate programme, circulation and institutional access |
+| After the Battery | Carlo Scarpa: the relationship between inherited fabric, intervention and visitor sequence |
+| The Right to Remain Unbuilt | Peter Zumthor: approach, enclosure and material presence, with explicit limits to religious comparison |
+| Whose Waterfront? | Zhang Ke / ZAO–standardarchitecture: occupied courtyard and incremental shared use |
+| The Public Floor | Herman Hertzberger: thresholds, differentiated places and shared circulation |
+| Culture After the Ribbon-Cutting | Atelier Bow-Wow: recurring situations and everyday urban relationships |
+
+Primary institutional and practice references are linked in each essay. Project pages now draw their expanded design descriptions from `project-narratives.json`, while research remains in `research-studies.json`. The design catalogue explains spatial arrangements, circulation, materials, assembly and documented scope. Existing image provenance is unchanged.
