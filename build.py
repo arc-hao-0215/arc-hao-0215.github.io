@@ -34,8 +34,8 @@ def img(name,alt,cls='',small=False):
   src=asset['thumbnail'] if small else asset['default']
   srcset=', '.join(f'{v["path"]} {v["width"]}w' for v in variants)
   sizes='(max-width:640px) calc((100vw - 60px) / 2), (max-width:1000px) calc((100vw - 100px) / 2), 24vw' if small else '(max-width:640px) calc(100vw - 44px), 92vw'
-  width,height=asset['layout']
-  style=f' style="aspect-ratio:{width}/{height};object-fit:contain"' if name=='shichahai-section' and not small else ''
+  width,height=variants[-1]['width'],variants[-1]['height']
+  style=' style="object-fit:contain"' if small else ' style="object-fit:contain;max-height:none"'
   return f'<img class="{cls}" src="{src}" srcset="{srcset}" sizes="{sizes}" width="{width}" height="{height}"{style} alt="{escape(alt)}" loading="lazy" decoding="async">'
  return f'<img class="{cls}" src="assets/{name}{"-small" if small else ""}.webp" alt="{escape(alt)}" loading="lazy" decoding="async">'
 def figure(name,caption,cls=''):

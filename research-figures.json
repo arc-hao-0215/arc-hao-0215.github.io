@@ -206,7 +206,9 @@
       ]
     },
     "width": 820,
-    "height": 973
+    "height": 973,
+    "status": "superseded; historical provenance only",
+    "active_manifest": "image-sources/shichahai-20261005.json"
   },
   {
     "asset": "shichahai-history",
@@ -276,7 +278,9 @@
       ]
     },
     "width": 822,
-    "height": 242
+    "height": 242,
+    "status": "superseded; historical provenance only",
+    "active_manifest": "image-sources/shichahai-20261005.json"
   },
   {
     "asset": "shichahai-before-after",

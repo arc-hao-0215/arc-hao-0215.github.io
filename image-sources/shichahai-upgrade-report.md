@@ -1,6 +1,6 @@
 # Waterfront+ image replacement report
 
-Prepared before committing. KiB = 1024 bytes.
+Updated for the full-composition and obsolete-asset cleanup. KiB = 1024 bytes.
 
 ## Corresponding images
 
@@ -9,7 +9,7 @@ Prepared before committing. KiB = 1024 bytes.
 | shichahai-plan | 820 × 973; lossy WebP; 265,472 bytes | 总平面图.jpg | 1976 × 2356; lossless WebP; 4,259,552 bytes |
 | shichahai-section | 822 × 242; lossy WebP; 10,988 bytes | 图10 南区首层平面图&剖面图.jpg | 3957 × 774; lossless WebP; 433,548 bytes |
 
-The south section corresponds to the same architectural section in the supplied original raster export. Its labels and framing differ from the old board image. The section rectangle (68, 2054)–(4025, 2828) is isolated directly from the original JPEG; no PDF or preview is used. Its inline display box retains the previous aspect ratio, using contain without stretching.
+The south section corresponds to the same architectural section in the supplied original raster export. Its labels and framing differ from the old board image. The section rectangle (68, 2054)–(4025, 2828) is isolated directly from the original JPEG; no PDF or preview is used. The inline image now uses its native aspect ratio, with contain and no height cap; no stretching or artificial blank padding is applied.
 
 ## Responsive derivatives
 
@@ -66,10 +66,26 @@ The originally supplied archive remains unchanged and retains all 16 masters. Th
 
 ## Validation
 
-- No prose, captions, navigation, CSS or JavaScript changed.
-- Existing image slots and lightbox interaction retained.
+- No prose, captions, navigation, metadata, page structure, global CSS or JavaScript changed. Only scoped image presentation attributes were adjusted.
+- Existing image slots and lightbox interaction retained. The site plan is now shown in full rather than cropped to an 820 px hero height. Shared plan thumbnails use contain within their existing card boxes.
 - Shared site-plan thumbnails also update on the homepage, its 404 copy and the preceding project’s Next project link.
 - Research page remains byte-for-byte unchanged.
 - Full-resolution WebP pixels verified against decoded original or original crop.
 - All 16 master hashes verified.
 - Updated HTML text, element order and image references checked.
+
+
+## Final asset mapping and cleanup
+
+| Supplied original | Obsolete website asset | Active replacement | Page / slot |
+|---|---|---|---|
+| 总平面图.jpg | assets/shichahai-plan.webp | assets/shichahai-plan-original-960.webp + 480/1440/1976 responsive variants; 1976 for lightbox | Waterfront+ opening plan |
+| 总平面图.jpg | assets/shichahai-plan-small.webp | assets/shichahai-plan-original-480.webp + responsive variants | Homepage/404 card and index preview; Their Story next-project thumbnail |
+| 图10 南区首层平面图&剖面图.jpg | assets/shichahai-section.webp | assets/shichahai-section-original-1600.webp + 800/2400/3957 responsive variants; 3957 for lightbox | Waterfront+ chapter 02, south section |
+| Same south-section original | assets/shichahai-section-small.webp | No active thumbnail slot; remove obsolete file | No remaining consumer |
+
+The four obsolete files above are removed after searching every repository text file and validating all generated image references. Historical provenance records retain logical asset names and are explicitly marked superseded; they are not browser references. Responsive sizes are purposeful alternatives for different display densities, not duplicate active figures.
+
+Research — Shichahai: zero image substitutions. Its historical timeline, six-panel analysis and four-panel courtyard strategy strip remain active because the supplied originals do not reproduce those compositions. The before/after montage and two-panel seam diagram on Waterfront+ are also intentionally retained. Their low resolution remains a limitation pending matching originals.
+
+The other 14 originals in the master inventory are not used as substitutes: the research framework, eight-panel analysis, micro-issue sheet, regeneration-guideline sheet, north plan/section, large axonometric, landscape-analysis sheet, concept-analysis sheet, and six rendered perspectives. They are additional or different content. No photographs or renders were recompressed in this update. If later approved for use, photographs/renders can use high-quality WebP or JPEG; drawings continue to use lossless WebP, with no raster-to-SVG wrapping or upscaling.
