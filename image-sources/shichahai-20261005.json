@@ -1,0 +1,253 @@
+{
+  "archive": "1003LINK.zip",
+  "archive_sha256": "5f3d77407932ff7b9946247866f7cf3383cd3e91efd6f670d4b505f24f1d3307",
+  "master_policy": "Original archive retained byte-for-byte. Masters are never recompressed or overwritten. Only derivatives belong in website assets.",
+  "originals": [
+    {
+      "file": "p2-1 研究框架.jpg",
+      "width": 8328,
+      "height": 5041,
+      "format": "JPEG",
+      "bytes": 2988462,
+      "sha256": "fe93a94596dcf0743030afe56dc3eee77d8f1836c1964d6dbbcfc8ff40602b11"
+    },
+    {
+      "file": "分析圖.jpg",
+      "width": 3508,
+      "height": 2230,
+      "format": "JPEG",
+      "bytes": 1898819,
+      "sha256": "fa338d33c353c4e94e93b1cc1430f1306163c2095a62a38652b5f35eba098d99"
+    },
+    {
+      "file": "商业-地百.jpg",
+      "width": 5760,
+      "height": 3654,
+      "format": "JPEG",
+      "bytes": 18713681,
+      "sha256": "86d2be5621555603d5e47e8bb090ac4cf0a683ea8a9fe6b443697838a5e1282f"
+    },
+    {
+      "file": "图10 南区首层平面图&剖面图.jpg",
+      "width": 4093,
+      "height": 2894,
+      "format": "JPEG",
+      "bytes": 6682660,
+      "sha256": "2a2b67ced1acdb239d6b7842baea827262f81535688f014688bb35de8ef0c385"
+    },
+    {
+      "file": "图4场地微观议题分析.jpg",
+      "width": 4093,
+      "height": 2119,
+      "format": "JPEG",
+      "bytes": 1087352,
+      "sha256": "70f485a290a8838fe75a1b3e69f98400f643025301ba1e2af56437489e2f4e8d"
+    },
+    {
+      "file": "图8 微观空间再生设计导则.jpg",
+      "width": 2514,
+      "height": 2894,
+      "format": "JPEG",
+      "bytes": 1081408,
+      "sha256": "093661bd9ec6f1239fb1340e3560e2db06e9b445d46ef1406548717fb505eda7"
+    },
+    {
+      "file": "图9 北区首层平面图&剖面图.jpg",
+      "width": 4093,
+      "height": 2894,
+      "format": "JPEG",
+      "bytes": 6764369,
+      "sha256": "5b15c5c67ea0d52ecc09d8883b4137dd342e48869a17de3720e1e61c3a4115b2"
+    },
+    {
+      "file": "大轴测.jpg",
+      "width": 14998,
+      "height": 8284,
+      "format": "JPEG",
+      "bytes": 55919658,
+      "sha256": "5dc4ee7955b7645cd22c88b5768a60e25f4471f6e54f91d65b6b5d74c729f846"
+    },
+    {
+      "file": "总平面图.jpg",
+      "width": 1976,
+      "height": 2356,
+      "format": "JPEG",
+      "bytes": 1563973,
+      "sha256": "7786c82a42538968cc93ac56d60d5d1682c275353673f9da01289e1a9007bb80"
+    },
+    {
+      "file": "文化-浅水池.jpg",
+      "width": 5760,
+      "height": 3654,
+      "format": "JPEG",
+      "bytes": 16035768,
+      "sha256": "5de615fed56a91285fabdf99156abe8773a190dde74931aa1bd971cc073877e6"
+    },
+    {
+      "file": "文化-火神庙.jpg",
+      "width": 5760,
+      "height": 3654,
+      "format": "JPEG",
+      "bytes": 21824042,
+      "sha256": "02e729095042d519204de90289eae91a06eb18b39df078b6291d5487d6f5f702"
+    },
+    {
+      "file": "景观分析-01.jpg",
+      "width": 3508,
+      "height": 2480,
+      "format": "JPEG",
+      "bytes": 54519633,
+      "sha256": "f51a60435cd1f872f92cca8b496025445922fd5df0c0f3501de22d35da1bf499"
+    },
+    {
+      "file": "概念分析-01.jpg",
+      "width": 14125,
+      "height": 4283,
+      "format": "JPEG",
+      "bytes": 35818821,
+      "sha256": "dd60683ee804adec216a9dd03a1ce4e4b8d36545e03dd209a43be58053a66dc8"
+    },
+    {
+      "file": "社区-书局.jpg",
+      "width": 5760,
+      "height": 3654,
+      "format": "JPEG",
+      "bytes": 21058566,
+      "sha256": "950843c67074a25e7bb7179f1bb807c287f16ad43395c1aa9020a8708e7a38ff"
+    },
+    {
+      "file": "社区-书局室外.jpg",
+      "width": 5760,
+      "height": 3654,
+      "format": "JPEG",
+      "bytes": 20766485,
+      "sha256": "31561f436b7fd1d3d1b306588996f03e000750e393e8c6db34d8b068cfcb99b1"
+    },
+    {
+      "file": "社区-滨水.jpg",
+      "width": 5760,
+      "height": 3654,
+      "format": "JPEG",
+      "bytes": 15344556,
+      "sha256": "562b03005a4c6ff077b0ac7d00c3839cfe02e3b75a4d8637bde7ea7711519496"
+    }
+  ],
+  "assets": {
+    "shichahai-plan": {
+      "source": "总平面图.jpg",
+      "crop": null,
+      "widths": [
+        480,
+        960,
+        1440,
+        1976
+      ],
+      "layout": [
+        820,
+        973
+      ],
+      "match": "Overall site plan: same proposal and extent.",
+      "variants": [
+        {
+          "path": "assets/shichahai-plan-original-480.webp",
+          "width": 480,
+          "height": 572,
+          "format": "lossless WebP",
+          "bytes": 342816,
+          "sha256": "6c84213a8620a94586781003af9dc0a486d32eccb55440ae2bbc4fa71aca2fa9"
+        },
+        {
+          "path": "assets/shichahai-plan-original-960.webp",
+          "width": 960,
+          "height": 1145,
+          "format": "lossless WebP",
+          "bytes": 1244010,
+          "sha256": "d2bc7a5122ac647254af9623ca799b4e60a4ccac9436d3516dad2af988b5fcd8"
+        },
+        {
+          "path": "assets/shichahai-plan-original-1440.webp",
+          "width": 1440,
+          "height": 1717,
+          "format": "lossless WebP",
+          "bytes": 2567128,
+          "sha256": "5a3cb14fa1478fce114a56b678776b3140935904b06f694c50f4edce3b641570"
+        },
+        {
+          "path": "assets/shichahai-plan-original-1976.webp",
+          "width": 1976,
+          "height": 2356,
+          "format": "lossless WebP",
+          "bytes": 4259552,
+          "sha256": "546cfb353e6b460ef0fa887b57936f5352e4cad7c7241308fef677324df6c1ef"
+        }
+      ],
+      "zoom": "assets/shichahai-plan-original-1976.webp",
+      "default": "assets/shichahai-plan-original-960.webp",
+      "thumbnail": "assets/shichahai-plan-original-480.webp"
+    },
+    "shichahai-section": {
+      "source": "图10 南区首层平面图&剖面图.jpg",
+      "crop": [
+        68,
+        2054,
+        4025,
+        2828
+      ],
+      "widths": [
+        800,
+        1600,
+        2400,
+        3957
+      ],
+      "layout": [
+        822,
+        242
+      ],
+      "match": "Corresponding south section; isolate the complete section from the original raster export. Export labels/framing differ from the board version.",
+      "variants": [
+        {
+          "path": "assets/shichahai-section-original-800.webp",
+          "width": 800,
+          "height": 156,
+          "format": "lossless WebP",
+          "bytes": 30366,
+          "sha256": "9cd506e061ddc0e9b393c9e6600c7ad8127e9ea652ad9069f9dd4a9b80ad0948"
+        },
+        {
+          "path": "assets/shichahai-section-original-1600.webp",
+          "width": 1600,
+          "height": 313,
+          "format": "lossless WebP",
+          "bytes": 89422,
+          "sha256": "6fb98ee42a3f641614a430cd4b6d36bc8c34c8ef904086318dc65971de154486"
+        },
+        {
+          "path": "assets/shichahai-section-original-2400.webp",
+          "width": 2400,
+          "height": 469,
+          "format": "lossless WebP",
+          "bytes": 188604,
+          "sha256": "81469708c88ea422702a2aa3f49c59a1a439587158990323e2aaf332df990dd2"
+        },
+        {
+          "path": "assets/shichahai-section-original-3957.webp",
+          "width": 3957,
+          "height": 774,
+          "format": "lossless WebP",
+          "bytes": 433548,
+          "sha256": "bd05fc14d723294d43955725e95e6ba3e25536fdcd86cbb2d3563d7b11bbd7e3"
+        }
+      ],
+      "zoom": "assets/shichahai-section-original-3957.webp",
+      "default": "assets/shichahai-section-original-1600.webp",
+      "thumbnail": "assets/shichahai-section-original-800.webp"
+    }
+  },
+  "unmatched_existing": {
+    "shichahai-history": "Historical timeline not supplied.",
+    "shichahai-analysis": "Existing six-panel analysis differs from the supplied eight-panel annotated analysis.",
+    "shichahai-before-after": "Existing ten-view before/after montage not supplied.",
+    "shichahai-seam": "Existing two-panel diagram differs from the supplied landscape analysis.",
+    "shichahai-courtyard": "Existing four-panel courtyard strategy strip not supplied; the landscape sheet is a different diagram."
+  }
+}

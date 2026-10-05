@@ -21,10 +21,25 @@ narratives=json.loads((D/'project-narratives.json').read_text())
 for p in projects:
  if p['slug'] in narratives:p['desc']=narratives[p['slug']]['intro']
 
+image_manifest=D/'image-sources'/'shichahai-20261005.json'
+responsive_images=json.loads(image_manifest.read_text())['assets'] if image_manifest.exists() else {}
+def zoom_source(name):
+ return responsive_images[name]['zoom'] if name in responsive_images else f'assets/{name}.webp'
+def preview_source(name):
+ return responsive_images[name]['thumbnail'] if name in responsive_images else f'assets/{name}-small.webp'
 def img(name,alt,cls='',small=False):
+ if name in responsive_images:
+  asset=responsive_images[name]
+  variants=asset['variants']
+  src=asset['thumbnail'] if small else asset['default']
+  srcset=', '.join(f'{v["path"]} {v["width"]}w' for v in variants)
+  sizes='(max-width:640px) calc((100vw - 60px) / 2), (max-width:1000px) calc((100vw - 100px) / 2), 24vw' if small else '(max-width:640px) calc(100vw - 44px), 92vw'
+  width,height=asset['layout']
+  style=f' style="aspect-ratio:{width}/{height};object-fit:contain"' if name=='shichahai-section' and not small else ''
+  return f'<img class="{cls}" src="{src}" srcset="{srcset}" sizes="{sizes}" width="{width}" height="{height}"{style} alt="{escape(alt)}" loading="lazy" decoding="async">'
  return f'<img class="{cls}" src="assets/{name}{"-small" if small else ""}.webp" alt="{escape(alt)}" loading="lazy" decoding="async">'
 def figure(name,caption,cls=''):
- return f'<figure class="{cls}"><button class="zoom" data-zoom="assets/{name}.webp" aria-label="Enlarge {escape(caption)}">{img(name,caption)}</button><figcaption>{caption}<span>View drawing / image</span></figcaption></figure>'
+ return f'<figure class="{cls}"><button class="zoom" data-zoom="{zoom_source(name)}" aria-label="Enlarge {escape(caption)}">{img(name,caption)}</button><figcaption>{caption}<span>View drawing / image</span></figcaption></figure>'
 def heading(n,t,body=''):
  paragraphs=narratives.get(p['slug'],{}).get('chapters',{}).get(n,[body] if body else [])
  return f'<div class="chapter-heading"><span class="eyebrow">{n}</span><h2>{t}</h2><div class="chapter-prose">'+''.join(f'<p>{text}</p>' for text in paragraphs)+'</div></div>'
@@ -36,7 +51,7 @@ def page(name,title,content,active='projects',description='Architecture across c
 cards=''
 for p in projects:
  cards+=f'<article class="project-card card-{p["id"]}"><a href="{p["slug"]}.html" class="project-image">{img(p["image"],p["name"]+" — "+p["place"],small=True)}</a><div class="card-caption"><span class="eyebrow">{p["id"]}</span><div><h2><a href="{p["slug"]}.html">{p["name"]}</a></h2><p>{p["place"]} <span> / </span> {p["field"]}</p>{"<p class=recognition>Commissioned project</p>" if p["type"]=="Commissioned project" else ""}{"<p class=recognition>"+p["award"]+"</p>" if p["award"] else ""}</div><span class="year">{p["year"]}</span></div></article>'
-rows=''.join(f'<a class="index-row" href="{p["slug"]}.html" data-preview="assets/{p["image"]}-small.webp"><span>{p["id"]}</span><h2>{p["name"]}{"<small class=recognition>Commissioned project</small>" if p["type"]=="Commissioned project" else ""}{"<small class=recognition>"+p["award"]+"</small>" if p["award"] else ""}</h2><span>{p["place"]}</span><span>{p["field"]}</span><span>{p["year"]}</span></a>' for p in projects)
+rows=''.join(f'<a class="index-row" href="{p["slug"]}.html" data-preview="{preview_source(p["image"])}"><span>{p["id"]}</span><h2>{p["name"]}{"<small class=recognition>Commissioned project</small>" if p["type"]=="Commissioned project" else ""}{"<small class=recognition>"+p["award"]+"</small>" if p["award"] else ""}</h2><span>{p["place"]}</span><span>{p["field"]}</span><span>{p["year"]}</span></a>' for p in projects)
 hero_projects=[next(p for p in projects if p['slug']==slug) for slug in ['ancient-trails','theater-design','rising-tides','erdai']]
 hero_projects.sort(key=lambda p:p['id'])
 slides=''.join(f'<div class="hero-slide {"is-active" if i==0 else ""}" data-title="{escape(p["name"])}" data-place="{escape(p["place"])}" data-href="{p["slug"]}.html" aria-hidden="true"><img src="assets/{p["image"]}.webp" alt="" {"fetchpriority=high" if i==0 else "loading=lazy"} decoding="async"></div>' for i,p in enumerate(hero_projects))
