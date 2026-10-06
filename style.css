@@ -49,3 +49,16 @@
 @media(max-width:640px){.design-detail,.design-scope{display:block}.design-detail h2{font-size:26px;margin-bottom:20px}.design-scope p{margin-top:14px}.card-caption .recognition{font-size:10px}.chapter-prose p{font-size:16px;line-height:1.8}.essay-subtitle{font-size:19px}.index-row h2 .recognition{font-size:10px}}
 @media(max-width:1000px){.chapter-heading .chapter-prose{grid-column:2}}
 @media(max-width:640px){.chapter-heading .chapter-prose{grid-column:1/-1}}
+
+/* Temporary image-free presentation. */
+.hero-text{display:block;padding:0;margin-bottom:45px}
+.hero-text .hero-copy{padding:65px 0 45px;height:auto;color:var(--ink)}
+.hero-text .hero-copy h1{text-shadow:none}
+.hero-text .hero-copy h1 span{color:var(--grey)}
+.hero-text .intro-aside{color:var(--grey)}
+.image-free .next-project{padding-right:0;min-height:0}
+.image-free .journey,.image-free .map-interventions{display:block}
+.image-free .journey-label{position:static}
+.image-free .study-text{border-top:1px solid var(--line);padding:18px 0}
+.image-free .study-text figcaption{display:block}
+@media(max-width:640px){.hero-text .hero-copy{padding:35px 0}.hero-text{margin-bottom:25px}}
