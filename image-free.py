@@ -5,6 +5,7 @@ Uses only the Python standard library so normal builds remain reproducible.
 """
 from html.parser import HTMLParser
 from html import escape
+import re
 
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
@@ -33,6 +34,9 @@ class Document(HTMLParser):
     def handle_comment(self, data): self.handle_data('<!--'+data+'-->')
 
 def image_free(source):
+    # Preserve the original vector atlas exactly, including SVG attribute case.
+    atlas = re.search(r'<svg id="world-map".*?</svg>', source, re.S)
+    if atlas: source = source[:atlas.start()] + "__WORLD_ATLAS__" + source[atlas.end():]
     def render(n, studies=False):
         if isinstance(n,str): return n
         a=n.attrs.copy(); classes=set((a.get('class') or '').split())
@@ -41,20 +45,19 @@ def image_free(source):
         if n.tag=='span' and n.children==['View drawing / image']: return ''
         if n.tag=='link' and a.get('rel')=='icon': return ''
         if n.tag=='meta' and 'image' in (a.get('property','') or a.get('name','')): return ''
-        if a.get('id') in {'lightbox','research-map','section-overlay','journey-current'}: return ''
+        if a.get('id') in {'lightbox','section-overlay','journey-current'}: return ''
         if classes & {'hero-slide','hero-scrim','hero-bottom','project-image','research-card-image','annotated-map','section-explorer'}: return ''
         if n.tag=='figure':
             if studies:
                 captions=[c for c in n.children if isinstance(c,Node) and c.tag=='figcaption']
                 return '<div class="study-text">'+''.join(render(c) for c in captions)+'</div>'
             return ''
-        if classes & {'text-switch'} and any(isinstance(c,Node) and any(k in c.attrs for k in ['data-season','data-layer','data-research']) for c in n.children): return ''
+        if classes & {'text-switch'} and any(isinstance(c,Node) and any(k in c.attrs for k in ['data-season','data-layer']) for c in n.children): return ''
         if n.tag=='a' and (a.get('href') or '').lower().split('?')[0].endswith(('.webp','.jpg','.jpeg','.png','.svg','.gif','.avif')): return ''
         for key in ['data-preview','data-zoom','srcset','poster']: a.pop(key,None)
         if 'hero-carousel' in classes:
             a['class']=a['class'].replace('hero-carousel','hero-text')
             a.pop('aria-roledescription',None);a['aria-label']='Introduction'
-        if a.get('id')=='research-index': a.pop('hidden',None)
         if n.tag=='body': a['class']=((a.get('class') or '')+' image-free').strip()
         if a.get('data-mode')=='visual': n.children=['Grid']
         inner=''.join(render(c,studies) for c in n.children)
@@ -62,4 +65,5 @@ def image_free(source):
         if not inner.strip() and classes & {'two-images','narrow-drawing','journey-scenes'}: return ''
         start='<'+n.tag+''.join(' '+k if v is None else ' '+k+'="'+escape(v,quote=True)+'"' for k,v in a.items())+'>'
         return start if n.tag in VOID else start+inner+'</'+n.tag+'>'
-    return render(Document(source).root)
+    result = render(Document(source).root)
+    return result.replace("__WORLD_ATLAS__", atlas.group(0)) if atlas else result
