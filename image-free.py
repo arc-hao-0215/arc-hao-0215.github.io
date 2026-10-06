@@ -38,6 +38,7 @@ def image_free(source):
         a=n.attrs.copy(); classes=set((a.get('class') or '').split())
         studies = studies or 'studies-grid' in classes
         if n.tag in {'img','picture','svg','image'}: return ''
+        if n.tag=='span' and n.children==['View drawing / image']: return ''
         if n.tag=='link' and a.get('rel')=='icon': return ''
         if n.tag=='meta' and 'image' in (a.get('property','') or a.get('name','')): return ''
         if a.get('id') in {'lightbox','research-map','section-overlay','journey-current'}: return ''
