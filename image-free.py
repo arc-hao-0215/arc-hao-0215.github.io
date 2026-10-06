@@ -66,4 +66,5 @@ def image_free(source):
         start='<'+n.tag+''.join(' '+k if v is None else ' '+k+'="'+escape(v,quote=True)+'"' for k,v in a.items())+'>'
         return start if n.tag in VOID else start+inner+'</'+n.tag+'>'
     result = render(Document(source).root)
+    if atlas: result = result.replace("app.js?v=20261006-image-free", "app.js?v=20261006-atlas-restored")
     return result.replace("__WORLD_ATLAS__", atlas.group(0)) if atlas else result
