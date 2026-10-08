@@ -1018,8 +1018,9 @@ dialog p { margin-top: 15px; font-size: 12px; }
 
 
 /* ==========================================================================
-   CUSTOM CURSOR — minimal dot + following ring / image VIEW state
-   Visual-only enhancement. No layout or existing gallery rules are changed.
+   CUSTOM CURSOR — strict binary black/white, never gray.
+   JavaScript chooses the color from the underlying surface's luminance;
+   CSS does not blend or interpolate cursor colors.
    ========================================================================== */
 @media (hover: hover) and (pointer: fine) {
   html.hc-cursor-enabled:not(.hc-cursor-native):not(.hc-cursor-modal)
@@ -1027,6 +1028,7 @@ dialog p { margin-top: 15px; font-size: 12px; }
     cursor: none !important;
   }
   .hc-cursor {
+    --hc-cursor-color: #ffffff;
     position: fixed;
     top: 0;
     left: 0;
@@ -1034,12 +1036,14 @@ dialog p { margin-top: 15px; font-size: 12px; }
     height: 0;
     z-index: 2147483000;
     pointer-events: none;
-    /* White geometry is inverted against the actual pixel beneath it:
-       white on dark media; near-black on light backgrounds. */
-    mix-blend-mode: difference;
+    isolation: isolate;
+    mix-blend-mode: normal;
+    color: var(--hc-cursor-color);
     opacity: 0;
     visibility: hidden;
-    transition: opacity .16s ease, visibility .16s ease;
+  }
+  .hc-cursor.is-on-light {
+    --hc-cursor-color: #000000;
   }
   html.hc-cursor-active:not(.hc-cursor-native):not(.hc-cursor-modal) .hc-cursor {
     opacity: 1;
@@ -1058,11 +1062,9 @@ dialog p { margin-top: 15px; font-size: 12px; }
   .hc-cursor-dot {
     width: 7px;
     height: 7px;
-    background: #fff;
+    background: currentColor;
     border: 0;
     box-shadow: none;
-    mix-blend-mode: normal;
-    transition: opacity .18s ease;
   }
   .hc-cursor-ring {
     display: flex;
@@ -1070,12 +1072,10 @@ dialog p { margin-top: 15px; font-size: 12px; }
     justify-content: center;
     width: 32px;
     height: 32px;
-    border: 1px solid #fff;
+    border: 1px solid currentColor;
     background: transparent;
     box-shadow: none;
-    mix-blend-mode: normal;
-    transition: width .22s ease, height .22s ease, background .22s ease,
-      border-color .22s ease, box-shadow .22s ease;
+    transition: width .22s ease, height .22s ease;
   }
   .hc-cursor.is-link .hc-cursor-ring {
     width: 43px;
@@ -1087,22 +1087,19 @@ dialog p { margin-top: 15px; font-size: 12px; }
   .hc-cursor.is-view .hc-cursor-ring {
     width: 70px;
     height: 70px;
-    border-color: #fff;
+    border-color: currentColor;
     background: transparent;
-    color: #fff;
-    mix-blend-mode: normal;
-    /* Transparent white circle; shared blend mode supplies contrast. */
     box-shadow: none;
   }
-   .hc-cursor-label {
+  .hc-cursor-label {
     opacity: 0;
-    color: #fff;
+    color: inherit;
     text-shadow: none;
     font: 600 10px/1 Arial, Helvetica, sans-serif;
     letter-spacing: .13em;
     padding-left: .13em;
     transform: scale(.85);
-    transition: opacity .16s ease, transform .22s ease;
+    transition: transform .22s ease;
   }
   .hc-cursor.is-view .hc-cursor-label {
     opacity: 1;
@@ -1118,7 +1115,5 @@ dialog p { margin-top: 15px; font-size: 12px; }
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hc-cursor, .hc-cursor-dot, .hc-cursor-ring, .hc-cursor-label {
-    transition: none !important;
-  }
+  .hc-cursor-ring, .hc-cursor-label { transition: none !important; }
 }

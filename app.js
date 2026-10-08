@@ -96,8 +96,9 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
 
 
 
-/* Site-wide progressive enhancement: pointer-following dot + ring, and VIEW
-   only on genuinely clickable photographs/drawings. No changes to page layout. */
+/* Site-wide cursor: pure #000000 or #ffffff, chosen from surface brightness.
+   Never use difference-blend: it produces intermediate gray on color/gray imagery.
+   Existing images and gallery behaviours are otherwise untouched. */
 (() => {
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   if (!finePointer.matches || !document.body) return;
@@ -109,41 +110,137 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
   cursor.setAttribute('aria-hidden', 'true');
   cursor.innerHTML = '<span class="hc-cursor-dot"></span><span class="hc-cursor-ring"><span class="hc-cursor-label">VIEW</span></span>';
   document.body.appendChild(cursor);
-
   const dot = cursor.querySelector('.hc-cursor-dot');
   const ring = cursor.querySelector('.hc-cursor-ring');
-  let targetX = 0;
-  let targetY = 0;
-  let ringX = 0;
-  let ringY = 0;
-  let started = false;
-  let frame = 0;
+
+  let targetX = 0, targetY = 0, ringX = 0, ringY = 0;
+  let started = false, frame = 0;
+  let pointerElement = null;
+  let previousImage = null;
+  let imageUnreadable = new WeakSet();
+
+  // Sample a few pixels from same-origin images without downloading or
+  // inspecting anything off-site. Cross-origin imagery uses the page fallback.
+  const sampler = document.createElement('canvas');
+  sampler.width = 4;
+  sampler.height = 4;
+  const ctx = sampler.getContext('2d', { willReadFrequently: true });
+
+  function brightness(r, g, b) {
+    return .2126 * r + .7152 * g + .0722 * b;
+  }
+
+  function imageAtPointer(element, x, y) {
+    const valid = img => {
+      if (!img || !img.complete || !img.naturalWidth || !img.naturalHeight) return false;
+      const r = img.getBoundingClientRect();
+      return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    };
+    if (element && element.tagName === 'IMG' && valid(element)) return element;
+    const container = element?.closest('a, button, figure, .project-image, .project-card, .research-card');
+    const candidate = container?.querySelector('img');
+    if (valid(candidate)) return candidate;
+    if (element?.closest('.hero-carousel')) {
+      const hero = document.querySelector('.hero-carousel .hero-slide.is-active img');
+      if (valid(hero)) return hero;
+    }
+    return null;
+  }
+
+  function sampleImage(image, x, y) {
+    if (!ctx || imageUnreadable.has(image)) return null;
+    const rect = image.getBoundingClientRect();
+    const iw = image.naturalWidth, ih = image.naturalHeight;
+    const style = window.getComputedStyle(image);
+    const fit = style.objectFit;
+    let scaleX = rect.width / iw, scaleY = rect.height / ih;
+    if (fit === 'cover' || fit === 'contain' || fit === 'scale-down') {
+      const scale = fit === 'cover' ? Math.max(scaleX, scaleY) : Math.min(scaleX, scaleY);
+      scaleX = scaleY = scale;
+    }
+    const position = (style.objectPosition || '50% 50%').split(/\s+/);
+    const percent = (value, fallback) => {
+      if (!value) return fallback;
+      if (value === 'left' || value === 'top') return 0;
+      if (value === 'right' || value === 'bottom') return 1;
+      if (value === 'center') return .5;
+      return value.endsWith('%') ? Number.parseFloat(value) / 100 : fallback;
+    };
+    const posX = percent(position[0], .5);
+    const posY = percent(position[1] || '50%', .5);
+    const renderW = iw * scaleX, renderH = ih * scaleY;
+    const left = rect.left + (rect.width - renderW) * posX;
+    const top = rect.top + (rect.height - renderH) * posY;
+    const sx = (x - left) / scaleX;
+    const sy = (y - top) / scaleY;
+    if (sx < 0 || sx >= iw || sy < 0 || sy >= ih) return null;
+    try {
+      // Average a small neighbourhood so text/drawings do not flicker as
+      // the dot moves across fine lines.
+      ctx.clearRect(0, 0, 4, 4);
+      ctx.drawImage(image, Math.max(0, sx - 6), Math.max(0, sy - 6),
+        Math.min(12, iw - Math.max(0, sx - 6)),
+        Math.min(12, ih - Math.max(0, sy - 6)), 0, 0, 4, 4);
+      const pixels = ctx.getImageData(0, 0, 4, 4).data;
+      let sum = 0, weighted = 0;
+      for (let i = 0; i < pixels.length; i += 4) {
+        const alpha = pixels[i + 3] / 255;
+        sum += brightness(pixels[i], pixels[i + 1], pixels[i + 2]) * alpha;
+        weighted += alpha;
+      }
+      return weighted ? sum / weighted : null;
+    } catch (_) {
+      imageUnreadable.add(image);
+      // Reset a tainted canvas; the next same-origin sample can still work.
+      sampler.width = 4;
+      return null;
+    }
+  }
+
+  function surfaceBrightness(element) {
+    let node = element;
+    while (node instanceof Element) {
+      const color = getComputedStyle(node).backgroundColor;
+      const channels = color?.match(/[\d.]+/g);
+      if (channels && channels.length >= 3) {
+        const [r, g, b, a = 1] = channels.map(Number);
+        if (a >= .98) return brightness(r, g, b);
+      }
+      node = node.parentElement;
+    }
+    return 245; // Paper color fallback on otherwise transparent nodes
+  }
+
+  function updateColor() {
+    const img = imageAtPointer(pointerElement, targetX, targetY);
+    if (img !== previousImage) previousImage = img;
+    let value = img ? sampleImage(img, targetX, targetY) : null;
+    if (value === null) value = surfaceBrightness(pointerElement);
+    // The homepage hero has a dark scrim over its photographic slides.
+    if (img && pointerElement?.closest('.hero-carousel')) value *= .72;
+    // One instantaneous decision, never a color transition or blend.
+    cursor.classList.toggle('is-on-light', value >= 145);
+  }
 
   const place = (element, x, y) => {
     element.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) translate(-50%,-50%)';
   };
-
   const follow = () => {
     frame = 0;
     const ease = reducedMotion.matches ? 1 : .19;
     ringX += (targetX - ringX) * ease;
     ringY += (targetY - ringY) * ease;
     place(ring, ringX, ringY);
-    if (Math.abs(targetX - ringX) > .2 || Math.abs(targetY - ringY) > .2) {
+    if (Math.abs(targetX - ringX) > .2 || Math.abs(targetY - ringY) > .2)
       frame = requestAnimationFrame(follow);
-    }
   };
-
   const hide = () => {
     root.classList.remove('hc-cursor-active');
     cursor.classList.remove('is-pressed');
   };
-
   const updateDialogState = () => {
     root.classList.toggle('hc-cursor-modal', !!document.querySelector('dialog[open]'));
   };
-  // A <dialog> is promoted to the browser top layer. Restore its native cursor
-  // while it is open, rather than leaving a custom pointer hidden underneath.
   document.querySelectorAll('dialog').forEach(dialog => {
     new MutationObserver(updateDialogState).observe(dialog, {
       attributes: true, attributeFilter: ['open']
@@ -157,7 +254,6 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
       hide();
       return;
     }
-
     const target = event.target instanceof Element ? event.target : null;
     const nativeSurface = target && target.closest(
       'iframe, object, embed, input, textarea, select, video, canvas, ' +
@@ -168,17 +264,14 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
       hide();
       return;
     }
-
+    pointerElement = target;
     targetX = event.clientX;
     targetY = event.clientY;
     if (!started) {
-      ringX = targetX;
-      ringY = targetY;
-      started = true;
+      ringX = targetX; ringY = targetY; started = true;
       place(ring, ringX, ringY);
     }
     place(dot, targetX, targetY);
-
     const action = target && target.closest('a, button, [role="button"], [role="link"]');
     const image = target && target.closest('img');
     const view = !!action && (
@@ -187,6 +280,7 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
     );
     cursor.classList.toggle('is-view', view);
     cursor.classList.toggle('is-link', !!action && !view);
+    updateColor();
     root.classList.add('hc-cursor-active');
     if (!frame) frame = requestAnimationFrame(follow);
   }, { passive: true });
@@ -199,6 +293,12 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
   document.addEventListener('pointerout', event => {
     if (!event.relatedTarget) hide();
   });
+  document.addEventListener('scroll', () => {
+    if (root.classList.contains('hc-cursor-active') && pointerElement) {
+      pointerElement = document.elementFromPoint(targetX, targetY);
+      updateColor();
+    }
+  }, { passive: true, capture: true });
   window.addEventListener('blur', hide);
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) hide();
