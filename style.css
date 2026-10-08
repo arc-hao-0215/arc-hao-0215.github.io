@@ -1034,6 +1034,9 @@ dialog p { margin-top: 15px; font-size: 12px; }
     height: 0;
     z-index: 2147483000;
     pointer-events: none;
+    /* White geometry is inverted against the actual pixel beneath it:
+       white on dark media; near-black on light backgrounds. */
+    mix-blend-mode: difference;
     opacity: 0;
     visibility: hidden;
     transition: opacity .16s ease, visibility .16s ease;
@@ -1056,8 +1059,7 @@ dialog p { margin-top: 15px; font-size: 12px; }
     width: 7px;
     height: 7px;
     background: #fff;
-    /* White centre with a restrained dark hairline, legible on pale and dark surfaces. */
-    border: 1px solid #151515;
+    border: 0;
     box-shadow: none;
     mix-blend-mode: normal;
     transition: opacity .18s ease;
@@ -1068,10 +1070,9 @@ dialog p { margin-top: 15px; font-size: 12px; }
     justify-content: center;
     width: 32px;
     height: 32px;
-    border: 1px solid rgba(20, 20, 20, .94);
+    border: 1px solid #fff;
     background: transparent;
-    /* Opposing strokes keep the fine ring legible on light and dark pages. */
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, .96);
+    box-shadow: none;
     mix-blend-mode: normal;
     transition: width .22s ease, height .22s ease, background .22s ease,
       border-color .22s ease, box-shadow .22s ease;
@@ -1090,13 +1091,13 @@ dialog p { margin-top: 15px; font-size: 12px; }
     background: transparent;
     color: #fff;
     mix-blend-mode: normal;
-    /* White hollow ring, with a discreet dark keyline for pale images. */
-    box-shadow: 0 0 0 1px rgba(12, 12, 12, .65), 0 1px 9px rgba(0, 0, 0, .18);
+    /* Transparent white circle; shared blend mode supplies contrast. */
+    box-shadow: none;
   }
    .hc-cursor-label {
     opacity: 0;
     color: #fff;
-    text-shadow: 0 0 2px rgba(0, 0, 0, .94), 0 1px 5px rgba(0, 0, 0, .78);
+    text-shadow: none;
     font: 600 10px/1 Arial, Helvetica, sans-serif;
     letter-spacing: .13em;
     padding-left: .13em;
