@@ -1,116 +1,406 @@
-from pathlib import Path
+#!/usr/bin/env python3
+"""Safely synchronize Hao Chang's GitHub Pages portfolio.
+
+COMPATIBLE WITH: project-updates.py (October 2026 naming catalogue),
+                 index.html, style.css, app.js and existing project pages.
+
+The former build.py regenerated every HTML page from templates. That could
+silently DELETE later manual edits (especially video embeds and narrative
+revisions). This edition deliberately uses the existing HTML pages as the
+source of truth for editorial content, and updates only:
+
+* The eleven Grid and Index entries on the homepage, from project-updates.py.
+* Each project's document <title> and first <h1>.
+* The heading of the Next Project link, where present.
+* 404.html, only if it was an exact mirror of index.html before the update.
+
+Research pages, Info, images, videos, descriptions, figures, credits, custom
+sections, CSS and JavaScript are untouched. It is an INCREMENTAL site builder,
+not a destructive from-scratch recreation of the entire website.
+
+Usage:
+    python build.py                 # Update local HTML files
+    python build.py --dry-run       # Preview affected file names
+    python build.py --check         # CI verification; nonzero if stale
+    python build.py --root ./site   # Build in another copy of the repo
+
+The script uses only the Python standard library.
+"""
+
+from __future__ import annotations
+
+import argparse
 from html import escape
-import json
-D=Path(__file__).parent
-# Temporarily publish without images until new masters are supplied.
-exec((D/'image-free.py').read_text())
-projects=[
- dict(id='001',slug='rising-tides',title='Rising Tides,<br>Resilient Lives',name='Rising Tides, Resilient Lives',place='Jakarta, Indonesia',year='2025',field='Water / Collective life',type='Architecture & research',image='jakarta-hero',award='SOM China Fellowship — Winner',question='How can flood-prone infrastructure become a civic sanctuary?',desc='Beneath the Ciliwung River viaduct, a public spine brings wetlands, modular shelters, markets, and elevated walkways into one adaptive system. Architecture supports everyday life while making room for the river to rise.',credit='Individual project · Hao Chang<br>Instructor: Martijn de Geus<br>Kampung Melayu, Jakarta · February–March 2025'),
- dict(id='002',slug='erdai',title='Erdai Art Museum',name='Erdai Art Museum',place='Penghu, Taiwan',year='2024',field='Memory / Landscape',type='Architecture & adaptive reuse',image='erdai-hero',award='',question='How can a landscape of defence become a place of reflection?',desc='A former coastal battery becomes a route through art, ruin, and sea. The museum follows the cliff’s contours and slips beneath the ground, allowing inherited military structures and new cultural spaces to share the same landscape.',credit='Individual studio project · Hao Chang<br>Instructor: Li Xiaodong<br>Penghu, Taiwan · September–October 2024'),
- dict(id='003',slug='spirited-a-way',title='Spirited A Way',name='Spirited A Way',place='Ngari, Tibet',year='2024',field='Ritual / Ecology',type='Architecture & landscape',image='kailash-hero',award='',question='How much architecture does a sacred landscape need?',desc='Along the Mount Kailash pilgrimage route, a courtyard lodge, compact supply stations, and an exhibition hall provide care and orientation. Territorial research guides small interventions that respect both ecological vulnerability and the sequence of ritual.',credit='Collaborative studio · Hao Chang & Mengzhe Lee<br>Hao’s role: research, modeling, renderings, and diagrams<br>Instructor: Yue Cao · November–December 2024'),
- dict(id='004',slug='books-above-bustles',title='Books Above<br>Bustles',name='Books Above Bustles',place='Beijing, China',year='2024',field='Knowledge / Infrastructure',type='Civic architecture',image='books-section',award='',question='Can a library reconnect a city?',desc='Between Chang’an Avenue and the hutongs, a suspended civic building brings reading, learning, and work together above a permeable public ground. A network of gardens, bridges, and shared spaces connects the building’s environmental systems to its social life.',credit='Collaborative studio · Hao Chang & Mengzhe Lee<br>Hao’s role: lead concept, diagrams, modeling, and sections<br>Instructor: Martijn de Geus · April–June 2024'),
- dict(id='005',slug='teaching-building',title='Learning Beyond<br>the Classroom',name='Learning Beyond the Classroom',place='Beijing, China',year='2024–',field='Learning / Adaptive reuse',type='Competition & commission',image='teaching',award='Teaching Building Public Space Competition — 1st Prize',question='What if circulation space became a place to stay?',desc='A proposal for Tsinghua’s teaching spaces transforms underused atriums into flexible settings for social learning. The 2024 competition work is presented here alongside a subsequent commission: co-leading the First Teaching Building renovation commission from May 2025.',credit='Competition proposal: Hao Chang & Mengzhe Lee, 2024<br>Hao’s role: concept, modeling, renderings<br>Instructor: Martijn de Geus<br>Separate commission: First Teaching Building renovation · Co-lead designer · From May 2025'),
- dict(id='006',slug='their-story',title='Their Story',name='Their Story',place='Hong Kong',year='2024',field='Community / Fieldwork',type='Community research',image='their-story',award='',question='How can everyday stories become a shared cultural record?',desc='A community calendar project in Hong Kong’s Eastern District, developed through field research sponsored by Swire Properties. The work brings local stories into a printed format, extending architectural attention toward the people and cultures that give a neighbourhood its character.',credit='Hong Kong Eastern District Community Calendar Project<br>Field research sponsored by Swire Properties<br>August–December 2024'),
- dict(id='007',slug='selected-studies',title='Selected Studies',name='Selected Studies',place='Across media',year='2017–2024',field='Body / Image / Material',type='Art & performance',image='photo',award='',question='Other ways of observing, making, and inhabiting.',desc='Photography, drawing, graphic work, and performance form a parallel practice: experiments in attention, movement, composition, and the spaces between people.',credit='Selected work by Hao Chang<br>Performance photographs document collaborative productions; roles are identified in captions.')]
-
-projects.extend([
- dict(id='008',slug='ancient-trails',title='Ancient Trails,<br>Possible Futures',name='Ancient Trails and Their Possible Futures',place='Gaoligong Mountain, Yunnan',year='2026',field='Heritage / Production / Ecology',type='Graduation design & territorial research',image='gaoligong-project',award='Tsinghua Outstanding Graduation Thesis',question='Can a trail reconnect the livelihoods and landscapes it once sustained?',desc='A linked system of reception, production, rest and bathing facilities revisits the Tea Horse Trail in Gaoligong Mountain. Interventions vary with access, slope and ecological sensitivity: collective facilities concentrate near established settlements, while lighter structures support the mountain route.',credit='Graduation research and design · Hao Chang<br>Tsinghua University / Politecnico di Torino collaboration · 2025–2026<br>Exhibited at Castello del Valentino, Turin · April 2026'),
- dict(id='009',slug='waterfront-plus',title='Waterfront+',name='Waterfront+',place='Shichahai, Beijing',year='2024',field='Water / Heritage / Public life',type='Urban design & heritage renewal',image='shichahai-plan',award='China Human Settlements Academic Year Award — Gold Medal, 2025',question='How can the waterfront reconnect with the neighbourhood behind it?',desc='Waterfront+ treats the lake edge, lanes, courtyards and public spaces as one connected urban fabric. Selective passages and differentiated thresholds reconnect everyday neighbourhood life with the water, while courtyard renewal and landscape adjustments retain the grain of the historic district.',credit='Collaborative design · Hao Chang & Mengzhe Lee<br>Shichahai, Beijing · 2024<br>Drawings reproduced from the original three project boards.')
-])
-
-exec((D/'project-updates.py').read_text())
-narratives=json.loads((D/'project-narratives.json').read_text())
-for p in projects:
- if p['slug'] in narratives:p['desc']=narratives[p['slug']]['intro']
-
-image_manifest=D/'image-sources'/'shichahai-20261005.json'
-responsive_images=json.loads(image_manifest.read_text())['assets'] if image_manifest.exists() else {}
-def zoom_source(name):
- return responsive_images[name]['zoom'] if name in responsive_images else f'assets/{name}.webp'
-def preview_source(name):
- return responsive_images[name]['thumbnail'] if name in responsive_images else f'assets/{name}-small.webp'
-def img(name,alt,cls='',small=False):
- if name in responsive_images:
-  asset=responsive_images[name]
-  variants=asset['variants']
-  src=asset['thumbnail'] if small else asset['default']
-  srcset=', '.join(f'{v["path"]} {v["width"]}w' for v in variants)
-  sizes='(max-width:640px) calc((100vw - 60px) / 2), (max-width:1000px) calc((100vw - 100px) / 2), 24vw' if small else '(max-width:640px) calc(100vw - 44px), 92vw'
-  width,height=variants[-1]['width'],variants[-1]['height']
-  style=' style="object-fit:contain"' if small else ' style="object-fit:contain;max-height:none"'
-  return f'<img class="{cls}" src="{src}" srcset="{srcset}" sizes="{sizes}" width="{width}" height="{height}"{style} alt="{escape(alt)}" loading="lazy" decoding="async">'
- return f'<img class="{cls}" src="assets/{name}{"-small" if small else ""}.webp" alt="{escape(alt)}" loading="lazy" decoding="async">'
-def figure(name,caption,cls=''):
- return f'<figure class="{cls}"><button class="zoom" data-zoom="{zoom_source(name)}" aria-label="Enlarge {escape(caption)}">{img(name,caption)}</button><figcaption>{caption}<span>View drawing / image</span></figcaption></figure>'
-def heading(n,t,body=''):
- paragraphs=narratives.get(p['slug'],{}).get('chapters',{}).get(n,[body] if body else [])
- return f'<div class="chapter-heading"><span class="eyebrow">{n}</span><h2>{t}</h2><div class="chapter-prose">'+''.join(f'<p>{text}</p>' for text in paragraphs)+'</div></div>'
-def page(name,title,content,active='projects',description='Architecture across changing landscapes, infrastructures, and collective life.'):
- nav=''.join(f'<a href="{url}" {"aria-current=page" if active==key else ""}>{label}</a>' for key,url,label in [('projects','index.html','Projects'),('research','research.html','Research'),('info','info.html','Info')])
- html=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} — Hao Chang</title><meta name="description" content="{escape(description)}"><meta name="theme-color" content="#f5f4f0"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23151515'/%3E%3Cpath d='M10 9v22m20-22v22M10 20h20' stroke='%23f5f4f0' stroke-width='3'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css?v=20261006-image-free"><script src="app.js?v=20261006-image-free" defer></script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a><nav aria-label="Main navigation">{nav}</nav></header><main id="main">{content}</main><footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research & collective life.</p><a href="mailto:haochang0215@gmail.com">Get in touch</a><span>© 2026 Hao Chang</span></footer><dialog id="lightbox"><button class="close" autofocus aria-label="Close image">Close ×</button><img alt=""><p></p></dialog></body></html>'''
- (D/name).write_text(image_free(html))
-
-cards=''
-for p in projects:
- cards+=f'<article class="project-card card-{p["id"]}"><a href="{p["slug"]}.html" class="project-image">{img(p["image"],p["name"]+" — "+p["place"],small=True)}</a><div class="card-caption"><span class="eyebrow">{p["id"]}</span><div><h2><a href="{p["slug"]}.html">{p["name"]}</a></h2><p>{p["place"]} <span> / </span> {p["field"]}</p>{"<p class=recognition>Commissioned project</p>" if p["type"]=="Commissioned project" else ""}{"<p class=recognition>"+p["award"]+"</p>" if p["award"] else ""}</div><span class="year">{p["year"]}</span></div></article>'
-rows=''.join(f'<a class="index-row" href="{p["slug"]}.html" data-preview="{preview_source(p["image"])}"><span>{p["id"]}</span><h2>{p["name"]}{"<small class=recognition>Commissioned project</small>" if p["type"]=="Commissioned project" else ""}{"<small class=recognition>"+p["award"]+"</small>" if p["award"] else ""}</h2><span>{p["place"]}</span><span>{p["field"]}</span><span>{p["year"]}</span></a>' for p in projects)
-hero_projects=[next(p for p in projects if p['slug']==slug) for slug in ['ancient-trails','theater-design','rising-tides','erdai']]
-hero_projects.sort(key=lambda p:p['id'])
-slides=''.join(f'<div class="hero-slide {"is-active" if i==0 else ""}" data-title="{escape(p["name"])}" data-place="{escape(p["place"])}" data-href="{p["slug"]}.html" aria-hidden="true"><img src="assets/{p["image"]}.webp" alt="" {"fetchpriority=high" if i==0 else "loading=lazy"} decoding="async"></div>' for i,p in enumerate(hero_projects))
-dots=''.join(f'<button data-slide="{i}" aria-label="Show {escape(p["name"])}" aria-pressed="{str(i==0).lower()}">{p["id"]}</button>' for i,p in enumerate(hero_projects))
-page('index.html','Architecture & Research',f'''<section class="intro hero-carousel" aria-label="Selected work slideshow" aria-roledescription="carousel">{slides}<div class="hero-scrim"></div><div class="hero-copy"><h1>Architecture across<br>changing landscapes,<br>infrastructures, and<br><span>collective life.</span></h1><div class="intro-aside"><p>Hao Chang<br>Architectural designer</p><p>Selected work<br>2024–2026</p></div></div><div class="hero-bottom"><a id="hero-caption" href="ancient-trails.html"><span id="hero-title">Ancient Trails and Their Possible Futures</span><span id="hero-place">Gaoligong Mountains</span></a><div class="hero-controls">{dots}<button id="hero-pause" aria-label="Pause slideshow">Pause</button></div></div></section><section class="work" id="selected-work"><div class="section-bar"><h2>Selected projects <span>(11)</span></h2><div class="text-switch" aria-label="Project view"><button data-mode="visual" aria-pressed="true">Visual</button><span>/</span><button data-mode="index" aria-pressed="false">Index</button></div></div><div id="visual-view" class="editorial-grid">{cards}</div><div id="index-view" hidden><div class="index-head"><span>No.</span><span>Project</span><span>Place</span><span>Territory</span><span>Year</span></div>{rows}<img id="index-preview" alt="" aria-hidden="true"></div></section><section class="closing"><span class="eyebrow">An ongoing enquiry</span><p>How can architecture hold together<br>ecological change and collective life?</p><a class="line-link" href="research.html">Read the research essays</a></section>''')
+from pathlib import Path
+import re
+import sys
+from typing import Any
 
 
-for i,p in enumerate(projects):
- type_class='recognition' if p['type']=='Commissioned project' else ''
- content=f'<div class="project-top"><a href="index.html" class="eyebrow">Projects / {p["id"]}</a><h1>{p["title"]}</h1><div class="project-meta"><span>{p["place"]}</span><span class="{type_class}">{p["type"]}</span><span>{p["year"]}</span></div></div>{figure(p["image"],p["name"]+" · "+p["place"],"project-hero")}<section class="project-statement"><h2>{p["question"]}</h2><div><span class="eyebrow">Design approach</span><p>{p["desc"]}</p>{"<p class=recognition>"+p["award"]+"</p>" if p["award"] else ""}</div></section>'
- if p['slug']=='rising-tides':
-  content+=f'''<section class="chapter">{heading('01','One structure. Two seasons.','Switch between everyday civic life and flood response. The section keeps the architectural frame constant while revealing changing water levels, access, and use.')}<div class="section-bar"><span class="eyebrow">Seasonal system</span><div class="text-switch"><button data-season="dry" aria-pressed="true">Dry</button><span>/</span><button data-season="flood" aria-pressed="false">Flood</button></div></div><figure><button class="zoom" id="season-zoom" data-zoom="assets/jakarta-dry-section.webp" aria-label="Enlarge seasonal section"><img id="season-image" src="assets/jakarta-dry-section.webp" alt="Dry-season section showing elevated civic platforms and wetland systems"></button><figcaption id="season-caption" aria-live="polite">Dry season · Workshops, kitchens, markets, and gathering spaces form a continuous civic spine.</figcaption></figure><div class="two-images">{figure('jakarta-hero','Dry season · A shaded street for everyday life')}{figure('jakarta-flood','Flood season · Boat access, refuge, and relief')}</div></section><section class="chapter">{heading('02','Water as a collaborator.','The proposal links river restoration, public infrastructure, and community-led construction. Its research considers environmental exposure alongside displacement, livelihoods, and access to services.')}{figure('jakarta-research','Flood research matrix and multi-scalar design framework')}</section><section class="chapter">{heading('03','A system assembled together.','Prefabricated components are paired with community design consultation, cooperative frame assembly, ventilation, rainwater collection, and solar power.')}<div class="narrow-drawing">{figure('jakarta-assembly','Exploded axonometric · Prefabricated, community-assembled dwelling')}</div>{figure('jakarta-long-section','An elevated social spine along the river')}</section>'''
- elif p['slug']=='erdai':
-  content+=f'<section class="chapter">{heading("01","An inherited ground.","Bunkers, trenches, and artillery positions become the starting points of a cultural route. Existing structures are retained as spaces for arrival, display, and observation.")}{figure("erdai-map","Historical and natural layers of the Fenggui Peninsula")}</section>'
-  scenes=[('erdai-trench','01','Trench','A protected passage becomes the museum’s approach.'),('erdai-gallery','02','Gallery','Compression and low light focus attention inward.'),('erdai-court','03','Courtyard','The route opens to sky, vegetation, and shared space.'),('erdai-chamber','04','Light','A double-height chamber draws daylight into the ground.'),('erdai-hero','05','Sea','The museum returns to the coastal horizon.')]
-  content+='<section class="journey"><div class="journey-label"><span class="eyebrow">02 / Spatial sequence</span><h2>From darkness<br>to light.</h2><p id="journey-current" aria-live="polite">01 / Trench</p></div><div class="journey-scenes">'+''.join(f'<figure data-scene="{n} / {t}">{img(a,t)}<figcaption><strong>{n} / {t}</strong>{b}</figcaption></figure>' for a,n,t,b in scenes)+'</div></section>'+figure('erdai-section','Section through memory · Earth, light, and ruin')
- elif p['slug']=='spirited-a-way':
-  content+=f'''<section class="chapter">{heading('01','The route determines the intervention.','Select a place on the research map to read its architectural response. The three intervention types address different forms of exposure, rest, and cultural interpretation.')}<div class="map-interventions"><div class="annotated-map">{img('kailash-map','Mount Kailash pilgrimage route and architectural intervention locations')}<a class="map-pin pin-a" href="#lodge" aria-label="First Tavern courtyard lodge">A</a><a class="map-pin pin-b" href="#station" aria-label="Supply station">B</a><a class="map-pin pin-c" href="#hall" aria-label="Sky Burial Exhibition Hall">C</a></div><div class="map-legend"><a href="#lodge"><b>A / First Tavern</b><span>Rest · Retrofit · Courtyard</span></a><a href="#station"><b>B / Supply station</b><span>Shelter · Sanitation · Autonomy</span></a><a href="#hall"><b>C / Exhibition hall</b><span>Interpretation · Ritual · Restraint</span></a></div></div></section><section class="chapter" id="lodge">{heading('A','A courtyard for the first night.','The existing inn’s footprint is retained. A new frame, insulated envelope, and shared courtyard support rest while framing the mountain’s north face.')}{figure('kailash-lodge','First Tavern · Courtyard lodge')}</section><section class="chapter" id="station">{heading('B','A compact infrastructure of care.','Prefabricated timber–aluminium modules on elevated piles provide insulated rest and sanitation while reducing ground disturbance.')}<div class="two-images">{figure('kailash-interior','Supply station · Compact interior')}{figure('kailash-research','Religious and ecological vulnerability along the pilgrimage route')}</div></section><section class="chapter" id="hall">{heading('C','Keeping the horizon intact.','Set away from the ritual ground, the exhibition hall uses stone, rammed earth, and timber to introduce interpretation without dominating the landscape.')}{figure('kailash-landscape','Sky Burial Exhibition Hall · Landscape and prayer square')}{figure('kailash-gallery','Sky Burial Exhibition Hall · A sheltered view')}</section>'''
- elif p['slug']=='books-above-bustles':
-  content+=f'''<section class="chapter">{heading('01','Read the building through its systems.','Select a reading of the section. Highlighted zones locate the systems discussed below; the original drawing remains available at full size.')}<div class="section-bar"><span class="eyebrow">Sectional perspective</span><div class="text-switch layers">{''.join(f'<button data-layer="{x}" aria-pressed="{str(x=="space").lower()}">{x.title()}</button>' for x in ['space','structure','climate','program'])}</div></div><div class="section-explorer">{img('books-section','Sectional perspective through the library and vertical public realm')}<div id="section-overlay" aria-hidden="true"></div></div><div class="system-note" aria-live="polite"><h3 id="system-title">A vertical public realm</h3><p id="system-text">Gardens, bridges, reading spaces, and an open ground floor connect the building’s compartments into a continuous civic interior.</p></div><a class="line-link" href="assets/books-section.webp" target="_blank" rel="noopener">View full-resolution section</a></section><section class="chapter">{heading('02','A civic room above the city.','Suspended volumes open the ground to pedestrian movement and public landscape. The mirrored envelope registers the changing city around it.')}{figure('books-hero','Books Above Bustles · Chang’an Avenue elevation')}</section><section class="chapter">{heading('03','Testing the spatial proposition.','Physical models study the relationship between suspended volumes, structure, light, and the permeable ground.')}{figure('books-model','Physical model · Spatial and structural study')}</section>'''
- elif p['slug']=='teaching-building':
-  content+=f'<section class="chapter">{heading("01","Circulation becomes social space.","Flexible seating, shared surfaces and planted space turn the atrium into an everyday setting for informal learning. The plan and model describe the first-prize competition proposal.")}<div class="two-images">{figure("teaching-plan","Ziqiang Technology Building · Atrium plan")}{figure("teaching-model","Ziqiang Technology Building · Spatial model")}</div></section>'
- elif p['slug']=='their-story':
-  content+='<section class="project-statement"><span class="eyebrow">Context</span><p>Developed during the Swire Properties Bi-city Youth Cultural Leadership Programme, this work sits alongside comparative study of urban placemaking and cultural ecosystems in Beijing and Hong Kong.</p></section>'
- elif p['slug']=='selected-studies':
-  art=[('performance','Cabin Fever · Experimental theatre · Choreographer & director, 2019'),('dance','Shigshir · Mongolian ensemble dance · Tsinghua Dance Troupe, 2021'),('watercolour','Restraint and Observation · Watercolour, 2017'),('ink','Contemplation · Ink, 2017'),('cover','Vers Une Architecture · Book-cover design, 2022'),('photo','Photography · 2024'),('photo-architecture','Photography · 2023'),('still-life','The Sickly Feast · Watercolour, 2017'),('print','The Digital Cage · Printmaking, 2017'),('museum-exhibition','Exhibition design · Hong Kong Palace Museum learning & engagement internship, 2024')]
-  content+='<section class="studies-grid">'+''.join(figure(a,b) for a,b in art)+'</section>'
- elif p['slug']=='ancient-trails':
-  content+=f'<section class="chapter">{heading("01","A network before an object.","Reception, production and rest facilities form a sequence along the old route. Their distribution responds to settlement access and the changing terrain.")}{figure("gaoligong-network","Trail network · Original graduation presentation, page 28")}</section><section class="chapter">{heading("02","Different ground. Different degrees of intervention.","Small structures use point foundations and an assembly logic intended to reduce excavation. These drawings describe a design strategy; ecological performance and maintenance require further testing.")}<div class="two-images">{figure("gaoligong-construction","Mountain accommodation · Construction study, page 52")}{figure("gaoligong-assembly","Components and assembly · Original presentation, page 54")}</div></section>'
- elif p['slug']=='waterfront-plus':
-  content+=f'<section class="chapter">{heading("01","Reconnect the urban seam.","The proposal works through the interface of waterfront, street and courtyard, opening selected connections while retaining differentiated residential thresholds.")}{figure("shichahai-before-after","Waterfront+ · Existing conditions and proposed relationships, board 2")}{figure("shichahai-seam","Waterfront, lanes and courtyard fabric · Analytical sequence, board 1")}</section><section class="chapter">{heading("02","Work within the inherited grain.","Courtyard and sectional studies test how public passage, domestic space and the water’s edge can coexist. The project remains a design proposition, rather than a record of completed renewal.")}{figure("shichahai-courtyard","Courtyard relationships · Original project board 3")}{figure("shichahai-section","Section through the waterfront and neighbourhood · Original project board 3")}</section>'
- elif p['slug']=='theater-design':
-  content+=f'<section class="chapter">{heading("01","A public ground. A vertical gathering place.","Approaches from the southwest and northwest meet an open ground floor. Stairs extend the civic realm upward, becoming places to pause, watch and gather rather than circulation alone.")}{figure("theater-ground","Ground and roof relationships · Site plan")}{figure("theater-section","The Condenser · Long section through performance and shared spaces")}</section><section class="chapter">{heading("02","The foyer as a social condenser.","A sequence of shared stairs, landings and foyers links the theaters with a rooftop garden and open-air amphitheater. The large stair between levels three and four accommodates talks, informal screenings and public gathering.")}<div class="two-images">{figure("theater-foyer","An interior street between performance volumes")}{figure("theater-stairs","Stairs as forum · Gathering beyond the auditorium")}</div></section><section class="chapter">{heading("03","Distinct rooms, one civic frame.","The blue and orange performance spaces respond to the contrasting urban conditions around the site. A translucent envelope reveals their occupation after dark. Public approaches remain distinct from loading and backstage circulation.")}{figure("theater-axon","Exploded programme and circulation axonometric")}{figure("theater-hall","The blue theater · Auditorium proposal")}</section>'
- elif p['slug']=='first-teaching-building':
-  content+=f'<section class="chapter">{heading("01","Renew the room; retain its order.","The 682 m² third-floor scheme reorganises two 96-seat classrooms, a multifunctional room and teachers’ lounge around a shared circulation spine. The design works with the structure and openings of the original 1952 building.")}{figure("first-teaching-plan","January 2026 proposal · Third-floor plan, 682 m²")}</section><section class="chapter">{heading("02","An inhabited corridor.","Seating and power points turn circulation into a place for short conversations and work between classes. Lighting, ventilation outlets and acoustic wood-wool panels are coordinated with the existing ceiling order.")}{figure("first-teaching-corridor","Corridor proposal · Integrated seating, services and acoustic ceiling")}</section><section class="chapter">{heading("03","Different ways to learn.","Adaptable furniture and integrated teaching equipment support lectures, reviews, screenings and group work. Material changes stay restrained: pale walls, timber surfaces and retained doors carry the building’s continuity into new uses.")}<div class="two-images">{figure("first-teaching-flexible","Multifunctional classroom · Design proposal")}{figure("first-teaching-lounge","Teachers’ lounge · Design proposal")}</div></section>'
- for extra in narratives.get(p['slug'],{}).get('extra',[]):
-  content+='<section class="design-detail"><h2>'+extra['title']+'</h2><div>'+''.join('<p>'+text+'</p>' for text in extra['paragraphs'])+'</div></section>'
- if narratives.get(p['slug'],{}).get('note'):
-  content+='<section class="design-scope"><span class="eyebrow">Scope & development</span><p>'+narratives[p['slug']]['note']+'</p></section>'
- related={'rising-tides':'research-water','erdai':'research-ground','spirited-a-way':'research-ritual','books-above-bustles':'research-civic','ancient-trails':'research-gaoligong','waterfront-plus':'research-shichahai','their-story':'research-hong-kong','theater-design':'research-theater'}
- if p['slug'] in related:
-  content+=f'<section class="related-research"><span>Questions, methods and evidence behind this proposal</span><a href="{related[p["slug"]]}.html">Read related research →</a></section>'
- nxt=projects[(i+1)%len(projects)]
- content+=f'<section class="credits"><h2>Project credits</h2><p>{p["credit"]}</p></section><a class="next-project" href="{nxt["slug"]}.html"><span class="eyebrow">Next project / {nxt["id"]}</span><h2>{nxt["name"]}</h2>{img(nxt["image"],nxt["name"],small=True)}</a>'
- page(p['slug']+'.html',p['name'],content,description=p['desc'])
+# ---------------------------------------------------------------------------
+# 1. Base catalogue. Existing project-updates.py enriches these nine entries
+#    and adds the two separately documented 2025 projects. Maintain original
+#    image identifiers and core credits for backward compatibility.
+# ---------------------------------------------------------------------------
 
-exec((D/'research-content.py').read_text())
+BASE_PROJECTS: list[dict[str, str]] = [
+    dict(slug="rising-tides", name="Rising Tides, Resilient Lives", image="jakarta-hero",
+         year="2025", place="Jakarta, Indonesia", field="Water / Collective life",
+         type="Architecture & research", award="SOM China Fellowship — Winner",
+         question="How can flood-prone infrastructure become a civic sanctuary?",
+         credit="Individual project · Hao Chang<br>Instructor: Martijn de Geus<br>"
+                "Kampung Melayu, Jakarta · February–March 2025"),
+    dict(slug="erdai", name="Erdai Art Museum", image="erdai-hero", year="2024",
+         place="Penghu, Taiwan", field="Memory / Landscape",
+         type="Architecture & adaptive reuse", award="",
+         question="How can a landscape of defence become a place of reflection?",
+         credit="Individual studio project · Hao Chang<br>Instructor: Li Xiaodong<br>"
+                "Penghu, Taiwan · September–October 2024"),
+    dict(slug="spirited-a-way", name="Spirited A Way", image="kailash-hero",
+         year="2024", place="Ngari, Tibet", field="Ritual / Ecology",
+         type="Architecture & landscape", award="",
+         question="How much architecture does a sacred landscape need?",
+         credit="Collaborative studio · Hao Chang & Mengzhe Lee<br>"
+                "Hao's role: research, modeling, renderings, and diagrams<br>"
+                "Instructor: Yue Cao · November–December 2024"),
+    dict(slug="books-above-bustles", name="Books Above Bustles", image="books-section",
+         year="2024", place="Beijing, China", field="Knowledge / Infrastructure",
+         type="Civic architecture", award="",
+         question="Can a library reconnect a city?",
+         credit="Collaborative studio · Hao Chang & Mengzhe Lee<br>"
+                "Hao's role: lead concept, diagrams, modeling, and sections<br>"
+                "Instructor: Martijn de Geus · April–June 2024"),
+    dict(slug="teaching-building", name="Learning Beyond the Classroom", image="teaching",
+         year="2024–", place="Beijing, China", field="Learning / Adaptive reuse",
+         type="Competition & commission", award="",
+         question="What if circulation space became a place to stay?",
+         credit="Competition proposal: Hao Chang & Mengzhe Lee, 2024<br>"
+                "Hao's role: concept, modeling, renderings<br>Instructor: Martijn de Geus"),
+    dict(slug="their-story", name="Their Story", image="their-story", year="2024",
+         place="Hong Kong", field="Community / Fieldwork",
+         type="Community research", award="",
+         question="How can everyday stories become a shared cultural record?",
+         credit="Hong Kong Eastern District Community Calendar Project<br>"
+                "Field research sponsored by Swire Properties<br>August–December 2024"),
+    dict(slug="selected-studies", name="Selected Studies", image="photo",
+         year="2017–2024", place="Across media", field="Body / Image / Material",
+         type="Art & performance", award="",
+         question="Other ways of observing, making, and inhabiting.",
+         credit="Selected work by Hao Chang<br>Performance photographs document "
+                "collaborative productions; roles are identified in captions."),
+    dict(slug="ancient-trails", name="Ancient Trails and Their Possible Futures",
+         image="gaoligong-project", year="2026", place="Gaoligong Mountain, Yunnan",
+         field="Heritage / Production / Ecology",
+         type="Graduation design & territorial research",
+         award="Tsinghua Outstanding Graduation Thesis",
+         question="Can a trail reconnect the livelihoods and landscapes it once sustained?",
+         credit="Graduation research and design · Hao Chang<br>"
+                "Tsinghua University / Politecnico di Torino collaboration · 2025–2026<br>"
+                "Exhibited at Castello del Valentino, Turin · April 2026"),
+    dict(slug="waterfront-plus", name="Waterfront+", image="shichahai-plan",
+         year="2024", place="Shichahai, Beijing", field="Water / Heritage / Public life",
+         type="Urban design & heritage renewal",
+         award="China Human Settlements Academic Year Award — Gold Medal, 2025",
+         question="How can the waterfront reconnect with the neighbourhood behind it?",
+         credit="Collaborative design · Hao Chang & Mengzhe Lee<br>"
+                "Shichahai, Beijing · 2024<br>"
+                "Drawings reproduced from the original three project boards."),
+]
 
-def info_section(title,rows):
- return '<section class="info-section"><h2>'+title+'</h2><div>'+''.join(f'<div class="cv-row"><span>{year}</span><div><h3>{title}</h3><p>{body}</p></div></div>' for year,title,body in rows)+'</div></section>'
-info='<section class="page-intro info-intro"><span class="eyebrow">Info / Hao Chang</span><h1>Buildings, landscapes,<br>and the life between.</h1><div class="bio"><p>Hao Chang is an architectural designer whose work explores relationships between ecological change, infrastructure, and collective life. Working across architecture, landscape, and research, he develops spatial systems grounded in the conditions and cultures of a place.</p><p>A graduate of Tsinghua University’s Bachelor of Architecture programme, he received the 2025 SOM China Fellowship for independent research on flood resilience in Jakarta. His experience includes Kohn Pedersen Fox, JJP Architects & Planners, and the Hong Kong Palace Museum, alongside a commissioned campus renovation at Tsinghua.</p><p>Photography, drawing, theatre, and dance extend this practice through other ways of observing and inhabiting space.</p><div class="contact-links"><a class="line-link" href="mailto:haochang0215@gmail.com">haochang0215@gmail.com</a><a class="line-link" href="assets/Hao-Chang-CV.pdf" download>Download CV · 2025 archive</a><a class="line-link" href="https://www.linkedin.com/in/haochang0215/" target="_blank" rel="noopener">LinkedIn · latest profile</a><a class="line-link" href="https://github.com/arc-hao-0215" target="_blank" rel="noopener">GitHub</a></div></div></section>'
-info+=info_section('Education',[('2021–2026','Tsinghua University','Bachelor of Architecture · Rank 1/40 · GPA 3.9/4.0'),('2023','National University of Singapore','Exchange programme · September–December')])
-info+=info_section('Experience',[('2025–','Tsinghua University','First Teaching Building renovation · Co-lead designer, commissioned<br>January 2026 third-floor proposal: 682 m² · Classroom renewal, building-services integration and university coordination. '),('2025','Kohn Pedersen Fox · Shanghai','Architecture intern · May–August<br>Mixed-use design development, facade modeling, visualisation, and urban-regeneration research.'),('2024','Hong Kong Palace Museum','Learning & engagement intern · July–August<br>Exhibition logistics, workshops, and public engagement.'),('2023','JJP Architects & Planners · Taipei','Architecture intern · January–February<br>Diagrams and models for aviation and cultural projects.')])
-info+=info_section('Selected awards',[('2026','Tsinghua Outstanding Graduation Thesis','Ancient Trails and Their Possible Futures<br>Also selected among five graduation designs for final nomination and review.'),('2025','SOM China Fellowship','Winner · Independent research on flood resilience in Jakarta'),('2025','China Human Settlements Academic Year Award','Gold Award · Urban Design · Waterfront+<br>中國人居環境學年獎 · 城市設計組 · 金獎'),('2024','Ziqiang Technology Building Atrium Design Competition','1st Prize · Flexible social learning environments')])
-info+=info_section('Research & leadership',[('2026','Glossary of Rurbanity · Harvard GSD DDes Conference','Selected contributor & presenter · August–September<br>Planting Factories on Farmland — agricultural and industrial landscapes in Taiwan.'),('2025–2026','Ancient Trails and Their Possible Futures','Joint research and graduation design · Tsinghua University / Politecnico di Torino<br>Tea Horse Trail and Via Francigena research; exhibited at Castello del Valentino, Turin, April 2026.'),('2024','Swire Properties','Bi-city Youth Cultural Leadership Programme · Beijing delegate<br>Urban placemaking strategies and cultural ecosystems.'),('2023','Tsinghua Italy Overseas Research Initiative','Director of public relations · 15-person delegation to Politecnico di Milano<br>Workshops on comparative heritage preservation.'),('2022','World Youth Development Forum','Youth delegate · Dialogue on the UN 2030 Agenda')])
-info+=info_section('Publication',[('2025','Architecture Design Studio Series','Contributing author · Tsinghua University faculty publication<br>Selected Year 1 student work.')])
-info+='<section class="info-section"><h2>Selected other work</h2><div><p>Performance, photography, drawing, graphic work, and exhibition design.</p><a class="line-link" href="selected-studies.html">Explore other work</a></div></section>'
-page('info.html','Info',info,'info')
-(D/'404.html').write_text((D/'index.html').read_text())
-print('Generated',len(list(D.glob('*.html'))),'pages')
+
+# ---------------------------------------------------------------------------
+# 2. Catalogue loading. Execute the existing project-updates.py against its
+#    expected `projects` variable rather than duplicating the 11 titles here.
+# ---------------------------------------------------------------------------
+
+def load_projects(root: Path) -> list[dict[str, Any]]:
+    patch = root / "project-updates.py"
+    if not patch.is_file():
+        raise FileNotFoundError(f"Missing catalogue file: {patch}")
+
+    projects: list[dict[str, Any]] = []
+    for item in BASE_PROJECTS:
+        project = dict(item)
+        project.setdefault("id", "00")
+        project.setdefault("title", project["name"])
+        project.setdefault("desc", "")
+        projects.append(project)
+
+    context: dict[str, Any] = {"projects": projects}
+    exec(compile(patch.read_text(encoding="utf-8"), str(patch), "exec"), context)
+    projects = context["projects"]
+
+    if len(projects) != 11:
+        raise ValueError(f"Expected exactly 11 projects, got {len(projects)}")
+    if len({p["slug"] for p in projects}) != len(projects):
+        raise ValueError("Project slugs must be unique")
+    for index, p in enumerate(projects, 1):
+        needed = ("id", "slug", "name", "subtitle", "place", "field",
+                  "recognition", "year", "type")
+        missing = [key for key in needed if key not in p]
+        if missing:
+            raise KeyError(f"Project {p.get('slug')} missing: {missing}")
+        if p["id"] != f"{index:02d}":
+            raise ValueError(f"Invalid catalogue ordering at {p['slug']}")
+        if not re.fullmatch(r"[a-z0-9-]+", str(p["slug"])):
+            raise ValueError(f"Unsafe project slug: {p['slug']}")
+    return projects
+
+
+def e(value: object) -> str:
+    """Escape an HTML text node or attribute safely."""
+    return escape(str(value), quote=True)
+
+
+# ---------------------------------------------------------------------------
+# 3. HTML region tools. Match nested containers without reformatting the
+#    rest of the manually edited HTML document.
+# ---------------------------------------------------------------------------
+
+DIV_TOKEN = re.compile(r"<(/?)div\b[^>]*>", re.IGNORECASE | re.DOTALL)
+ARTICLE = re.compile(r"<article\b[^>]*\bproject-card\b[^>]*>.*?</article>",
+                     re.IGNORECASE | re.DOTALL)
+IMAGE_LINK = re.compile(
+    r'<a\b(?=[^>]*class=["\'][^"\']*\bproject-image\b)[^>]*>.*?</a>',
+    re.IGNORECASE | re.DOTALL,
+)
+HREF = re.compile(r'\bhref\s*=\s*["\']([^"\']+)["\']', re.IGNORECASE)
+PREVIEW_ATTR = re.compile(r'\bdata-preview\s*=\s*["\']([^"\']+)["\']',
+                          re.IGNORECASE)
+
+
+def find_div_by_id(html: str, element_id: str) -> tuple[int, int, str]:
+    """Return offsets including the outer <div> and its matching </div>."""
+    start = re.search(
+        r'<div\b(?=[^>]*\bid\s*=\s*["\']' + re.escape(element_id) +
+        r'["\'])[^>]*>', html, re.IGNORECASE | re.DOTALL,
+    )
+    if not start:
+        raise ValueError(f"Cannot locate <div id={element_id!r}> in index.html")
+    depth = 1
+    for token in DIV_TOKEN.finditer(html, start.end()):
+        depth += -1 if token.group(1) else 1
+        if depth == 0:
+            return start.start(), token.end(), html[start.start():token.end()]
+    raise ValueError(f"Unclosed <div id={element_id!r}> in index.html")
+
+
+def existing_card_images(visual_html: str) -> dict[str, str]:
+    """Preserve existing thumbnail markup, but never introduce new images."""
+    images: dict[str, str] = {}
+    for block in ARTICLE.findall(visual_html):
+        image = IMAGE_LINK.search(block)
+        if not image:
+            continue
+        href = HREF.search(image.group())
+        if href and href.group(1).endswith(".html"):
+            images[href.group(1).removesuffix(".html")] = image.group()
+    return images
+
+
+def existing_index_previews(index_html: str) -> dict[str, str]:
+    previews: dict[str, str] = {}
+    for anchor in re.finditer(r'<a\b[^>]*class=["\'][^"\']*\bindex-row\b[^>]*>',
+                              index_html, re.IGNORECASE):
+        href, preview = HREF.search(anchor.group()), PREVIEW_ATTR.search(anchor.group())
+        if href and preview and href.group(1).endswith(".html"):
+            previews[href.group(1).removesuffix(".html")] = preview.group(1)
+    return previews
+
+
+# ---------------------------------------------------------------------------
+# 4. Grid and Index markup. Identical source fields in both views.
+# ---------------------------------------------------------------------------
+
+def render_card(p: dict[str, Any], preserved_image: str = "") -> str:
+    slug = e(p["slug"])
+    recognition = (
+        f'\n        <p class="recognition">{e(p["recognition"])}</p>'
+        if p["recognition"] else ""
+    )
+    image = f"\n    {preserved_image}" if preserved_image else ""
+    return f'''  <article class="project-card card-{e(p["id"])}">{image}
+    <div class="card-caption">
+      <span class="eyebrow">{e(p["id"])}</span>
+      <div>
+        <h2><a href="{slug}.html">{e(p["name"])}</a></h2>
+        <p class="project-subtitle">{e(p["subtitle"])}</p>
+        <p class="project-context">{e(p["place"])} / {e(p["field"])}</p>{recognition}
+      </div>
+      <span class="year">{e(p["year"])}</span>
+    </div>
+  </article>'''
+
+
+def render_row(p: dict[str, Any], preview: str = "") -> str:
+    recognition = (
+        f'\n        <p class="recognition">{e(p["recognition"])}</p>'
+        if p["recognition"] else ""
+    )
+    preview_attr = f' data-preview="{e(preview)}"' if preview else ""
+    return f'''  <a class="index-row" href="{e(p["slug"])}.html"{preview_attr}>
+    <span>{e(p["id"])}</span>
+    <div class="index-project">
+      <h2>{e(p["name"])}</h2>
+      <p class="project-subtitle">{e(p["subtitle"])}</p>{recognition}
+    </div>
+    <span>{e(p["place"])}</span>
+    <span>{e(p["field"])}</span>
+    <span>{e(p["year"])}</span>
+  </a>'''
+
+
+def update_home(html: str, projects: list[dict[str, Any]]) -> str:
+    v_start, v_end, old_visual = find_div_by_id(html, "visual-view")
+    _i_start, _i_end, old_index = find_div_by_id(html, "index-view")
+    images = existing_card_images(old_visual)
+    previews = existing_index_previews(old_index)
+
+    visual = ('<div id="visual-view" class="editorial-grid">\n' +
+              '\n'.join(render_card(p, images.get(p["slug"], "")) for p in projects) +
+              '\n</div>')
+    index = ('''<div id="index-view" hidden>
+  <div class="index-head">
+    <span>No.</span><span>Project</span><span>Place</span>
+    <span>Territory</span><span>Year</span>
+  </div>
+''' + '\n'.join(render_row(p, previews.get(p["slug"], "")) for p in projects) +
+             '\n</div>')
+
+    # Replace in reverse offset order, preserving everything outside the two
+    # containers (hero, header, custom styles, scripts, closing statement).
+    spans = [(v_start, v_end, visual), (_i_start, _i_end, index)]
+    for start, end, new_html in sorted(spans, key=lambda x: x[0], reverse=True):
+        html = html[:start] + new_html + html[end:]
+
+    # This style-independent header adjustment supports a future larger list.
+    html = re.sub(r'(Selected projects\s*<span>\s*\()\d+(\)\s*</span>)',
+                  lambda m: m.group(1) + str(len(projects)) + m.group(2),
+                  html, count=1, flags=re.IGNORECASE)
+    return html
+
+
+# ---------------------------------------------------------------------------
+# 5. Project headings ONLY — never regenerate editorial sections or videos.
+# ---------------------------------------------------------------------------
+
+def update_detail(html: str, project: dict[str, Any],
+                  by_slug: dict[str, dict[str, Any]]) -> str:
+    title = e(project["name"])
+    # The browser tab title, not chapter titles or embedded media titles.
+    html = re.sub(r"(<title\b[^>]*>).*?(</title>)",
+                  lambda m: m.group(1) + title + " — Hao Chang" + m.group(2),
+                  html, count=1, flags=re.IGNORECASE | re.DOTALL)
+
+    # Only the <h1> in the project-top block; its contents may contain <br>.
+    top = re.search(r'<div\b[^>]*class=["\'][^"\']*\bproject-top\b[^"\']*["\'][^>]*>',
+                    html, re.IGNORECASE)
+    if not top:
+        raise ValueError(f"Missing project-top in {project['slug']}.html")
+    heading = re.search(r'<h1\b[^>]*>.*?</h1>', html[top.end():],
+                        flags=re.IGNORECASE | re.DOTALL)
+    if not heading:
+        raise ValueError(f"Missing project h1 in {project['slug']}.html")
+    start, end = top.end() + heading.start(), top.end() + heading.end()
+    old_heading = html[start:end]
+    updated_heading = re.sub(r"(?<=>).*?(?=</h1>)", title, old_heading,
+                             count=1, flags=re.DOTALL)
+    html = html[:start] + updated_heading + html[end:]
+
+    # Update only label within an existing next-project link, not its image,
+    # route, caption, scene contents, or custom animation.
+    next_link = re.compile(
+        r'(<a\b[^>]*class=["\'][^"\']*\bnext-project\b[^"\']*["\'][^>]*>)'
+        r'(.*?)(</a>)', re.IGNORECASE | re.DOTALL,
+    )
+
+    def update_next(match: re.Match[str]) -> str:
+        opening, content, closing = match.groups()
+        dest = HREF.search(opening)
+        if not dest:
+            return match.group()
+        destination = dest.group(1).split("?", 1)[0].split("#", 1)[0]
+        destination_slug = Path(destination).stem
+        target = by_slug.get(destination_slug)
+        if not target:
+            return match.group()
+        content = re.sub(r'(<h2\b[^>]*>).*?(</h2>)',
+                         lambda m: m.group(1) + e(target["name"]) + m.group(2),
+                         content, count=1, flags=re.IGNORECASE | re.DOTALL)
+        return opening + content + closing
+
+    return next_link.sub(update_next, html, count=1)
+
+
+# ---------------------------------------------------------------------------
+# 6. Safe write, dry-run and continuous integration checks.
+# ---------------------------------------------------------------------------
+
+def write_if_changed(path: Path, new: str, old: str, *, dry_run: bool) -> bool:
+    if new == old:
+        return False
+    print(("WOULD UPDATE" if dry_run else "UPDATED"), path.name)
+    if not dry_run:
+        path.write_text(new, encoding="utf-8")
+    return True
+
+
+def build(root: Path, *, dry_run: bool = False) -> int:
+    projects = load_projects(root)
+    by_slug = {p["slug"]: p for p in projects}
+    homepage = root / "index.html"
+    if not homepage.is_file():
+        raise FileNotFoundError(f"Missing homepage: {homepage}")
+
+    # Preflight: if a required page is missing, fail before touching any file.
+    required = [root / f"{p['slug']}.html" for p in projects]
+    missing = [p.name for p in required if not p.is_file()]
+    if missing:
+        raise FileNotFoundError("Missing project pages: " + ", ".join(missing))
+
+    current_home = homepage.read_text(encoding="utf-8")
+    next_home = update_home(current_home, projects)
+    changes: list[tuple[Path, str, str]] = [(homepage, current_home, next_home)]
+
+    for project, path in zip(projects, required):
+        current = path.read_text(encoding="utf-8")
+        updated = update_detail(current, project, by_slug)
+        changes.append((path, current, updated))
+
+    # On the published site 404.html sometimes mirrors index.html exactly.
+    # Only update that duplicate when it still matches the old homepage.
+    fallback = root / "404.html"
+    if fallback.is_file():
+        existing_404 = fallback.read_text(encoding="utf-8")
+        if existing_404 == current_home:
+            changes.append((fallback, existing_404, next_home))
+
+    changed = 0
+    for path, old, new in changes:
+        changed += int(write_if_changed(path, new, old, dry_run=dry_run))
+    print(f"Catalogue: {len(projects)} projects | Changed: {changed} files")
+    print("Research, Info, assets, videos, captions, CSS and JS: untouched")
+    return changed
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent,
+                        help="Root folder containing project-updates.py and index.html")
+    exclusive = parser.add_mutually_exclusive_group()
+    exclusive.add_argument("--dry-run", action="store_true", help="List changes without writing")
+    exclusive.add_argument("--check", action="store_true", help="Exit 1 if files need changes")
+    args = parser.parse_args()
+    try:
+        changed = build(args.root.resolve(), dry_run=args.dry_run or args.check)
+    except (OSError, ValueError, KeyError, SyntaxError) as exc:
+        print(f"Build failed safely: {exc}", file=sys.stderr)
+        return 2
+    if args.check and changed:
+        print("Site is out of sync. Run: python build.py")
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
