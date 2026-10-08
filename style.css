@@ -943,7 +943,7 @@ dialog p { margin-top: 15px; font-size: 12px; }
   background: var(--paper);
   width: calc(100vw - 2 * var(--gutter));
   margin: 36px 0 48px;
-  margin-left: calc((100vw - 2 * var(--gutter)) * -0.3435294118);
+  margin-left: -31.329882vw;
   border-top: 1px solid var(--ink);
 }
 .netherlands-atlas-heading {
@@ -993,14 +993,17 @@ dialog p { margin-top: 15px; font-size: 12px; }
   font: 12px/1.6 Arial, Helvetica, sans-serif;
   color: var(--grey);
 }
+@media (min-width: 1910px) {
+  .netherlands-atlas-feature { margin-left: calc(-34.352941vw + 57.713px); }
+}
 @media (min-width: 801px) and (max-width: 1100px) {
   .netherlands-atlas-feature {
-    margin-left: calc(-180px - 5vw + var(--gutter) * 0.1);
+    margin-left: calc(-180px - 4.56vw);
   }
 }
 @media (min-width: 641px) and (max-width: 800px) {
   .netherlands-atlas-feature {
-    margin-left: calc((100vw - 2 * var(--gutter)) * -0.346875);
+    margin-left: -31.635vw;
   }
 }
 @media (max-width: 640px) {
