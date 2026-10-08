@@ -50,9 +50,10 @@
 .lf-page .lf-figure--drawing .lf-media-button{background:#eeede9}
 .lf-page .lf-figure--drawing .lf-media-button img{object-fit:contain}
 .lf-page .lf-media-note{font:12px/1.6 Arial,sans-serif;color:var(--lf-muted)}
-.lf-page .lf-issue-lead{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(35px,8vw,130px);margin:0 0 36px}
-.lf-page .lf-issue-lead h3{font-size:clamp(24px,2.4vw,36px);line-height:1.25;letter-spacing:-.033em;font-weight:400}
-.lf-page .lf-issue-lead p{max-width:600px;color:#50504c;font:16px/1.79 Georgia,"Times New Roman",serif}
+/* Mirror the chapter heading's three-column grid so both rows share their text baselines. */
+.lf-page .lf-issue-lead{display:grid;grid-template-columns:96px minmax(0,1.05fr) minmax(0,.95fr);gap:24px 34px;align-items:start;margin:0 0 36px}
+.lf-page .lf-issue-lead h3{grid-column:2;max-width:680px;font-size:clamp(30px,3.2vw,48px);font-weight:400;line-height:1.17;letter-spacing:-.044em;text-wrap:balance}
+.lf-page .lf-issue-lead p{grid-column:3;max-width:510px;color:#50504c;font:16px/1.76 Georgia,"Times New Roman",serif}
 .lf-page .lf-conditions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
 .lf-page .lf-condition{border-top:1px solid var(--lf-rule);padding-top:19px}
 .lf-page .lf-condition b{display:block;margin-bottom:15px;color:var(--lf-red);font:11px/1.5 Arial,sans-serif;font-weight:400;letter-spacing:.07em}
@@ -103,6 +104,8 @@
 @media(max-width:1000px){
  .lf-page .lf-chapter-head{grid-template-columns:72px 1fr;gap:12px 25px}
  .lf-page .lf-chapter-head p{grid-column:2}
+ .lf-page .lf-issue-lead{grid-template-columns:72px minmax(0,1fr);gap:12px 25px}
+ .lf-page .lf-issue-lead h3,.lf-page .lf-issue-lead p{grid-column:2}
  .lf-page .lf-plan-layout{grid-template-columns:minmax(0,1.1fr) minmax(240px,.9fr);gap:36px}
  .lf-page .lf-plan-notes{position:static}
 }
@@ -125,6 +128,7 @@
  .lf-page .lf-chapter-head .lf-kicker{margin:0}
  .lf-page .lf-chapter-head p{grid-column:auto;font-size:15px}
  .lf-page .lf-issue-lead{grid-template-columns:1fr;gap:13px;margin-bottom:25px}
+ .lf-page .lf-issue-lead h3,.lf-page .lf-issue-lead p{grid-column:1}
  .lf-page .lf-issue-lead p{font-size:15px}
  .lf-page .lf-conditions,.lf-page .lf-strategy-principles{grid-template-columns:1fr;gap:18px}
  .lf-page .lf-condition p{max-width:550px}
