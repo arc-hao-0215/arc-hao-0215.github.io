@@ -87,6 +87,32 @@ ADDITIONAL_PROJECTS = [
     ),
 ]
 
+    dict(
+        id="05",
+        slug="scaffold-of-care",
+        title="Scaffold of Care",
+        name="Scaffold of Care",
+        place="Zhongli, Taiwan",
+        year="2025",
+        field="Migration · Public Space · Care",
+        type="Academic project · Mixed-Use Architecture",
+        image="scaffold-of-care-hero",
+        award="Featured in ArchDaily Student Project Awards 2025",
+        question="How can a temporary structure support lasting civic belonging?",
+        desc=(
+            "Scaffold of Care reclaims a neglected gap on Changjiang Road "
+            "in Zhongli, Taiwan, as an infrastructure of coexistence. "
+            "Modular scaffold platforms accommodate shared meals, learning, "
+            "community gatherings and proposed NGO-led support services."
+        ),
+        credit=(
+            "Individual design · Hao Chang<br>"
+            "Tsinghua University · 2025<br>"
+            "Mixed-Use Architecture · Unbuilt academic proposal<br>"
+            "Featured in ArchDaily Student Project Awards 2025"
+        ),
+    ),
+
 existing_slugs = {p["slug"] for p in projects}
 for new_project in ADDITIONAL_PROJECTS:
     if new_project["slug"] not in existing_slugs:
@@ -180,6 +206,15 @@ PROJECT_DETAILS = {
         recognition="",
         year="2025",
         type="Theater design · Academic project",
+    ),
+    "scaffold-of-care": dict(
+        title="Scaffold of Care",
+        subtitle="Mixed-Use Civic Architecture",
+        place="Zhongli, Taiwan",
+        keywords="Migration · Public Space · Care",
+        recognition="Featured in ArchDaily Student Project Awards 2025",
+        year="2025",
+        type="Academic project · Mixed-Use Architecture",
     ),
     "erdai": dict(
         title="Disarming the Landscape",
@@ -288,12 +323,13 @@ PROJECT_ORDER = [
     "first-teaching-building", # 02
     "rising-tides",            # 03
     "theater-design",          # 04
-    "erdai",                   # 05
-    "spirited-a-way",          # 06
-    "books-above-bustles",     # 07
-    "teaching-building",       # 08
-    "waterfront-plus",         # 09
-    "selected-studies",        # 10 (always last)
+    "scaffold-of-care",        # 05
+    "erdai",                   # 06
+    "spirited-a-way",          # 07
+    "books-above-bustles",     # 08
+    "teaching-building",       # 09
+    "waterfront-plus",         # 10
+    "selected-studies",        # 11 (always last)
 ]
 
 order_index = {slug: i for i, slug in enumerate(PROJECT_ORDER)}
