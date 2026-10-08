@@ -31,6 +31,7 @@
     .lf-page .lf-frame:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
     .lf-page .lf-visual figcaption { display:grid; grid-template-columns:35px minmax(0,1fr); gap:15px; padding:12px 0 0; max-width:100%; color:var(--grey); font:12px/1.65 Arial,Helvetica,sans-serif; }
     .lf-page .lf-visual figcaption .lf-number { color:var(--accent); white-space:nowrap; }
+    .lf-page .lf-visual figcaption > span:last-child { white-space:normal; overflow-wrap:anywhere; }
     .lf-page .lf-visual figcaption strong { display:block; margin-bottom:3px; color:var(--ink); font-size:13px; font-weight:400; }
     .lf-page .lf-hero { max-width:1020px; margin:0 auto 12px; }
     .lf-page .lf-hero .lf-frame { height:clamp(320px,49vw,590px); background:#dfe4df; }
@@ -86,6 +87,7 @@
       .lf-page .lf-image-grid .lf-visual--portrait .lf-frame { height:420px; }
       .lf-page .lf-figure-wide .lf-frame { height:clamp(235px,66vw,380px); }
       .lf-page .lf-visual figcaption { grid-template-columns:30px 1fr; gap:8px; }
+      .lf-page .lf-visual figcaption span { display:block; }
       .lf-page .lf-image-grid + .lf-image-grid, .lf-page .lf-figure-wide + .lf-image-grid, .lf-page .lf-image-grid + .lf-figure-wide { margin-top:28px; }
       .lf-page .lf-pullquote { margin:30px auto; }
       .lf-page .lf-film { padding:48px 0 60px; }
