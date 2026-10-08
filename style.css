@@ -763,6 +763,7 @@ dialog p { margin-top: 15px; font-size: 12px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
+}
 
 /* ==================================================
    RESEARCH — CONSISTENT EDITORIAL HIERARCHY
