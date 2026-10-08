@@ -1055,9 +1055,10 @@ dialog p { margin-top: 15px; font-size: 12px; }
   .hc-cursor-dot {
     width: 7px;
     height: 7px;
-    background: #191919;
-    /* Light rim remains visible against dark images; dark core on white. */
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, .96);
+    background: #fff;
+    /* White centre with a restrained dark hairline, legible on pale and dark surfaces. */
+    border: 1px solid #151515;
+    box-shadow: none;
     mix-blend-mode: normal;
     transition: opacity .18s ease;
   }
