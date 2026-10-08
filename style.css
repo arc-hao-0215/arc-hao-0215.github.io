@@ -908,3 +908,27 @@ dialog p { margin-top: 15px; font-size: 12px; }
   .project-top .project-meta span:last-child { grid-column: 2; grid-row: 1; }
   .project-top .detail-project-recognition { margin-top: 17px; font-size: 12px; }
 }
+
+/* Restored images: project and research figure presentation */
+.editorial-grid .project-image { display: block; width: 100%; overflow: hidden; background: #e7e6e1; }
+.editorial-grid .project-image img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .45s ease; }
+.editorial-grid .project-image:hover img { transform: scale(1.025); }
+.editorial-grid .project-image--drawing img { object-fit: contain; }
+.portfolio-hero-image { margin: 10px 0 55px; }
+.portfolio-hero-image img { display: block; width: 100%; height: auto; max-height: 880px; object-fit: contain; background: #efeee9; }
+.portfolio-hero-image figcaption, .portfolio-figure figcaption { display: block; color: var(--grey); font: 12px/1.65 Arial, Helvetica, sans-serif; padding-top: 12px; }
+.portfolio-figure { min-width: 0; margin: 34px 0 0; }
+.portfolio-figure img { display: block; width: 100%; height: auto; object-fit: contain; background: #eeede7; }
+.portfolio-image-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; align-items: start; margin-top: 24px; }
+.portfolio-image-grid .portfolio-figure { margin-top: 0; }
+.essay-body .research-figure { display: block; margin: 30px 0 38px; background: none; }
+.essay-body .research-figure img { width: 100%; height: auto; max-height: 760px; object-fit: contain; background: #eeede7; }
+.essay-body .research-figure figcaption { display: block; background: none; padding: 11px 0 0; font: 12px/1.7 Arial, Helvetica, sans-serif; color: var(--grey); }
+.essay-body .research-paired-figures { margin: 30px 0 40px; gap: 16px; }
+.essay-body .research-paired-figures .research-figure { margin: 0; }
+@media(max-width:640px) {
+  .portfolio-hero-image { margin: 0 0 32px; }
+  .portfolio-image-grid { grid-template-columns: 1fr; gap: 28px; }
+  .editorial-grid .project-image img { aspect-ratio: 4 / 3; }
+  .essay-body .research-paired-figures { gap: 28px; }
+}
