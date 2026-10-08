@@ -140,8 +140,10 @@
 .rt-page .rt-comparison-set+.rt-comparison-set{margin-top:59px}
 .rt-page .rt-comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(22px,3.8vw,64px);align-items:start}
 .rt-page .rt-comparison-grid>*{min-width:0}
+.rt-page .rt-comparison-set--first .rt-comparison-grid{align-items:stretch}
+.rt-page .rt-comparison-set--first .rt-comparison-tile{display:grid;grid-template-rows:1fr auto}
 .rt-page .rt-comparison-tile{min-width:0}
-.rt-page .rt-season-description{min-height:285px;padding:16px 0 20px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-season-description{min-height:0;padding:16px 0 20px;border-top:1px solid var(--rt-rule)}
 .rt-page .rt-season-description .rt-small-heading{display:block;margin-bottom:11px}
 .rt-page .rt-season-description h3{font-size:clamp(31px,3vw,44px);font-weight:400;line-height:1.15;letter-spacing:-.045em;margin:0 0 18px}
 .rt-page .rt-season-description p{font:15px/1.76 Georgia,"Times New Roman",serif;color:#50504c;max-width:585px}
@@ -157,8 +159,7 @@
 .rt-page .rt-comparison-tile--long .rt-media-button img{width:100%;height:auto;max-height:none;object-fit:contain}
 .rt-page .rt-water-points--after{margin:53px 0 0;padding-top:0}
 @media(max-width:1000px){
- .rt-page .rt-season-description{min-height:335px}
- .rt-page .rt-season-description p{font-size:14px}
+  .rt-page .rt-season-description p{font-size:14px}
 }
 @media(max-width:700px){
  .rt-page .rt-comparison-grid{grid-template-columns:minmax(0,1fr);gap:30px}
