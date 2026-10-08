@@ -19,9 +19,17 @@ if(atlas){
  atlas.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;const old=pointers.get(e.pointerId),now={x:e.clientX,y:e.clientY};if(Math.hypot(now.x-old.x,now.y-old.y)>2)dragged=true;
  if(pointers.size===2){const other=[...pointers.entries()].find(([id])=>id!==e.pointerId)[1];const d1=Math.hypot(old.x-other.x,old.y-other.y),d2=Math.hypot(now.x-other.x,now.y-other.y);if(d1>0&&d2>0){const p=local((now.x+other.x)/2,(now.y+other.y)/2);zoom(d1/d2,p.x,p.y)}}else{const p1=local(old.x,old.y),p2=local(now.x,now.y);box.x-=p2.x-p1.x;box.y-=p2.y-p1.y;render()}pointers.set(e.pointerId,now)});
  ['pointerup','pointercancel','lostpointercapture'].forEach(type=>atlas.addEventListener(type,e=>pointers.delete(e.pointerId)));
- atlas.addEventListener('click',e=>{if(dragged){e.preventDefault();dragged=false}},true);render();
+ 
+ atlas.addEventListener('click',e=>{
+   if(dragged){
+     e.preventDefault();
+     dragged=false;
+   }
+ },true);
+ render();
+}
 
-/* Load the research catalogue on research pages only. */
+// Load research catalogue on all research pages.
 if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
   window.location.pathname.split("/").pop() || ""
 )) {
@@ -29,6 +37,3 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
   researchScript.src = "research-updates.js?v=20261008";
   document.head.appendChild(researchScript);
 }
-
-
-
