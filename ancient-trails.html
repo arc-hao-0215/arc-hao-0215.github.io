@@ -1,405 +1,212 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
   <title>Lightly in the Forest — Hao Chang</title>
-
-  <meta name="description" content="At Fenglaoye Ancient Tea Garden, the proposal reconnects a tea factory, existing accommodation and a dispersed mountain landscape through a walking network. Reception, production, rest and bathing are assigned different degrees of architectural presence. More collective uses concentrate near accessible ground; smaller accommodation units occupy selected clearings. The design works from the relation between route and programme down to the assembly of a raised floor. It is a graduation design proposal, with environmental and operational performance still to be tested.">
-
+  <meta name="description" content="Lightly in the Forest: a low-impact eco-retreat along the Ancient Tea Trail in the Gaoligong Mountains, Yunnan. A network of paths, shared spaces, raised timber cabins and bathing facilities engages the working tea landscape with minimal intervention.">
   <meta name="theme-color" content="#f5f4f0">
-
-  <link rel="stylesheet" href="style.css?v=20261006-image-free">
-  <script src="app.js?v=20261006-image-free" defer></script>
-
-  <!-- Project Film Styling -->
+  <link rel="stylesheet" href="style.css?v=20261008">
+  <script src="app.js?v=20261008" defer></script>
   <style>
-    .portfolio-film {
-      padding: 85px 0 95px;
-      border-bottom: 1px solid var(--line, #cecdc8);
+    /* Lightly in the Forest — an editorial project gallery, isolated from other pages. */
+    .lf-page { --lf-paper:#f5f4f0; --lf-line:#cecdc8; }
+    .lf-page .project-top { padding-bottom:35px; }
+    .lf-page .project-top h1 { margin-bottom:18px; }
+    .lf-page .detail-project-subtitle { font-size:clamp(17px,1.7vw,23px); margin:0 0 24px; }
+    .lf-page .detail-project-recognition { font-size:12px; color:var(--accent); margin-top:20px; }
+    .lf-page .lf-intro { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8%; padding:55px 0 75px; border-bottom:1px solid var(--lf-line); }
+    .lf-page .lf-intro h2 { font-size:clamp(28px,3.4vw,48px); line-height:1.16; letter-spacing:-.038em; max-width:650px; }
+    .lf-page .lf-intro .lf-lead { color:#41413d; font:17px/1.78 Georgia,'Times New Roman',serif; max-width:650px; }
+    .lf-page .lf-intro .eyebrow { display:block; margin-bottom:15px; color:var(--grey); }
+    .lf-page .lf-section { padding:70px 0 78px; border-bottom:1px solid var(--lf-line); }
+    .lf-page .lf-section-head { display:grid; grid-template-columns:48px minmax(0,.9fr) minmax(0,1.1fr); gap:24px; align-items:start; padding-bottom:33px; }
+    .lf-page .lf-section-head h2 { font-size:clamp(25px,2.7vw,39px); line-height:1.2; letter-spacing:-.03em; }
+    .lf-page .lf-section-head p { max-width:540px; color:#4b4b47; font:16px/1.75 Georgia,'Times New Roman',serif; }
+    .lf-page .lf-section-head .eyebrow { color:var(--grey); padding-top:5px; }
+    .lf-page .lf-visual { margin:0; min-width:0; }
+    .lf-page .lf-frame { position:relative; display:flex; justify-content:center; align-items:center; width:100%; padding:0; border:0; background:#e7e7e2; overflow:hidden; cursor:zoom-in; }
+    .lf-page .lf-frame img { width:100%; height:100%; object-fit:contain; transition:transform .38s ease; }
+    .lf-page .lf-frame:hover img { transform:scale(1.015); }
+    .lf-page .lf-frame:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+    .lf-page .lf-visual figcaption { display:grid; grid-template-columns:35px minmax(0,1fr); gap:15px; padding:12px 0 0; max-width:100%; color:var(--grey); font:12px/1.65 Arial,Helvetica,sans-serif; }
+    .lf-page .lf-visual figcaption .lf-number { color:var(--accent); white-space:nowrap; }
+    .lf-page .lf-visual figcaption strong { display:block; margin-bottom:3px; color:var(--ink); font-size:13px; font-weight:400; }
+    .lf-page .lf-hero { max-width:1020px; margin:0 auto 12px; }
+    .lf-page .lf-hero .lf-frame { height:clamp(320px,49vw,590px); background:#dfe4df; }
+    .lf-page .lf-hero .lf-frame img { object-fit:cover; object-position:center 61%; }
+    .lf-page .lf-hero figcaption { margin:0 0 0 auto; }
+    .lf-page .lf-figure-wide { max-width:1050px; margin-left:auto; margin-right:auto; }
+    .lf-page .lf-figure-wide .lf-frame { height:clamp(260px,44vw,540px); padding:15px; background:#e9e9e7; }
+    .lf-page .lf-figure-wide .lf-frame img { object-fit:contain; }
+    .lf-page .lf-image-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px; align-items:start; }
+    .lf-page .lf-image-grid + .lf-image-grid, .lf-page .lf-figure-wide + .lf-image-grid, .lf-page .lf-image-grid + .lf-figure-wide { margin-top:36px; }
+    .lf-page .lf-image-grid .lf-frame { height:clamp(250px,30vw,400px); }
+    .lf-page .lf-image-grid .lf-frame img { object-fit:cover; }
+    .lf-page .lf-image-grid .lf-visual--drawing .lf-frame { padding:12px; background:#eaeae7; }
+    .lf-page .lf-image-grid .lf-visual--drawing .lf-frame img { object-fit:contain; }
+    .lf-page .lf-image-grid--plans { grid-template-columns:1.2fr .8fr; gap:34px; }
+    .lf-page .lf-image-grid--plans .lf-frame { height:clamp(350px,40vw,560px); }
+    .lf-page .lf-image-grid--plans img { object-fit:contain !important; }
+    .lf-page .lf-image-grid--sequence { grid-template-columns:1fr 1fr; }
+    .lf-page .lf-image-grid--detail { grid-template-columns:1fr 1fr; align-items:center; }
+    .lf-page .lf-image-grid--detail .lf-frame { height:clamp(240px,31vw,405px); }
+    .lf-page .lf-pullquote { max-width:720px; margin:38px auto; color:#444540; font:clamp(19px,2vw,26px)/1.6 Georgia,'Times New Roman',serif; text-align:center; }
+    .lf-page .lf-film { padding:76px 0; border-bottom:1px solid var(--lf-line); }
+    .lf-page .lf-film-head { display:flex; justify-content:space-between; align-items:end; gap:24px; max-width:980px; margin:0 auto 25px; }
+    .lf-page .lf-film h2 { font-size:clamp(27px,3.4vw,43px); line-height:1.2; letter-spacing:-.035em; }
+    .lf-page .lf-film-head p { color:var(--grey); font-size:12px; text-align:right; }
+    .lf-page .lf-film .eyebrow { display:block; margin-bottom:12px; }
+    .lf-page .lf-film-player { max-width:980px; margin:auto; aspect-ratio:16/9; background:#171717; }
+    .lf-page .lf-film-player iframe { display:block; width:100%; height:100%; border:0; }
+    .lf-page .lf-film-foot { display:flex; justify-content:space-between; gap:25px; max-width:980px; margin:14px auto 0; font-size:12px; color:var(--grey); }
+    .lf-page .lf-film-foot a { color:var(--ink); text-decoration:underline; text-underline-offset:4px; }
+    .lf-page .next-project { padding-right:0; }
+    /* Global dialog is reused; opening is opt-in and does not load another image until requested. */
+    .lf-page #lf-lightbox { width:min(94vw,1500px); max-width:94vw; padding:52px 22px 20px; background:#f5f4f0; }
+    .lf-page #lf-lightbox img { max-width:100%; max-height:78vh; margin:auto; object-fit:contain; }
+    .lf-page #lf-lightbox p { margin-top:12px; font-size:12px; text-align:center; color:var(--grey); }
+    .lf-page #lf-lightbox .lf-close { position:absolute; right:18px; top:12px; padding:8px; font-size:13px; text-decoration:underline; text-underline-offset:4px; }
+    @media (max-width:850px) {
+      .lf-page .lf-section-head { grid-template-columns:40px 1fr; }
+      .lf-page .lf-section-head p { grid-column:2; }
     }
-
-    .portfolio-film-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 32px;
+    @media (max-width:650px) {
+      .lf-page .lf-hero { margin-top:5px; }
+      .lf-page .lf-hero .lf-frame { height:330px; }
+      .lf-page .lf-intro { display:block; padding:38px 0 48px; }
+      .lf-page .lf-intro h2 { margin-bottom:25px; font-size:29px; }
+      .lf-page .lf-intro .lf-lead { font-size:16px; }
+      .lf-page .lf-section { padding:45px 0 55px; }
+      .lf-page .lf-section-head { grid-template-columns:28px 1fr; gap:12px; padding-bottom:24px; }
+      .lf-page .lf-section-head h2 { font-size:27px; }
+      .lf-page .lf-section-head p { grid-column:1/-1; font-size:15px; }
+      .lf-page .lf-image-grid, .lf-page .lf-image-grid--plans, .lf-page .lf-image-grid--detail, .lf-page .lf-image-grid--sequence { grid-template-columns:1fr; gap:28px; }
+      .lf-page .lf-image-grid .lf-frame, .lf-page .lf-image-grid--plans .lf-frame, .lf-page .lf-image-grid--detail .lf-frame { height:clamp(245px,66vw,380px); }
+      .lf-page .lf-image-grid .lf-visual--portrait .lf-frame { height:420px; }
+      .lf-page .lf-figure-wide .lf-frame { height:clamp(235px,66vw,380px); }
+      .lf-page .lf-visual figcaption { grid-template-columns:30px 1fr; gap:8px; }
+      .lf-page .lf-image-grid + .lf-image-grid, .lf-page .lf-figure-wide + .lf-image-grid, .lf-page .lf-image-grid + .lf-figure-wide { margin-top:28px; }
+      .lf-page .lf-pullquote { margin:30px auto; }
+      .lf-page .lf-film { padding:48px 0 60px; }
+      .lf-page .lf-film-head { display:block; }
+      .lf-page .lf-film-head p { text-align:left; margin-top:12px; }
+      .lf-page .lf-film-foot { flex-direction:column; gap:8px; }
     }
-
-    .portfolio-film .eyebrow {
-      display: block;
-      margin-bottom: 15px;
-    }
-
-    .portfolio-film h2 {
-      font-size: clamp(30px, 3.6vw, 54px);
-      font-weight: 400;
-      line-height: 1.12;
-      letter-spacing: -0.045em;
-      margin: 0;
-    }
-
-    .portfolio-film-subtitle {
-      font-size: 13px;
-      color: var(--grey, #696965);
-      text-align: right;
-      margin: 0 0 5px;
-    }
-
-    .portfolio-film-player {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #151515;
-      overflow: hidden;
-    }
-
-    .portfolio-film-player iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .portfolio-film-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      margin-top: 17px;
-    }
-
-    .portfolio-film-footer p {
-      margin: 0;
-      font-size: 12px;
-      color: var(--grey, #696965);
-    }
-
-    .portfolio-film-footer a {
-      color: var(--ink, #151515);
-      font-size: 12px;
-      text-decoration: none;
-      border-bottom: 1px solid currentColor;
-      padding-bottom: 3px;
-    }
-
-    .portfolio-film-footer a:hover {
-      color: var(--accent, #8c332b);
-    }
-
-    @media (max-width: 640px) {
-      .portfolio-film {
-        padding: 55px 0 65px;
-      }
-
-      .portfolio-film-header {
-        display: block;
-        margin-bottom: 23px;
-      }
-
-      .portfolio-film h2 {
-        font-size: 30px;
-      }
-
-      .portfolio-film-subtitle {
-        text-align: left;
-        margin-top: 12px;
-      }
-
-      .portfolio-film-footer {
-        align-items: flex-start;
-      }
-    }
+    @media (prefers-reduced-motion:reduce) { .lf-page .lf-frame img { transition:none; } }
   </style>
 </head>
-
-<body class="image-free">
-
+<body class="lf-page">
   <a class="skip" href="#main">Skip to content</a>
-
-  <!-- Navigation -->
   <header class="site-header">
-
-    <a class="wordmark" href="index.html">
-      HAO CHANG
-    </a>
-
+    <a class="wordmark" href="index.html">HAO CHANG</a>
     <nav aria-label="Main navigation">
       <a href="index.html" aria-current="page">Projects</a>
       <a href="research.html">Research</a>
       <a href="info.html">Info</a>
     </nav>
-
   </header>
-
   <main id="main">
-
-    <!-- Project Title -->
     <div class="project-top">
-
-      <a href="index.html" class="eyebrow">
-        Projects / 01
-      </a>
-
+      <a class="eyebrow" href="index.html">Projects / 01</a>
       <h1>Lightly in the Forest</h1>
       <p class="detail-project-subtitle">Eco-Resort Design</p>
-
       <div class="project-meta"><span>Gaoligong Mountains, Yunnan</span><span>Tea Heritage · Ecology · Low-Impact Architecture</span><span>2026</span></div>
       <p class="detail-project-recognition">Outstanding Graduation Thesis · Tsinghua University</p>
-
     </div>
 
-    <!-- Design Approach -->
-    <section class="project-statement">
+    <figure class="lf-visual lf-hero">
+      <button class="lf-frame lf-zoom" type="button" data-title="Dispersed cabins within the forest" aria-label="Enlarge overview rendering"><img src="assets/lightly/hero-forest.webp" width="2048" height="1595" fetchpriority="high" alt="Small timber guest cabins dispersed along a mountain path amid thick vegetation and distant forested hills"></button>
+      <figcaption><span class="lf-number">01</span><span><strong>Architecture at the scale of a clearing</strong>A dispersed collection of light timber structures sits within the forest rather than replacing it with a consolidated resort footprint.</span></figcaption>
+    </figure>
 
-      <h2>
-        Can a trail reconnect the livelihoods and
-        landscapes it once sustained?
-      </h2>
+    <section class="lf-intro" aria-labelledby="lf-question">
+      <h2 id="lf-question">How can architecture inhabit a working mountain landscape without overwhelming it?</h2>
+      <div><span class="eyebrow">Design approach</span><p class="lf-lead">The proposal imagines an eco-retreat at Fenglaoye Ancient Tea Garden, where tea cultivation, ancient routes and forest ecology remain part of everyday life. Instead of one dominant building, a network of shared facilities, lightweight accommodation and places to pause is arranged along existing ground conditions. The architectural vocabulary shifts between timber decks, planted thresholds and carefully placed stone enclosures, while construction is studied from the journey of a material to its smallest connection.</p></div>
+    </section>
 
-      <div>
-
-        <span class="eyebrow">Design approach</span>
-
-        <p>
-          At Fenglaoye Ancient Tea Garden, the proposal
-          reconnects a tea factory, existing accommodation
-          and a dispersed mountain landscape through a
-          walking network. Reception, production, rest and
-          bathing are assigned different degrees of
-          architectural presence. More collective uses
-          concentrate near accessible ground; smaller
-          accommodation units occupy selected clearings.
-          The design works from the relation between route
-          and programme down to the assembly of a raised
-          floor. It is a graduation design proposal, with
-          environmental and operational performance still
-          to be tested.
-        </p>
-
-        <p class="recognition">
-          Tsinghua Outstanding Graduation Thesis
-        </p>
-
+    <section class="lf-section" aria-labelledby="lf-territory">
+      <div class="lf-section-head"><span class="eyebrow">01 / Territory</span><h2 id="lf-territory">A trail before a building.</h2><p>The Tea Horse Trail provides a larger cultural and geographical structure. The project translates that linear relationship into a smaller network of arrivals, gathering spaces, accommodation and outdoor activities at the tea farm.</p></div>
+      <figure class="lf-visual lf-figure-wide">
+        <button class="lf-frame lf-zoom" type="button" data-title="Tea Horse Trail in Dahaoping Village" aria-label="Enlarge territorial map"><img src="assets/lightly/tea-horse-trail.webp" width="2048" height="1446" loading="lazy" alt="Annotated topographical map tracing the Tea Horse Trail, village, tea factory, landmarks and landscape routes"></button>
+        <figcaption><span class="lf-number">02</span><span><strong>Tea Horse Trail / territorial setting</strong>The route links tea cultivation, historical markers, Dahaoping Village and the surrounding mountain landscape. This establishes the scale beyond the project boundary.</span></figcaption>
+      </figure>
+      <div class="lf-image-grid lf-image-grid--plans">
+        <figure class="lf-visual lf-visual--drawing">
+          <button class="lf-frame lf-zoom" type="button" data-title="Project strategy" aria-label="Enlarge project strategy drawing"><img src="assets/lightly/project-strategy.webp" width="2048" height="1446" loading="lazy" alt="Strategic plan distinguishing public core, accommodation clusters, walking routes and small stops through the forest"></button>
+          <figcaption><span class="lf-number">03</span><span><strong>From one resort to several clusters</strong>More public functions gather close to the existing buildings; lower-intensity huts and stops branch into the terrain.</span></figcaption>
+        </figure>
+        <figure class="lf-visual lf-visual--drawing lf-visual--portrait">
+          <button class="lf-frame lf-zoom" type="button" data-title="Site plan" aria-label="Enlarge annotated site plan"><img src="assets/lightly/site-plan.webp" width="1448" height="2048" loading="lazy" alt="Detailed vertical site plan showing the reception pavilion, tea workshop, premium suites, forest paths, bathing facilities and scenic platforms"></button>
+          <figcaption><span class="lf-number">04</span><span><strong>Site plan / programme and paths</strong>A closer reading of arrival, workshops, cabins, bathing and scenic stops within the existing tree canopy.</span></figcaption>
+        </figure>
       </div>
-
     </section>
 
-    <!-- Chapter 01 -->
-    <section class="chapter">
-
-      <div class="chapter-heading">
-
-        <span class="eyebrow">01</span>
-
-        <h2>A network before an object.</h2>
-
-        <div class="chapter-prose">
-
-          <p>
-            The layout begins with the places that already
-            anchor the site. A public reception establishes
-            arrival and orientation, while the route
-            reconnects tea-making with the garden and
-            stopping places. The intervention is distributed
-            so that movement reveals a sequence of
-            activities rather than an isolated destination.
-          </p>
-
-          <p>
-            Public and private movement are differentiated
-            within that network. Collective facilities need
-            to be easy to find and service; accommodation
-            needs a degree of separation from the walking
-            route. Changes in alignment and threshold allow
-            visitors to remain connected to the landscape
-            without making every room part of a public
-            promenade. The network drawing should be read
-            through these branches and relationships.
-          </p>
-
-        </div>
-
+    <section class="lf-section" aria-labelledby="lf-thresholds">
+      <div class="lf-section-head"><span class="eyebrow">02 / Sequence</span><h2 id="lf-thresholds">The route is a series of thresholds.</h2><p>Circulation is also a place to sit, watch and meet. Platforms, bamboo screens and stone walls create different degrees of enclosure without treating every outdoor space as a conventional interior.</p></div>
+      <div class="lf-image-grid lf-image-grid--sequence">
+        <figure class="lf-visual"><button class="lf-frame lf-zoom" type="button" data-title="Timber junction" aria-label="Enlarge timber junction rendering"><img src="assets/lightly/junction-timber.webp" width="2048" height="1579" loading="lazy" alt="Timber deck and bamboo screening at a forest pathway junction with bench and planting"></button><figcaption><span class="lf-number">05</span><span><strong>The timber junction</strong>An open platform creates a resting point between trail segments, screened spaces and accommodation.</span></figcaption></figure>
+        <figure class="lf-visual"><button class="lf-frame lf-zoom" type="button" data-title="Stone-walled threshold" aria-label="Enlarge stone threshold rendering"><img src="assets/lightly/junction-stone.webp" width="2048" height="1579" loading="lazy" alt="Visitors walking between locally textured stone walls and bamboo landscaping toward a mountain lookout"></button><figcaption><span class="lf-number">06</span><span><strong>The stone threshold</strong>Rough stone walls and a narrow approach momentarily compress the route before it opens to the landscape.</span></figcaption></figure>
       </div>
-
+      <figure class="lf-visual lf-figure-wide" style="margin-top:36px">
+        <button class="lf-frame lf-zoom" type="button" data-title="Reception pavilion section" aria-label="Enlarge section through reception pavilion"><img src="assets/lightly/reception-section.webp" width="2048" height="700" loading="lazy" alt="Long sectional architectural rendering of a two-level reception pavilion embedded in sloped mountain terrain"></button>
+        <figcaption><span class="lf-number">07</span><span><strong>Reception pavilion / section through the slope</strong>A more collective programme occupies a controlled cut in the land; the open lower level and elevated upper space define two relationships with the ground.</span></figcaption>
+      </figure>
     </section>
 
-    <!-- Chapter 02 -->
-    <section class="chapter">
-
-      <div class="chapter-heading">
-
-        <span class="eyebrow">02</span>
-
-        <h2>
-          Different ground. Different degrees
-          of intervention.
-        </h2>
-
-        <div class="chapter-prose">
-
-          <p>
-            Construction changes with the ground. The
-            studies use raised floors, point foundations,
-            timber members and bracing to organise small
-            units without a continuous ground slab. Modular
-            components and replaceable connections are
-            proposed to make assembly and later repair
-            more manageable along the route.
-          </p>
-
-          <p>
-            The architectural detail is tied to logistics.
-            A compact footprint still requires a way to
-            bring materials in, install foundations and
-            maintain services. The proposal therefore
-            concentrates more demanding shared uses where
-            access is less constrained. Root zones, slope
-            stability, installation methods and the
-            treatment cycle for bathing facilities remain
-            technical questions for a subsequent stage.
-          </p>
-
-        </div>
-
+    <section class="lf-section" aria-labelledby="lf-dwell">
+      <div class="lf-section-head"><span class="eyebrow">03 / Dwelling</span><h2 id="lf-dwell">Rooms for staying. Places for slowing down.</h2><p>A lightweight cabin approaches the forest through an openable edge, shading and a raised floor. The bathing area uses stone and the existing view as a quieter, more enclosed counterpart.</p></div>
+      <div class="lf-image-grid">
+        <figure class="lf-visual"><button class="lf-frame lf-zoom" type="button" data-title="Cabin interior" aria-label="Enlarge cabin interior rendering"><img src="assets/lightly/cabin-interior.webp" width="2048" height="1579" loading="lazy" alt="Interior view from a bed through timber and bamboo screens to a forest-facing deck"></button><figcaption><span class="lf-number">08</span><span><strong>The cabin / from bed to forest</strong>A woven roof plane, sliding screens and a continuous deck make the landscape part of the room's daily occupation.</span></figcaption></figure>
+        <figure class="lf-visual"><button class="lf-frame lf-zoom" type="button" data-title="Stone bathing pool" aria-label="Enlarge outdoor stone bathing area"><img src="assets/lightly/stone-bathing.webp" width="2048" height="1579" loading="lazy" alt="Stone-lined outdoor bathing pool overlooking a misty mountain forest with two bathers"></button><figcaption><span class="lf-number">09</span><span><strong>Bathing / stone and horizon</strong>Stone forms a sheltered foreground while the pool remains open toward the distant ridgeline.</span></figcaption></figure>
       </div>
-
+      <figure class="lf-visual lf-figure-wide" style="margin-top:36px">
+        <button class="lf-frame lf-zoom" type="button" data-title="Cabin section" aria-label="Enlarge cabin section"><img src="assets/lightly/cabin-section.webp" width="2048" height="923" loading="lazy" alt="Sectional view showing the elevated timber cabin standing on a steeply sloped forest site, with roof, platform and point foundations annotated"></button>
+        <figcaption><span class="lf-number">10</span><span><strong>Cabin / adapting to a steep slope</strong>A raised platform and individual foundation points are proposed to reduce continuous excavation. Foundation stability, tree-root protection and on-site installation would require further testing.</span></figcaption>
+      </figure>
     </section>
 
-    <!-- PROJECT FILM: Before Scope & Development -->
-    <section class="portfolio-film"
-             aria-labelledby="graduation-film-title">
-
-      <div class="portfolio-film-header">
-
-        <div>
-
-          <span class="eyebrow">
-            PROJECT FILM / 2026
-          </span>
-
-          <h2 id="graduation-film-title">
-            LIGHTLY IN THE FOREST
-          </h2>
-
-        </div>
-
-        <p class="portfolio-film-subtitle">
-          A Low-Impact Retreat<br>
-          Along the Ancient Tea Trail
-        </p>
-
+    <section class="lf-section" aria-labelledby="lf-construction">
+      <div class="lf-section-head"><span class="eyebrow">04 / Assembly</span><h2 id="lf-construction">A building conceived as parts.</h2><p>The component study separates timber structure, roofing, screen panels, fittings, decks and point foundations. The intention is a system that can be assembled and maintained with limited disturbance—not a claim that its performance has already been verified.</p></div>
+      <div class="lf-image-grid lf-image-grid--detail">
+        <figure class="lf-visual lf-visual--drawing"><button class="lf-frame lf-zoom" type="button" data-title="Construction and component system" aria-label="Enlarge exploded construction diagram"><img src="assets/lightly/construction-assembly.webp" width="1857" height="965" loading="lazy" alt="Exploded axonometric of bamboo ceiling, timber roof and joists, posts, sliding screens, stairs, decks and steel point footings"></button><figcaption><span class="lf-number">11</span><span><strong>Disassembly as a design parameter</strong>Modular timber and bamboo components, sliding partitions and replaceable connections are considered together with transport and fabrication.</span></figcaption></figure>
+        <figure class="lf-visual"><button class="lf-frame lf-zoom" type="button" data-title="Physical model" aria-label="Enlarge physical model photograph"><img src="assets/lightly/physical-model.webp" width="2048" height="1365" loading="lazy" alt="Illuminated architectural scale model of two elevated cabins embedded in a forested mountain slope against a black background"></button><figcaption><span class="lf-number">12</span><span><strong>Physical model / dispersed occupation</strong>The model studies the distance between structures and their relation to an existing forested slope.</span></figcaption></figure>
       </div>
-
-      <div class="portfolio-film-player">
-
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/fqSlG03t6jA?rel=0"
-          title="LIGHTLY IN THE FOREST — Graduation Design Film"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
-
-      </div>
-
-      <div class="portfolio-film-footer">
-
-        <p>
-          Architectural film · Gaoligong Mountains, Yunnan
-        </p>
-
-        <a
-          href="https://youtu.be/fqSlG03t6jA"
-          target="_blank"
-          rel="noopener noreferrer">
-          Watch on YouTube ↗
-        </a>
-
-      </div>
-
     </section>
 
-    <!-- Scope & Development -->
-    <section class="design-scope">
-
-      <span class="eyebrow">
-        Scope &amp; development
-      </span>
-
-      <p>
-        The research essay examines why production and
-        access might sustain the trail. These drawings
-        show the proposed distribution of facilities,
-        the separation of routes and the construction
-        approach chosen to test that argument.
-      </p>
-
+    <section class="lf-film" aria-labelledby="lf-film-title">
+      <div class="lf-film-head"><div><span class="eyebrow">Project film / 2026</span><h2 id="lf-film-title">Lightly in the Forest</h2></div><p>A low-impact retreat<br>along the Ancient Tea Trail</p></div>
+      <div class="lf-film-player"><iframe src="https://www.youtube-nocookie.com/embed/fqSlG03t6jA?rel=0" title="Lightly in the Forest — Graduation Design Film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="lf-film-foot"><span>Architectural film · Gaoligong Mountains, Yunnan</span><a href="https://youtu.be/fqSlG03t6jA" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div>
     </section>
 
-    <!-- Related Research -->
-    <section class="related-research">
-
-      <span>
-        Questions, methods and evidence behind this proposal
-      </span>
-
-      <a href="research-gaoligong.html">
-        Read related research →
-      </a>
-
-    </section>
-
-    <!-- Project Credits -->
-    <section class="credits">
-
-      <h2>Project credits</h2>
-
-      <p>
-        Graduation research and design · Hao Chang<br>
-        Tsinghua University / Politecnico di Torino
-        collaboration · 2025–2026<br>
-        Exhibited at Castello del Valentino, Turin · April 2026
-      </p>
-
-    </section>
-
-    <!-- Next Project -->
-    <a class="next-project"
-       href="first-teaching-building.html">
-
-      <span class="eyebrow">
-        Next project / 02
-      </span>
-
-      <h2>First Teaching Building Renewal</h2>
-
-    </a>
-
+    <section class="design-scope"><span class="eyebrow">Scope &amp; development</span><p>This graduation design proposal studies spatial distribution, walking networks and component-level construction in a working tea landscape. Environmental performance, site ecology, structural engineering, construction access and long-term operations remain subjects for subsequent verification.</p></section>
+    <section class="related-research"><span>Landscape, tea production and local histories behind the proposal</span><a href="research-gaoligong.html">Read related research →</a></section>
+    <section class="credits"><h2>Project credits</h2><p>Graduation research and design · Hao Chang<br>Tsinghua University / Politecnico di Torino collaboration · 2025–2026<br>Exhibited at Castello del Valentino, Turin · April 2026</p></section>
+    <a class="next-project" href="first-teaching-building.html"><span class="eyebrow">Next project / 02</span><h2>First Teaching Building Renewal</h2></a>
+    <dialog id="lf-lightbox" aria-label="Enlarged project image"><button type="button" class="lf-close">Close ×</button><img alt=""><p></p></dialog>
   </main>
-
-  <!-- Footer -->
-  <footer>
-
-    <a class="wordmark" href="index.html">
-      HAO CHANG
-    </a>
-
-    <p>
-      Architecture, research &amp; collective life.
-    </p>
-
-    <a href="mailto:haochang0215@gmail.com">
-      Get in touch
-    </a>
-
-    <span>© 2026 Hao Chang</span>
-
-  </footer>
-
+  <footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><a href="mailto:haochang0215@gmail.com">Get in touch</a><span>© 2026 Hao Chang</span></footer>
+  <script>
+    (() => {
+      const dialog = document.querySelector('#lf-lightbox');
+      if (!dialog || typeof dialog.showModal !== 'function') return;
+      const enlarged = dialog.querySelector('img');
+      const label = dialog.querySelector('p');
+      let trigger = null;
+      document.querySelectorAll('.lf-zoom').forEach(button => button.addEventListener('click', () => {
+        trigger = button;
+        const image = button.querySelector('img');
+        enlarged.src = image.currentSrc || image.src;
+        enlarged.alt = image.alt;
+        label.textContent = button.dataset.title || image.alt;
+        dialog.showModal();
+      }));
+      dialog.querySelector('.lf-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', () => { enlarged.removeAttribute('src'); trigger?.focus(); });
+    })();
+  </script>
 </body>
 </html>
