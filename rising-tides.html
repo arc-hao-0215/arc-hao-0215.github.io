@@ -133,6 +133,44 @@
  .rt-page .rt-related{flex-direction:column;align-items:flex-start;gap:9px}
  .rt-page #rt-lightbox{padding:44px 12px 18px}
 }
+
+/* Seasonal comparison: consistent left / right reading across chapters 03–04. */
+.rt-page .rt-comparison-set{margin-top:34px}
+.rt-page .rt-comparison-set--first{margin-top:0}
+.rt-page .rt-comparison-set+.rt-comparison-set{margin-top:59px}
+.rt-page .rt-comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(22px,3.8vw,64px);align-items:start}
+.rt-page .rt-comparison-grid>*{min-width:0}
+.rt-page .rt-comparison-tile{min-width:0}
+.rt-page .rt-season-description{min-height:285px;padding:16px 0 20px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-season-description .rt-small-heading{display:block;margin-bottom:11px}
+.rt-page .rt-season-description h3{font-size:clamp(31px,3vw,44px);font-weight:400;line-height:1.15;letter-spacing:-.045em;margin:0 0 18px}
+.rt-page .rt-season-description p{font:15px/1.76 Georgia,"Times New Roman",serif;color:#50504c;max-width:585px}
+.rt-page .rt-season-description p+p{margin-top:10px}
+.rt-page .rt-comparison-tile .rt-media-button{background:transparent}
+.rt-page .rt-comparison-tile .rt-media-button img{display:block;width:100%;height:auto;object-fit:contain;object-position:center}
+.rt-page .rt-comparison-tile .rt-figure figcaption{grid-template-columns:28px minmax(0,1fr);padding-top:11px}
+.rt-page .rt-comparison-tile .rt-fig-action{display:none}
+.rt-page .rt-comparison-set-heading{display:flex;align-items:baseline;justify-content:space-between;gap:22px;margin-bottom:21px;padding-top:22px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-comparison-set-heading p{font:13px/1.7 Arial,sans-serif;color:var(--rt-muted);max-width:640px}
+.rt-page .rt-tile-heading{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:0 0 12px;font:11px/1.5 Arial,sans-serif;letter-spacing:.04em;color:var(--rt-muted)}
+.rt-page .rt-tile-heading span:first-child{font-weight:600;color:var(--rt-ink);font-size:12px;letter-spacing:0}
+.rt-page .rt-comparison-tile--long .rt-media-button img{width:100%;height:auto;max-height:none;object-fit:contain}
+.rt-page .rt-water-points--after{margin:53px 0 0;padding-top:0}
+@media(max-width:1000px){
+ .rt-page .rt-season-description{min-height:335px}
+ .rt-page .rt-season-description p{font-size:14px}
+}
+@media(max-width:700px){
+ .rt-page .rt-comparison-grid{grid-template-columns:minmax(0,1fr);gap:30px}
+ .rt-page .rt-comparison-set+.rt-comparison-set{margin-top:47px}
+ .rt-page .rt-season-description{min-height:0;padding:13px 0 19px}
+ .rt-page .rt-season-description h3{font-size:34px;margin-bottom:13px}
+ .rt-page .rt-season-description p{font-size:15px}
+ .rt-page .rt-comparison-set-heading{display:block;margin-bottom:21px}
+ .rt-page .rt-comparison-set-heading p{margin-top:10px}
+ .rt-page .rt-water-points--after{margin-top:45px}
+}
+
 @media(prefers-reduced-motion:reduce){.rt-page .rt-media-button img{transition:none}}
 </style>
 </head>
@@ -168,10 +206,10 @@
  <div class="rt-compare-head"><h3>Existing ground / proposed civic ground</h3><p>Two sections show how an underused and vulnerable river edge might be reorganised as a connected landscape of public access, water treatment and shared occupation.</p></div>
  <div class="rt-compare">
   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Existing waterfront condition" aria-label="Enlarge: Existing waterfront condition"><img src="assets/rising/rising-existing-section.webp" width="936" height="380" loading="lazy"  decoding="async" alt="Existing black-and-white section of the Ciliwung riverbank, buildings, polluted river edge and viaduct"></button><figcaption><span class="rt-fig-number">04</span><span class="rt-caption-text"><strong>Existing waterfront condition</strong>A diagram of the riverbank, informal settlement and the elevated railway structure before the proposed intervention.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Integrated civic and ecological corridor" aria-label="Enlarge: Integrated civic and ecological corridor"><img src="assets/rising/rising-proposed-section.webp" width="936" height="368" loading="lazy"  decoding="async" alt="Proposed black-and-white section of an elevated civic corridor, wetlands and modular support structures beneath the viaduct"></button><figcaption><span class="rt-fig-number">06</span><span class="rt-caption-text"><strong>Integrated civic and ecological corridor</strong>The proposal aligns elevated circulation, public rooms, planted buffers and new support infrastructure across the river edge.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Integrated civic and ecological corridor" aria-label="Enlarge: Integrated civic and ecological corridor"><img src="assets/rising/rising-proposed-section.webp" width="936" height="368" loading="lazy"  decoding="async" alt="Proposed black-and-white section of an elevated civic corridor, wetlands and modular support structures beneath the viaduct"></button><figcaption><span class="rt-fig-number">05</span><span class="rt-caption-text"><strong>Integrated civic and ecological corridor</strong>The proposal aligns elevated circulation, public rooms, planted buffers and new support infrastructure across the river edge.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
  </div>
  <div class="rt-strategy">
-  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Three linked spatial strategies" aria-label="Enlarge: Three linked spatial strategies"><img src="assets/rising/rising-framework-axon.webp" width="945" height="773" loading="lazy"  decoding="async" alt="Research and design framework diagram with three small architectural axonometric drawings for ecological restoration, floating refuge and community hub"></button><figcaption><span class="rt-fig-number">05</span><span class="rt-caption-text"><strong>Three linked spatial strategies</strong>Ecological restoration, adaptable shelter and a community hub are drawn as interdependent parts of the proposed network.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Three linked spatial strategies" aria-label="Enlarge: Three linked spatial strategies"><img src="assets/rising/rising-framework-axon.webp" width="945" height="773" loading="lazy"  decoding="async" alt="Research and design framework diagram with three small architectural axonometric drawings for ecological restoration, floating refuge and community hub"></button><figcaption><span class="rt-fig-number">06</span><span class="rt-caption-text"><strong>Three linked spatial strategies</strong>Ecological restoration, adaptable shelter and a community hub are drawn as interdependent parts of the proposed network.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
   <div class="rt-principles">
    <article><small>01 / RESTORE</small><h3>Make room for water</h3><p>Wetlands and river-edge landscapes create space to examine filtration, ecological continuity and flood storage alongside urban occupation.</p></article>
    <article><small>02 / ADAPT</small><h3>Keep essential access above the ground</h3><p>Raised routes and adaptable dwellings propose continuity of movement and safer gathering during high-water conditions.</p></article>
@@ -180,32 +218,39 @@
  </div>
 </section>
 <section class="rt-section" id="seasons" aria-labelledby="seasons-title">
- <div class="rt-chapter-head"><span class="rt-kicker">03 / Spatial adaptation</span><h2 id="seasons-title">One structure. Two seasons.</h2><p>The same architectural network is drawn in ordinary and inundated conditions. Instead of defining resilience solely as resistance to water, the project tests how routes, thresholds and collective programmes might remain useful as the ground changes.</p></div>
- <div class="rt-season">
-  <div class="rt-season-top">
-   <div class="rt-season-copy"><span class="rt-small-heading">01 / Musim Kemarau</span><h3>Dry Season</h3><p>The elevated network becomes a shared neighbourhood street. Children, vendors and neighbours occupy the shaded spaces, while workshops, kitchens and meeting places connect through the common deck.</p><p>The river edge remains accessible as a civic landscape rather than being designed only for its most extreme condition.</p></div>
-   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="An everyday elevated street" aria-label="Enlarge: An everyday elevated street"><img src="assets/rising/rising-dry-civic.webp" width="1264" height="770" loading="lazy"  decoding="async" alt="Architectural rendering of children and residents using the timber boardwalk and shared rooms during the dry season"></button><figcaption><span class="rt-fig-number">07</span><span class="rt-caption-text"><strong>An everyday elevated street</strong>A shared timber deck stitches dwellings, circulation and neighbourhood life into a continuous public route.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+ <div class="rt-chapter-head"><span class="rt-kicker">03 / Spatial adaptation</span><h2 id="seasons-title">One structure. Two seasons.</h2><p>One architectural network, two water conditions. Compare the same routes, thresholds and shared spaces from left to right: everyday occupation in the dry season, and adapted access and refuge during flooding.</p></div>
+ <div class="rt-comparison-set rt-comparison-set--first" aria-label="Seasonal spatial comparison">
+  <div class="rt-comparison-grid">
+   <div class="rt-comparison-tile">
+    <div class="rt-season-description"><span class="rt-small-heading">01 / Musim Kemarau</span><h3>Dry Season</h3><p>The elevated network serves as a shared neighbourhood street. Children, vendors and neighbours occupy shaded spaces, while workshops, kitchens and meeting places connect through the common deck.</p><p>The river edge remains an accessible civic landscape, not a space reserved only for emergencies.</p></div>
+    <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="An everyday elevated street" aria-label="Enlarge: An everyday elevated street"><img src="assets/rising/rising-dry-civic.webp" width="1264" height="770" loading="lazy"  decoding="async" alt="Architectural rendering of children and residents using the timber boardwalk and shared rooms during the dry season"></button><figcaption><span class="rt-fig-number">07</span><span class="rt-caption-text"><strong>An everyday elevated street</strong>Shared decks connect neighbourhood life, workshops and circulation.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+   </div>
+   <div class="rt-comparison-tile">
+    <div class="rt-season-description"><span class="rt-small-heading">02 / Musim Hujan</span><h3>Flood Season</h3><p>During inundation, that same network is proposed to provide higher-level movement, boat landings and temporary refuge. Shared spaces may support relief and coordination as low-lying routes become inaccessible.</p><p>This is a design scenario, not a verified evacuation plan; flood elevations and emergency operation require further testing.</p></div>
+    <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="A network that changes with the flood" aria-label="Enlarge: A network that changes with the flood"><img src="assets/rising/rising-flood-refuge.webp" width="1264" height="770" loading="lazy"  decoding="async" alt="Rendering of flooded courtyards, boats and people occupying elevated timber walkways beneath the railway viaduct"></button><figcaption><span class="rt-fig-number">08</span><span class="rt-caption-text"><strong>A network that changes with the flood</strong>Elevated routes, temporary refuge and boat access support adaptation.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+   </div>
   </div>
-  <div class="rt-season-section"><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Dry season / continuous civic section" aria-label="Enlarge: Dry season / continuous civic section"><img src="assets/rising/rising-dry-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long architectural section showing active communal uses and raised circulation in dry conditions"></button><figcaption><span class="rt-fig-number">08</span><span class="rt-caption-text"><strong>Dry season / continuous civic section</strong>Long section tracing markets, dwellings, shared rooms, access and landscaped public ground beneath the viaduct.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
  </div>
- <div class="rt-season">
-  <div class="rt-season-top">
-   <div class="rt-season-copy"><span class="rt-small-heading">02 / Musim Hujan</span><h3>Flood Season</h3><p>During inundation, the same network is proposed to support higher-level movement, boat landings and temporary refuge. Shared facilities could be reallocated to relief and coordination while low-lying areas become inaccessible.</p><p>This is a design scenario, not a verified evacuation plan: safe flood levels, transport, supply routes and emergency operation would need further testing.</p></div>
-   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="A network that changes with the flood" aria-label="Enlarge: A network that changes with the flood"><img src="assets/rising/rising-flood-refuge.webp" width="1264" height="770" loading="lazy"  decoding="async" alt="Rendering of flooded courtyards, boats and people occupying elevated timber walkways beneath the railway viaduct"></button><figcaption><span class="rt-fig-number">09</span><span class="rt-caption-text"><strong>A network that changes with the flood</strong>Boat-based access and elevated shared rooms offer an alternative pattern of movement when water enters the settlement.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+ <div class="rt-comparison-set rt-comparison-set--sections">
+  <div class="rt-comparison-set-heading"><span class="rt-small-heading">02 / Sectional continuity</span><p>Two matching long sections trace the same spatial system as water levels change. Open either drawing to examine its full detail.</p></div>
+  <div class="rt-comparison-grid">
+   <div class="rt-comparison-tile rt-comparison-tile--long"><div class="rt-tile-heading"><span>Dry Season</span><span>Everyday ground</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Dry season / continuous civic section" aria-label="Enlarge: Dry season / continuous civic section"><img src="assets/rising/rising-dry-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long architectural section showing active communal uses and raised circulation in dry conditions"></button><figcaption><span class="rt-fig-number">09</span><span class="rt-caption-text"><strong>Dry / continuous civic section</strong>Markets, dwellings and shared rooms connect through an accessible public ground.</span><span class="rt-fig-action" aria-hidden="true">View full section ↗</span></figcaption></figure></div>
+   <div class="rt-comparison-tile rt-comparison-tile--long"><div class="rt-tile-heading"><span>Flood Season</span><span>Elevated refuge</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Flood season / continuous refuge section" aria-label="Enlarge: Flood season / continuous refuge section"><img src="assets/rising/rising-flood-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long black-and-white section of community spaces and elevated dwellings during inundation"></button><figcaption><span class="rt-fig-number">10</span><span class="rt-caption-text"><strong>Flood / continuous refuge section</strong>The same structure supports higher-level access as the ground floods.</span><span class="rt-fig-action" aria-hidden="true">View full section ↗</span></figcaption></figure></div>
   </div>
-  <div class="rt-season-section"><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Flood season / continuous refuge section" aria-label="Enlarge: Flood season / continuous refuge section"><img src="assets/rising/rising-flood-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long black-and-white section of community spaces and elevated dwellings during inundation"></button><figcaption><span class="rt-fig-number">10</span><span class="rt-caption-text"><strong>Flood season / continuous refuge section</strong>The matching long section illustrates how circulation and occupation move upward while the underlying water level rises.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
  </div>
 </section>
 <section class="rt-section" id="water" aria-labelledby="water-title">
- <div class="rt-chapter-head"><span class="rt-kicker">04 / Environmental systems</span><h2 id="water-title">Water as a collaborator, not only a threat.</h2><p>Planting, rainwater collection, greywater treatment and overflow routes are conceived as visible components of the settlement. The drawings connect these systems to civic spaces, while acknowledging that hydraulic sizing, water quality and maintenance remain unverified.</p></div>
- <div class="rt-water-points">
+ <div class="rt-chapter-head"><span class="rt-kicker">04 / Environmental systems</span><h2 id="water-title">Water as a collaborator, not only a threat.</h2><p>The seasonal comparison continues into water infrastructure. Rainwater collection, planted treatment areas and overflow routes are considered alongside public space; hydraulic capacity, water quality and maintenance remain to be verified.</p></div>
+ <div class="rt-comparison-set rt-comparison-set--first" aria-label="Seasonal water systems comparison">
+  <div class="rt-comparison-grid">
+   <div class="rt-comparison-tile"><div class="rt-tile-heading"><span>Dry Season</span><span>Daily treatment &amp; cultivation</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Dry season / water and public life" aria-label="Enlarge: Dry season / water and public life"><img src="assets/rising/rising-water-dry.webp" width="1590" height="572" loading="lazy"  decoding="async" alt="Section-perspective drawing of public buildings, river-edge wetlands, rainwater treatment, community farm and water infrastructure in the dry season"></button><figcaption><span class="rt-fig-number">11</span><span class="rt-caption-text"><strong>Water systems / dry season</strong>Wetlands, treatment areas, community farming and public activity.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+   <div class="rt-comparison-tile"><div class="rt-tile-heading"><span>Flood Season</span><span>High-water adaptation</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Flood season / adaptable environmental infrastructure" aria-label="Enlarge: Flood season / adaptable environmental infrastructure"><img src="assets/rising/rising-water-flood.webp" width="1590" height="574" loading="lazy"  decoding="async" alt="Section-perspective drawing of the same raised buildings and floating shelter units in flood conditions"></button><figcaption><span class="rt-fig-number">12</span><span class="rt-caption-text"><strong>Water systems / flood season</strong>Elevated rooms, refuge and boat routes amid inundated lower ground.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+  </div>
+ </div>
+ <div class="rt-water-points rt-water-points--after">
   <article><h3>Collect</h3><p>Roofs and elevated platforms gather rainwater for proposed non-potable uses.</p></article>
   <article><h3>Treat</h3><p>Wetland and wastewater systems create a potential relationship between environmental infrastructure and communal landscape.</p></article>
   <article><h3>Overflow</h3><p>Sections anticipate seasonal change without assuming that planted treatment areas can safely receive every flood flow.</p></article>
- </div>
- <div class="rt-water-pair">
-  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Dry season / water and public life" aria-label="Enlarge: Dry season / water and public life"><img src="assets/rising/rising-water-dry.webp" width="1590" height="572" loading="lazy"  decoding="async" alt="Section-perspective drawing of public buildings, river-edge wetlands, rainwater treatment, community farm and water infrastructure in the dry season"></button><figcaption><span class="rt-fig-number">11</span><span class="rt-caption-text"><strong>Dry season / water and public life</strong>The sectional perspective ties maturation ponds, a community farm, wastewater treatment and everyday activity to the raised settlement.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Flood season / adaptable environmental infrastructure" aria-label="Enlarge: Flood season / adaptable environmental infrastructure"><img src="assets/rising/rising-water-flood.webp" width="1590" height="574" loading="lazy"  decoding="async" alt="Section-perspective drawing of the same raised buildings and floating shelter units in flood conditions"></button><figcaption><span class="rt-fig-number">12</span><span class="rt-caption-text"><strong>Flood season / adaptable environmental infrastructure</strong>A comparable sectional perspective tests refuge, boat access and the relationship of elevated rooms to inundated ground.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
  </div>
 </section>
 <section class="rt-section" id="assembly" aria-labelledby="assembly-title">
