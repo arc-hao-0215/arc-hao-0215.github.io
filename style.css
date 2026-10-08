@@ -932,3 +932,81 @@ dialog p { margin-top: 15px; font-size: 12px; }
   .editorial-grid .project-image img { aspect-ratio: 4 / 3; }
   .essay-body .research-paired-figures { gap: 28px; }
 }
+
+
+/* NETHERLANDS RESEARCH: full-width interactive atlas embedded inside essay. */
+.netherlands-atlas-feature {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  background: var(--paper);
+  width: calc(100vw - 2 * var(--gutter));
+  margin: 36px 0 48px;
+  margin-left: calc((100vw - 2 * var(--gutter)) * -0.3435294118);
+  border-top: 1px solid var(--ink);
+}
+.netherlands-atlas-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 25px 0 20px;
+}
+.netherlands-atlas-heading-copy { max-width: 670px; }
+.netherlands-atlas-heading .eyebrow { display: block; margin-bottom: 10px; color: var(--accent); }
+.essay-body .netherlands-atlas-heading h2 {
+  margin: 0 0 8px;
+  font: 400 clamp(26px, 2.6vw, 38px)/1.2 Arial, Helvetica, sans-serif;
+  letter-spacing: -.035em;
+}
+.essay-body .netherlands-atlas-heading p {
+  margin: 0;
+  font: 14px/1.6 Arial, Helvetica, sans-serif;
+  color: var(--grey);
+}
+.netherlands-atlas-open {
+  display: inline-block;
+  flex: none;
+  padding-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+  color: var(--accent);
+  font-size: 14px;
+  white-space: nowrap;
+}
+.netherlands-atlas-frame {
+  height: clamp(700px, 78vh, 870px);
+  overflow: hidden;
+  background: #0a0d0e;
+  border: 1px solid #4d5959;
+}
+.netherlands-atlas-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #0a0d0e;
+}
+.essay-body .netherlands-atlas-footnote {
+  padding: 13px 0 0;
+  margin: 0;
+  font: 12px/1.6 Arial, Helvetica, sans-serif;
+  color: var(--grey);
+}
+@media (min-width: 801px) and (max-width: 1100px) {
+  .netherlands-atlas-feature {
+    margin-left: calc(-180px - 5vw + var(--gutter) * 0.1);
+  }
+}
+@media (min-width: 641px) and (max-width: 800px) {
+  .netherlands-atlas-feature {
+    margin-left: calc((100vw - 2 * var(--gutter)) * -0.346875);
+  }
+}
+@media (max-width: 640px) {
+  .netherlands-atlas-feature { width: 100%; margin-left: 0; }
+  .netherlands-atlas-heading { display: block; padding: 20px 0 15px; }
+  .netherlands-atlas-heading .netherlands-atlas-open { margin-top: 16px; }
+  .netherlands-atlas-frame { height: 680px; }
+  .essay-body .netherlands-atlas-heading p { font-size: 13px; }
+}
