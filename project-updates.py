@@ -85,8 +85,6 @@ ADDITIONAL_PROJECTS = [
             "Images show the design proposal."
         ),
     ),
-]
-
     dict(
         id="05",
         slug="scaffold-of-care",
@@ -112,6 +110,7 @@ ADDITIONAL_PROJECTS = [
             "Featured in ArchDaily Student Project Awards 2025"
         ),
     ),
+]
 
 existing_slugs = {p["slug"] for p in projects}
 for new_project in ADDITIONAL_PROJECTS:
