@@ -129,6 +129,15 @@
       object-fit: cover;
       object-position: center;
     }
+    /* Scaffold of Care thumbnail framing: zoom the section drawing, reduce dark ground to about 1/4. */
+    #selected-work .editorial-grid .project-card.card-05 .project-image img {
+      object-position: 50% 28%;
+      transform: scale(1.36);
+      transform-origin: 50% 20%;
+    }
+    #selected-work .editorial-grid .project-card.card-05 .project-image:hover img {
+      transform: scale(1.39);
+    }
     #selected-work .editorial-grid .project-image.is-placeholder {
       background: #e9e9e7;
     }
