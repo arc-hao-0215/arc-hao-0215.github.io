@@ -763,4 +763,115 @@ dialog p { margin-top: 15px; font-size: 12px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
+
+/* ==================================================
+   RESEARCH — CONSISTENT EDITORIAL HIERARCHY
+   ================================================== */
+
+.research-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
+
+/* Level 01 — Number and year */
+.research-card-meta {
+  margin: 0 0 18px;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+/* Level 02 — Conceptual research title */
+.research-card h2 {
+  margin: 0 0 9px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(22px, 2.05vw, 30px);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -.035em;
+  text-wrap: pretty;
+}
+
+/* Level 03 — Research focus */
+.research-card-subtitle {
+  margin: 0 0 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* Level 04 — Location and keywords */
+.research-card-place {
+  margin: 0 0 19px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--grey);
+}
+
+/* Level 05 — Research abstract */
+.research-card-question {
+  display: block;
+  overflow: visible;
+  margin: 0 0 23px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-line-clamp: unset;
+}
+
+/* Level 06 — Read link */
+.research-card > .line-link {
+  align-self: flex-start;
+  margin-top: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .research-card h2 {
+    font-size: 24px;
+  }
+
+  .research-card-subtitle {
+    font-size: 13px;
+  }
+
+  .research-card-question {
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .research-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .research-card h2 {
+    font-size: 27px;
+  }
+
+  .research-card-subtitle {
+    font-size: 14px;
+  }
+
+  .research-card-question {
+    font-size: 16px;
+  }
+
+  .research-card {
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
