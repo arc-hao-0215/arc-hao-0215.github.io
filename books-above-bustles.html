@@ -192,9 +192,12 @@
 .bab-page .bab-operation{min-width:0;margin:0;border-top:1px solid var(--bab-rule);padding-top:12px}
 .bab-page .bab-operation-visual{position:relative;aspect-ratio:1;overflow:hidden;background:#fff}
 .bab-page .bab-operation-visual img{
- display:block;position:absolute;top:-68%;left:calc(-100% * var(--crop-index));
+ display:block;position:absolute;top:-68%;left:0;
  width:400%;height:auto;max-width:none;pointer-events:none;user-select:none
 }
+.bab-page .bab-operation:nth-child(2) .bab-operation-visual img{left:-100%}
+.bab-page .bab-operation:nth-child(3) .bab-operation-visual img{left:-200%}
+.bab-page .bab-operation:nth-child(4) .bab-operation-visual img{left:-300%}
 .bab-page .bab-operation figcaption{padding:14px 0 0}
 .bab-page .bab-operation .bab-op-id{display:block;margin-bottom:9px;color:var(--bab-red);font:11px/1.5 Arial,sans-serif;letter-spacing:.07em}
 .bab-page .bab-operation h3{font-size:clamp(18px,1.65vw,24px);font-weight:400;line-height:1.26;letter-spacing:-.025em;margin:0 0 10px}
