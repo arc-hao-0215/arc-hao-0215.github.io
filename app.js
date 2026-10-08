@@ -84,6 +84,12 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
     }
     document.addEventListener('visibilitychange', start);
     show(0);
+    // Let the first slide render at natural scale before starting its slow zoom.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.querySelector('.hero-carousel')?.classList.add('is-zoom-ready');
+      });
+    });
     start();
   }
 }
