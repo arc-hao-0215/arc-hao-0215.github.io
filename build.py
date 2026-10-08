@@ -9,7 +9,7 @@ silently DELETE later manual edits (especially video embeds and narrative
 revisions). This edition deliberately uses the existing HTML pages as the
 source of truth for editorial content, and updates only:
 
-* The eleven Grid and Index entries on the homepage, from project-updates.py.
+* The ten Grid and Index entries on the homepage, from project-updates.py.
 * Each project's document <title> and first <h1>.
 * The heading of the Next Project link, where present.
 * 404.html, only if it was an exact mirror of index.html before the update.
@@ -76,12 +76,6 @@ BASE_PROJECTS: list[dict[str, str]] = [
          question="What if circulation space became a place to stay?",
          credit="Competition proposal: Hao Chang & Mengzhe Lee, 2024<br>"
                 "Hao's role: concept, modeling, renderings<br>Instructor: Martijn de Geus"),
-    dict(slug="their-story", name="Their Story", image="their-story", year="2024",
-         place="Hong Kong", field="Community / Fieldwork",
-         type="Community research", award="",
-         question="How can everyday stories become a shared cultural record?",
-         credit="Hong Kong Eastern District Community Calendar Project<br>"
-                "Field research sponsored by Swire Properties<br>August–December 2024"),
     dict(slug="selected-studies", name="Selected Studies", image="photo",
          year="2017–2024", place="Across media", field="Body / Image / Material",
          type="Art & performance", award="",
@@ -130,8 +124,8 @@ def load_projects(root: Path) -> list[dict[str, Any]]:
     exec(compile(patch.read_text(encoding="utf-8"), str(patch), "exec"), context)
     projects = context["projects"]
 
-    if len(projects) != 11:
-        raise ValueError(f"Expected exactly 11 projects, got {len(projects)}")
+    if len(projects) != 10:
+        raise ValueError(f"Expected exactly 10 projects, got {len(projects)}")
     if len({p["slug"] for p in projects}) != len(projects):
         raise ValueError("Project slugs must be unique")
     for index, p in enumerate(projects, 1):

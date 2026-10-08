@@ -220,15 +220,6 @@ PROJECT_DETAILS = {
         year="2024",
         type="Competition proposal",
     ),
-    "their-story": dict(
-        title="Their Story",
-        subtitle="Community Calendar & Editorial Design",
-        place="Eastern District, Hong Kong",
-        keywords="Community · Cultural Memory · Storytelling",
-        recognition="Field Research Sponsored by Swire Properties",
-        year="2024",
-        type="Community research",
-    ),
     "waterfront-plus": dict(
         title="Waterfront+",
         subtitle="Historic Waterfront Urban Design",
@@ -243,9 +234,9 @@ PROJECT_DETAILS = {
     ),
     "selected-studies": dict(
         title="Other Ways of Making",
-        subtitle="Selected Art & Performance Works",
+        subtitle="Art, Performance & Editorial Design",
         place="Across Media",
-        keywords="Drawing · Photography · Performance",
+        keywords="Drawing · Editorial Design · Photography · Performance",
         recognition="",
         year="2017–2024",
         type="Art & performance",
@@ -260,7 +251,7 @@ PROJECT_DETAILS = {
 for p in projects:
     slug = p["slug"]
     if slug not in PROJECT_DETAILS:
-        # Leave any future project outside the 11-item catalogue untouched.
+        # Leave any future project outside the 10-item catalogue untouched.
         continue
 
     data = PROJECT_DETAILS[slug]
@@ -301,9 +292,8 @@ PROJECT_ORDER = [
     "spirited-a-way",          # 06
     "books-above-bustles",     # 07
     "teaching-building",       # 08
-    "their-story",             # 09
-    "waterfront-plus",         # 10
-    "selected-studies",        # 11 (always last)
+    "waterfront-plus",         # 09
+    "selected-studies",        # 10 (always last)
 ]
 
 order_index = {slug: i for i, slug in enumerate(PROJECT_ORDER)}
