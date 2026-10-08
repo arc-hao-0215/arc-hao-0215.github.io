@@ -37,3 +37,53 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
   researchScript.src = "research-updates.js?v=20261008";
   document.head.appendChild(researchScript);
 }
+
+/* Homepage image carousel: sequential, pauseable and motion-aware. */
+{
+  const slides = [...document.querySelectorAll('.hero-carousel .hero-slide')];
+  const dots = [...document.querySelectorAll('.hero-carousel [data-slide]')];
+  const pause = document.querySelector('#hero-pause');
+  const caption = document.querySelector('#hero-caption');
+  const title = document.querySelector('#hero-title');
+  const place = document.querySelector('#hero-place');
+  if (slides.length && dots.length && caption && title && place) {
+    let active = 0;
+    let paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer = null;
+    const show = (index) => {
+      active = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === active);
+        slide.setAttribute('aria-hidden', String(i !== active));
+      });
+      dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === active)));
+      const slide = slides[active];
+      title.textContent = slide.dataset.title || '';
+      place.textContent = slide.dataset.place || '';
+      caption.href = slide.dataset.href || 'index.html';
+    };
+    const stop = () => { if (timer !== null) { clearInterval(timer); timer = null; } };
+    const start = () => {
+      stop();
+      if (!paused && !document.hidden) timer = setInterval(() => show(active + 1), 6000);
+    };
+    dots.forEach((dot) => dot.addEventListener('click', () => {
+      show(Number(dot.dataset.slide || 0));
+      start();
+    }));
+    if (pause) {
+      pause.textContent = paused ? 'Play' : 'Pause';
+      pause.setAttribute('aria-pressed', String(paused));
+      pause.addEventListener('click', () => {
+        paused = !paused;
+        pause.textContent = paused ? 'Play' : 'Pause';
+        pause.setAttribute('aria-label', paused ? 'Play image carousel' : 'Pause image carousel');
+        pause.setAttribute('aria-pressed', String(paused));
+        start();
+      });
+    }
+    document.addEventListener('visibilitychange', start);
+    show(0);
+    start();
+  }
+}
