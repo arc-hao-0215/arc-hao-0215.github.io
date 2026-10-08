@@ -151,6 +151,30 @@
       .hero-carousel .hero-slide { transition: none; }
     }
 
+  
+    /* Keep all eight slide selectors usable on narrow mobile screens. */
+    @media (max-width: 640px) {
+      .hero-carousel .hero-controls {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 3px;
+        width: 100%;
+      }
+      .hero-carousel .hero-controls button:not(#hero-pause) {
+        min-width: 26px;
+        min-height: 32px;
+        padding: 3px;
+        font-size: 11px;
+      }
+      .hero-carousel .hero-controls #hero-pause {
+        min-width: 46px;
+        min-height: 32px;
+        margin-left: 3px;
+        padding: 3px;
+        font-size: 11px;
+      }
+    }
+
   </style>
 </head>
 
