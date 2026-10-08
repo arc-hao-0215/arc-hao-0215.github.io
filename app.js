@@ -93,3 +93,114 @@ if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
     start();
   }
 }
+
+
+
+/* Site-wide progressive enhancement: pointer-following dot + ring, and VIEW
+   only on genuinely clickable photographs/drawings. No changes to page layout. */
+(() => {
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  if (!finePointer.matches || !document.body) return;
+
+  const root = document.documentElement;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const cursor = document.createElement('div');
+  cursor.className = 'hc-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  cursor.innerHTML = '<span class="hc-cursor-dot"></span><span class="hc-cursor-ring"><span class="hc-cursor-label">VIEW</span></span>';
+  document.body.appendChild(cursor);
+
+  const dot = cursor.querySelector('.hc-cursor-dot');
+  const ring = cursor.querySelector('.hc-cursor-ring');
+  let targetX = 0;
+  let targetY = 0;
+  let ringX = 0;
+  let ringY = 0;
+  let started = false;
+  let frame = 0;
+
+  const place = (element, x, y) => {
+    element.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) translate(-50%,-50%)';
+  };
+
+  const follow = () => {
+    frame = 0;
+    const ease = reducedMotion.matches ? 1 : .19;
+    ringX += (targetX - ringX) * ease;
+    ringY += (targetY - ringY) * ease;
+    place(ring, ringX, ringY);
+    if (Math.abs(targetX - ringX) > .2 || Math.abs(targetY - ringY) > .2) {
+      frame = requestAnimationFrame(follow);
+    }
+  };
+
+  const hide = () => {
+    root.classList.remove('hc-cursor-active');
+    cursor.classList.remove('is-pressed');
+  };
+
+  const updateDialogState = () => {
+    root.classList.toggle('hc-cursor-modal', !!document.querySelector('dialog[open]'));
+  };
+  // A <dialog> is promoted to the browser top layer. Restore its native cursor
+  // while it is open, rather than leaving a custom pointer hidden underneath.
+  document.querySelectorAll('dialog').forEach(dialog => {
+    new MutationObserver(updateDialogState).observe(dialog, {
+      attributes: true, attributeFilter: ['open']
+    });
+  });
+  updateDialogState();
+  root.classList.add('hc-cursor-enabled');
+
+  document.addEventListener('pointermove', event => {
+    if ((event.pointerType && event.pointerType !== 'mouse') || !finePointer.matches) {
+      hide();
+      return;
+    }
+
+    const target = event.target instanceof Element ? event.target : null;
+    const nativeSurface = target && target.closest(
+      'iframe, object, embed, input, textarea, select, video, canvas, ' +
+      '[contenteditable], .research-map, .netherlands-atlas-frame, [data-native-cursor]'
+    );
+    root.classList.toggle('hc-cursor-native', !!nativeSurface);
+    if (nativeSurface) {
+      hide();
+      return;
+    }
+
+    targetX = event.clientX;
+    targetY = event.clientY;
+    if (!started) {
+      ringX = targetX;
+      ringY = targetY;
+      started = true;
+      place(ring, ringX, ringY);
+    }
+    place(dot, targetX, targetY);
+
+    const action = target && target.closest('a, button, [role="button"], [role="link"]');
+    const image = target && target.closest('img');
+    const view = !!action && (
+      action.matches('.project-image, .lf-zoom, .bab-zoom, .soc-image-button, .zoom') ||
+      (!!image && action.contains(image))
+    );
+    cursor.classList.toggle('is-view', view);
+    cursor.classList.toggle('is-link', !!action && !view);
+    root.classList.add('hc-cursor-active');
+    if (!frame) frame = requestAnimationFrame(follow);
+  }, { passive: true });
+
+  document.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'mouse') cursor.classList.add('is-pressed');
+  }, { passive: true });
+  document.addEventListener('pointerup', () => cursor.classList.remove('is-pressed'));
+  document.addEventListener('pointercancel', () => cursor.classList.remove('is-pressed'));
+  document.addEventListener('pointerout', event => {
+    if (!event.relatedTarget) hide();
+  });
+  window.addEventListener('blur', hide);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) hide();
+  });
+})();

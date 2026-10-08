@@ -1014,3 +1014,103 @@ dialog p { margin-top: 15px; font-size: 12px; }
   .netherlands-atlas-frame { height: 680px; }
   .essay-body .netherlands-atlas-heading p { font-size: 13px; }
 }
+
+
+
+/* ==========================================================================
+   CUSTOM CURSOR — minimal dot + following ring / image VIEW state
+   Visual-only enhancement. No layout or existing gallery rules are changed.
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  html.hc-cursor-enabled:not(.hc-cursor-native):not(.hc-cursor-modal)
+    :is(body, a, button, [role="button"], [role="link"]) {
+    cursor: none !important;
+  }
+  .hc-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 2147483000;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .16s ease, visibility .16s ease;
+  }
+  html.hc-cursor-active:not(.hc-cursor-native):not(.hc-cursor-modal) .hc-cursor {
+    opacity: 1;
+    visibility: visible;
+  }
+  .hc-cursor-dot,
+  .hc-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+    will-change: transform;
+  }
+  .hc-cursor-dot {
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    mix-blend-mode: difference;
+    transition: opacity .18s ease;
+  }
+  .hc-cursor-ring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #fff;
+    background: transparent;
+    mix-blend-mode: difference;
+    transition: width .22s ease, height .22s ease, background .22s ease,
+      border-color .22s ease, box-shadow .22s ease;
+  }
+  .hc-cursor.is-link .hc-cursor-ring {
+    width: 43px;
+    height: 43px;
+  }
+  .hc-cursor.is-view .hc-cursor-dot {
+    opacity: 0;
+  }
+  .hc-cursor.is-view .hc-cursor-ring {
+    width: 70px;
+    height: 70px;
+    border-color: rgba(21, 21, 21, .22);
+    background: #f5f4f0;
+    color: #151515;
+    mix-blend-mode: normal;
+    box-shadow: 0 2px 18px rgba(0, 0, 0, .17);
+  }
+  .hc-cursor-label {
+    opacity: 0;
+    color: #151515;
+    font: 600 10px/1 Arial, Helvetica, sans-serif;
+    letter-spacing: .13em;
+    padding-left: .13em;
+    transform: scale(.85);
+    transition: opacity .16s ease, transform .22s ease;
+  }
+  .hc-cursor.is-view .hc-cursor-label {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .hc-cursor.is-pressed .hc-cursor-ring {
+    width: 25px;
+    height: 25px;
+  }
+  .hc-cursor.is-view.is-pressed .hc-cursor-ring {
+    width: 64px;
+    height: 64px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hc-cursor, .hc-cursor-dot, .hc-cursor-ring, .hc-cursor-label {
+    transition: none !important;
+  }
+}
