@@ -1055,8 +1055,10 @@ dialog p { margin-top: 15px; font-size: 12px; }
   .hc-cursor-dot {
     width: 7px;
     height: 7px;
-    background: #fff;
-    mix-blend-mode: difference;
+    background: #191919;
+    /* Light rim remains visible against dark images; dark core on white. */
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .96);
+    mix-blend-mode: normal;
     transition: opacity .18s ease;
   }
   .hc-cursor-ring {
@@ -1065,9 +1067,11 @@ dialog p { margin-top: 15px; font-size: 12px; }
     justify-content: center;
     width: 32px;
     height: 32px;
-    border: 1px solid #fff;
+    border: 1px solid rgba(20, 20, 20, .94);
     background: transparent;
-    mix-blend-mode: difference;
+    /* Opposing strokes keep the fine ring legible on light and dark pages. */
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .96);
+    mix-blend-mode: normal;
     transition: width .22s ease, height .22s ease, background .22s ease,
       border-color .22s ease, box-shadow .22s ease;
   }
@@ -1081,15 +1085,17 @@ dialog p { margin-top: 15px; font-size: 12px; }
   .hc-cursor.is-view .hc-cursor-ring {
     width: 70px;
     height: 70px;
-    border-color: rgba(21, 21, 21, .22);
-    background: #f5f4f0;
-    color: #151515;
+    border-color: #fff;
+    background: transparent;
+    color: #fff;
     mix-blend-mode: normal;
-    box-shadow: 0 2px 18px rgba(0, 0, 0, .17);
+    /* White hollow ring, with a discreet dark keyline for pale images. */
+    box-shadow: 0 0 0 1px rgba(12, 12, 12, .65), 0 1px 9px rgba(0, 0, 0, .18);
   }
-  .hc-cursor-label {
+   .hc-cursor-label {
     opacity: 0;
-    color: #151515;
+    color: #fff;
+    text-shadow: 0 0 2px rgba(0, 0, 0, .94), 0 1px 5px rgba(0, 0, 0, .78);
     font: 600 10px/1 Arial, Helvetica, sans-serif;
     letter-spacing: .13em;
     padding-left: .13em;
