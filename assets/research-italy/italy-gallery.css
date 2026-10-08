@@ -1,0 +1,22 @@
+/* Italy field photography: confined to existing essay text column. */
+.essay-body .italy-visual{margin:32px 0 6px;max-width:100%}
+.essay-body .italy-visual--inset{width:min(88%,690px);margin-left:auto}
+.essay-body .italy-visual--portrait{width:min(66%,490px)}
+.essay-body .italy-visual--pair{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(13px,2vw,20px);align-items:start;margin-top:34px}
+.essay-body .italy-photo{min-width:0;margin:0}
+.essay-body .italy-photo a{display:block;background:#e5e4de;overflow:hidden;line-height:0}
+.essay-body .italy-photo img{display:block;width:100%;height:auto;max-height:460px;aspect-ratio:4/3;object-fit:cover;object-position:center;transition:transform 350ms ease}
+.essay-body .italy-visual--landscape img{aspect-ratio:16/9;max-height:440px}
+.essay-body .italy-visual--portrait img{aspect-ratio:4/5;max-height:490px}
+.essay-body .italy-visual--pair .italy-photo img{aspect-ratio:4/5}
+.essay-body .italy-photo a:hover img{transform:scale(1.017)}
+.essay-body .italy-photo figcaption{display:block;padding:10px 0 0;background:transparent;color:var(--grey);font:11px/1.6 Arial,Helvetica,sans-serif;letter-spacing:.005em}
+.essay-body .italy-photo figcaption .italy-photo-index{color:var(--accent);margin-right:9px;font-variant-numeric:tabular-nums}
+@media(prefers-reduced-motion:reduce){.essay-body .italy-photo img{transition:none}}
+@media(max-width:640px){
+ .essay-body .italy-visual,.essay-body .italy-visual--inset,.essay-body .italy-visual--portrait{width:100%;max-width:100%;margin:25px 0 4px}
+ .essay-body .italy-visual--pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+ .essay-body .italy-photo img{max-height:350px}
+ .essay-body .italy-visual--pair .italy-photo img{aspect-ratio:3/4;max-height:280px}
+ .essay-body .italy-photo figcaption{font-size:10px;line-height:1.5}
+}
