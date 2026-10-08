@@ -317,6 +317,115 @@
  .bab-page .bab-split-study .bab-study-details{margin-top:23px}
  .bab-page .bab-models{grid-template-columns:1fr;gap:25px}
 }
+
+/* 2026-10-08 / definitive movement editorial grid: full illustration strictly in right column. */
+.bab-page #architecture .bab-movement-feature{width:100%;max-width:none}
+.bab-page #architecture .bab-movement-two-column{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:clamp(17px,2.2vw,28px);
+ align-items:start;
+ width:100%;
+}
+.bab-page #architecture .bab-movement-two-column>.bab-movement-narrative{
+ grid-column:1;
+ grid-row:1;
+ min-width:0;
+ max-width:100%;
+ display:grid;
+ grid-template-columns:50px minmax(0,1fr);
+ column-gap:16px;
+ align-content:start;
+}
+.bab-page #architecture .bab-movement-narrative>.bab-subsection-label{grid-column:1;grid-row:1;margin:7px 0 0}
+.bab-page #architecture .bab-movement-narrative>h3{
+ grid-column:2;grid-row:1;
+ font-size:clamp(26px,2.7vw,42px);
+ line-height:1.2;font-weight:400;letter-spacing:-.039em;margin:0 0 22px;
+ text-wrap:balance
+}
+.bab-page #architecture .bab-movement-narrative>.bab-movement-intro{
+ grid-column:2;grid-row:2;max-width:38ch;
+ font:16px/1.76 Georgia,"Times New Roman",serif;color:#50504c;margin:0
+}
+.bab-page #architecture .bab-movement-narrative>.bab-movement-steps{
+ grid-column:2;grid-row:3;
+ border-top:1px solid var(--bab-rule);margin-top:35px
+}
+.bab-page #architecture .bab-movement-steps>p{
+ border-bottom:1px solid var(--bab-rule);padding:17px 0;margin:0;
+ color:#575852;font:13px/1.68 Arial,sans-serif
+}
+.bab-page #architecture .bab-movement-steps>p span{
+ display:block;margin-bottom:8px;color:var(--bab-red);
+ font:11px/1.5 Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase
+}
+.bab-page #architecture .bab-movement-two-column>.bab-circulation-plate{
+ grid-column:2;grid-row:1;
+ min-width:0;width:100%;max-width:none;margin:0;
+ align-self:start
+}
+.bab-page #architecture .bab-circulation-plate>.bab-media-button{
+ display:block;position:relative;
+ width:100%;height:auto;aspect-ratio:auto;
+ overflow:visible;background:#fff;margin:0
+}
+.bab-page #architecture .bab-circulation-plate>.bab-media-button>img{
+ display:block;position:static;left:auto;top:auto;
+ max-width:100%;max-height:none;
+ width:100%;height:auto;aspect-ratio:auto;
+ object-fit:contain;object-position:center;
+ transform:none;filter:none
+}
+.bab-page #architecture .bab-circulation-plate>figcaption{
+ width:100%;min-width:0;max-width:100%
+}
+/* Model photographs: portrait format 2:3 across all three equal columns. */
+.bab-page #tectonics .bab-models{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:clamp(17px,2.2vw,28px);align-items:start;
+ width:100%;max-width:none;margin:0
+}
+.bab-page #tectonics .bab-models .bab-figure{
+ min-width:0;margin:0;width:100%;max-width:none
+}
+.bab-page #tectonics .bab-models .bab-media-button{
+ display:block;width:100%;height:auto;aspect-ratio:2/3;
+ overflow:hidden;background:transparent;margin:0
+}
+.bab-page #tectonics .bab-models .bab-media-button>img{
+ display:block;width:100%;height:100%;max-width:none;max-height:none;
+ aspect-ratio:auto;object-fit:cover;object-position:center;background:none
+}
+.bab-page #tectonics .bab-models .bab-model--new .bab-media-button>img{
+ object-position:50% 50%
+}
+.bab-page #tectonics .bab-models figcaption{
+ display:grid;grid-template-columns:25px minmax(0,1fr);
+ gap:8px;width:100%;min-width:0;padding:12px 0 0
+}
+.bab-page #tectonics .bab-models .bab-caption-text{min-width:0;overflow-wrap:anywhere}
+.bab-page #tectonics .bab-models .bab-fig-action{display:none}
+@media(max-width:950px) and (min-width:701px){
+ .bab-page #tectonics .bab-models{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+}
+@media(max-width:700px){
+ .bab-page #architecture .bab-movement-two-column{grid-template-columns:minmax(0,1fr);gap:24px}
+ .bab-page #architecture .bab-movement-two-column>.bab-movement-narrative{
+  grid-column:1;grid-row:1;grid-template-columns:1fr;gap:12px
+ }
+ .bab-page #architecture .bab-movement-narrative>.bab-subsection-label,
+ .bab-page #architecture .bab-movement-narrative>h3,
+ .bab-page #architecture .bab-movement-narrative>.bab-movement-intro,
+ .bab-page #architecture .bab-movement-narrative>.bab-movement-steps{grid-column:1;grid-row:auto}
+ .bab-page #architecture .bab-movement-narrative>.bab-subsection-label{margin:0}
+ .bab-page #architecture .bab-movement-narrative>h3{font-size:clamp(26px,7vw,36px);margin:0}
+ .bab-page #architecture .bab-movement-narrative>.bab-movement-intro{font-size:15px}
+ .bab-page #architecture .bab-movement-narrative>.bab-movement-steps{margin-top:8px}
+ .bab-page #architecture .bab-movement-two-column>.bab-circulation-plate{grid-column:1;grid-row:2}
+ .bab-page #tectonics .bab-models{grid-template-columns:1fr;gap:28px}
+ .bab-page #tectonics .bab-models .bab-media-button{aspect-ratio:2/3}
+}
 </style><script src="app.js?v=20261008-cursor-v2" defer></script></head>
 <body class="bab-page"><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Projects</a><a href="research.html">Research</a><a href="info.html">Info</a></nav></header>
 <main id="main">
@@ -348,15 +457,20 @@
 <div class="bab-chapter-head"><span class="bab-kicker">03 / Architecture</span><h2 id="architecture-title">A vertical public realm.</h2><p>The project is best understood in section: a shared urban room beneath the raised volume, layered civic programmes, and a central void linking different levels and degrees of public access.</p></div>
 <div class="bab-spatial-part"><div class="bab-subsection-head"><span class="bab-subsection-label">A / Section</span><h3>Multiple grounds within one building.</h3><p>The sectional perspective connects the subway threshold, public rooms, education, reading, workspaces and roof garden across a single vertical space.</p></div><figure class="bab-figure bab-figure--drawing bab-figure--wide"><button class="bab-media-button bab-zoom" type="button" data-title="A vertical civic landscape / sectional perspective" aria-label="Enlarge: A vertical civic landscape / sectional perspective"><img src="assets/books-section.webp" width="1800" height="1098" loading="lazy" decoding="async" alt="Longitudinal sectional perspective showing multiple library floors, an atrium, public seating, connections to the metro and roof"></button><figcaption><span class="bab-fig-number">05</span><span class="bab-caption-text"><strong>A vertical civic landscape / sectional perspective</strong>The central section reveals the relationship between the urban living room, reading spaces, education, workspaces, structural spans and roof.</span><span class="bab-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
 <div class="bab-spatial-part"><div class="bab-subsection-head"><span class="bab-subsection-label">B / Plans</span><h3>Programmes arranged around a shared void.</h3><p>The plans clarify how the changing programmes retain their own character while staying connected to the atrium and circulation network.</p></div><figure class="bab-figure bab-figure--drawing bab-figure--wide"><button class="bab-media-button bab-zoom" type="button" data-title="Ground and upper levels / programme in plan" aria-label="Enlarge: Ground and upper levels / programme in plan"><img src="assets/books-plans.webp" width="1800" height="976" loading="lazy" decoding="async" alt="Ground and upper floor architectural plans showing public landscaping and stacked library programmes"></button><figcaption><span class="bab-fig-number">06</span><span class="bab-caption-text"><strong>Ground and upper levels / programme in plan</strong>The changing configuration of each level establishes distinct degrees of access around the central opening.</span><span class="bab-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
-<div class="bab-spatial-part bab-split-study bab-split-study--circulation">
-<div class="bab-study-copy"><span class="bab-subsection-label">C / Movement</span><div class="bab-study-text">
-<h3>Circulation becomes an encounter.</h3><p>The exploded axonometric traces connected routes and terraces through learning, gathering, reading and workspaces.</p>
-<div class="bab-study-details">
+<div class="bab-spatial-part bab-movement-feature">
+ <div class="bab-movement-two-column">
+  <div class="bab-movement-narrative">
+   <span class="bab-subsection-label">C / Movement</span>
+   <h3>Circulation becomes an encounter.</h3>
+   <p class="bab-movement-intro">The exploded axonometric traces connected routes and terraces through learning, gathering, reading and workspaces.</p>
+   <div class="bab-movement-steps">
 <p><span>01 / Arrive</span> The route begins at the subway threshold and opens into a shared urban living room.</p>
 <p><span>02 / Connect</span> Bridges and terraces link programmes around the central void.</p>
 <p><span>03 / Ascend</span> Upper reading rooms and roof gardens extend the civic route vertically.</p>
-</div></div></div>
-<figure class="bab-figure bab-figure--drawing bab-figure--circulation"><button class="bab-media-button bab-zoom" type="button" data-title="Programmes and circulation / exploded axonometric" aria-label="Enlarge: Programmes and circulation / exploded axonometric"><img src="assets/books-circulation.webp" width="1257" height="1338" loading="lazy" decoding="async" alt="Exploded programme axonometric of library, offices, gardens, learning spaces and connecting circulation"></button><figcaption><span class="bab-fig-number">07</span><span class="bab-caption-text"><strong>Programmes and circulation / exploded axonometric</strong>The project connects commercial, learning, reading, collective and office environments through a continuous sequence of public routes.</span><span class="bab-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+</div>
+  </div>
+  <figure class="bab-figure bab-figure--drawing bab-figure--circulation bab-circulation-plate"><button class="bab-media-button bab-zoom" type="button" data-title="Programmes and circulation / exploded axonometric" aria-label="Enlarge: Programmes and circulation / exploded axonometric"><img src="assets/books-circulation.webp" width="1257" height="1338" loading="lazy" decoding="async" alt="Exploded programme axonometric of library, offices, gardens, learning spaces and connecting circulation"></button><figcaption><span class="bab-fig-number">07</span><span class="bab-caption-text"><strong>Programmes and circulation / exploded axonometric</strong>The project connects commercial, learning, reading, collective and office environments through a continuous sequence of public routes.</span><span class="bab-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+ </div>
 </div>
 </section>
 <section class="bab-section" id="experience" aria-labelledby="experience-title">
