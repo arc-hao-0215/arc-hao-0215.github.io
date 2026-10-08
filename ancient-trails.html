@@ -11,8 +11,7 @@
   <style>
 /* Lightly in the Forest — project editorial v2. Namespaced to protect all other pages. */
 .lf-page{--lf-paper:#f5f4f0;--lf-ink:#181917;--lf-muted:#686963;--lf-rule:#d0cec8;--lf-red:#8c332b;color:var(--lf-ink)}
-.lf-page main{padding-bottom:0}
-.lf-page .lf-shell{width:100%;max-width:none;margin:0 auto}
+.lf-page main{padding:0 var(--gutter);max-width:1800px;margin-left:auto;margin-right:auto}
 .lf-page .lf-project-head{padding:34px 0 25px}
 .lf-page .lf-heading-top{display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--lf-muted);font:11px/1.5 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
 .lf-page .lf-heading-top a{color:var(--lf-ink);border-bottom:1px solid var(--lf-rule);padding-bottom:3px}
@@ -84,9 +83,10 @@
 .lf-page .lf-figure--model .lf-media-button{background:#161616}
 .lf-page .lf-model-note h3{font-size:clamp(23px,2vw,32px);line-height:1.25;letter-spacing:-.03em;margin-bottom:17px}
 .lf-page .lf-model-note p{font:15px/1.79 Georgia,"Times New Roman",serif;color:#50504c}
-.lf-page .lf-film-player{max-width:1130px;margin:auto;aspect-ratio:16/9;background:#151515}
+.lf-page #film>.lf-kicker{margin:0 0 25px}
+.lf-page .lf-film-player{width:100%;max-width:none;margin:0;aspect-ratio:16/9;background:#151515}
 .lf-page .lf-film-player iframe{display:block;width:100%;height:100%;border:0}
-.lf-page .lf-film-foot{display:flex;justify-content:space-between;gap:25px;max-width:1130px;margin:15px auto 0;color:var(--lf-muted);font:12px/1.6 Arial,sans-serif}
+.lf-page .lf-film-foot{display:flex;justify-content:flex-end;gap:25px;margin:13px 0 0;color:var(--lf-muted);font:12px/1.6 Arial,sans-serif}
 .lf-page .lf-film-foot a{text-decoration:underline;text-underline-offset:4px;color:var(--lf-ink)}
 .lf-page .lf-conclusion{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.35fr);gap:32px;padding:39px 0;border-bottom:1px solid var(--lf-rule)}
 .lf-page .lf-conclusion p{max-width:810px;font:13px/1.78 Arial,sans-serif;color:var(--lf-muted)}
@@ -154,7 +154,7 @@
       <a href="info.html">Info</a>
     </nav>
   </header>
-  <main id="main"><div class="lf-shell">
+  <main id="main">
 <header class="lf-project-head">
   <div class="lf-heading-top"><a href="index.html">Projects / 01</a><span>Architecture · 2026</span></div>
   <h1>Lightly in the Forest</h1>
@@ -212,16 +212,16 @@
  <div class="lf-model-layout"><figure class="lf-figure lf-figure--model"><button class="lf-media-button lf-zoom" type="button" data-title="Physical model / inhabiting the hillside" aria-label="Enlarge: Physical model / inhabiting the hillside"><img src="assets/lightly/physical-model.webp" width="2048" height="1365" loading="lazy" decoding="async" alt="Physical scale model of elevated cabins in a forested slope, illuminated against a dark background"></button><figcaption><span class="lf-fig-number">12</span><span class="lf-caption-text"><strong>Physical model / inhabiting the hillside</strong>The model returns to the original question of scale: how a small group of buildings occupies a much larger landscape.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><div class="lf-model-note"><span class="lf-subsection-label">Physical model / spatial test</span><h3>A small presence in a larger landscape.</h3><p>The model tests how elevated cabins register against the wooded hillside. Construction feasibility, slope stability, tree-root protection, environmental performance and long-term operation remain questions for further technical verification.</p></div></div>
 </section>
 <section class="lf-section" id="film" aria-labelledby="film-title">
- <div class="lf-chapter-head"><span class="lf-kicker">06 / Project film</span><h2 id="film-title">Lightly in the Forest.</h2><p>A moving portrait of the project's relationship to the ancient route, changing terrain and dispersed forms of occupation.</p></div>
+ <h2 id="film-title" class="lf-kicker">06 / Project film</h2>
  <div class="lf-film-player"><iframe src="https://www.youtube-nocookie.com/embed/fqSlG03t6jA?rel=0" title="Lightly in the Forest — Graduation Design Film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
- <div class="lf-film-foot"><span>Architectural film · Gaoligong Mountains, Yunnan</span><a href="https://youtu.be/fqSlG03t6jA" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div>
+ <div class="lf-film-foot"><a href="https://youtu.be/fqSlG03t6jA" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div>
 </section>
 <section class="lf-conclusion"><span class="lf-kicker">Scope &amp; development</span><p>This graduation design is a spatial and architectural proposal, not a completed building. It studies a distributed programme, walking network and component-based construction. Site ecology, structure, access and operational performance would need further assessment before implementation.</p></section>
 <section class="lf-related"><span>Independent research / Ancient Tea Trail, tea culture and everyday mountain life</span><a href="research-gaoligong.html">Read related research ↗</a></section>
 <section class="credits"><h2>Project credits</h2><p>Graduation research and design · Hao Chang<br>Tsinghua University / Politecnico di Torino collaboration · 2025–2026<br>Exhibited at Castello del Valentino, Turin · April 2026</p></section>
 <a class="next-project" href="first-teaching-building.html"><span class="eyebrow">Next project / 02</span><h2>First Teaching Building Renewal</h2></a>
 <dialog id="lf-lightbox" aria-label="Enlarged project image"><button type="button" class="lf-close" aria-label="Close image">Close ×</button><img alt=""><p></p></dialog>
-</div></main>
+</main>
   <footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><a href="mailto:haochang0215@gmail.com">Get in touch</a><span>© 2026 Hao Chang</span></footer>
   <script>
     (() => {
