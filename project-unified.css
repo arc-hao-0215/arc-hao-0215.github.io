@@ -1,0 +1,402 @@
+/*
+ * HAO CHANG — Shared Project Editorial Standard / October 2026
+ * Reference: Lightly in the Forest + Disarming the Landscape.
+ *
+ * Applied to seven other project pages, after each page's local CSS.
+ * This stylesheet governs identity, spacing, typography, captions and
+ * editorial reading order, not custom drawings, comparison plates,
+ * sliders, lightboxes or project-specific image crops.
+ */
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page){
+  --pui-ink:#181917;
+  --pui-muted:#565852;
+  --pui-rule:#d0cec8;
+  --pui-accent:#8c332b;
+  --pui-label:96px;
+  --pui-gap:34px;
+  --pui-section:clamp(76px,6.4vw,108px);
+  --pui-inline-gap:clamp(24px,3.5vw,54px);
+  color:var(--pui-ink);
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page) main{
+  width:100%;
+  max-width:1680px;
+  min-width:0;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+}
+
+/* The title block is consistently stronger than every chapter heading. */
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-project-head,.tc-head,.soc-project-head,.sa-head,.bab-project-head,.gh-head,.wp-head){
+  padding:clamp(27px,3vw,42px) 0 30px;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-project-head,.tc-head,.soc-project-head,.sa-head,.bab-project-head,.gh-head,.wp-head) h1{
+  font:400 clamp(50px,6.1vw,88px)/1.035 Arial,Helvetica,sans-serif;
+  letter-spacing:-.057em;
+  margin:18px 0 15px;
+  max-width:17ch;
+  text-wrap:balance;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-project-type,.tc-project-type,.soc-project-type,.sa-subtitle,.bab-project-type,.gh-subtitle,.wp-type){
+  font:400 clamp(17px,1.42vw,21px)/1.38 Arial,Helvetica,sans-serif;
+  letter-spacing:-.015em;
+  margin:0;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-meta,.tc-meta,.soc-meta,.sa-meta,.bab-meta,.gh-meta,.wp-meta){
+  margin-top:17px;
+  gap:7px 19px;
+  font:12px/1.6 Arial,Helvetica,sans-serif;
+  color:var(--pui-muted);
+}
+.wp-page .wp-heading-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  font:11px/1.5 Arial,Helvetica,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--pui-muted);
+}
+.wp-page .wp-heading-top>a{
+  color:var(--pui-ink);
+  border-bottom:1px solid var(--pui-rule);
+  padding-bottom:3px;
+}
+
+/* One hero-height family. The Waterfront+ axon is never cropped. */
+.rt-page .rt-hero .rt-media-button,
+.tc-page .tc-figure--hero .tc-media,
+.soc-page .soc-figure--hero .soc-media-button,
+.sa-page .sa-hero .sa-media,
+.bab-page .bab-figure--hero .bab-media-button,
+.gh-page .gh-hero .gh-zoom{
+  display:block;
+  width:100%;
+  height:clamp(380px,52vw,700px);
+  aspect-ratio:auto;
+  overflow:hidden;
+  background:#eae9e5;
+}
+.rt-page .rt-hero .rt-media-button img,
+.tc-page .tc-figure--hero .tc-media img,
+.soc-page .soc-figure--hero .soc-media-button img,
+.sa-page .sa-hero .sa-media img,
+.bab-page .bab-figure--hero .bab-media-button img,
+.gh-page .gh-hero .gh-zoom img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+/* Axonometric is a full composition, not a photographic crop. */
+.wp-page .wp-hero-axon .wp-zoom,
+.wp-page .wp-hero-axon .wp-zoom img{
+  display:block;
+  width:100%;
+  background:#f5f4f0;
+}
+.wp-page .wp-hero-axon .wp-zoom img{
+  height:clamp(380px,52vw,700px);
+  object-fit:contain;
+  object-position:center center;
+}
+
+/* Same small numeral, headline, explanation and VIEW action throughout. */
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-figure,.tc-figure,.soc-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure)>figcaption,
+.wp-page .wp-hero-axon>figcaption{
+  display:grid;
+  grid-template-columns:26px minmax(0,1fr) auto;
+  column-gap:12px;
+  row-gap:6px;
+  align-items:start;
+  min-width:0;
+  max-width:100%;
+  padding:12px 0 0;
+  color:var(--pui-muted);
+  font:12px/1.56 Arial,Helvetica,sans-serif;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-figure,.tc-figure,.soc-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure)>figcaption strong,
+.wp-page .wp-hero-axon>figcaption strong{
+  display:block;
+  margin:0 0 4px;
+  font:600 13px/1.5 Arial,Helvetica,sans-serif;
+  color:var(--pui-ink);
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-fig-number,.tc-fig-no,.soc-fig-number,.sa-figure-number,.bab-fig-number,.gh-no),
+.wp-page .wp-figure>figcaption>span:first-child,
+.wp-page .wp-cover-number{
+  font:500 11px/1.56 Arial,Helvetica,sans-serif;
+  letter-spacing:0;
+  color:var(--pui-accent);
+  font-variant-numeric:tabular-nums;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-fig-action,.tc-fig-action,.soc-fig-action,.sa-enlarge,.bab-fig-action,.gh-view),
+.wp-page .wp-figure>figcaption>span:last-child,
+.wp-page .wp-cover-view{
+  color:#858780;
+  font:11px/1.55 Arial,Helvetica,sans-serif;
+  white-space:nowrap;
+  text-align:right;
+}
+.wp-page .wp-hero-axon>figcaption{
+  padding-bottom:20px;
+  border-bottom:1px solid var(--pui-rule);
+}
+.wp-page .wp-cover-caption{min-width:0;max-width:92ch}
+
+/* Two-column project proposition, with thesis always left. */
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-opening,.tc-opening,.soc-opening,.sa-opening,.bab-opening,.gh-intro,.wp-opening){
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(38px,6.7vw,108px);
+  align-items:start;
+  padding:clamp(62px,5.8vw,90px) 0 clamp(64px,5.5vw,88px);
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-opening,.tc-opening,.soc-opening,.sa-opening,.bab-opening,.gh-intro,.wp-opening) h2{
+  margin:0;
+  font:400 clamp(32px,3vw,46px)/1.14 Arial,Helvetica,sans-serif;
+  letter-spacing:-.043em;
+  max-width:19ch;
+  text-wrap:balance;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-opening-copy,.tc-opening-copy,.soc-opening-copy,.sa-opening-copy,.bab-opening-copy,.gh-intro,.wp-opening)>div p,
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page)
+:is(.rt-opening-copy,.tc-opening-copy,.soc-opening-copy,.sa-opening-copy,.bab-opening-copy)>p{
+  font:16px/1.78 Georgia,"Times New Roman",serif;
+  color:var(--pui-muted);
+}
+
+/* Major chapter axis: [number / 96px] [headline] [brief]. */
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-section,.tc-section,.soc-section,.sa-section,.bab-section,.gh-section,.wp-section){
+  padding:var(--pui-section) 0;
+  border-bottom:1px solid var(--pui-rule);
+  scroll-margin-top:35px;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter){
+  display:grid;
+  grid-template-columns:var(--pui-label) minmax(0,1.05fr) minmax(0,.95fr);
+  column-gap:var(--pui-gap);
+  row-gap:0;
+  align-items:start;
+  margin:0 0 clamp(38px,4vw,58px);
+  min-width:0;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter)
+>:is(.rt-kicker,.tc-kicker,.soc-kicker,.sa-kicker,.bab-kicker,.gh-kicker,.wp-label){
+  grid-column:1;
+  grid-row:1;
+  margin:8px 0 0;
+  padding:0;
+  color:var(--pui-accent);
+  font:400 11px/1.55 Arial,Helvetica,sans-serif;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter)>h2{
+  grid-column:2;
+  grid-row:1;
+  margin:0;
+  max-width:19ch;
+  min-width:0;
+  font:400 clamp(35px,3.05vw,45px)/1.15 Arial,Helvetica,sans-serif;
+  letter-spacing:-.044em;
+  text-wrap:balance;
+}
+:is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter)>p{
+  grid-column:3;
+  grid-row:1;
+  margin:3px 0 0;
+  max-width:55ch;
+  min-width:0;
+  color:var(--pui-muted);
+  font:16px/1.75 Georgia,"Times New Roman",serif;
+}
+/* Second-tier headings should not compete with the main chapters. */
+:is(.tc-page,.sa-page,.gh-page,.wp-page)
+:is(.tc-subhead,.sa-subhead,.gh-subhead,.wp-subhead) h3{
+  font:400 clamp(25px,2.12vw,30px)/1.23 Arial,Helvetica,sans-serif;
+  letter-spacing:-.033em;
+  text-wrap:balance;
+}
+
+/* Text on the left, the corresponding figure on the right.
+   Single, full-width drawings and intact graphic boards are not touched. */
+.tc-page :is(.tc-split-layout,.tc-editorial-split){
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(28px,4.2vw,70px);
+  align-items:start;
+}
+.tc-page .tc-feature{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(28px,4.2vw,70px);
+  align-items:start;
+}
+.tc-page .tc-feature>.tc-feature-copy{grid-column:1;grid-row:1}
+.tc-page .tc-feature>div:first-child:not(.tc-feature-copy){grid-column:2;grid-row:1}
+.soc-page .soc-feature,
+.sa-page .sa-feature-row{
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(28px,4.2vw,70px);
+  align-items:start;
+}
+.sa-page .sa-feature-row>.sa-feature-copy{grid-column:1;grid-row:1}
+.sa-page .sa-feature-row>.sa-figure,
+.sa-page .sa-feature-row>.sa-two{grid-column:2;grid-row:1}
+.wp-page .wp-plan-grid{
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(28px,4.2vw,70px);
+  align-items:start;
+}
+.wp-page .wp-plan-grid>.wp-plan-note{grid-column:1;grid-row:1}
+.wp-page .wp-plan-grid>div:first-child:not(.wp-plan-note){grid-column:2;grid-row:1}
+.gh-page .gh-elements{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(28px,4.2vw,70px);
+  align-items:start;
+}
+.gh-page .gh-elements>.gh-elements-note{grid-column:1;grid-row:1;position:static}
+.gh-page .gh-elements>.gh-figure{grid-column:2;grid-row:1}
+
+/* Consistent positioning and breathing room for adjacent image groups. */
+:is(.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.tc-figure,.soc-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure){min-width:0;max-width:100%}
+:is(.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.tc-figure,.soc-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure) img{
+  max-width:100%;
+}
+:is(.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+:is(.tc-pair,.soc-gallery,.sa-two,.bab-experience-pair,.gh-pair,.wp-grid-two){
+  column-gap:clamp(18px,2.25vw,32px);
+  align-items:start;
+}
+
+/* Waterfront+ has three distinct interventions but the same heading type. */
+.wp-page .wp-theme-head{
+  border-top:1px solid var(--pui-rule);
+  padding-top:22px;
+}
+.wp-page .wp-theme-head .wp-label{color:var(--pui-accent)}
+.wp-page .wp-theme-head h2{letter-spacing:-.052em}
+.wp-page .wp-theme-intro{max-width:56ch}
+
+/* Tablet / narrower laptops. */
+@media(max-width:1100px){
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page){
+    --pui-label:72px;--pui-gap:24px;--pui-section:70px;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter){
+    grid-template-columns:var(--pui-label) minmax(0,1fr);
+    row-gap:13px;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter)>h2{
+    grid-column:2;grid-row:1;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter)>p{
+    grid-column:2;grid-row:2;margin:0;max-width:70ch;
+  }
+}
+
+/* Phone: keep original DOM reading order except for purposeful editorial swaps. */
+@media(max-width:720px){
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page){
+    --pui-section:56px;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-project-head,.tc-head,.soc-project-head,.sa-head,.bab-project-head,.gh-head,.wp-head){
+    padding:24px 0 23px;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-project-head,.tc-head,.soc-project-head,.sa-head,.bab-project-head,.gh-head,.wp-head) h1{
+    font-size:clamp(43px,10vw,62px);
+    margin:17px 0 12px;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-opening,.tc-opening,.soc-opening,.sa-opening,.bab-opening,.gh-intro,.wp-opening){
+    display:block;
+    padding:49px 0 56px;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-opening,.tc-opening,.soc-opening,.sa-opening,.bab-opening,.gh-intro,.wp-opening) h2{
+    font-size:clamp(29px,7.7vw,38px);
+    margin-bottom:23px;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter){
+    grid-template-columns:minmax(0,1fr);
+    row-gap:12px;
+    margin-bottom:27px;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter)>
+  :is(.rt-kicker,.tc-kicker,.soc-kicker,.sa-kicker,.bab-kicker,.gh-kicker,.wp-label){
+    grid-column:1;grid-row:1;margin:0;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter)>h2{
+    grid-column:1;grid-row:2;font-size:clamp(31px,7.5vw,39px);max-width:24ch;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter)>p{
+    grid-column:1;grid-row:3;font-size:15px;margin:2px 0 0;
+  }
+  .rt-page .rt-hero .rt-media-button,
+  .tc-page .tc-figure--hero .tc-media,
+  .soc-page .soc-figure--hero .soc-media-button,
+  .sa-page .sa-hero .sa-media,
+  .bab-page .bab-figure--hero .bab-media-button,
+  .gh-page .gh-hero .gh-zoom{height:clamp(300px,95vw,520px)}
+  .wp-page .wp-hero-axon .wp-zoom img{
+    height:auto!important;max-height:none;object-fit:contain;
+  }
+  :is(.tc-page,.soc-page,.sa-page,.gh-page,.wp-page)
+  :is(.tc-feature,.tc-split-layout,.tc-editorial-split,.soc-feature,.sa-feature-row,.gh-elements,.wp-plan-grid){
+    display:flex;flex-direction:column;gap:25px;
+  }
+  .tc-page .tc-feature>.tc-feature-copy,
+  .tc-page .tc-feature>div:first-child:not(.tc-feature-copy),
+  .sa-page .sa-feature-row>.sa-feature-copy,
+  .sa-page .sa-feature-row>.sa-figure,
+  .sa-page .sa-feature-row>.sa-two,
+  .wp-page .wp-plan-grid>.wp-plan-note,
+  .wp-page .wp-plan-grid>div:first-child:not(.wp-plan-note),
+  .gh-page .gh-elements>.gh-elements-note,
+  .gh-page .gh-elements>.gh-figure{grid-column:auto;grid-row:auto}
+  .tc-page .tc-feature>.tc-feature-copy,
+  .sa-page .sa-feature-row>.sa-feature-copy,
+  .wp-page .wp-plan-grid>.wp-plan-note,
+  .gh-page .gh-elements>.gh-elements-note{order:-1}
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-figure,.tc-figure,.soc-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure)>figcaption,
+  .wp-page .wp-hero-axon>figcaption{
+    grid-template-columns:24px minmax(0,1fr);
+    gap:8px;
+  }
+  :is(.rt-page,.tc-page,.soc-page,.sa-page,.bab-page,.gh-page,.wp-page)
+  :is(.rt-fig-action,.tc-fig-action,.soc-fig-action,.sa-enlarge,.bab-fig-action,.gh-view),
+  .wp-page .wp-cover-view{display:none}
+  .wp-page .wp-heading-top{gap:10px}
+}
