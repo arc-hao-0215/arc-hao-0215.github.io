@@ -148,6 +148,69 @@
 @media(prefers-reduced-motion:reduce){.lf-page .lf-media-button img{transition:none}}
 </style>
 <link rel="stylesheet" href="project-system.css?v=20261009-v1">
+
+<style id="lf-chapter-motion-v1">
+/* Project-only experiment: quiet chapter transitions and a persistent reading index. */
+.lf-page .lf-onpage{
+  position:sticky;top:0;z-index:80;
+  background:rgba(245,244,240,.97);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  padding:14px 0;
+  box-shadow:0 9px 22px rgba(24,25,23,.035);
+  scrollbar-width:none;
+}
+.lf-page .lf-onpage::-webkit-scrollbar{display:none}
+.lf-page .lf-onpage .lf-nav-label{min-width:117px;font-size:10px;letter-spacing:.07em}
+.lf-page .lf-onpage a{position:relative;padding:4px 0;color:var(--lf-muted);transition:color .25s ease}
+.lf-page .lf-onpage a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--lf-red);transform:scaleX(0);transform-origin:left;
+  transition:transform .42s cubic-bezier(.22,1,.36,1)
+}
+.lf-page .lf-onpage a[aria-current="location"]{color:var(--lf-ink)}
+.lf-page .lf-onpage a[aria-current="location"]::after{transform:scaleX(1)}
+.lf-page .lf-scroll-progress{
+  position:fixed;left:0;top:0;width:100%;height:2px;
+  transform:scaleX(0);transform-origin:left;background:var(--lf-red);
+  z-index:110;pointer-events:none
+}
+.lf-page .lf-section{
+  position:relative;
+  padding-top:clamp(95px,7.7vw,128px);
+  scroll-margin-top:78px
+}
+.lf-page .lf-section::before{
+  content:"";position:absolute;left:0;top:-1px;
+  width:min(132px,32%);height:1px;background:var(--lf-red);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .85s cubic-bezier(.22,1,.36,1)
+}
+.lf-page .lf-section.lf-entered::before{transform:scaleX(1)}
+.lf-page.lf-motion-ready .lf-chapter-head>*{
+  opacity:0;transform:translateY(15px);
+  transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)
+}
+.lf-page.lf-motion-ready .lf-chapter-head>h2{transition-delay:.08s}
+.lf-page.lf-motion-ready .lf-chapter-head>p{transition-delay:.16s}
+.lf-page.lf-motion-ready .lf-chapter-head.lf-in-view>*{
+  opacity:1;transform:translateY(0)
+}
+.lf-page #film .lf-chapter-head{margin-bottom:32px}
+.lf-page .lf-plan-notes{top:90px}
+@media(max-width:1000px){.lf-page .lf-plan-notes{position:static}}
+@media(max-width:700px){
+  .lf-page .lf-onpage{padding:12px 0;gap:23px}
+  .lf-page .lf-onpage .lf-nav-label{display:none}
+  .lf-page .lf-section{padding-top:76px;scroll-margin-top:65px}
+  .lf-page .lf-chapter-head{margin-bottom:30px}
+}
+@media(prefers-reduced-motion:reduce){
+  .lf-page .lf-onpage a,.lf-page .lf-onpage a::after,
+  .lf-page .lf-section::before,
+  .lf-page .lf-chapter-head>*{transition:none!important;animation:none!important}
+  .lf-page .lf-chapter-head>*{opacity:1!important;transform:none!important}
+}
+</style>
 </head>
 <body class="lf-page">
   <a class="skip" href="#main">Skip to content</a>
@@ -172,7 +235,7 @@
   <div><span class="lf-kicker">Project proposition</span><h2 id="lf-opening-title">A retreat that follows the forest, rather than replacing it.</h2></div>
   <div class="lf-opening-copy"><p>At Fenglaoye Ancient Tea Garden, the landscape is already occupied by tea cultivation, historic routes, forest and everyday movement. Lightly in the Forest asks how a new form of dwelling can join this working mountain without becoming its dominant presence.</p><p>The proposal distributes small places to arrive, meet, rest and stay along a network of trails. Public programmes gather closer to existing facilities; lighter structures occupy selected forest clearings. From the site plan to the timber connection, architecture is treated as a careful addition rather than a replacement.</p></div>
 </section>
-<nav class="lf-onpage" aria-label="Sections of this project"><span class="lf-nav-label">Explore the project</span><a href="#context">01 Context</a><a href="#issue">02 Site Issue</a><a href="#approach">03 Approach</a><a href="#architecture">04 Architecture</a><a href="#construction">05 Construction</a><a href="#film">06 Film</a></nav>
+<nav class="lf-onpage" aria-label="Sections of this project"><span class="lf-nav-label" data-lf-reading-label>Explore the project</span><a href="#context">01 Context</a><a href="#issue">02 Site Issue</a><a href="#approach">03 Approach</a><a href="#architecture">04 Architecture</a><a href="#construction">05 Construction</a><a href="#film">06 Film</a></nav>
 <section class="lf-section" id="context" aria-labelledby="context-title">
  <div class="lf-chapter-head"><span class="lf-kicker">01 / Context</span><h2 id="context-title">A working mountain, not an empty site.</h2><p>The Tea Horse Trail connects tea gardens, a factory, Dahaoping Village and cultural landmarks across the Gaoligong foothills. The site belongs to this larger landscape of production, movement and memory before it belongs to any architectural proposal.</p></div>
  <figure class="lf-figure lf-figure--drawing"><button class="lf-media-button lf-zoom" type="button" data-title="Tea Horse Trail / territorial setting" aria-label="Enlarge: Tea Horse Trail / territorial setting"><img src="assets/lightly/tea-horse-trail.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Territorial map showing the Tea Horse Trail, tea farm, tea factory, Dahaoping Village, cultural markers and mountainous paths"></button><figcaption><span class="lf-fig-number">02</span><span class="lf-caption-text"><strong>Tea Horse Trail / territorial setting</strong>The site is part of a wider network of tea production, village life, historical routes and mountain ecology.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
@@ -217,7 +280,7 @@
  <div class="lf-model-layout"><figure class="lf-figure lf-figure--model"><button class="lf-media-button lf-zoom" type="button" data-title="Physical model / inhabiting the hillside" aria-label="Enlarge: Physical model / inhabiting the hillside"><img src="assets/lightly/physical-model.webp" width="2048" height="1365" loading="lazy" decoding="async" alt="Physical scale model of elevated cabins in a forested slope, illuminated against a dark background"></button><figcaption><span class="lf-fig-number">12</span><span class="lf-caption-text"><strong>Physical model / inhabiting the hillside</strong>The model returns to the original question of scale: how a small group of buildings occupies a much larger landscape.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><div class="lf-model-note"><span class="lf-subsection-label">Physical model / spatial test</span><h3>A small presence in a larger landscape.</h3><p>The model tests how elevated cabins register against the wooded hillside. Construction feasibility, slope stability, tree-root protection, environmental performance and long-term operation remain questions for further technical verification.</p></div></div>
 </section>
 <section class="lf-section" id="film" aria-labelledby="film-title">
- <h2 id="film-title" class="lf-kicker">06 / Project film</h2>
+ <div class="lf-chapter-head"><span class="lf-kicker">06 / Project film</span><h2 id="film-title">The project in motion.</h2><p>A film bringing together the mountain setting, architectural interventions and spatial sequence.</p></div>
  <div class="lf-film-player"><iframe src="https://www.youtube-nocookie.com/embed/fqSlG03t6jA?rel=0" title="Lightly in the Forest — Graduation Design Film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
  <div class="lf-film-foot"><a href="https://youtu.be/fqSlG03t6jA" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div>
 </section>
@@ -248,5 +311,87 @@
       dialog.addEventListener('close', () => { enlarged.removeAttribute('src'); trigger?.focus(); });
     })();
   </script>
+
+<script id="lf-chapter-motion-script">
+(() => {
+  const nav = document.querySelector('.lf-onpage');
+  if (!nav) return;
+  const label = nav.querySelector('[data-lf-reading-label]');
+  const chapters = [...nav.querySelectorAll('a[href^="#"]')]
+    .map(link => ({link, section:document.getElementById(link.getAttribute('href').slice(1))}))
+    .filter(item => item.section);
+  if (!chapters.length) return;
+
+  const progressBar = document.createElement('div');
+  progressBar.className = 'lf-scroll-progress';
+  progressBar.setAttribute('aria-hidden','true');
+  document.body.appendChild(progressBar);
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let active = null;
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    progressBar.style.transform = 'scaleX(' + Math.max(0,Math.min(1,window.scrollY / maxScroll)) + ')';
+
+    const threshold = nav.getBoundingClientRect().height + Math.min(140, window.innerHeight * .23);
+    let current = null;
+    if (nav.getBoundingClientRect().top <= 1) {
+      for (const item of chapters) {
+        if (item.section.getBoundingClientRect().top <= threshold) current = item;
+      }
+    }
+    if (current === active) return;
+    active = current;
+    chapters.forEach(item => {
+      if (item === current) item.link.setAttribute('aria-current','location');
+      else item.link.removeAttribute('aria-current');
+    });
+    if (label) label.textContent = current
+      ? 'READING ' + String(chapters.indexOf(current)+1).padStart(2,'0') + ' / ' + String(chapters.length).padStart(2,'0')
+      : 'Explore the project';
+    if (current && nav.scrollWidth > nav.clientWidth) {
+      const rect = current.link.getBoundingClientRect();
+      const navRect = nav.getBoundingClientRect();
+      const target = nav.scrollLeft + (rect.left - navRect.left) - (nav.clientWidth - rect.width) / 2;
+      nav.scrollTo({left:target,behavior:reduced.matches?'instant':'smooth'});
+    }
+  };
+  const schedule = () => {if (!frame) frame=requestAnimationFrame(update)};
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  window.addEventListener('hashchange',schedule);
+
+  if ('IntersectionObserver' in window) {
+    const lineObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('lf-entered');
+          lineObserver.unobserve(entry.target);
+        }
+      });
+    },{rootMargin:'0px 0px -10% 0px',threshold:0});
+    chapters.forEach(item => lineObserver.observe(item.section));
+
+    if (!reduced.matches) {
+      const heads = [...document.querySelectorAll('.lf-section .lf-chapter-head')];
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('lf-in-view');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },{rootMargin:'0px 0px -7% 0px',threshold:.05});
+      heads.forEach(head => revealObserver.observe(head));
+      if (heads.length) document.body.classList.add('lf-motion-ready');
+    }
+  } else {
+    chapters.forEach(item => item.section.classList.add('lf-entered'));
+  }
+  update();
+})();
+</script>
 </body>
 </html>
