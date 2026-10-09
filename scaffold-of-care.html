@@ -12,99 +12,211 @@
   <meta property="og:description" content="An Infrastructure of Coexistence: reclaiming an urban gap in Zhongli as a shared civic living room.">
   <meta property="og:image" content="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%202.jpg?format=webp&amp;width=1200">
   <link rel="stylesheet" href="style.css?v=20261008-cursor-v5">
+<script src="app.js?v=20261008-cursor-v2" defer></script>
   <style>
-    .soc-page {--soc-line:#d3d2cd;--soc-ink:#1e211e;--soc-muted:#696a67;color:var(--soc-ink)}
-    .soc-page main{max-width:1660px;margin:0 auto;padding:0 var(--gutter)}
-    .soc-page .site-header{max-width:1660px;margin:auto}
-    .soc-page a:focus-visible,.soc-page button:focus-visible{outline:2px solid #8c332b;outline-offset:4px}
-    .soc-page .project-top{padding:55px 0 32px;border-bottom:1px solid var(--soc-line)}
-    .soc-page .project-top .eyebrow{display:block;margin-bottom:17px;color:var(--soc-muted)}
-    .soc-page .project-top h1{font-weight:400;font-size:clamp(46px,6.9vw,102px);line-height:.99;letter-spacing:-.065em;max-width:1100px;margin:0 0 16px}
-    .soc-page .soc-subtitle{font-size:clamp(19px,2vw,28px);font-weight:400;letter-spacing:-.025em;margin:0 0 25px;color:#494e4a}
-    .soc-page .project-meta{display:flex;flex-wrap:wrap;gap:8px 24px;font:12px/1.6 Arial,sans-serif;color:var(--soc-muted)}
-    .soc-page .project-meta span+span:before{content:"/";padding-right:24px;color:#b7b9b6}
-    .soc-page .soc-award{border-top:1px solid var(--soc-line);margin-top:19px;padding-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:7px 15px}
-    .soc-page .soc-award .eyebrow{margin:0;color:#8c332b;font-size:11px}
-    .soc-page .soc-award a{font-size:12px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#a9a8a1}
-    .soc-page .soc-intro{display:grid;grid-template-columns:minmax(0,1.33fr) minmax(270px,.67fr);gap:clamp(25px,4.4vw,75px);align-items:end;padding:34px 0 52px}
-    .soc-page .soc-hero .soc-image-button{height:clamp(340px,43vw,650px)}
-    .soc-page .soc-hero img{height:100%;width:100%;object-fit:cover;object-position:center}
-    .soc-page .soc-lead .eyebrow{color:#8c332b}
-    .soc-page .soc-lead h2{font-size:clamp(30px,3.1vw,52px);line-height:1.12;letter-spacing:-.046em;margin:16px 0 25px;font-weight:400}
-    .soc-page .soc-lead p{font:17px/1.85 Georgia,serif;color:#474946;max-width:470px}
-    .soc-page .soc-lead p+p{margin-top:17px}
-    .soc-page .soc-figure{min-width:0;margin:0}
-    .soc-page .soc-image-button{position:relative;display:block;width:100%;height:auto;overflow:hidden;text-align:left;background:#e8e9e5;padding:0;cursor:zoom-in;color:inherit}
-    .soc-page .soc-image-button img{display:block;width:100%;height:auto;max-height:100%;object-fit:contain;transition:transform .45s ease}
-    .soc-page .soc-image-button:hover img{transform:scale(1.018)}
-    .soc-page .soc-zoom{position:absolute;right:14px;top:12px;display:grid;place-items:center;width:29px;height:29px;border-radius:50%;background:#f5f4f0e6;font-size:17px}
-    .soc-page .soc-figure figcaption{display:grid;grid-template-columns:26px minmax(0,1fr);gap:12px;border-top:1px solid var(--soc-line);padding:13px 0 0;margin-top:10px;font-size:12px;line-height:1.5}
-    .soc-page .soc-no{font-size:11px;color:#999994}
-    .soc-page .soc-figure strong{font-weight:500;display:block}
-    .soc-page .soc-figure small{font-size:12px;line-height:1.65;color:var(--soc-muted);display:block;margin-top:4px}
-    .soc-page .soc-hero figcaption{display:none}
-    .soc-page .soc-section{border-top:1px solid var(--soc-ink);padding:26px 0 68px}
-    .soc-page .soc-chapter{display:grid;grid-template-columns:36px minmax(220px,.95fr) minmax(250px,1.2fr);gap:24px;margin-bottom:36px;align-items:start}
-    .soc-page .soc-chapter .eyebrow{color:#8c332b}
-    .soc-page .soc-chapter h2{font-size:clamp(29px,3.2vw,49px);line-height:1.12;letter-spacing:-.045em;font-weight:400}
-    .soc-page .soc-chapter p{font:16px/1.85 Georgia,serif;color:#4d504c;max-width:620px}
-    .soc-page .soc-pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.7vw,40px);align-items:start}
-    .soc-page .soc-split{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.75fr);gap:clamp(25px,4vw,65px);align-items:center}
-    .soc-page .soc-note{border-top:1px solid var(--soc-line);padding-top:17px}
-    .soc-page .soc-note .eyebrow{color:#8c332b}
-    .soc-page .soc-note h3{font-size:clamp(21px,2.1vw,31px);letter-spacing:-.035em;line-height:1.25;margin:13px 0 18px}
-    .soc-page .soc-note p{font:15px/1.85 Georgia,serif;color:#535650}
-    .soc-page .soc-note p+p{margin-top:15px}
-    .soc-page .soc-figure--axono img{max-height:600px;object-fit:contain;background:#e8ebf1}
-    .soc-page .soc-figure--section .soc-image-button{max-height:540px;overflow:hidden;background:#60789f}
-    .soc-page .soc-figure--section img{object-fit:cover;object-position:center 5%;aspect-ratio:1.85 / 1}
-    .soc-page .soc-figure--kit .soc-image-button{background:#778bac}
-    .soc-page .soc-figure--kit img{max-height:680px;object-fit:contain}
-    .soc-page .soc-figure--life .soc-image-button img{height:360px;object-fit:cover}
-    .soc-page .soc-closer{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:50px;padding:35px 0 52px;border-top:1px solid var(--soc-line)}
-    .soc-page .soc-closer blockquote{font-size:clamp(27px,3.3vw,47px);line-height:1.2;letter-spacing:-.04em;margin:0}
-    .soc-page .soc-closer>div p{font:15px/1.85 Georgia,serif;color:#535650}
-    .soc-page .soc-credits{display:grid;grid-template-columns:1fr 1fr;gap:35px;border-top:1px solid var(--soc-ink);padding:28px 0 55px}
-    .soc-page .soc-credits h2{font-size:21px;margin-bottom:16px}
-    .soc-page .soc-credits p{color:var(--soc-muted);font-size:13px;line-height:1.9}
-    .soc-page .soc-credits a{text-decoration:underline;text-underline-offset:4px}
-    .soc-page .next-project{display:block;border-top:1px solid var(--soc-ink);padding:28px 0 50px}
-    .soc-page .next-project .eyebrow{color:var(--soc-muted)}
-    .soc-page .next-project h2{font-size:clamp(30px,4vw,54px);letter-spacing:-.04em;margin-top:13px}
-    .soc-lightbox{border:0;background:#f5f4f0;padding:42px 22px 20px;max-width:95vw;max-height:97vh;box-shadow:0 20px 100px #0005}
-    .soc-lightbox::backdrop{background:#141714ee}
-    .soc-lightbox img{max-width:90vw;max-height:79vh;object-fit:contain;margin:auto}
-    .soc-lightbox p{text-align:center;font:12px/1.5 Arial,sans-serif;color:#555;margin-top:12px}
-    .soc-lightbox button{position:absolute;right:9px;top:4px;font-size:30px;padding:4px 12px;cursor:pointer}
-    @media(max-width:900px){
-      .soc-page .soc-intro{grid-template-columns:1fr}
-      .soc-page .soc-hero .soc-image-button{height:auto;max-height:640px}
-      .soc-page .soc-lead{max-width:650px}
-      .soc-page .soc-chapter{grid-template-columns:30px 1fr}
-      .soc-page .soc-chapter p{grid-column:2}
-      .soc-page .soc-split{grid-template-columns:1fr 1fr}
-      .soc-page .soc-figure--life .soc-image-button img{height:290px}
-    }
-    @media(max-width:640px){
-      .soc-page .project-top{padding-top:28px}
-      .soc-page .project-top h1{font-size:clamp(44px,11vw,70px)}
-      .soc-page .project-meta span+span:before{content:"";padding:0}
-      .soc-page .project-meta span{width:100%}
-      .soc-page .soc-intro{gap:24px;padding:22px 0 40px}
-      .soc-page .soc-hero .soc-image-button{max-height:none}
-      .soc-page .soc-section{padding-bottom:45px}
-      .soc-page .soc-chapter{grid-template-columns:27px 1fr;gap:10px}
-      .soc-page .soc-chapter h2{font-size:32px}
-      .soc-page .soc-chapter p{grid-column:1/-1;font-size:15px;padding-top:8px}
-      .soc-page .soc-pair,.soc-page .soc-split,.soc-page .soc-closer,.soc-page .soc-credits{grid-template-columns:1fr;gap:25px}
-      .soc-page .soc-figure--life .soc-image-button img{height:auto}
-      .soc-page .soc-figure--section .soc-image-button{max-height:none}
-      .soc-page .soc-figure--section img{aspect-ratio:auto;object-fit:contain}
-      .soc-page .soc-closer{gap:25px}
-      .soc-page .soc-figure figcaption{font-size:11px}
-    }
-    @media(prefers-reduced-motion:reduce){.soc-page .soc-image-button img{transition:none}}
-  </style>
+
+/* Scaffold of Care — project editorial v2. Namespaced to protect all other pages. */
+.soc-page{--soc-paper:#f5f4f0;--soc-ink:#181917;--soc-muted:#686963;--soc-rule:#d0cec8;--soc-red:#8c332b;color:var(--soc-ink)}
+.soc-page main{padding:0 var(--gutter);max-width:1800px;margin-left:auto;margin-right:auto}
+.soc-page .soc-project-head{padding:34px 0 25px}
+.soc-page .soc-heading-top{display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--soc-muted);font:11px/1.5 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.soc-page .soc-heading-top a{color:var(--soc-ink);border-bottom:1px solid var(--soc-rule);padding-bottom:3px}
+.soc-page .soc-project-head h1{margin:19px 0 12px;font-size:clamp(44px,6.15vw,92px);font-weight:400;letter-spacing:-.061em;line-height:1.025;text-wrap:balance}
+.soc-page .soc-project-type{font-size:clamp(17px,1.55vw,21px);line-height:1.5}
+.soc-page .soc-meta{display:flex;flex-wrap:wrap;gap:7px 19px;align-items:baseline;margin-top:16px;color:var(--soc-muted);font:12px/1.6 Arial,sans-serif}
+.soc-page .soc-meta span+span:before{content:"/";margin-right:19px;color:#adaaa4}
+.soc-page .soc-recognition{margin-top:13px;font:12px/1.5 Arial,sans-serif;color:var(--soc-red)}
+.soc-page .soc-figure{min-width:0;margin:0}
+.soc-page .soc-media-button{position:relative;display:block;width:100%;padding:0;margin:0;overflow:hidden;background:#eae9e5;cursor:zoom-in;color:inherit}
+.soc-page .soc-media-button img{display:block;width:100%;height:auto;max-width:none;object-fit:contain;transition:filter .22s ease}
+.soc-page .soc-media-button:hover img{filter:brightness(.97)}
+.soc-page .soc-media-button:focus-visible{outline:2px solid var(--soc-red);outline-offset:3px}
+.soc-page .soc-figure figcaption{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px 14px;align-items:start;max-width:100%;padding:12px 0 0;color:var(--soc-muted);font:12px/1.5 Arial,sans-serif}
+.soc-page .soc-fig-number{font-variant-numeric:tabular-nums;color:var(--soc-red)}
+.soc-page .soc-caption-text{min-width:0;overflow-wrap:anywhere}
+.soc-page .soc-caption-text strong{display:block;margin-bottom:3px;color:var(--soc-ink);font-size:13px;font-weight:400}
+.soc-page .soc-fig-action{white-space:nowrap;font-size:11px;color:#92918a}
+.soc-page .soc-figure--hero .soc-media-button{height:clamp(380px,52vw,690px);background:#cbd0c8}
+.soc-page .soc-figure--hero .soc-media-button img{height:100%;object-fit:cover;object-position:center 63%}
+.soc-page .soc-figure--hero figcaption{border-bottom:1px solid var(--soc-rule);padding-bottom:19px}
+.soc-page .soc-opening{display:grid;grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);gap:clamp(35px,8vw,125px);align-items:start;padding:76px 0 74px}
+.soc-page .soc-kicker{display:block;color:var(--soc-red);font:11px/1.6 Arial,sans-serif;letter-spacing:.085em;text-transform:uppercase;margin-bottom:16px}
+.soc-page .soc-opening h2{max-width:630px;font-size:clamp(30px,3.35vw,49px);font-weight:400;line-height:1.17;letter-spacing:-.038em;text-wrap:balance}
+.soc-page .soc-opening-copy{max-width:590px;font:17px/1.78 Georgia,"Times New Roman",serif;color:#454641}
+.soc-page .soc-opening-copy p+p{margin-top:15px}
+.soc-page .soc-onpage{display:flex;align-items:center;gap:clamp(14px,2.3vw,34px);overflow-x:auto;scrollbar-width:thin;border-top:1px solid var(--soc-rule);border-bottom:1px solid var(--soc-rule);padding:16px 0;color:var(--soc-muted);font:11px/1.5 Arial,sans-serif;white-space:nowrap}
+.soc-page .soc-onpage .soc-nav-label{color:var(--soc-red);letter-spacing:.04em;margin-right:auto}
+.soc-page .soc-onpage a{flex-shrink:0;transition:color .2s}
+.soc-page .soc-onpage a:hover{color:var(--soc-red)}
+.soc-page .soc-section{padding:85px 0 95px;border-bottom:1px solid var(--soc-rule);scroll-margin-top:35px}
+.soc-page .soc-chapter-head{display:grid;grid-template-columns:96px minmax(0,1.05fr) minmax(0,.95fr);gap:24px 34px;align-items:start;margin-bottom:34px}
+.soc-page .soc-chapter-head .soc-kicker{margin-top:9px}
+.soc-page .soc-chapter-head h2{font-size:clamp(30px,3.2vw,48px);font-weight:400;line-height:1.17;letter-spacing:-.044em;max-width:680px;text-wrap:balance}
+.soc-page .soc-chapter-head p{max-width:510px;font:16px/1.76 Georgia,"Times New Roman",serif;color:#50504c}
+.soc-page .soc-figure--drawing .soc-media-button{background:#eeede9}
+.soc-page .soc-figure--drawing .soc-media-button img{object-fit:contain}
+.soc-page .soc-media-note{font:12px/1.6 Arial,sans-serif;color:var(--soc-muted)}
+/* Mirror the chapter heading's three-column grid so both rows share their text baselines. */
+.soc-page .soc-issue-lead{display:grid;grid-template-columns:96px minmax(0,1.05fr) minmax(0,.95fr);gap:24px 34px;align-items:start;margin:0 0 36px}
+.soc-page .soc-issue-lead h3{grid-column:2;max-width:680px;font-size:clamp(30px,3.2vw,48px);font-weight:400;line-height:1.17;letter-spacing:-.044em;text-wrap:balance}
+.soc-page .soc-issue-lead p{grid-column:3;max-width:510px;color:#50504c;font:16px/1.76 Georgia,"Times New Roman",serif}
+.soc-page .soc-conditions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.soc-page .soc-condition{border-top:1px solid var(--soc-rule);padding-top:19px}
+.soc-page .soc-condition b{display:block;margin-bottom:15px;color:var(--soc-red);font:11px/1.5 Arial,sans-serif;font-weight:400;letter-spacing:.07em}
+.soc-page .soc-condition h3{font-size:clamp(18px,1.8vw,24px);font-weight:400;line-height:1.25;letter-spacing:-.025em;margin:0 0 10px}
+.soc-page .soc-condition p{max-width:340px;color:#575852;font:14px/1.75 Arial,sans-serif}
+.soc-page .soc-strategy-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:36px 0 75px}
+.soc-page .soc-strategy-principles article{padding-top:17px;border-top:1px solid var(--soc-rule)}
+.soc-page .soc-strategy-principles small{display:block;color:var(--soc-red);font-size:11px;margin-bottom:10px}
+.soc-page .soc-strategy-principles h3{font-size:19px;letter-spacing:-.02em;margin-bottom:9px}
+.soc-page .soc-strategy-principles p{font:14px/1.72 Arial,sans-serif;color:#565750}
+.soc-page .soc-subsection-label{display:block;margin:0 0 10px;font-size:11px;color:var(--soc-red);letter-spacing:.08em;text-transform:uppercase}
+.soc-page .soc-subsection-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:24px}
+.soc-page .soc-subsection-head h3{font-size:clamp(23px,2.25vw,33px);line-height:1.25;letter-spacing:-.035em}
+.soc-page .soc-subsection-head p{font:15px/1.76 Georgia,"Times New Roman",serif;color:#50504c;max-width:550px}
+.soc-page .soc-plan-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(290px,.7fr);gap:clamp(38px,6vw,96px);align-items:start}
+.soc-page .soc-plan-notes{position:sticky;top:35px;padding-top:25px}
+.soc-page .soc-plan-notes h3{font-size:clamp(25px,2.35vw,35px);line-height:1.2;letter-spacing:-.032em;max-width:400px;margin-bottom:20px}
+.soc-page .soc-plan-notes>p{max-width:410px;font:15px/1.77 Georgia,"Times New Roman",serif;color:#555650}
+.soc-page .soc-plan-list{margin-top:36px;list-style:none;padding:0}
+.soc-page .soc-plan-list li{display:grid;grid-template-columns:25px 1fr;gap:12px;align-items:start;padding:16px 0;border-top:1px solid var(--soc-rule);font:13px/1.65 Arial,sans-serif;color:#5a5a54}
+.soc-page .soc-plan-list span{color:var(--soc-red)}
+.soc-page .soc-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(17px,2.2vw,28px);align-items:start}
+.soc-page .soc-pair .soc-media-button img{aspect-ratio:2048/1579;object-fit:cover}
+.soc-page .soc-spatial-part+.soc-spatial-part{margin-top:80px}
+.soc-page .soc-spatial-part .soc-figure--drawing{margin-top:33px}
+.soc-page .soc-section--construction .soc-figure--drawing{margin-bottom:42px}
+.soc-page .soc-model-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.6fr);gap:clamp(30px,6vw,94px);align-items:center}
+.soc-page .soc-figure--model .soc-media-button{background:#161616}
+.soc-page .soc-model-note h3{font-size:clamp(23px,2vw,32px);line-height:1.25;letter-spacing:-.03em;margin-bottom:17px}
+.soc-page .soc-model-note p{font:15px/1.79 Georgia,"Times New Roman",serif;color:#50504c}
+.soc-page #film>.soc-kicker{margin:0 0 25px}
+.soc-page .soc-film-player{width:100%;max-width:none;margin:0;aspect-ratio:16/9;background:#151515}
+.soc-page .soc-film-player iframe{display:block;width:100%;height:100%;border:0}
+.soc-page .soc-film-foot{display:flex;justify-content:flex-end;gap:25px;margin:13px 0 0;color:var(--soc-muted);font:12px/1.6 Arial,sans-serif}
+.soc-page .soc-film-foot a{text-decoration:underline;text-underline-offset:4px;color:var(--soc-ink)}
+.soc-page .soc-conclusion{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.35fr);gap:32px;padding:39px 0;border-bottom:1px solid var(--soc-rule)}
+.soc-page .soc-conclusion p{max-width:810px;font:13px/1.78 Arial,sans-serif;color:var(--soc-muted)}
+.soc-page .soc-related{display:flex;justify-content:space-between;gap:25px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--soc-rule);font:13px/1.6 Arial,sans-serif}
+.soc-page .soc-related span{color:var(--soc-muted)}
+.soc-page .soc-related a{border-bottom:1px solid currentColor;padding-bottom:3px}
+.soc-page .credits{margin-top:0}
+.soc-page .next-project{margin-top:5px;padding-right:0}
+.soc-page #soc-lightbox{position:fixed;width:min(96vw,1500px);max-width:96vw;max-height:94vh;padding:48px 25px 20px;background:#f5f4f0;border:0;box-shadow:0 20px 75px #0005}
+.soc-page #soc-lightbox::backdrop{background:rgba(15,16,14,.91)}
+.soc-page #soc-lightbox img{display:block;max-width:100%;max-height:77vh;width:auto;height:auto;margin:auto;object-fit:contain}
+.soc-page #soc-lightbox p{margin:12px auto 0;font:12px/1.6 Arial,sans-serif;text-align:center;color:var(--soc-muted)}
+.soc-page #soc-lightbox .soc-close{position:absolute;right:17px;top:11px;padding:8px;font:13px/1.4 Arial,sans-serif;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1000px){
+ .soc-page .soc-chapter-head{grid-template-columns:72px 1fr;gap:12px 25px}
+ .soc-page .soc-chapter-head p{grid-column:2}
+ .soc-page .soc-issue-lead{grid-template-columns:72px minmax(0,1fr);gap:12px 25px}
+ .soc-page .soc-issue-lead h3,.soc-page .soc-issue-lead p{grid-column:2}
+ .soc-page .soc-plan-layout{grid-template-columns:minmax(0,1.1fr) minmax(240px,.9fr);gap:36px}
+ .soc-page .soc-plan-notes{position:static}
+}
+@media(max-width:700px){
+ .soc-page .soc-project-head{padding:23px 0 22px}
+ .soc-page .soc-project-head h1{margin:16px 0 12px;font-size:clamp(43px,10.2vw,64px)}
+ .soc-page .soc-meta{gap:4px 12px}
+ .soc-page .soc-meta span+span:before{margin-right:12px}
+ .soc-page .soc-figure--hero .soc-media-button{height:clamp(320px,95vw,520px)}
+ .soc-page .soc-figure--hero .soc-media-button img{object-position:48% 65%}
+ .soc-page .soc-figure figcaption{grid-template-columns:25px 1fr;gap:7px;padding-top:10px}
+ .soc-page .soc-fig-action{display:none}
+ .soc-page .soc-opening{display:block;padding:52px 0 48px}
+ .soc-page .soc-opening h2{margin-bottom:25px}
+ .soc-page .soc-opening-copy{font-size:16px}
+ .soc-page .soc-onpage{gap:22px}
+ .soc-page .soc-onpage .soc-nav-label{margin-right:0}
+ .soc-page .soc-section{padding:54px 0 62px}
+ .soc-page .soc-chapter-head{grid-template-columns:1fr;gap:12px;margin-bottom:25px}
+ .soc-page .soc-chapter-head .soc-kicker{margin:0}
+ .soc-page .soc-chapter-head p{grid-column:auto;font-size:15px}
+ .soc-page .soc-issue-lead{grid-template-columns:1fr;gap:13px;margin-bottom:25px}
+ .soc-page .soc-issue-lead h3,.soc-page .soc-issue-lead p{grid-column:1}
+ .soc-page .soc-issue-lead p{font-size:15px}
+ .soc-page .soc-conditions,.soc-page .soc-strategy-principles{grid-template-columns:1fr;gap:18px}
+ .soc-page .soc-condition p{max-width:550px}
+ .soc-page .soc-strategy-principles{margin:30px 0 52px}
+ .soc-page .soc-subsection-head{grid-template-columns:1fr;gap:12px}
+ .soc-page .soc-subsection-head p{font-size:15px}
+ .soc-page .soc-plan-layout{grid-template-columns:1fr;gap:25px}
+ .soc-page .soc-plan-notes{order:-1;padding:0}
+ .soc-page .soc-plan-list{margin-top:20px}
+ .soc-page .soc-pair{grid-template-columns:1fr;gap:29px}
+ .soc-page .soc-spatial-part+.soc-spatial-part{margin-top:58px}
+ .soc-page .soc-model-layout{grid-template-columns:1fr;gap:28px}
+ .soc-page .soc-film-foot,.soc-page .soc-related{flex-direction:column;align-items:flex-start;gap:9px}
+ .soc-page .soc-conclusion{grid-template-columns:1fr;gap:8px}
+ .soc-page #soc-lightbox{padding:44px 12px 18px}
+}
+@media(prefers-reduced-motion:reduce){.soc-page .soc-media-button img{transition:none}}
+
+
+/* Scaffold-specific grids and visual order; shared fonts, headings, captions, gutters and spacing come from Ancient Trails. */
+.soc-page .soc-figure--hero .soc-media-button{height:clamp(380px,52vw,710px)}
+.soc-page .soc-figure--hero .soc-media-button img{object-position:center 51%}
+.soc-page .soc-figure--context img{width:100%;height:auto;max-height:840px;object-fit:contain}
+.soc-page .soc-figure--context .soc-media-button{background:#efeee9}
+.soc-page .soc-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,42px);margin-top:55px}
+.soc-page .soc-point{border-top:1px solid var(--soc-rule);padding-top:17px}
+.soc-page .soc-point small{font:11px/1.5 Arial,sans-serif;letter-spacing:.07em;color:var(--soc-red)}
+.soc-page .soc-point h3{font-size:clamp(19px,1.8vw,25px);line-height:1.27;letter-spacing:-.03em;margin:9px 0 11px}
+.soc-page .soc-point p{font:14px/1.75 Georgia,serif;color:var(--soc-muted);max-width:40ch}
+.soc-page .soc-feature{display:grid;grid-template-columns:minmax(240px,.76fr) minmax(0,1.24fr);gap:clamp(30px,5.2vw,90px);align-items:start}
+.soc-page .soc-feature-copy{border-top:1px solid var(--soc-rule);padding-top:18px}
+.soc-page .soc-feature-copy h3{font-size:clamp(25px,2.3vw,35px);max-width:19ch;line-height:1.2;letter-spacing:-.035em;margin:12px 0 21px}
+.soc-page .soc-feature-copy p{font:16px/1.78 Georgia,serif;color:#50504c;max-width:49ch}
+.soc-page .soc-feature-copy p+p{margin-top:17px}
+.soc-page .soc-figure--axono .soc-media-button,.soc-page .soc-figure--kit .soc-media-button{background:#ebedf0}
+.soc-page .soc-gallery{display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);gap:clamp(18px,2.5vw,36px);align-items:start}
+.soc-page .soc-gallery .soc-media-button img{height:clamp(330px,38vw,590px);width:100%;object-fit:cover;object-position:center}
+.soc-page .soc-life-note{display:grid;grid-template-columns:96px 1fr 1fr;gap:24px 34px;align-items:start;margin-top:56px}
+.soc-page .soc-life-note h3{font-size:clamp(25px,2.3vw,34px);letter-spacing:-.035em;line-height:1.2;max-width:20ch}
+.soc-page .soc-life-note p{font:16px/1.77 Georgia,serif;color:#50504c;max-width:53ch}
+.soc-page .soc-figure--section .soc-media-button{height:auto;max-height:none;background:#ecedef}
+.soc-page .soc-figure--section .soc-media-button img{width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain}
+.soc-page .soc-section-notes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4.5vw,70px);margin-top:42px}
+.soc-page .soc-section-notes p{font:15px/1.78 Georgia,serif;color:var(--soc-muted);max-width:54ch}
+.soc-page .soc-section-notes strong{display:block;font:18px/1.4 Arial,sans-serif;font-weight:400;color:var(--soc-ink);margin-bottom:12px}
+.soc-page .soc-programs{margin-top:25px;padding-top:20px;border-top:1px solid var(--soc-rule)}
+.soc-page .soc-programs div+div{margin-top:15px}
+.soc-page .soc-programs strong{display:block;font:13px/1.6 Arial,sans-serif;font-weight:500;color:var(--soc-ink)}
+.soc-page .soc-programs span{font:14px/1.72 Georgia,serif;color:var(--soc-muted)}
+.soc-page .soc-conclusion{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(34px,7vw,115px);padding:78px 0 82px;align-items:start}
+.soc-page .soc-conclusion blockquote{font-size:clamp(29px,3.1vw,47px);max-width:27ch;letter-spacing:-.04em;line-height:1.22;margin:0}
+.soc-page .soc-conclusion p{font:16px/1.8 Georgia,serif;max-width:52ch;color:var(--soc-muted)}
+.soc-page .soc-credits{display:grid;grid-template-columns:1fr 1fr;gap:35px;border-top:1px solid var(--soc-rule);padding:30px 0 58px}
+.soc-page .soc-credits h2{font-size:15px;margin-bottom:14px}
+.soc-page .soc-credits p{color:var(--soc-muted);font:13px/1.9 Arial,sans-serif}
+.soc-page .soc-credits a{border-bottom:1px solid var(--soc-rule);padding-bottom:2px}
+.soc-page .soc-recognition a{color:var(--soc-red)}
+.soc-lightbox{border:0;background:#f5f4f0;padding:42px 22px 20px;max-width:95vw;max-height:97vh;box-shadow:0 20px 100px #0005}
+.soc-lightbox::backdrop{background:#141714ee}
+.soc-lightbox img{max-width:90vw;max-height:79vh;object-fit:contain;margin:auto}
+.soc-lightbox p{text-align:center;font:12px/1.5 Arial,sans-serif;color:#555;margin-top:12px}
+.soc-lightbox button{position:absolute;right:9px;top:4px;font-size:30px;padding:4px 12px;cursor:pointer}
+@media(max-width:900px){
+.soc-page .soc-feature{grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr);gap:28px}
+.soc-page .soc-life-note{grid-template-columns:65px 1fr}
+.soc-page .soc-life-note p{grid-column:2}
+}
+@media(max-width:700px){
+.soc-page .soc-figure--hero .soc-media-button{height:clamp(330px,75vw,470px)}
+.soc-page .soc-points,.soc-page .soc-feature,.soc-page .soc-gallery,.soc-page .soc-section-notes,.soc-page .soc-conclusion,.soc-page .soc-credits{grid-template-columns:1fr}
+.soc-page .soc-points{gap:27px;margin-top:38px}
+.soc-page .soc-gallery{gap:34px}
+.soc-page .soc-gallery .soc-media-button img{height:auto;object-fit:contain}
+.soc-page .soc-feature{gap:28px}
+.soc-page .soc-feature-copy h3{max-width:none}
+.soc-page .soc-life-note{grid-template-columns:1fr;gap:14px;margin-top:40px}
+.soc-page .soc-life-note p{grid-column:auto}
+.soc-page .soc-conclusion{padding:65px 0}
+.soc-page .soc-figure--section .soc-media-button img{max-height:none}
+}
+
+</style>
 <script src="app.js?v=20261008-cursor-v2" defer></script></head>
 <body class="soc-page">
   <a class="skip" href="#main">Skip to content</a>
@@ -113,104 +225,45 @@
     <nav aria-label="Main navigation"><a href="index.html" aria-current="page">Projects</a><a href="research.html">Research</a><a href="info.html">Info</a></nav>
   </header>
   <main id="main">
-    <div class="project-top">
-      <a class="eyebrow" href="index.html#selected-work">Projects / 05</a>
-      <h1>Scaffold of Care</h1>
-      <p class="soc-subtitle">An Infrastructure of Coexistence</p>
-      <div class="project-meta"><span>Zhongli, Taoyuan</span><span>Mixed-Use Civic Architecture</span><span>Migration · Public Space · Care</span><span>2025</span></div>
-      <div class="soc-award"><span class="eyebrow">Recognition</span><a href="https://www.archdaily.com/campus/awards/2025-1/10507786" target="_blank" rel="noopener noreferrer">Featured in ArchDaily Student Project Awards 2025 ↗</a></div>
-    </div>
-    <section class="soc-intro" aria-label="Project introduction">
-      <figure class="soc-figure soc-hero">
-  <button type="button" class="soc-image-button" aria-label="Enlarge Urban living room in the city" data-title="Urban living room in the city" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%202.jpg?format=webp&width=2048">
-    <img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%202.jpg?format=webp&width=1600" alt="An exterior proposal at the urban gap: a lightweight civic scaffold frames gatherings, festival activities and encounters across the neighbourhood." loading="lazy" decoding="async">
-    <span class="soc-zoom" aria-hidden="true">↗</span>
-  </button>
-  <figcaption><span class="soc-no">02</span><span><strong>Urban living room in the city</strong><small>An exterior proposal at the urban gap: a lightweight civic scaffold frames gatherings, festival activities and encounters across the neighbourhood.</small></span></figcaption>
-</figure>
-      <div class="soc-lead"><span class="eyebrow">The proposition</span><h2>A place to stay, not only to pass through.</h2>
-        <p>Around Zhongli Station, public space serves a city shaped by migration yet does not always offer its migrant communities somewhere to gather without having to buy, move along or explain their presence.</p>
-        <p>Scaffold of Care transforms an overlooked gap on Changjiang Road into a shared urban living room. A familiar temporary construction system becomes the frame for enduring relationships, services and cultural life.</p>
-      </div>
-    </section>
-    <section class="soc-section" id="context">
-      <div class="soc-chapter"><span class="eyebrow">01</span><h2>The living room deficit.</h2><p>Near the station, commercial streets, informal gathering places and the river sit close together yet remain socially and spatially fragmented. The first drawing records different communities, faiths and practices in the same urban field rather than reducing the area to an empty site.</p></div>
-      <div class="soc-split">
-        <figure class="soc-figure ">
-  <button type="button" class="soc-image-button" aria-label="Enlarge Urban field and everyday occupation" data-title="Urban field and everyday occupation" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%201.jpg?format=webp&width=2048">
-    <img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%201.jpg?format=webp&width=1600" alt="Site collage mapping Zhongli's streets, station area and river alongside scenes of migrant gatherings, religious places, shopping streets and collective use of public space." loading="lazy" decoding="async">
-    <span class="soc-zoom" aria-hidden="true">↗</span>
-  </button>
-  <figcaption><span class="soc-no">01</span><span><strong>Urban field and everyday occupation</strong><small>Site collage mapping Zhongli's streets, station area and river alongside scenes of migrant gatherings, religious places, shopping streets and collective use of public space.</small></span></figcaption>
-</figure>
-        <aside class="soc-note"><span class="eyebrow">Reading the site</span><h3>Visibility is not the same as belonging.</h3><p>The railway station and surrounding shopping district become meeting points, especially on days off. Informal sitting, eating and socialising already make an urban commons—but these activities often lack space designed for comfort or legitimacy.</p><p>The proposal also identifies a potential connection between Changjiang Road and the Laojie River, where urban access, ecological edges and public gathering could be considered together.</p></aside>
-      </div>
-    </section>
-    <section class="soc-section" id="city">
-      <div class="soc-chapter"><span class="eyebrow">02</span><h2>Reclaiming an urban gap.</h2><p>Rather than a sealed community building, the proposal establishes a recognisable civic address in the fine-grain urban fabric. Its porous scaffold acts as a new public threshold—open to the street, adaptable in programme and legible from different approach routes.</p></div>
-      <div class="soc-split">
-        <figure class="soc-figure soc-figure--axono">
-  <button type="button" class="soc-image-button" aria-label="Enlarge Civic scaffold as urban connector" data-title="Civic scaffold as urban connector" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%205.jpg?format=webp&width=2048">
-    <img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%205.jpg?format=webp&width=1600" alt="Illustrated axonometric locating the proposed scaffold in relation to local streets, adjacent buildings, canal or river edge and public movement." loading="lazy" decoding="async">
-    <span class="soc-zoom" aria-hidden="true">↗</span>
-  </button>
-  <figcaption><span class="soc-no">05</span><span><strong>Civic scaffold as urban connector</strong><small>Illustrated axonometric locating the proposed scaffold in relation to local streets, adjacent buildings, canal or river edge and public movement.</small></span></figcaption>
-</figure>
-        <div class="soc-note"><span class="eyebrow">Urban proposition</span><h3>Temporary structure, lasting public claim.</h3><p>The lightweight frame is deliberately distinct from the surrounding permanent blocks. It gives everyday public activities a visible place without proposing a monument to any one community.</p><p>The intervention is conceived as a civic plug-in: small in footprint, generous in encounters and able to accommodate different schedules of use.</p></div>
-      </div>
-    </section>
-    <section class="soc-section" id="section">
-      <div class="soc-chapter"><span class="eyebrow">03</span><h2>An open framework for care.</h2><p>Movement passes beneath and through the scaffold, then rises to terraces around the shared interior. Rather than assigning one floor to one identity, the section allows markets, learning, service and gathering to meet across several levels.</p></div>
-      <figure class="soc-figure soc-figure--section">
-  <button type="button" class="soc-image-button" aria-label="Enlarge Section through the shared framework" data-title="Section through the shared framework" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%206.jpg?format=webp&width=2048">
-    <img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%206.jpg?format=webp&width=1600" alt="Long sectional drawing showing a porous ground, elevated scaffold platforms, circulation and flexible activity areas within the surrounding urban grain." loading="lazy" decoding="async">
-    <span class="soc-zoom" aria-hidden="true">↗</span>
-  </button>
-  <figcaption><span class="soc-no">06</span><span><strong>Section through the shared framework</strong><small>Long sectional drawing showing a porous ground, elevated scaffold platforms, circulation and flexible activity areas within the surrounding urban grain.</small></span></figcaption>
-</figure>
-    </section>
-    <section class="soc-section" id="assembly">
-      <div class="soc-chapter"><span class="eyebrow">04</span><h2>A kit of shared spaces.</h2><p>The system is composed from reconfigurable scaffold platforms and lightweight enclosures. The architectural unit can become a classroom, planted terrace, communal table or sheltered social space; the project treats adaptation as a condition of public use, not merely a construction technique.</p></div>
-      <div class="soc-split">
-        <figure class="soc-figure soc-figure--kit">
-  <button type="button" class="soc-image-button" aria-label="Enlarge A modular civic kit" data-title="A modular civic kit" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%207.jpg?format=webp&width=2048">
-    <img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%207.jpg?format=webp&width=1600" alt="Exploded axonometric showing the proposed scaffold assembly and possible additions for planting, learning, communal dining, gathering and services." loading="lazy" decoding="async">
-    <span class="soc-zoom" aria-hidden="true">↗</span>
-  </button>
-  <figcaption><span class="soc-no">07</span><span><strong>A modular civic kit</strong><small>Exploded axonometric showing the proposed scaffold assembly and possible additions for planting, learning, communal dining, gathering and services.</small></span></figcaption>
-</figure>
-        <aside class="soc-note"><span class="eyebrow">Programmes of care</span><h3>Everyday support, not a single-purpose institution.</h3><p>A cross-cultural kitchen and shared meals provide opportunities for exchange. Community classrooms and co-learning activities extend the building's use beyond festivals. The brief also imagines NGO-supported advice and legal consultation for migrant workers.</p><p>These are proposed programme partnerships, not verified operating services. Structural safety, accessibility, fire egress and long-term stewardship would require development before construction.</p></aside>
-      </div>
-    </section>
-    <section class="soc-section" id="life">
-      <div class="soc-chapter"><span class="eyebrow">05</span><h2>Coexistence is an everyday practice.</h2><p>The renderings show care through ordinary acts: preparing food, sharing a table, meeting across generations, watching a performance or learning together. The project imagines multiple cultures being present without asking them to become indistinguishable.</p></div>
-      <div class="soc-pair">
-        <figure class="soc-figure soc-figure--life">
-  <button type="button" class="soc-image-button" aria-label="Enlarge Shared courtyard beneath the tree" data-title="Shared courtyard beneath the tree" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%203.jpg?format=webp&width=2048">
-    <img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%203.jpg?format=webp&width=1600" alt="Proposed interior courtyard around a mature tree, with social activities, workshops, children playing, circulation and stepped platforms." loading="lazy" decoding="async">
-    <span class="soc-zoom" aria-hidden="true">↗</span>
-  </button>
-  <figcaption><span class="soc-no">03</span><span><strong>Shared courtyard beneath the tree</strong><small>Proposed interior courtyard around a mature tree, with social activities, workshops, children playing, circulation and stepped platforms.</small></span></figcaption>
-</figure>
-        <figure class="soc-figure soc-figure--life">
-  <button type="button" class="soc-image-button" aria-label="Enlarge The communal table" data-title="The communal table" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%204.jpg?format=webp&width=2048">
-    <img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%204.jpg?format=webp&width=1600" alt="The upper scaffold imagined as a shared kitchen and meal setting, with people gathering around food and connected to activity on adjacent levels." loading="lazy" decoding="async">
-    <span class="soc-zoom" aria-hidden="true">↗</span>
-  </button>
-  <figcaption><span class="soc-no">04</span><span><strong>The communal table</strong><small>The upper scaffold imagined as a shared kitchen and meal setting, with people gathering around food and connected to activity on adjacent levels.</small></span></figcaption>
-</figure>
-      </div>
-    </section>
-    <section class="soc-closer">
-      <blockquote>Coexistence is not about integration, but about the dignity of co-presence.</blockquote>
-      <div><span class="eyebrow">From space to place</span><p>The proposal begins with the cultural life that already exists in Zhongli. Its architectural ambition is to offer that life room to continue, grow and be recognised—through a framework that makes care visible within the everyday city.</p></div>
-    </section>
-    <section class="soc-credits" aria-label="Project credits">
-      <div><h2>Project credits</h2><p>Design: Hao Chang<br>Academic institution: Tsinghua University<br>Typology: Mixed-Use Architecture<br>Location: Zhongli, Taoyuan<br>Status: Unbuilt architectural proposal</p></div>
-      <div><h2>Publication &amp; materials</h2><p><a href="https://www.archdaily.com/campus/awards/2025-1/10507786" target="_blank" rel="noopener noreferrer">ArchDaily · Student Project Awards 2025 ↗</a><br>Seven project illustrations and diagrams provided by the author and published in the ArchDaily project entry.<br>Images are presented as project representations, not photographs of a constructed building.</p></div>
-    </section>
-    <a class="next-project" href="erdai.html"><span class="eyebrow">Next project / 06</span><h2>Disarming the Landscape →</h2></a>
-  </main>
+<header class="soc-project-head">
+ <div class="soc-heading-top"><a href="index.html#selected-work">Projects / 05</a><span>Mixed-Use Civic Architecture / 2025</span></div>
+ <h1>Scaffold of Care</h1><p class="soc-project-type">An Infrastructure of Coexistence</p>
+ <div class="soc-meta"><span>Zhongli, Taoyuan</span><span>Mixed-Use Civic Architecture</span><span>Migration · Public Space · Care</span><span>2025</span></div>
+ <p class="soc-recognition"><a href="https://www.archdaily.com/campus/awards/2025-1/10507786" rel="noopener noreferrer" target="_blank">Longlisted · ArchDaily Student Project Awards 2025 ↗</a></p>
+</header>
+<figure class="soc-figure soc-figure--hero"><button class="soc-media-button soc-image-button soc-zoom" type="button" data-title="An urban living room" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%202.jpg?format=webp&amp;width=2048" aria-label="Enlarge: An urban living room"><img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%202.jpg?format=webp&amp;width=1600" alt="An exterior proposal at the urban gap: a lightweight civic scaffold frames gatherings, festival activities and encounters across the neighbourhood." loading="eager" decoding="async" fetchpriority="high"></button><figcaption><span class="soc-fig-number">01</span><span class="soc-caption-text"><strong>An urban living room</strong>A civic scaffold makes space for gathering and exchange within Zhongli’s dense urban fabric.</span><span class="soc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+<section class="soc-opening" aria-labelledby="intro-title"><div><span class="soc-kicker">Project proposition</span><h2 id="intro-title">A place to stay, not only to pass through.</h2></div><div class="soc-opening-copy">
+<p>In Zhongli, a city shaped by migration, the streets surrounding the railway station provide essential places for encounter—yet migrant communities often lack welcoming spaces in which to gather without having to consume or move along.</p>
+<p>Scaffold of Care transforms an overlooked gap on Changjiang Road into a shared civic living room. A lightweight and adaptable construction system becomes a framework for cultural life, everyday services and collective belonging.</p>
+</div></section>
+<nav class="soc-onpage" aria-label="Explore this project"><span class="soc-nav-label">Explore the project</span><a href="#context">01 / Context</a><a href="#strategy">02 / Urban strategy</a><a href="#life">03 / Everyday life</a><a href="#architecture">04 / Section</a><a href="#assembly">05 / Assembly</a></nav>
+<section class="soc-section" id="context" aria-labelledby="context-title">
+<div class="soc-chapter-head"><span class="soc-kicker">01 / Context</span><h2 id="context-title">The living room deficit.</h2><p>Near Zhongli Station, commercial streets, gathering points and the river lie close together but remain socially and spatially fragmented. Existing patterns of public life reveal the need for places of rest, recognition and exchange.</p></div>
+<figure class="soc-figure soc-figure--context"><button class="soc-media-button soc-image-button soc-zoom" type="button" data-title="An urban field of overlapping lives" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%201.jpg?format=webp&amp;width=2048" aria-label="Enlarge: An urban field of overlapping lives"><img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%201.jpg?format=webp&amp;width=1600" alt="Site collage mapping Zhongli's streets, station area and river alongside scenes of migrant gatherings, religious places, shopping streets and collective use of public space." loading="lazy" decoding="async"></button><figcaption><span class="soc-fig-number">02</span><span class="soc-caption-text"><strong>An urban field of overlapping lives</strong>A mapping of streets, activities and communities around Zhongli Station locates the intervention within everyday urban life.</span><span class="soc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+<div class="soc-points"><article class="soc-point"><small>01 / Everyday occupation</small><h3>Gathering already happens.</h3><p>On days off, familiar streets and shopfronts become informal social rooms for meeting, eating and spending time together.</p></article><article class="soc-point"><small>02 / Spatial exclusion</small><h3>Visibility is not belonging.</h3><p>Communities sustain local life while often having limited access to places where their presence is welcomed without condition.</p></article><article class="soc-point"><small>03 / Urban possibility</small><h3>A gap can become common ground.</h3><p>The Changjiang Road site offers an opportunity to reconnect pedestrian life, neighbourhood activity and the river corridor.</p></article></div>
+</section>
+<section class="soc-section" id="strategy" aria-labelledby="strategy-title">
+<div class="soc-chapter-head"><span class="soc-kicker">02 / Urban strategy</span><h2 id="strategy-title">Reclaiming an urban gap.</h2><p>The proposal establishes a civic address without enclosing the site as a single-purpose institution. A porous scaffold gives collective activities a legible place among the surrounding streets and buildings.</p></div>
+<div class="soc-feature"><div class="soc-feature-copy"><span class="soc-kicker">Urban proposition</span><h3>Temporary structure, lasting public claim.</h3><p>The lightweight frame stands apart from the permanent buildings around it. Rather than serving one group or programme, it offers a shared threshold for movement, encounters and informal occupation.</p><p>Small in footprint but generous in use, the intervention connects street-level activity with gathering places at several levels.</p></div><figure class="soc-figure soc-figure--axono"><button class="soc-media-button soc-image-button soc-zoom" type="button" data-title="A civic scaffold within the city" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%205.jpg?format=webp&amp;width=2048" aria-label="Enlarge: A civic scaffold within the city"><img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%205.jpg?format=webp&amp;width=1600" alt="Illustrated axonometric locating the proposed scaffold in relation to local streets, adjacent buildings, canal or river edge and public movement." loading="lazy" decoding="async"></button><figcaption><span class="soc-fig-number">03</span><span class="soc-caption-text"><strong>A civic scaffold within the city</strong>Axonometric view of the intervention, surrounding building fabric and routes of access.</span><span class="soc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+</section>
+<section class="soc-section" id="life" aria-labelledby="life-title">
+<div class="soc-chapter-head"><span class="soc-kicker">03 / Everyday life</span><h2 id="life-title">Coexistence through ordinary rituals.</h2><p>Care takes shape through everyday actions: sharing food, learning, sitting together and celebrating distinct traditions. The scaffold makes room for different communities to be present on their own terms.</p></div>
+<div class="soc-gallery"><figure class="soc-figure "><button class="soc-media-button soc-image-button soc-zoom" type="button" data-title="A shared courtyard beneath the tree" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%203.jpg?format=webp&amp;width=2048" aria-label="Enlarge: A shared courtyard beneath the tree"><img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%203.jpg?format=webp&amp;width=1600" alt="Proposed interior courtyard around a mature tree, with social activities, workshops, children playing, circulation and stepped platforms." loading="lazy" decoding="async"></button><figcaption><span class="soc-fig-number">04</span><span class="soc-caption-text"><strong>A shared courtyard beneath the tree</strong>Gathering, workshops, play and social activities animate the central communal space.</span><span class="soc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><figure class="soc-figure "><button class="soc-media-button soc-image-button soc-zoom" type="button" data-title="The communal table" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%204.jpg?format=webp&amp;width=2048" aria-label="Enlarge: The communal table"><img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%204.jpg?format=webp&amp;width=1600" alt="The upper scaffold imagined as a shared kitchen and meal setting, with people gathering around food and connected to activity on adjacent levels." loading="lazy" decoding="async"></button><figcaption><span class="soc-fig-number">05</span><span class="soc-caption-text"><strong>The communal table</strong>A shared meal becomes a point of exchange across cultures and generations.</span><span class="soc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+<div class="soc-life-note"><span class="soc-kicker">Spatial experience</span><h3>Everyday life makes the place.</h3><p>These imagined scenes suggest how an open public framework might support spontaneous encounters and organised community events across different times of day.</p></div>
+</section>
+<section class="soc-section" id="architecture" aria-labelledby="architecture-title">
+<div class="soc-chapter-head"><span class="soc-kicker">04 / Spatial section</span><h2 id="architecture-title">An open framework for care.</h2><p>Movement passes beneath and through the scaffold before rising to shared terraces. The section brings learning, meals, services and collective space into relation across several levels.</p></div>
+<figure class="soc-figure soc-figure--section"><button class="soc-media-button soc-image-button soc-zoom" type="button" data-title="Section through the shared framework" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%206.jpg?format=webp&amp;width=2048" aria-label="Enlarge: Section through the shared framework"><img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%206.jpg?format=webp&amp;width=1600" alt="Long sectional drawing showing a porous ground, elevated scaffold platforms, circulation and flexible activity areas within the surrounding urban grain." loading="lazy" decoding="async"></button><figcaption><span class="soc-fig-number">06</span><span class="soc-caption-text"><strong>Section through the shared framework</strong>The full sectional drawing shows a porous ground, elevated platforms, routes and flexible communal spaces.</span><span class="soc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+<div class="soc-section-notes"><p><strong>A permeable ground</strong>Open circulation preserves the connection between the street and public rooms, allowing everyday movement to become an invitation to participate.</p><p><strong>Shared levels</strong>Overlapping routes and terraces support different scales of use, from informal conversation to organised gatherings.</p></div>
+</section>
+<section class="soc-section" id="assembly" aria-labelledby="assembly-title">
+<div class="soc-chapter-head"><span class="soc-kicker">05 / Assembly</span><h2 id="assembly-title">A kit of shared spaces.</h2><p>Reconfigurable scaffold bays and lightweight additions form a flexible civic framework. Construction is imagined not as a fixed object, but as a system responsive to changing community needs.</p></div>
+<div class="soc-feature"><div class="soc-feature-copy"><span class="soc-kicker">Programmes of care</span><h3>One framework, many ways to belong.</h3><p>The spatial kit accommodates different rhythms of social life without assigning a single identity to the building.</p><div class="soc-programs"><div><strong>Share</strong><span>Cross-cultural kitchens, communal tables and neighbourhood events.</span></div><div><strong>Learn</strong><span>Workshops, co-learning and informal community classrooms.</span></div><div><strong>Support</strong><span>Potential NGO-led advice, legal consultation and other community services.</span></div></div></div><figure class="soc-figure soc-figure--kit"><button class="soc-media-button soc-image-button soc-zoom" type="button" data-title="An adaptable civic kit" data-full="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%207.jpg?format=webp&amp;width=2048" aria-label="Enlarge: An adaptable civic kit"><img src="https://snoopy.archdaily.com/bo-bardi/archdaily/campus/spa_submissions/202501/7bd96f1fdc97197614f42de4e58990cf55d5b22c/Scaffold%20of%20Care%207.jpg?format=webp&amp;width=1600" alt="Exploded axonometric showing the proposed scaffold assembly and possible additions for planting, learning, communal dining, gathering and services." loading="lazy" decoding="async"></button><figcaption><span class="soc-fig-number">07</span><span class="soc-caption-text"><strong>An adaptable civic kit</strong>Exploded axonometric of modular scaffold components and additions for planting, teaching, eating and gathering.</span><span class="soc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+</section>
+<section class="soc-conclusion"><div><span class="soc-kicker">From space to place</span><blockquote>Coexistence is not about integration, but about the dignity of co-presence.</blockquote></div><p>The proposal begins with cultural life that already exists in Zhongli. Its architectural ambition is to make room for that life to continue, grow and be recognised. The building remains unbuilt; structure, accessibility, fire safety and long-term stewardship require further development.</p></section>
+<section class="soc-credits" aria-label="Project credits"><div><h2>Project credits</h2><p>Design · Hao Chang<br>Academic institution · Tsinghua University<br>Typology · Mixed-Use Civic Architecture<br>Location · Zhongli, Taoyuan<br>Status · Unbuilt architectural proposal</p></div><div><h2>Publication &amp; materials</h2><p><a href="https://www.archdaily.com/campus/awards/2025-1/10507786" target="_blank" rel="noopener noreferrer">ArchDaily · Student Project Awards 2025 ↗</a><br>Project drawings and renderings published in the ArchDaily project entry. Community services depicted are proposals, not currently operating services.</p></div></section>
+<a class="next-project" href="erdai.html"><span class="eyebrow">Next project / 06</span><h2>Disarming the Landscape →</h2></a>
+</main>
   <footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><a href="mailto:haochang0215@gmail.com">Get in touch</a><span>© 2026 Hao Chang</span></footer>
   <dialog class="soc-lightbox" aria-label="Enlarged project image"><button type="button" aria-label="Close enlarged image">×</button><img alt=""><p></p></dialog>
   <script>
