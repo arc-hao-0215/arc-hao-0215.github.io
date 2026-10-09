@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-labelledby="title description">
+<title id="title">GROUND FLOOR PLAN — placeholder</title>
+<desc id="description">First-floor drawing to be uploaded. Replace this placeholder with the final drawing.</desc>
+<rect width="1600" height="1200" fill="#e7e7e4"/>
+<rect x="24" y="24" width="1552" height="1152" fill="none" stroke="#cbcbc7" stroke-width="2"/>
+<path d="M800 505v-28 M800 692v29 M650 600h-35 M950 600h35" stroke="#c9c9c4" stroke-width="2"/>
+<g text-anchor="middle" fill="#737571" font-family="Arial,Helvetica,sans-serif">
+<text x="800" y="576" font-size="35" letter-spacing="5">GROUND FLOOR PLAN</text>
+<text x="800" y="617" font-size="18" letter-spacing="2">DRAWING PENDING</text>
+<text x="800" y="653" font-size="16">First-floor drawing to be uploaded</text>
+</g>
+<text x="70" y="1137" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="2" fill="#9b9d97">DISARMING THE LANDSCAPE / ERDAI ART MUSEUM</text>
+</svg>
