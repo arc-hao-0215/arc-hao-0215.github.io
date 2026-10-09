@@ -85,6 +85,97 @@
 @media(max-width:1000px){.ed-page .ed-chapter-head,.ed-page .ed-scene-head{grid-template-columns:76px 1fr}.ed-page .ed-chapter-head p,.ed-page .ed-scene-head p{grid-column:2}.ed-page .ed-experience-intro{margin-left:101px}}
 @media(max-width:700px){.ed-page .ed-project-head{padding:23px 0}.ed-page .ed-project-head h1{font-size:clamp(43px,10vw,65px);margin-top:17px}.ed-page .ed-meta{gap:4px 10px}.ed-page .ed-meta span+span:before{margin-right:10px}.ed-page .ed-hero .ed-image{height:clamp(300px,95vw,500px)}.ed-page .ed-hero .ed-image img{object-position:56% 50%}.ed-page .ed-figure figcaption{grid-template-columns:27px minmax(0,1fr);gap:8px;padding-top:10px}.ed-page .ed-enlarge{display:none}.ed-page .ed-proposition{display:block;padding:54px 0 52px}.ed-page .ed-proposition h2{margin-bottom:25px}.ed-page .ed-proposition .ed-prose{font-size:16px}.ed-page .ed-onpage{gap:25px}.ed-page .ed-onpage .ed-onpage-label{margin-right:0}.ed-page .ed-chapter{padding:57px 0 66px}.ed-page .ed-chapter-head,.ed-page .ed-scene-head{grid-template-columns:1fr;gap:12px;margin-bottom:24px}.ed-page .ed-chapter-head>.ed-kicker,.ed-page .ed-scene-head>.ed-kicker{margin-top:0}.ed-page .ed-chapter-head p,.ed-page .ed-scene-head p{grid-column:auto;font-size:15px}.ed-page .ed-text-split,.ed-page .ed-principles{grid-template-columns:1fr;gap:20px}.ed-page .ed-pair{grid-template-columns:1fr;gap:29px}.ed-page .ed-scene{margin-bottom:60px}.ed-page .ed-experience-intro{margin:0 0 40px;font-size:15px}.ed-page .ed-film-foot,.ed-page .ed-related{flex-direction:column;align-items:flex-start;gap:8px}.ed-page .ed-note{grid-template-columns:1fr;gap:8px}.ed-page #ed-lightbox{padding:44px 12px 18px}}
 @media(prefers-reduced-motion:reduce){.ed-page .ed-image img{transition:none}}
+
+/* Erdai — aligned editorial image rail, October 2026 */
+.ed-page{--ed-media-start:35.5%;--ed-side-gap:clamp(32px,4.6vw,74px)}
+.ed-page #context,.ed-page #approach,.ed-page #architecture,.ed-page #film,
+.ed-page #experience>.ed-scene{
+ display:grid;grid-template-columns:minmax(0,.355fr) minmax(0,.645fr);
+ column-gap:var(--ed-side-gap);row-gap:clamp(38px,4.5vw,67px);align-items:start}
+.ed-page .ed-flow-copy,.ed-page .ed-flow-image,.ed-page .ed-arch-side,.ed-page .ed-drawings,
+.ed-page .ed-scene-head,.ed-page .ed-scene-media,.ed-page .ed-film-media{min-width:0;width:100%}
+.ed-page :is(#context,#approach,#architecture,#film) .ed-chapter-head,
+.ed-page #experience .ed-scene-head{
+ display:block;margin:0;min-width:0}
+.ed-page :is(#context,#approach,#architecture,#film) .ed-chapter-head>.ed-kicker,
+.ed-page #experience .ed-scene-head>.ed-kicker{margin:0 0 18px}
+.ed-page :is(#context,#approach,#architecture,#film) .ed-chapter-head h2{
+ font-size:clamp(30px,2.6vw,40px);line-height:1.15;letter-spacing:-.04em;
+ margin:0 0 23px;max-width:19ch}
+.ed-page :is(#context,#approach,#architecture,#film) .ed-chapter-head p{
+ font-size:15px;line-height:1.78;max-width:49ch;margin:0}
+.ed-page .ed-flow-image>.ed-figure,.ed-page .ed-scene-media>.ed-figure{margin:0}
+.ed-page .ed-flow-image .ed-image,.ed-page .ed-scene-media .ed-image,
+.ed-page .ed-drawings .ed-image{width:100%}
+.ed-page #context .ed-text-split{display:block;margin:12px 0 0}
+.ed-page #context .ed-text-split>p{font-size:15px;margin:0 0 17px;max-width:50ch}
+.ed-page .ed-small-heading{display:block;font:11px/1.6 Arial,sans-serif;text-transform:uppercase;
+ letter-spacing:.075em;color:var(--ed-accent);margin:0 0 13px}
+.ed-page #approach .ed-principles{display:block;margin:12px 0 0}
+.ed-page #approach .ed-principles article{display:grid;grid-template-columns:34px minmax(0,1fr);
+ column-gap:14px;border-top:1px solid var(--ed-rule);padding:16px 0 19px;margin:0}
+.ed-page #approach .ed-principles article>span{grid-column:1;grid-row:1 / span 2;font:11px/1.5 Arial,sans-serif;
+ margin-top:3px;white-space:nowrap;font-size:0}
+.ed-page #approach .ed-principles article>span::first-letter{font-size:11px}
+.ed-page #approach .ed-principles article h3{grid-column:2;margin:0 0 7px;font-size:clamp(18px,1.65vw,23px);
+ line-height:1.28;letter-spacing:-.025em}
+.ed-page #approach .ed-principles article p{grid-column:2;margin:0;font:13px/1.7 Arial,sans-serif;max-width:48ch}
+.ed-page .ed-strategy-copy{align-self:start}
+.ed-page #architecture .ed-drawings{display:block}
+.ed-page #architecture .ed-drawings>.ed-figure+.ed-figure{margin-top:41px}
+.ed-page #architecture .ed-arch-side>.ed-text-split{display:block;margin:31px 0 0}
+.ed-page #architecture .ed-arch-side>.ed-text-split p{margin:0 0 18px;font:15px/1.78 Georgia,serif}
+.ed-page #architecture .ed-drawing-control{margin:30px 0 0;padding:20px 0 22px;
+ border-top:1px solid var(--ed-rule);border-bottom:1px solid var(--ed-rule)}
+.ed-page .ed-drawing-switch{display:flex;flex-wrap:wrap;gap:8px;margin:5px 0 13px}
+.ed-page .ed-drawing-tab{appearance:none;border:1px solid var(--ed-rule);padding:10px 14px;
+ background:transparent;color:var(--ed-ink);font:12px/1.3 Arial,sans-serif;cursor:pointer;
+ transition:background .18s,color .18s,border-color .18s}
+.ed-page .ed-drawing-tab:hover{border-color:var(--ed-ink)}
+.ed-page .ed-drawing-tab.is-current{background:var(--ed-ink);border-color:var(--ed-ink);color:var(--ed-paper)}
+.ed-page .ed-drawing-tab:focus-visible{outline:2px solid var(--ed-accent);outline-offset:3px}
+.ed-page .ed-drawing-status{font:12px/1.6 Arial,sans-serif;color:var(--ed-muted);margin:0}
+.ed-page #architecture .ed-drawings .ed-image{overflow:hidden}
+.ed-page #architecture .ed-drawings .ed-image img{transition:width .3s,transform .3s,filter .2s}
+.ed-page #architecture .ed-drawings[data-view="detail"] .ed-plan-figure .ed-image{
+ aspect-ratio:1.52}
+.ed-page #architecture .ed-drawings[data-view="detail"] .ed-plan-figure .ed-image img{
+ width:154%;height:auto;max-width:none;transform:translate(-17%,-5%)}
+.ed-page #architecture .ed-drawings[data-view="detail"] .ed-section-figure .ed-image{
+ aspect-ratio:2.85}
+.ed-page #architecture .ed-drawings[data-view="detail"] .ed-section-figure .ed-image img{
+ width:152%;height:auto;max-width:none;transform:translate(-17%,-2%)}
+.ed-page #experience .ed-chapter-head{margin-bottom:57px}
+.ed-page #experience>.ed-scene{margin:0 0 82px}
+.ed-page #experience>.ed-scene:last-child{margin-bottom:0}
+.ed-page #experience .ed-scene-head h3{font-size:clamp(26px,2.35vw,35px);max-width:25ch;
+ margin:0 0 21px;line-height:1.22;letter-spacing:-.036em}
+.ed-page #experience .ed-scene-head p{font-size:15px;line-height:1.78;margin:0;max-width:49ch}
+.ed-page #experience .ed-scene-media>.ed-figure+.ed-figure{margin-top:30px}
+.ed-page #experience .ed-scene-media>.ed-pair{margin-top:30px}
+.ed-page #experience .ed-scene-media>.ed-pair .ed-image img{aspect-ratio:1.57;object-fit:cover}
+.ed-page #film .ed-film-media{min-width:0}
+.ed-page #film .ed-film-foot{align-items:baseline}
+@media(max-width:980px){
+ .ed-page #context,.ed-page #approach,.ed-page #architecture,.ed-page #film,
+ .ed-page #experience>.ed-scene{grid-template-columns:minmax(0,.36fr) minmax(0,.64fr);
+  column-gap:clamp(23px,3.7vw,36px);row-gap:36px}
+ .ed-page :is(#context,#approach,#architecture,#film) .ed-chapter-head h2{font-size:clamp(27px,3.2vw,36px)}
+}
+@media(max-width:760px){
+ .ed-page #context,.ed-page #approach,.ed-page #architecture,.ed-page #film,
+ .ed-page #experience>.ed-scene{display:block}
+ .ed-page .ed-flow-image,.ed-page .ed-drawings,.ed-page .ed-film-media,.ed-page .ed-scene-media{margin-top:26px}
+ .ed-page .ed-context-follow,.ed-page .ed-strategy-copy{margin-top:41px}
+ .ed-page #experience>.ed-scene{margin-bottom:55px}
+ .ed-page #experience .ed-chapter-head{margin-bottom:44px}
+ .ed-page #architecture .ed-drawing-control{margin-top:24px}
+ .ed-page #architecture .ed-drawings[data-view="detail"] .ed-plan-figure .ed-image{aspect-ratio:1.37}
+ .ed-page #architecture .ed-drawings[data-view="detail"] .ed-section-figure .ed-image{aspect-ratio:2.4}
+}
+@media(prefers-reduced-motion:reduce){
+ .ed-page #architecture .ed-drawings .ed-image img{transition:none}
+}
 </style></head><body class="ed-page">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a>
@@ -104,57 +195,52 @@
 <div class="ed-prose"><p>On Penghu's Fenggui Peninsula, the Dashan battery remains embedded in a coastal terrain of stone structures, trenches, bunkers and grass-covered emplacements. Once organised around concealment and military control, these spaces offer the possibility of a different public life.</p>
 <p><em>Disarming the Landscape</em> proposes the Erdai Art Museum as a new cultural layer within the fortress. Rather than replacing the remains with a freestanding object, partly buried galleries connect existing structures, courtyards and outdoor art spaces. Light, enclosure and framed views become the means of moving between inherited memory and contemporary use.</p></div></section>
 <nav class="ed-onpage" aria-label="Project sections"><span class="ed-onpage-label">Explore the project</span><a href="#context">01 Context</a><a href="#approach">02 Approach</a><a href="#architecture">03 Architecture</a><a href="#experience">04 Experience</a><a href="#film">05 Film</a></nav>
-<section class="ed-chapter" id="context" aria-labelledby="context-heading">
-<div class="ed-chapter-head"><span class="ed-kicker">01 / Context</span><h2 id="context-heading">A landscape built for defense.</h2><p>The battery was not a single building but a distributed defensive system. Access trenches, firing positions, observation points and support structures occupy the coastal terrain according to military logics of movement, visibility and protection. These surviving fragments, rather than an empty site, are the starting point of the design.</p></div>
-<figure class="ed-figure ed-drawing">
+<section class="ed-chapter" id="context" aria-labelledby="context-heading"><div class="ed-flow-copy"><div class="ed-chapter-head"><span class="ed-kicker">01 / Context</span><h2 id="context-heading">A landscape built for defense.</h2><p>The battery was not a single building but a distributed defensive system. Access trenches, firing positions, observation points and support structures occupy the coastal terrain according to military logics of movement, visibility and protection. These surviving fragments, rather than an empty site, are the starting point of the design.</p></div></div><div class="ed-flow-image"><figure class="ed-figure ed-drawing">
       <button class="ed-image ed-zoom" type="button" data-title="Six inherited layers of the battery" aria-label="Enlarge image: Six inherited layers of the battery">
         <img src="assets/erdai/historical-context.webp" alt="Site analysis with six existing fortress typologies and a topographic site map" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">02</span><span class="ed-caption"><strong>Six inherited layers of the battery</strong>Logistics spaces, access trenches, artillery emplacements, command rooms, observation posts, and bunkers form an interconnected military terrain.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure>
-<div class="ed-text-split"><p>Six inherited military elements establish the site's spatial organisation. Their different orientations, levels and material conditions suggest where circulation can be reopened and where a new public use might be introduced.</p><p>The proposal treats the existing fortifications as legible historical layers. New architectural insertions do not attempt to recreate an untouched fortress or visually erase the passage of time.</p></div>
-<figure class="ed-figure ">
+    </figure></div><div class="ed-flow-copy ed-context-follow"><span class="ed-small-heading">Reading the remains</span><div class="ed-text-split"><p>Six inherited military elements establish the site's spatial organisation. Their different orientations, levels and material conditions suggest where circulation can be reopened and where a new public use might be introduced.</p><p>The proposal treats the existing fortifications as legible historical layers. New architectural insertions do not attempt to recreate an untouched fortress or visually erase the passage of time.</p></div></div><div class="ed-flow-image"><figure class="ed-figure ">
       <button class="ed-image ed-zoom" type="button" data-title="The fortress as found" aria-label="Enlarge image: The fortress as found">
         <img src="assets/erdai/existing-stone.webp" alt="Existing stone heritage buildings set within a field of silver grass" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">03</span><span class="ed-caption"><strong>The fortress as found</strong>Stone structures and access paths remain legible among the coastal vegetation.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure></section><section class="ed-chapter" id="approach" aria-labelledby="approach-heading">
-<div class="ed-chapter-head"><span class="ed-kicker">02 / Design approach</span><h2 id="approach-heading">Preserving the trace. Transforming the purpose.</h2><p>The project reinterprets the organisation of military infrastructure as a public sequence. Former access routes become part of a visitor journey; adapted emplacements host outdoor art; new galleries connect what had once been separated by defensive functions.</p></div>
-<figure class="ed-figure ed-drawing">
+    </figure></div></section><section class="ed-chapter" id="approach" aria-labelledby="approach-heading"><div class="ed-flow-copy"><div class="ed-chapter-head"><span class="ed-kicker">02 / Design approach</span><h2 id="approach-heading">Preserving the trace. Transforming the purpose.</h2><p>The project reinterprets the organisation of military infrastructure as a public sequence. Former access routes become part of a visitor journey; adapted emplacements host outdoor art; new galleries connect what had once been separated by defensive functions.</p></div></div><div class="ed-flow-image"><figure class="ed-figure ed-drawing">
       <button class="ed-image ed-zoom" type="button" data-title="From defense to disuse / from disuse to culture" aria-label="Enlarge image: From defense to disuse / from disuse to culture">
         <img src="assets/erdai/defense-to-culture.webp" alt="Paired before-and-after site diagrams identifying the historic structures and new cultural programs" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">04</span><span class="ed-caption"><strong>From defense to disuse / from disuse to culture</strong>The former military network is reinterpreted as public entry, exhibition, galleries, outdoor art, and a lookout.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure>
-<div class="ed-principles"><article><span>01 / Retain</span><h3>Recognise the inherited ground.</h3><p>Keep stone walls, military traces and the contour of the hillside visible as independent historic layers.</p></article>
+    </figure></div><div class="ed-flow-copy ed-strategy-copy"><span class="ed-small-heading">Three operations</span><div class="ed-principles"><article><span>01 / Retain</span><h3>Recognise the inherited ground.</h3><p>Keep stone walls, military traces and the contour of the hillside visible as independent historic layers.</p></article>
 <article><span>02 / Connect</span><h3>Open a public route.</h3><p>Join old and new spaces through galleries, passages, courts and shared cultural facilities.</p></article>
-<article><span>03 / Reveal</span><h3>Bring light into the terrain.</h3><p>Use skylights, planted courts and framed horizons to turn enclosure into spatial experience.</p></article></div>
-<figure class="ed-figure ">
+<article><span>03 / Reveal</span><h3>Bring light into the terrain.</h3><p>Use skylights, planted courts and framed horizons to turn enclosure into spatial experience.</p></article></div></div><div class="ed-flow-image"><figure class="ed-figure ">
       <button class="ed-image ed-zoom" type="button" data-title="A roof continuous with the ground" aria-label="Enlarge image: A roof continuous with the ground">
         <img src="assets/erdai/battery-landscape.webp" alt="Low horizontal planted roof barely emerging from coastal grasses" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">05</span><span class="ed-caption"><strong>A roof continuous with the ground</strong>The new building remains visually subordinate to the grassy terrain, allowing the topography to carry the project rather than a freestanding architectural object.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure></section><section class="ed-chapter" id="architecture" aria-labelledby="architecture-heading">
-<div class="ed-chapter-head"><span class="ed-kicker">03 / Architecture</span><h2 id="architecture-heading">Between earth and light.</h2><p>The architectural intervention follows the contours rather than rising above them. Galleries for different art forms are embedded in the terrain, punctuated by gardens and daylight, and connected to surviving military structures through a sequence of changing thresholds.</p></div>
-<div class="ed-drawings"><figure class="ed-figure ed-drawing">
+    </figure></div></section><section class="ed-chapter" id="architecture" aria-labelledby="architecture-heading"><div class="ed-arch-side"><div class="ed-chapter-head"><span class="ed-kicker">03 / Architecture</span><h2 id="architecture-heading">Between earth and light.</h2><p>The architectural intervention follows the contours rather than rising above them. Galleries for different art forms are embedded in the terrain, punctuated by gardens and daylight, and connected to surviving military structures through a sequence of changing thresholds.</p></div><div class="ed-drawing-control">
+ <span class="ed-small-heading">Drawing views</span>
+ <div class="ed-drawing-switch" role="group" aria-label="Plan and section viewing mode">
+  <button type="button" class="ed-drawing-tab is-current" data-view="overview" aria-pressed="true">01 / Overall</button>
+  <button type="button" class="ed-drawing-tab" data-view="detail" aria-pressed="false">02 / Detail</button>
+ </div>
+ <p class="ed-drawing-status" aria-live="polite">Overall plan and longitudinal section</p>
+ </div><div class="ed-text-split"><p><strong>Plan.</strong> The museum links rooms for painting, photography, ceramics, calligraphy, sculpture and moving images. Each offers a different spatial condition rather than one undifferentiated exhibition hall.</p><p><strong>Section.</strong> Recessed rooms, level changes and light wells establish a continuing dialogue between the hillside above and the galleries below.</p></div></div><div class="ed-drawings" data-view="overview"><figure class="ed-figure ed-drawing ed-plan-figure">
       <button class="ed-image ed-zoom" type="button" data-title="Gallery plan / a connected field of rooms" aria-label="Enlarge image: Gallery plan / a connected field of rooms">
         <img src="assets/erdai/floor-plan.webp" alt="Architectural floor plan showing galleries organized around an angular courtyard with coastal contour lines" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">06</span><span class="ed-caption"><strong>Gallery plan / a connected field of rooms</strong>Exhibition spaces, courtyards, public areas and adapted remnants are assembled around a series of changing levels and routes. Select the image to examine the plan.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure><div class="ed-text-split"><p><strong>Plan.</strong> The museum links rooms for painting, photography, ceramics, calligraphy, sculpture and moving images. Each offers a different spatial condition rather than one undifferentiated exhibition hall.</p><p><strong>Section.</strong> Recessed rooms, level changes and light wells establish a continuing dialogue between the hillside above and the galleries below.</p></div><figure class="ed-figure ed-drawing">
+    </figure><figure class="ed-figure ed-drawing ed-section-figure">
       <button class="ed-image ed-zoom" type="button" data-title="Long section / between earth and light" aria-label="Enlarge image: Long section / between earth and light">
         <img src="assets/erdai/long-section.webp" alt="Long horizontal architectural section showing underground exhibition levels and sloping landscape" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">07</span><span class="ed-caption"><strong>Long section / between earth and light</strong>The section reveals how enclosed galleries, internal light wells and retained stone structures are negotiated within the hillside.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure></div></section><section class="ed-chapter" id="experience" aria-labelledby="experience-heading">
-<div class="ed-chapter-head"><span class="ed-kicker">04 / Spatial experience</span><h2 id="experience-heading">A journey through memory.</h2><p>A sequence of public thresholds, enclosed passages and daylit rooms translates the site's former conditions of protection and concealment into new encounters with art. The images below are arranged as a curatorial reading of the project, rather than a claim of an exact room-by-room walking itinerary.</p></div>
-<div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">A / Arrival</span><h3>Re-entering the battery.</h3><p>Contemporary public space joins the existing stonework, offering an accessible cultural threshold without disguising the site's history.</p></div><figure class="ed-figure ">
+    </figure></div></section><section class="ed-chapter" id="experience" aria-labelledby="experience-heading"><div class="ed-chapter-head"><span class="ed-kicker">04 / Spatial experience</span><h2 id="experience-heading">A journey through memory.</h2><p>A sequence of public thresholds, enclosed passages and daylit rooms translates the site's former conditions of protection and concealment into new encounters with art. The images below are arranged as a curatorial reading of the project, rather than a claim of an exact room-by-room walking itinerary.</p></div><div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">A / Arrival</span><h3>Re-entering the battery.</h3><p>Contemporary public space joins the existing stonework, offering an accessible cultural threshold without disguising the site's history.</p></div><div class="ed-scene-media"><figure class="ed-figure ">
       <button class="ed-image ed-zoom" type="button" data-title="Arrival / the open threshold" aria-label="Enlarge image: Arrival / the open threshold">
         <img src="assets/erdai/arrival-courtyard.webp" alt="Contemporary glazed public building next to historic stone retaining walls and outdoor steps" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">08</span><span class="ed-caption"><strong>Arrival / the open threshold</strong>The museum entrance and public facilities create a new social edge beside the inherited masonry, with paths leading up to the open hillside.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure></div>
-<div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">B / Concealment</span><h3>Entering the ground.</h3><p>Lower ceilings and controlled light frame photography and moving images, recalling the sensation of enclosure without reproducing the original military use.</p></div><div class="ed-pair"><figure class="ed-figure ">
+    </figure></div></div>
+<div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">B / Concealment</span><h3>Entering the ground.</h3><p>Lower ceilings and controlled light frame photography and moving images, recalling the sensation of enclosure without reproducing the original military use.</p></div><div class="ed-scene-media"><div class="ed-pair"><figure class="ed-figure ">
       <button class="ed-image ed-zoom" type="button" data-title="Concealment / a compressed gallery" aria-label="Enlarge image: Concealment / a compressed gallery">
         <img src="assets/erdai/dark-gallery.webp" alt="Dramatically dark corridor with illuminated photographic exhibition strips on both walls" width="1600" loading="lazy"  decoding="async">
       </button>
@@ -164,8 +250,8 @@
         <img src="assets/erdai/screening-room.webp" alt="Dark screening room with visitors watching archival moving images on a wall projection" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">10</span><span class="ed-caption"><strong>Collective memory / the screening room</strong>Moving images introduce another form of encounter within a deliberately enclosed exhibition environment.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure></div></div>
-<div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">C / Encounter</span><h3>Art within the earth.</h3><p>An expansive painting room contrasts with a linear calligraphy passage, giving different art forms their own rhythm of viewing.</p></div><div class="ed-pair"><figure class="ed-figure ">
+    </figure></div></div></div>
+<div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">C / Encounter</span><h3>Art within the earth.</h3><p>An expansive painting room contrasts with a linear calligraphy passage, giving different art forms their own rhythm of viewing.</p></div><div class="ed-scene-media"><div class="ed-pair"><figure class="ed-figure ">
       <button class="ed-image ed-zoom" type="button" data-title="Encounter / the painting hall" aria-label="Enlarge image: Encounter / the painting hall">
         <img src="assets/erdai/painting-gallery.webp" alt="Large gallery lined with textured earthen walls displaying an ink landscape painting" width="1600" loading="lazy"  decoding="async">
       </button>
@@ -175,8 +261,8 @@
         <img src="assets/erdai/calligraphy-gallery.webp" alt="Long interior with a bench-height display, calligraphy panels and sculpture at the far end" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">12</span><span class="ed-caption"><strong>Encounter / the linear exhibition</strong>A narrower route allows calligraphy to unfold as visitors move through the gallery.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure></div></div>
-<div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">D / Light</span><h3>Moments of release.</h3><p>Garden courtyards, overhead openings, taller rooms and long apertures interrupt the subterranean journey. Natural light marks a transition from concentrated viewing toward the landscape beyond.</p></div><figure class="ed-figure ">
+    </figure></div></div></div>
+<div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">D / Light</span><h3>Moments of release.</h3><p>Garden courtyards, overhead openings, taller rooms and long apertures interrupt the subterranean journey. Natural light marks a transition from concentrated viewing toward the landscape beyond.</p></div><div class="ed-scene-media"><figure class="ed-figure ">
       <button class="ed-image ed-zoom" type="button" data-title="Light / a garden within the galleries" aria-label="Enlarge image: Light / a garden within the galleries">
         <img src="assets/erdai/sculpture-courtyard.webp" alt="Interior gallery overlooking planted sculpture courtyard under skylights" width="1600" loading="lazy"  decoding="async">
       </button>
@@ -191,16 +277,14 @@
         <img src="assets/erdai/sculpture-view.webp" alt="Intimate sculpture room with seated visitor and thin horizontal landscape window" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">15</span><span class="ed-caption"><strong>Light / a framed horizon</strong>A slender horizontal opening reconnects the stillness of the gallery to the stone remains and vegetation outside.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure></div></div>
-<div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">E / Landscape</span><h3>Art returns to the open air.</h3><p>Outdoor works are encountered beside inherited stone boundaries and coastal vegetation. A defensive ground becomes a place for shared exploration.</p></div><figure class="ed-figure ">
+    </figure></div></div></div>
+<div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">E / Landscape</span><h3>Art returns to the open air.</h3><p>Outdoor works are encountered beside inherited stone boundaries and coastal vegetation. A defensive ground becomes a place for shared exploration.</p></div><div class="ed-scene-media"><figure class="ed-figure ">
       <button class="ed-image ed-zoom" type="button" data-title="Release / art returns to the landscape" aria-label="Enlarge image: Release / art returns to the landscape">
         <img src="assets/erdai/outdoor-sculpture.webp" alt="Outdoor sculpture among inherited dark stone fortification walls and coastal vegetation" width="1600" loading="lazy"  decoding="async">
       </button>
       <figcaption><span class="ed-num">16</span><span class="ed-caption"><strong>Release / art returns to the landscape</strong>The sequence concludes among sculptures, weathered stonework and vegetation, where a former controlled military ground becomes an open cultural place.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
-    </figure></div>
-</section><section class="ed-chapter" id="film" aria-labelledby="film-heading"><div class="ed-chapter-head"><span class="ed-kicker">05 / Project film</span><h2 id="film-heading">Disarming the Landscape.</h2><p>A spatial journey through the museum proposal, the surviving fortifications and the surrounding coastal terrain.</p></div>
-<div class="ed-film-player"><iframe src="https://www.youtube-nocookie.com/embed/3kXfCuoN_Ew?rel=0" title="Disarming the Landscape — Erdai Art Museum project film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-<div class="ed-film-foot"><span>Architectural film · Fenggui Peninsula, Penghu</span><a href="https://youtu.be/3kXfCuoN_Ew" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div></section>
+    </figure></div></div></section><section class="ed-chapter" id="film" aria-labelledby="film-heading"><div class="ed-flow-copy"><div class="ed-chapter-head"><span class="ed-kicker">05 / Project film</span><h2 id="film-heading">The project in motion.</h2><p>A spatial journey through the museum proposal, the surviving fortifications and the surrounding coastal terrain.</p></div></div><div class="ed-film-media"><div class="ed-film-player"><iframe src="https://www.youtube-nocookie.com/embed/3kXfCuoN_Ew?rel=0" title="Disarming the Landscape — Erdai Art Museum project film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="ed-film-foot"><span>Architectural film · Fenggui Peninsula, Penghu</span><a href="https://youtu.be/3kXfCuoN_Ew" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div></div></section>
 <section class="ed-note"><span class="ed-kicker">Scope &amp; development</span><p>Disarming the Landscape is an unbuilt academic proposal. Archaeological evidence, structural condition, coastal drainage, conservation requirements and barrier-free circulation would require coordinated assessment before implementation.</p></section>
 <section class="ed-related"><span>RELATED RESEARCH · After the Battery</span><a href="research-ground.html">Read the research on the military landscape →</a></section>
 <section class="credits"><h2>Project credits</h2><p>Individual studio project · Hao Chang<br>Instructor: Li Xiaodong<br>Fenggui Peninsula, Penghu · September–October 2024</p></section>
@@ -208,4 +292,23 @@
 </main><footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><a href="mailto:haochang0215@gmail.com">Get in touch</a><span>© 2026 Hao Chang</span></footer>
 <dialog id="ed-lightbox" aria-label="Expanded project image"><button class="ed-close" type="button" aria-label="Close enlarged image">Close ×</button><img alt=""><p></p></dialog>
 <script>(function(){const dialog=document.querySelector('#ed-lightbox');const img=dialog.querySelector('img');const title=dialog.querySelector('p');let trigger=null;document.querySelectorAll('.ed-zoom').forEach(button=>button.addEventListener('click',()=>{trigger=button;const source=button.querySelector('img');img.src=source.currentSrc||source.src;img.alt=source.alt;title.textContent=button.dataset.title||source.alt;dialog.showModal();}));dialog.querySelector('.ed-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});dialog.addEventListener('close',()=>{img.removeAttribute('src');if(trigger)trigger.focus({preventScroll:true})});})();</script>
-</body></html>
+<script>
+(function(){
+ const holder=document.querySelector('#architecture .ed-drawings');
+ if(!holder)return;
+ const controls=document.querySelectorAll('#architecture .ed-drawing-tab');
+ const status=document.querySelector('#architecture .ed-drawing-status');
+ for(const button of controls){
+  button.addEventListener('click',()=>{
+   const view=button.dataset.view;
+   holder.dataset.view=view;
+   for(const control of controls){
+    const current=control===button;
+    control.classList.toggle('is-current',current);
+    control.setAttribute('aria-pressed',String(current));
+   }
+   status.textContent=view==='detail'?'Enlarged reading of the plan and section':'Overall plan and longitudinal section';
+  });
+ }
+})();
+</script></body></html>
