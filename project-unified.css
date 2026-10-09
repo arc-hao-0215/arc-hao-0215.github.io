@@ -103,8 +103,9 @@
   background:#f5f4f0;
 }
 .wp-page .wp-hero-axon .wp-zoom img{
-  height:clamp(380px,52vw,700px);
-  object-fit:contain;
+  height:clamp(380px,52vw,700px)!important;
+  max-height:700px!important;
+  object-fit:contain!important;
   object-position:center center;
 }
 
