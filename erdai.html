@@ -137,6 +137,7 @@
 .ed-page .ed-drawing-status{font:12px/1.6 Arial,sans-serif;color:var(--ed-muted);margin:0}
 .ed-page #architecture .ed-drawings .ed-image{overflow:hidden}
 .ed-page #architecture .ed-drawings .ed-image img{transition:width .3s,transform .3s,filter .2s}
+.ed-page #architecture .ed-arch-side .ed-text-split [hidden]{display:none!important}
 .ed-page #architecture .ed-drawing-hint{font:12px/1.66 Arial,sans-serif;color:var(--ed-muted);margin:9px 0 0;max-width:43ch}
 .ed-page #architecture .ed-drawings[data-view="ground"] .ed-image{cursor:default;background:#e7e7e4}
 .ed-page #architecture .ed-drawings[data-view="ground"] .ed-image:hover img{filter:none}
@@ -221,7 +222,7 @@
  </div>
  <p class="ed-drawing-status" aria-live="polite">Basement floor plan + Y–Y section</p>
  <p class="ed-drawing-hint">Switch floors to view the corresponding plan and section together.</p>
- </div><div class="ed-text-split"><p><strong>Basement.</strong> Underground galleries for painting, photography, ceramics, calligraphy, sculpture and moving images are linked by a sequence of courts and passages.</p><p><strong>Y–Y section.</strong> The existing longitudinal section shows how recessed rooms, level changes and light wells connect the museum to the terrain above.</p><p class="ed-ground-note" hidden><strong>Ground floor + X–X section.</strong> The two drawings for this level are placeholders until the final plans are provided.</p></div></div><div class="ed-drawings" data-view="basement"><figure class="ed-figure ed-drawing ed-plan-figure">
+ </div><div class="ed-text-split"><p class="ed-basement-note"><strong>Basement.</strong> Underground galleries for painting, photography, ceramics, calligraphy, sculpture and moving images are linked by a sequence of courts and passages.</p><p class="ed-basement-note"><strong>Y–Y section.</strong> The existing longitudinal section shows how recessed rooms, level changes and light wells connect the museum to the terrain above.</p><p class="ed-ground-note" hidden><strong>Ground floor + X–X section.</strong> The two drawings for this level are placeholders until the final plans are provided.</p></div></div><div class="ed-drawings" data-view="basement"><figure class="ed-figure ed-drawing ed-plan-figure">
       <button class="ed-image ed-zoom" type="button" data-title="Basement floor plan" aria-label="Enlarge image: Basement floor plan">
         <img src="assets/erdai/floor-plan.webp" alt="Architectural floor plan showing galleries organized around an angular courtyard with coastal contour lines" width="1600" loading="lazy"  decoding="async">
       </button>
@@ -352,6 +353,7 @@
   replaceDrawing(section,data.section);
   status.textContent=data.status;
   if(groundNote)groundNote.hidden=key!=='ground';
+  document.querySelectorAll('#architecture .ed-basement-note').forEach(n=>n.hidden=key!=='basement');
   controls.forEach(button=>{
    const active=button.dataset.view===key;
    button.classList.toggle('is-current',active);
