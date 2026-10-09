@@ -355,7 +355,7 @@
       const rect = current.link.getBoundingClientRect();
       const navRect = nav.getBoundingClientRect();
       const target = nav.scrollLeft + (rect.left - navRect.left) - (nav.clientWidth - rect.width) / 2;
-      nav.scrollTo({left:target,behavior:reduced.matches?'instant':'smooth'});
+      nav.scrollTo({left:target,behavior:reduced.matches?'auto':'smooth'});
     }
   };
   const schedule = () => {if (!frame) frame=requestAnimationFrame(update)};
