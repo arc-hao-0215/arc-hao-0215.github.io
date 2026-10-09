@@ -1,0 +1,427 @@
+/*
+ * Project Editorial System — 2026-10-09
+ * Three portfolio chapters, one shared reading grid.
+ * Loaded AFTER page-local styles so global editorial tokens have a single source
+ * of truth. Project-specific drawing/layout compositions remain page-owned.
+ */
+
+:is(.bab-page,.lf-page,.rt-page){
+  --ps-ink:#181917;
+  --ps-muted:#565852;
+  --ps-rule:#d0cec8;
+  --ps-accent:#8c332b;
+  --ps-label-width:96px;
+  --ps-column-gap:34px;
+  --ps-section-space:clamp(76px,6.4vw,108px);
+  --ps-subsection-space:clamp(48px,5.1vw,76px);
+}
+:is(.bab-page,.lf-page,.rt-page) main{
+  max-width:1680px;
+  margin-left:auto;
+  margin-right:auto;
+  min-width:0;
+}
+
+/* Project identity: always more prominent than any chapter title. */
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-project-head,.lf-project-head,.rt-project-head){
+  padding:clamp(27px,3vw,42px) 0 30px;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-project-head,.lf-project-head,.rt-project-head)>h1{
+  margin:18px 0 15px;
+  font-size:clamp(50px,6.1vw,88px);
+  line-height:1.035;
+  letter-spacing:-.057em;
+  font-weight:400;
+  max-width:17ch;
+  text-wrap:balance;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-project-type,.lf-project-type,.rt-project-type){
+  font-size:clamp(17px,1.42vw,21px);
+  line-height:1.38;
+  letter-spacing:-.015em;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-meta,.lf-meta,.rt-meta){margin-top:17px}
+
+/* Consistent opening proposition / summary. */
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-opening,.lf-opening,.rt-opening){
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(38px,6.7vw,108px);
+  padding:clamp(62px,5.8vw,90px) 0 clamp(64px,5.5vw,88px);
+  align-items:start;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-opening,.lf-opening,.rt-opening)>h2{
+  font-size:clamp(32px,3vw,46px);
+  line-height:1.14;
+  letter-spacing:-.043em;
+  font-weight:400;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-opening-copy,.lf-opening-copy,.rt-opening-copy){
+  max-width:55ch;
+  font-size:16px;
+  line-height:1.78;
+}
+
+/* Universal major chapter axis: [chapter number] [headline] [synopsis]. */
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-section,.lf-section,.rt-section){
+  padding:var(--ps-section-space) 0;
+  border-bottom:1px solid var(--ps-rule);
+  scroll-margin-top:32px;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head){
+  display:grid;
+  grid-template-columns:var(--ps-label-width) minmax(0,1.05fr) minmax(0,.95fr);
+  grid-template-areas:none;
+  column-gap:var(--ps-column-gap);
+  row-gap:0;
+  align-items:start;
+  margin:0 0 clamp(38px,4vw,58px);
+  min-width:0;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head)>
+:is(.bab-kicker,.lf-kicker,.rt-kicker){
+  grid-area:auto;
+  grid-column:1;
+  grid-row:1;
+  margin:8px 0 0;
+  font:400 11px/1.55 Arial,Helvetica,sans-serif;
+  letter-spacing:.075em;
+  color:var(--ps-accent);
+  text-transform:uppercase;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head)>h2{
+  grid-area:auto;
+  grid-column:2;
+  grid-row:1;
+  min-width:0;
+  margin:0;
+  max-width:19ch;
+  font-size:clamp(35px,3.05vw,45px);
+  font-weight:400;
+  line-height:1.15;
+  letter-spacing:-.044em;
+  text-wrap:balance;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head)>p{
+  grid-area:auto;
+  grid-column:3;
+  grid-row:1;
+  margin:3px 0 0;
+  max-width:55ch;
+  min-width:0;
+  font:16px/1.75 Georgia,"Times New Roman",serif;
+  color:var(--ps-muted);
+}
+
+/* Minor section axis: same columns, clearly smaller headline. */
+.bab-page .bab-subsection-head,
+.lf-page .lf-subsection-head,
+.lf-page .lf-issue-lead{
+  display:grid;
+  grid-template-columns:var(--ps-label-width) minmax(0,1.05fr) minmax(0,.95fr);
+  column-gap:var(--ps-column-gap);
+  row-gap:0;
+  align-items:start;
+  margin:0 0 28px;
+}
+.lf-page .lf-subsection-head>div{display:contents}
+.bab-page .bab-subsection-head>.bab-subsection-label,
+.lf-page .lf-subsection-head>div>.lf-subsection-label{
+  grid-column:1;
+  grid-row:1;
+  align-self:start;
+  margin:7px 0 0;
+  font:400 11px/1.55 Arial,Helvetica,sans-serif;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+  color:var(--ps-accent);
+}
+.bab-page .bab-subsection-head>h3,
+.lf-page .lf-subsection-head>div>h3{
+  grid-column:2;
+  grid-row:1;
+  align-self:start;
+  margin:0;
+  max-width:27ch;
+  font-size:clamp(25px,2.12vw,30px);
+  font-weight:400;
+  line-height:1.23;
+  letter-spacing:-.033em;
+  text-wrap:balance;
+}
+.bab-page .bab-subsection-head>p,
+.lf-page .lf-subsection-head>p{
+  grid-column:3;
+  grid-row:1;
+  max-width:53ch;
+  min-width:0;
+  margin:3px 0 0;
+  font:15px/1.76 Georgia,"Times New Roman",serif;
+  color:var(--ps-muted);
+}
+.lf-page .lf-issue-lead{margin:0 0 40px}
+.lf-page .lf-issue-lead>h3{
+  grid-column:2;
+  grid-row:1;
+  margin:0;
+  max-width:27ch;
+  font-size:clamp(25px,2.12vw,30px);
+  line-height:1.23;
+  letter-spacing:-.033em;
+  font-weight:400;
+}
+.lf-page .lf-issue-lead>p{
+  grid-column:3;
+  grid-row:1;
+  margin:3px 0 0;
+  max-width:53ch;
+  font:15px/1.76 Georgia,"Times New Roman",serif;
+  color:var(--ps-muted);
+}
+
+/* Shared visual footer system: caption numbers, descriptions and zoom action. */
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-figure,.lf-figure,.rt-figure){min-width:0;max-width:100%}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-figure,.lf-figure,.rt-figure)>figcaption{
+  grid-template-columns:26px minmax(0,1fr) auto;
+  column-gap:12px;
+  row-gap:6px;
+  padding:12px 0 0;
+  min-width:0;
+  max-width:100%;
+  font:12px/1.56 Arial,Helvetica,sans-serif;
+  color:var(--ps-muted);
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-caption-text,.lf-caption-text,.rt-caption-text){max-width:92ch}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-caption-text,.lf-caption-text,.rt-caption-text)>strong{
+  font-size:13px;
+  font-weight:600;
+  color:var(--ps-ink);
+  margin-bottom:4px;
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-fig-number,.lf-fig-number,.rt-fig-number){
+  font-size:11px;
+  font-weight:500;
+  font-variant-numeric:tabular-nums;
+  color:var(--ps-accent);
+}
+:is(.bab-page,.lf-page,.rt-page)
+:is(.bab-fig-action,.lf-fig-action,.rt-fig-action){
+  color:#858780;
+  font:11px/1.55 Arial,Helvetica,sans-serif;
+}
+
+/* Image groups align at top and breathe at consistent intervals. */
+.bab-page :is(.bab-experience-pair,.bab-models),
+.lf-page .lf-pair,
+.rt-page :is(.rt-compare,.rt-comparison-grid){
+  column-gap:clamp(18px,2.25vw,32px);
+  align-items:start;
+}
+.bab-page .bab-spatial-part+.bab-spatial-part,
+.lf-page .lf-spatial-part+.lf-spatial-part{
+  margin-top:var(--ps-subsection-space);
+}
+.bab-page .bab-spatial-part>.bab-subsection-head,
+.lf-page .lf-spatial-part>.lf-subsection-head{margin-bottom:28px}
+
+/* Books: editorial insertions must not visually impersonate major chapters. */
+.bab-page .bab-issue-lead>h3,
+.bab-page .bab-feature-copy>h3,
+.bab-page .bab-split-study .bab-study-text>h3{
+  font-size:clamp(25px,2.12vw,30px);
+  line-height:1.23;
+  letter-spacing:-.033em;
+  font-weight:400;
+  margin-top:0;
+}
+.bab-page .bab-issue-lead>h3{max-width:26ch}
+.bab-page .bab-issue-lead>p{font-size:15px}
+.bab-page #architecture .bab-movement-narrative>h3{
+  font-size:clamp(25px,2.12vw,30px);
+  line-height:1.23;
+  letter-spacing:-.033em;
+  margin-bottom:18px;
+}
+.bab-page #architecture .bab-movement-two-column{
+  column-gap:clamp(24px,3.4vw,52px);
+}
+.bab-page .bab-split-study .bab-study-text>p{max-width:53ch}
+
+/* Rising: compare headings align with the same editorial title/synopsis axis. */
+.rt-page :is(.rt-compare-head,.rt-comparison-set-heading){
+  display:grid;
+  grid-template-columns:var(--ps-label-width) minmax(0,1.05fr) minmax(0,.95fr);
+  column-gap:var(--ps-column-gap);
+  row-gap:0;
+  align-items:start;
+  margin-bottom:28px;
+  padding-top:21px;
+  border-top:1px solid var(--ps-rule);
+}
+.rt-page :is(.rt-compare-head,.rt-comparison-set-heading)>h3{
+  grid-column:2;
+  margin:0;
+  font-size:clamp(24px,2.08vw,29px);
+  line-height:1.25;
+  letter-spacing:-.032em;
+  font-weight:400;
+}
+.rt-page :is(.rt-compare-head,.rt-comparison-set-heading)>p{
+  grid-column:3;
+  margin:3px 0 0;
+  max-width:53ch;
+  font:14px/1.72 Georgia,"Times New Roman",serif;
+  color:var(--ps-muted);
+}
+.rt-page .rt-season-head>h3,
+.rt-page .rt-season-description>h3{
+  font-size:clamp(27px,2.45vw,33px);
+  line-height:1.2;
+  letter-spacing:-.034em;
+  font-weight:400;
+}
+.rt-page .rt-comparison-set+.rt-comparison-set{margin-top:var(--ps-subsection-space)}
+.rt-page .rt-sectional-comparison{margin-top:var(--ps-subsection-space)}
+.rt-page .rt-assembly-intro{margin-left:calc(var(--ps-label-width) + var(--ps-column-gap))}
+
+/* Tablet: retain the label column and stack introduction underneath heading. */
+@media(max-width:1100px){
+  :is(.bab-page,.lf-page,.rt-page){
+    --ps-label-width:72px;
+    --ps-column-gap:24px;
+    --ps-section-space:70px;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head),
+  .bab-page .bab-subsection-head,
+  .lf-page :is(.lf-subsection-head,.lf-issue-lead),
+  .rt-page :is(.rt-compare-head,.rt-comparison-set-heading){
+    grid-template-columns:var(--ps-label-width) minmax(0,1fr);
+    row-gap:13px;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head)>h2,
+  .bab-page .bab-subsection-head>h3,
+  .lf-page .lf-subsection-head>div>h3,
+  .lf-page .lf-issue-lead>h3,
+  .rt-page :is(.rt-compare-head,.rt-comparison-set-heading)>h3{grid-column:2;grid-row:1}
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head)>p,
+  .bab-page .bab-subsection-head>p,
+  .lf-page .lf-subsection-head>p,
+  .lf-page .lf-issue-lead>p,
+  .rt-page :is(.rt-compare-head,.rt-comparison-set-heading)>p{
+    grid-column:2;
+    grid-row:2;
+    margin-top:0;
+    max-width:70ch;
+  }
+  .rt-page .rt-assembly-intro{
+    margin-left:calc(var(--ps-label-width) + var(--ps-column-gap));
+  }
+}
+
+/* Phone: unbroken reading order, no implicit empty grid columns. */
+@media(max-width:720px){
+  :is(.bab-page,.lf-page,.rt-page){
+    --ps-section-space:56px;
+    --ps-subsection-space:52px;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-project-head,.lf-project-head,.rt-project-head){padding:24px 0 23px}
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-project-head,.lf-project-head,.rt-project-head)>h1{
+    font-size:clamp(43px,10vw,62px);
+    margin:17px 0 12px;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-opening,.lf-opening,.rt-opening){
+    display:block;
+    padding:49px 0 56px;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-opening,.lf-opening,.rt-opening)>h2{
+    font-size:clamp(29px,7.7vw,38px);
+    margin-bottom:23px;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-opening-copy,.lf-opening-copy,.rt-opening-copy){font-size:15px}
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head),
+  .bab-page .bab-subsection-head,
+  .lf-page :is(.lf-subsection-head,.lf-issue-lead),
+  .rt-page :is(.rt-compare-head,.rt-comparison-set-heading){
+    grid-template-columns:minmax(0,1fr);
+    row-gap:12px;
+    margin-bottom:27px;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head)>
+  :is(.bab-kicker,.lf-kicker,.rt-kicker){
+    grid-column:1;
+    grid-row:1;
+    margin:0;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head)>h2{
+    grid-column:1;
+    grid-row:2;
+    font-size:clamp(31px,7.5vw,39px);
+    max-width:24ch;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-chapter-head,.lf-chapter-head,.rt-chapter-head)>p{
+    grid-column:1;
+    grid-row:3;
+    margin-top:2px;
+    font-size:15px;
+  }
+  .bab-page .bab-subsection-head>.bab-subsection-label,
+  .lf-page .lf-subsection-head>div>.lf-subsection-label{
+    grid-column:1;grid-row:1;margin:0;
+  }
+  .bab-page .bab-subsection-head>h3,
+  .lf-page .lf-subsection-head>div>h3{
+    grid-column:1;grid-row:2;
+    font-size:clamp(24px,6.6vw,29px);
+  }
+  .bab-page .bab-subsection-head>p,
+  .lf-page .lf-subsection-head>p{
+    grid-column:1;grid-row:3;
+    margin:0;
+  }
+  .lf-page .lf-issue-lead>h3{grid-column:1;grid-row:1}
+  .lf-page .lf-issue-lead>p{grid-column:1;grid-row:2}
+  .rt-page :is(.rt-compare-head,.rt-comparison-set-heading)>h3{
+    grid-column:1;grid-row:1;
+    font-size:clamp(24px,6.5vw,29px);
+  }
+  .rt-page :is(.rt-compare-head,.rt-comparison-set-heading)>p{
+    grid-column:1;grid-row:2;margin:0;
+  }
+  .rt-page .rt-assembly-intro{margin-left:0}
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-figure,.lf-figure,.rt-figure)>figcaption{
+    grid-template-columns:24px minmax(0,1fr);
+    gap:8px;
+  }
+  :is(.bab-page,.lf-page,.rt-page)
+  :is(.bab-fig-action,.lf-fig-action,.rt-fig-action){display:none}
+  .bab-page #architecture .bab-movement-two-column{grid-template-columns:minmax(0,1fr)}
+}
