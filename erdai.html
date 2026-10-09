@@ -137,14 +137,12 @@
 .ed-page .ed-drawing-status{font:12px/1.6 Arial,sans-serif;color:var(--ed-muted);margin:0}
 .ed-page #architecture .ed-drawings .ed-image{overflow:hidden}
 .ed-page #architecture .ed-drawings .ed-image img{transition:width .3s,transform .3s,filter .2s}
-.ed-page #architecture .ed-drawings[data-view="detail"] .ed-plan-figure .ed-image{
- aspect-ratio:1.52}
-.ed-page #architecture .ed-drawings[data-view="detail"] .ed-plan-figure .ed-image img{
- width:154%;height:auto;max-width:none;transform:translate(-17%,-5%)}
-.ed-page #architecture .ed-drawings[data-view="detail"] .ed-section-figure .ed-image{
- aspect-ratio:2.85}
-.ed-page #architecture .ed-drawings[data-view="detail"] .ed-section-figure .ed-image img{
- width:152%;height:auto;max-width:none;transform:translate(-17%,-2%)}
+.ed-page #architecture .ed-drawing-hint{font:12px/1.66 Arial,sans-serif;color:var(--ed-muted);margin:9px 0 0;max-width:43ch}
+.ed-page #architecture .ed-drawings[data-view="ground"] .ed-image{cursor:default;background:#e7e7e4}
+.ed-page #architecture .ed-drawings[data-view="ground"] .ed-image:hover img{filter:none}
+.ed-page #architecture .ed-drawings[data-view="ground"] .ed-image:disabled{opacity:1}
+.ed-page #architecture .ed-drawings img{width:100%;height:auto;max-width:100%;transform:none;object-fit:contain}
+.ed-page #architecture .ed-figure .ed-enlarge{letter-spacing:.06em}
 .ed-page #experience .ed-chapter-head{margin-bottom:57px}
 .ed-page #experience>.ed-scene{margin:0 0 82px}
 .ed-page #experience>.ed-scene:last-child{margin-bottom:0}
@@ -170,8 +168,6 @@
  .ed-page #experience>.ed-scene{margin-bottom:55px}
  .ed-page #experience .ed-chapter-head{margin-bottom:44px}
  .ed-page #architecture .ed-drawing-control{margin-top:24px}
- .ed-page #architecture .ed-drawings[data-view="detail"] .ed-plan-figure .ed-image{aspect-ratio:1.37}
- .ed-page #architecture .ed-drawings[data-view="detail"] .ed-section-figure .ed-image{aspect-ratio:2.4}
 }
 @media(prefers-reduced-motion:reduce){
  .ed-page #architecture .ed-drawings .ed-image img{transition:none}
@@ -218,22 +214,23 @@
       </button>
       <figcaption><span class="ed-num">05</span><span class="ed-caption"><strong>A roof continuous with the ground</strong>The new building remains visually subordinate to the grassy terrain, allowing the topography to carry the project rather than a freestanding architectural object.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
     </figure></div></section><section class="ed-chapter" id="architecture" aria-labelledby="architecture-heading"><div class="ed-arch-side"><div class="ed-chapter-head"><span class="ed-kicker">03 / Architecture</span><h2 id="architecture-heading">Between earth and light.</h2><p>The architectural intervention follows the contours rather than rising above them. Galleries for different art forms are embedded in the terrain, punctuated by gardens and daylight, and connected to surviving military structures through a sequence of changing thresholds.</p></div><div class="ed-drawing-control">
- <span class="ed-small-heading">Drawing views</span>
- <div class="ed-drawing-switch" role="group" aria-label="Plan and section viewing mode">
-  <button type="button" class="ed-drawing-tab is-current" data-view="overview" aria-pressed="true">01 / Overall</button>
-  <button type="button" class="ed-drawing-tab" data-view="detail" aria-pressed="false">02 / Detail</button>
+ <span class="ed-small-heading">Plans &amp; Sections</span>
+ <div class="ed-drawing-switch" role="group" aria-label="Switch both architectural plan and section drawings">
+  <button type="button" class="ed-drawing-tab is-current" data-view="basement" aria-pressed="true">B1 / Basement</button>
+  <button type="button" class="ed-drawing-tab" data-view="ground" aria-pressed="false">01 / Ground Floor</button>
  </div>
- <p class="ed-drawing-status" aria-live="polite">Overall plan and longitudinal section</p>
- </div><div class="ed-text-split"><p><strong>Plan.</strong> The museum links rooms for painting, photography, ceramics, calligraphy, sculpture and moving images. Each offers a different spatial condition rather than one undifferentiated exhibition hall.</p><p><strong>Section.</strong> Recessed rooms, level changes and light wells establish a continuing dialogue between the hillside above and the galleries below.</p></div></div><div class="ed-drawings" data-view="overview"><figure class="ed-figure ed-drawing ed-plan-figure">
-      <button class="ed-image ed-zoom" type="button" data-title="Gallery plan / a connected field of rooms" aria-label="Enlarge image: Gallery plan / a connected field of rooms">
+ <p class="ed-drawing-status" aria-live="polite">Basement floor plan + Y–Y section</p>
+ <p class="ed-drawing-hint">Switch floors to view the corresponding plan and section together.</p>
+ </div><div class="ed-text-split"><p><strong>Basement.</strong> Underground galleries for painting, photography, ceramics, calligraphy, sculpture and moving images are linked by a sequence of courts and passages.</p><p><strong>Y–Y section.</strong> The existing longitudinal section shows how recessed rooms, level changes and light wells connect the museum to the terrain above.</p><p class="ed-ground-note" hidden><strong>Ground floor + X–X section.</strong> The two drawings for this level are placeholders until the final plans are provided.</p></div></div><div class="ed-drawings" data-view="basement"><figure class="ed-figure ed-drawing ed-plan-figure">
+      <button class="ed-image ed-zoom" type="button" data-title="Basement floor plan" aria-label="Enlarge image: Basement floor plan">
         <img src="assets/erdai/floor-plan.webp" alt="Architectural floor plan showing galleries organized around an angular courtyard with coastal contour lines" width="1600" loading="lazy"  decoding="async">
       </button>
-      <figcaption><span class="ed-num">06</span><span class="ed-caption"><strong>Gallery plan / a connected field of rooms</strong>Exhibition spaces, courtyards, public areas and adapted remnants are assembled around a series of changing levels and routes. Select the image to examine the plan.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
+      <figcaption><span class="ed-num">06</span><span class="ed-caption"><strong>Basement floor plan / B1</strong>Underground exhibition spaces, courtyards and circulation integrated with the surviving military site.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
     </figure><figure class="ed-figure ed-drawing ed-section-figure">
-      <button class="ed-image ed-zoom" type="button" data-title="Long section / between earth and light" aria-label="Enlarge image: Long section / between earth and light">
+      <button class="ed-image ed-zoom" type="button" data-title="Y–Y section" aria-label="Enlarge image: Y–Y section">
         <img src="assets/erdai/long-section.webp" alt="Long horizontal architectural section showing underground exhibition levels and sloping landscape" width="1600" loading="lazy"  decoding="async">
       </button>
-      <figcaption><span class="ed-num">07</span><span class="ed-caption"><strong>Long section / between earth and light</strong>The section reveals how enclosed galleries, internal light wells and retained stone structures are negotiated within the hillside.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
+      <figcaption><span class="ed-num">07</span><span class="ed-caption"><strong>Y–Y section</strong>The existing longitudinal section shows the underground galleries, changes in level and relationship to the hillside.</span><span class="ed-enlarge" aria-hidden="true">VIEW ↗</span></figcaption>
     </figure></div></section><section class="ed-chapter" id="experience" aria-labelledby="experience-heading"><div class="ed-chapter-head"><span class="ed-kicker">04 / Spatial experience</span><h2 id="experience-heading">A journey through memory.</h2><p>A sequence of public thresholds, enclosed passages and daylit rooms translates the site's former conditions of protection and concealment into new encounters with art. The images below are arranged as a curatorial reading of the project, rather than a claim of an exact room-by-room walking itinerary.</p></div><div class="ed-scene"><div class="ed-scene-head"><span class="ed-kicker">A / Arrival</span><h3>Re-entering the battery.</h3><p>Contemporary public space joins the existing stonework, offering an accessible cultural threshold without disguising the site's history.</p></div><div class="ed-scene-media"><figure class="ed-figure ">
       <button class="ed-image ed-zoom" type="button" data-title="Arrival / the open threshold" aria-label="Enlarge image: Arrival / the open threshold">
         <img src="assets/erdai/arrival-courtyard.webp" alt="Contemporary glazed public building next to historic stone retaining walls and outdoor steps" width="1600" loading="lazy"  decoding="async">
@@ -296,19 +293,72 @@
 (function(){
  const holder=document.querySelector('#architecture .ed-drawings');
  if(!holder)return;
- const controls=document.querySelectorAll('#architecture .ed-drawing-tab');
+ const controls=Array.from(document.querySelectorAll('#architecture .ed-drawing-tab'));
  const status=document.querySelector('#architecture .ed-drawing-status');
- for(const button of controls){
-  button.addEventListener('click',()=>{
-   const view=button.dataset.view;
-   holder.dataset.view=view;
-   for(const control of controls){
-    const current=control===button;
-    control.classList.toggle('is-current',current);
-    control.setAttribute('aria-pressed',String(current));
-   }
-   status.textContent=view==='detail'?'Enlarged reading of the plan and section':'Overall plan and longitudinal section';
+ const plan=holder.querySelector('.ed-plan-figure');
+ const section=holder.querySelector('.ed-section-figure');
+ const groundNote=document.querySelector('#architecture .ed-ground-note');
+ const views={
+  basement:{
+   status:'Basement floor plan + Y–Y section',
+   plan:{src:'assets/erdai/floor-plan.webp',
+    alt:'Basement floor plan showing underground galleries, courtyard and contours',
+    title:'Basement floor plan',
+    label:'Basement floor plan / B1',
+    description:'Underground exhibition spaces, courtyards and circulation integrated with the surviving military site.'},
+   section:{src:'assets/erdai/long-section.webp',
+    alt:'Y-direction section showing underground exhibition levels embedded in the terrain',
+    title:'Y–Y section',
+    label:'Y–Y section',
+    description:'The longitudinal section shows underground galleries, level changes and their relationship to the hillside.'}
+  },
+  ground:{
+   status:'Ground-floor plan + X–X section · Awaiting drawings',
+   plan:{src:'assets/erdai/ground-floor-plan-placeholder.svg',
+    alt:'Grey placeholder for the ground-floor architectural plan, to be uploaded',
+    title:'Ground-floor plan — pending',
+    label:'Ground-floor plan / 01 — pending',
+    description:'Placeholder: the ground-floor plan will be added when the drawing is available.',
+    pending:true},
+   section:{src:'assets/erdai/x-section-placeholder.svg',
+    alt:'Grey placeholder for the X-direction section, to be uploaded',
+    title:'X–X section — pending',
+    label:'X–X section — pending',
+    description:'Placeholder: the X-direction section will be added when the drawing is available.',
+    pending:true}
+  }
+ };
+ function replaceDrawing(figure,drawing){
+  const button=figure.querySelector('.ed-image');
+  const image=figure.querySelector('img');
+  image.src=drawing.src;
+  image.alt=drawing.alt;
+  button.dataset.title=drawing.title;
+  button.setAttribute('aria-label',drawing.pending?drawing.title:'Enlarge image: '+drawing.title);
+  button.disabled=!!drawing.pending;
+  const caption=figure.querySelector('.ed-caption');
+  const strong=caption.querySelector('strong');
+  strong.textContent=drawing.label;
+  // Keep the figure caption structure unchanged so existing styles and lightbox remain compatible.
+  for(const n of [...caption.childNodes])if(n!==strong)n.remove();
+  caption.appendChild(document.createTextNode(drawing.description));
+  figure.querySelector('.ed-enlarge').textContent=drawing.pending?'PENDING':'VIEW ↗';
+ }
+ function setView(key){
+  if(!Object.prototype.hasOwnProperty.call(views,key))return;
+  const data=views[key];
+  holder.dataset.view=key;
+  replaceDrawing(plan,data.plan);
+  replaceDrawing(section,data.section);
+  status.textContent=data.status;
+  if(groundNote)groundNote.hidden=key!=='ground';
+  controls.forEach(button=>{
+   const active=button.dataset.view===key;
+   button.classList.toggle('is-current',active);
+   button.setAttribute('aria-pressed',String(active));
   });
  }
+ for(const button of controls)button.addEventListener('click',()=>setView(button.dataset.view));
+ setView('basement');
 })();
 </script></body></html>
