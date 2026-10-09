@@ -138,6 +138,51 @@
 .tc-page .tc-fig-action{grid-column:2}
 .tc-page .tc-conclusion{grid-template-columns:1fr;gap:15px}
 }
+
+/* 2026-10-09: The Condenser editorial refinements (scoped to this project). */
+.tc-page .tc-editorial-split{
+  display:grid;
+  grid-template-columns:minmax(0,.84fr) minmax(0,1.48fr);
+  column-gap:clamp(32px,4.2vw,72px);
+  align-items:start;
+  min-width:0;
+}
+.tc-page .tc-editorial-copy,.tc-page .tc-editorial-media{min-width:0;}
+.tc-page .tc-editorial-copy>.tc-kicker{display:block;margin:6px 0 20px;}
+.tc-page .tc-editorial-copy h2{margin:0;max-width:19ch;font-size:clamp(35px,3.05vw,45px);line-height:1.15;letter-spacing:-.044em;font-weight:400;text-wrap:balance;}
+.tc-page .tc-editorial-copy h3{margin:0;max-width:23ch;font-size:clamp(25px,2.12vw,30px);line-height:1.23;letter-spacing:-.033em;font-weight:400;text-wrap:balance;}
+.tc-page .tc-editorial-copy p{font:16px/1.75 Georgia,'Times New Roman',serif;color:var(--tc-muted);max-width:44ch;margin:23px 0 0;}
+.tc-page .tc-editorial-copy--sub p{font-size:15px;}
+.tc-page .tc-editorial-media .tc-figure{width:100%;margin:0;}
+.tc-page .tc-editorial-media .tc-media{width:100%;}
+.tc-page .tc-editorial-media .tc-media img{width:100%;height:auto;object-fit:contain;}
+/* Trim the excess sky and pavement while centring the architecture in the hero. */
+.tc-page .tc-figure--hero .tc-media{aspect-ratio:16/9;overflow:hidden;}
+.tc-page .tc-figure--hero .tc-media>img{width:100%;height:100%;object-fit:cover;object-position:center 54%;}
+/* Carousel artwork and its changing editorial copy occupy the same row. */
+.tc-page .tc-slide-editorial{align-items:start;}
+.tc-page #interior .tc-carousel-controls{width:calc((100% - clamp(32px,4.2vw,72px))*1.48/2.32);margin-left:auto;}
+/* The original combined theatre board is displayed as aligned proportional panels.
+   Each panel shows a different window of the same original image. */
+.tc-page .tc-composite-panels{display:block;width:96%;margin:0 auto;}
+.tc-page .tc-composite-panel{display:block;position:relative;overflow:hidden;background:#fff;}
+.tc-page .tc-composite-panel--render{aspect-ratio:2048/1074;}
+.tc-page .tc-composite-panel--section{aspect-ratio:2048/372;margin-top:8px;}
+.tc-page .tc-composite-panel>img{display:block;position:absolute;left:0;top:0;width:100%!important;height:auto!important;max-width:none;object-fit:unset;}
+.tc-page .tc-composite-panel--section>img{transform:translateY(-74.274%);}
+@media(max-width:900px){
+ .tc-page .tc-editorial-split{grid-template-columns:1fr;gap:25px;}
+ .tc-page .tc-editorial-copy p{max-width:65ch;}
+ .tc-page #interior .tc-carousel-controls{width:100%;margin-left:0;}
+}
+@media(max-width:640px){
+ .tc-page .tc-figure--hero .tc-media{aspect-ratio:4/3;}
+ .tc-page .tc-figure--hero .tc-media>img{object-position:center 56%;}
+ .tc-page .tc-editorial-copy h2{font-size:clamp(33px,8vw,42px);}
+ .tc-page .tc-editorial-copy>.tc-kicker{margin:0 0 13px;}
+ .tc-page .tc-composite-panels{width:100%;}
+}
+
 </style>
 </head>
 <body class="tc-page">
@@ -189,27 +234,30 @@
 <section class="tc-section" id="interior" aria-label="04 / Everyday civic interior">
 <div class="tc-carousel" role="region" aria-roledescription="carousel" aria-label="Three views of the everyday civic interior">
 <article class="tc-slide" role="group" aria-roledescription="slide" aria-label="1 of 3: Atrium" >
-<div class="tc-chapter-head"><span class="tc-kicker">04 / Everyday civic interior</span><h2>Between performances, the building stays alive.</h2><p>Generous stairs, interconnected foyers and visible movement between levels establish a spatial setting for more than ticketed attendance. The building invites people to linger before and after a performance—or to come without seeing one.</p></div>
-<figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The atrium / an interior street" aria-label="Enlarge image: The atrium / an interior street"><img src="assets/theater/condenser-atrium.webp" width="2048" height="1299" loading="lazy" decoding="async" alt="Interior atrium rendering with multi-level light blue theatre volumes, tall columns, glazed facade and broad public stairs."></button><figcaption><span class="tc-fig-no">10</span><span class="tc-fig-copy"><strong>The atrium / an interior street</strong>Double-height space, suspended foyers and a continuous stair sequence bring the different performance rooms into visual contact.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+<div class="tc-editorial-split tc-slide-editorial">
+<div class="tc-editorial-copy"><span class="tc-kicker">04 / Everyday civic interior</span><h2>Between performances, the building stays alive.</h2><p>Generous stairs, interconnected foyers and visible movement between levels establish a spatial setting for more than ticketed attendance. The building invites people to linger before and after a performance—or to come without seeing one.</p></div>
+<div class="tc-editorial-media"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The atrium / an interior street" aria-label="Enlarge image: The atrium / an interior street"><img src="assets/theater/condenser-atrium.webp" width="2048" height="1299" loading="lazy" decoding="async" alt="Interior atrium rendering with multi-level light blue theatre volumes, tall columns, glazed facade and broad public stairs."></button><figcaption><span class="tc-fig-no">10</span><span class="tc-fig-copy"><strong>The atrium / an interior street</strong>Double-height space, suspended foyers and a continuous stair sequence bring the different performance rooms into visual contact.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+</div>
 </article>
 <article class="tc-slide" role="group" aria-roledescription="slide" aria-label="2 of 3: Forum" hidden>
-<div class="tc-chapter-head"><span class="tc-kicker">04 / The forum</span><h2>A gathering stair, not simply a connection.</h2><p>Between the third and fourth floors, a wide stepped space works as an informal forum for talks, screenings, meeting or simply sitting. Movement becomes an opportunity for collective occupation.</p></div>
-<figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The Forum / gathering on the stair" aria-label="Enlarge image: The Forum / gathering on the stair"><img src="assets/theater/condenser-forum.webp" width="2048" height="1299" loading="lazy" decoding="async" alt="Interior rendering of broad stepped public forum with people sitting near a projection screen and an upper walkway marked The Forum."></button><figcaption><span class="tc-fig-no">11</span><span class="tc-fig-copy"><strong>The Forum / gathering on the stair</strong>The enlarged stair offers an informal place for viewing and conversation, adjacent to the building’s principal circulation sequence.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+<div class="tc-editorial-split tc-slide-editorial">
+<div class="tc-editorial-copy"><span class="tc-kicker">04 / The forum</span><h2>A gathering stair, not simply a connection.</h2><p>Between the third and fourth floors, a wide stepped space works as an informal forum for talks, screenings, meeting or simply sitting. Movement becomes an opportunity for collective occupation.</p></div>
+<div class="tc-editorial-media"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The Forum / gathering on the stair" aria-label="Enlarge image: The Forum / gathering on the stair"><img src="assets/theater/condenser-forum.webp" width="2048" height="1299" loading="lazy" decoding="async" alt="Interior rendering of broad stepped public forum with people sitting near a projection screen and an upper walkway marked The Forum."></button><figcaption><span class="tc-fig-no">11</span><span class="tc-fig-copy"><strong>The Forum / gathering on the stair</strong>The enlarged stair offers an informal place for viewing and conversation, adjacent to the building’s principal circulation sequence.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+</div>
 </article>
 <article class="tc-slide" role="group" aria-roledescription="slide" aria-label="3 of 3: Roof route" hidden>
-<div class="tc-chapter-head"><span class="tc-kicker">04 / Upper levels</span><h2>Public movement rises toward the roof.</h2><p>Escalators, landings and viewing decks carry the shared sequence upward. The rooftop garden and open-air theatre extend the range of settings in which informal encounters and performances might occur.</p></div>
-<figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The route to the roof garden" aria-label="Enlarge image: The route to the roof garden"><img src="assets/theater/condenser-roof-approach.webp" width="2048" height="1323" loading="lazy" decoding="async" alt="Upper-level interior rendering showing escalator to roof garden, outdoor greenery below a viewing terrace and people moving through the building."></button><figcaption><span class="tc-fig-no">12</span><span class="tc-fig-copy"><strong>The route to the roof garden</strong>A sequence of escalators and viewing platforms links the upper foyer to the roof, where the theatre opens toward landscape and daylight.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+<div class="tc-editorial-split tc-slide-editorial">
+<div class="tc-editorial-copy"><span class="tc-kicker">04 / Upper levels</span><h2>Public movement rises toward the roof.</h2><p>Escalators, landings and viewing decks carry the shared sequence upward. The rooftop garden and open-air theatre extend the range of settings in which informal encounters and performances might occur.</p></div>
+<div class="tc-editorial-media"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The route to the roof garden" aria-label="Enlarge image: The route to the roof garden"><img src="assets/theater/condenser-roof-approach.webp" width="2048" height="1323" loading="lazy" decoding="async" alt="Upper-level interior rendering showing escalator to roof garden, outdoor greenery below a viewing terrace and people moving through the building."></button><figcaption><span class="tc-fig-no">12</span><span class="tc-fig-copy"><strong>The route to the roof garden</strong>A sequence of escalators and viewing platforms links the upper foyer to the roof, where the theatre opens toward landscape and daylight.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+</div>
 </article>
 <div class="tc-carousel-controls" role="group" aria-label="Switch between interior perspectives">
 <div class="tc-carousel-indicators"><button type="button" data-tc-slide="0" class="tc-carousel-dot is-active" aria-label="View 1: Atrium" aria-pressed="true">01</button><button type="button" data-tc-slide="1" class="tc-carousel-dot" aria-label="View 2: Forum" aria-pressed="false">02</button><button type="button" data-tc-slide="2" class="tc-carousel-dot" aria-label="View 3: Roof route" aria-pressed="false">03</button></div>
 <div class="tc-carousel-navigation"><span class="tc-carousel-status" role="status" aria-live="polite">01 / 03 · Atrium</span><button type="button" class="tc-carousel-arrow" data-tc-direction="-1" aria-label="Previous interior view">← <span>Previous</span></button><button type="button" class="tc-carousel-arrow" data-tc-direction="1" aria-label="Next interior view"><span>Next</span> →</button></div>
 </div></div>
 </section>
-<section class="tc-section" id="theatres" aria-labelledby="theatres-title"><div class="tc-chapter-head"><span class="tc-kicker">05 / Performance & envelope</span><h2 id="theatres-title">Distinct theatres inside a shared civic frame.</h2><p>The enclosed auditoria support concentrated performance while the surrounding building creates an expanded public life. Blue and orange volumes give the two performance environments a distinct spatial presence; a translucent envelope reveals traces of the activity within.</p></div>
-<figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The Blue / an enclosed space for performance" aria-label="Enlarge image: The Blue / an enclosed space for performance"><img src="assets/theater/condenser-auditorium.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Main rendering of a blue multi-balcony theatre during stage rehearsal above a smaller architectural site section."></button><figcaption><span class="tc-fig-no">13</span><span class="tc-fig-copy"><strong>The Blue / an enclosed space for performance</strong>A dedicated auditorium retains a focused theatrical environment. The accompanying site section shows how the hall sits within the larger architectural and urban structure.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-<div class="tc-space"><div class="tc-subhead"><span class="tc-kicker">B / After dark</span><h3>An inhabited facade, rather than a blank box.</h3><p>The proposal contrasts cooler western and warmer southern volumes inside a translucent polycarbonate enclosure. Seen from the city, movement, light and occupation would give the theatre a second presence after dark.</p></div>
-<figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Four sides / two atmospheres" aria-label="Enlarge image: Four sides / two atmospheres"><img src="assets/theater/condenser-elevations.webp" width="2048" height="1281" loading="lazy" decoding="async" alt="Four building elevation drawings on a dark background displaying warm orange and cool blue illuminated theatre interiors."></button><figcaption><span class="tc-fig-no">14</span><span class="tc-fig-copy"><strong>Four sides / two atmospheres</strong>Facade studies test the contrast between the cooler blue theatre and warmer orange theatre behind a common translucent outer surface.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-</div></section>
+<section class="tc-section" id="theatres" aria-labelledby="theatres-title"><div class="tc-editorial-split tc-theatre-editorial"><div class="tc-editorial-copy"><span class="tc-kicker">05 / Performance & envelope</span><h2 id="theatres-title">Distinct theatres inside a shared civic frame.</h2><p>The enclosed auditoria support concentrated performance while the surrounding building creates an expanded public life. Blue and orange volumes give the two performance environments a distinct spatial presence; a translucent envelope reveals traces of the activity within.</p></div><div class="tc-editorial-media"><figure class="tc-figure tc-auditorium-figure"><button class="tc-media tc-zoom" type="button" data-title="The Blue / an enclosed space for performance" aria-label="Enlarge image: The Blue / an enclosed space for performance"><span class="tc-composite-panels" aria-label="Auditorium rendering aligned above the corresponding building site section"><span class="tc-composite-panel tc-composite-panel--render"><img src="assets/theater/condenser-auditorium.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Main rendering of a blue multi-balcony theatre during stage rehearsal above a smaller architectural site section."></span><span class="tc-composite-panel tc-composite-panel--section" aria-hidden="true"><img src="assets/theater/condenser-auditorium.webp" width="2048" height="1446" loading="lazy" decoding="async" alt=""></span></span></button><figcaption><span class="tc-fig-no">13</span><span class="tc-fig-copy"><strong>The Blue / an enclosed space for performance</strong>A dedicated auditorium retains a focused theatrical environment. The accompanying site section shows how the hall sits within the larger architectural and urban structure.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div></div>
+<div class="tc-space tc-editorial-split tc-theatre-editorial tc-theatre-editorial--secondary"><div class="tc-editorial-copy tc-editorial-copy--sub"><span class="tc-kicker">B / After dark</span><h3>An inhabited facade, rather than a blank box.</h3><p>The proposal contrasts cooler western and warmer southern volumes inside a translucent polycarbonate enclosure. Seen from the city, movement, light and occupation would give the theatre a second presence after dark.</p></div><div class="tc-editorial-media"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Four sides / two atmospheres" aria-label="Enlarge image: Four sides / two atmospheres"><img src="assets/theater/condenser-elevations.webp" width="2048" height="1281" loading="lazy" decoding="async" alt="Four building elevation drawings on a dark background displaying warm orange and cool blue illuminated theatre interiors."></button><figcaption><span class="tc-fig-no">14</span><span class="tc-fig-copy"><strong>Four sides / two atmospheres</strong>Facade studies test the contrast between the cooler blue theatre and warmer orange theatre behind a common translucent outer surface.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div></div></section>
 <section class="tc-section" id="drawings" aria-labelledby="drawings-title"><div class="tc-chapter-head"><span class="tc-kicker">06 / Architectural drawings</span><h2 id="drawings-title">Plans for two kinds of public life.</h2><p>The plan series clarifies the different demands on the building: enclosed theatres and service rooms, public circulation, informal gathering spaces, and the upper roof destinations. Expand any group to examine the original drawing at full scale.</p></div>
 <div class="tc-tech"><details open><summary>01 / Ground and lower levels</summary>
 <figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Ground and second-floor organisation" aria-label="Enlarge image: Ground and second-floor organisation"><img src="assets/theater/condenser-plans-lower.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Paired detailed first and second floor architectural plans with auditorium geometry, entrances, corridors, surrounding site and auxiliary rooms."></button><figcaption><span class="tc-fig-no">15</span><span class="tc-fig-copy"><strong>Ground and second-floor organisation</strong>The lower plans locate the public arrival zone, auditorium access, enclosed rooms and their supporting programme.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
