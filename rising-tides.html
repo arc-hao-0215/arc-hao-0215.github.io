@@ -268,6 +268,26 @@
  .rt-page .rt-assembly-note{margin-top:33px}
 }
 
+
+/* 2026-10-10: image-width alignment and complete uncropped construction boards. */
+.rt-page .rt-strategy{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(26px,4vw,68px);align-items:start}
+.rt-page .rt-strategy>.rt-figure{width:100%;max-width:100%;min-width:0}
+.rt-page .rt-strategy .rt-media-button,.rt-page .rt-assembly-pair .rt-media-button{width:100%;height:auto;overflow:visible;background:transparent}
+.rt-page .rt-strategy .rt-media-button img,.rt-page .rt-assembly-pair .rt-media-button img{display:block;width:100%;max-width:100%;height:auto;max-height:none;object-fit:contain;object-position:center top;aspect-ratio:auto}
+.rt-page .rt-assembly-pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(26px,4vw,68px);align-items:start}
+.rt-page .rt-assembly-pair>.rt-figure{width:100%;max-width:100%;min-width:0}
+.rt-page .rt-assembly-stack{gap:clamp(54px,6vw,86px)}
+.rt-page .rt-assembly-copy{max-width:490px}
+.rt-page .rt-assembly-copy>p{margin-top:16px}
+.rt-page .rt-assembly-detail{margin-top:clamp(27px,3.5vw,48px)}
+.rt-page .rt-assembly-detail article{padding:19px 0 21px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-assembly-detail h3{font:400 clamp(19px,1.65vw,24px)/1.32 Arial,Helvetica,sans-serif;letter-spacing:-.03em;margin:10px 0 9px}
+.rt-page .rt-assembly-detail p{font:14px/1.75 Georgia,"Times New Roman",serif;color:#50504c;margin:0}
+@media(max-width:700px){
+ .rt-page .rt-strategy,.rt-page .rt-assembly-pair{grid-template-columns:minmax(0,1fr);gap:25px}
+ .rt-page .rt-assembly-detail{margin-top:27px}
+ .rt-page .rt-assembly-stack{gap:45px}
+}
 </style>
 <link rel="stylesheet" href="project-system.css?v=20261009-v1">
 <link rel="stylesheet" href="project-unified.css?v=20261009-editorial-v1"></head>
@@ -359,11 +379,6 @@
    <div class="rt-comparison-tile"><div class="rt-tile-heading"><span>Flood Season</span><span>High-water adaptation</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Flood season / adaptable environmental infrastructure" aria-label="Enlarge: Flood season / adaptable environmental infrastructure"><img src="assets/rising/rising-water-flood.webp" width="1590" height="574" loading="lazy"  decoding="async" alt="Section-perspective drawing of the same raised buildings and floating shelter units in flood conditions"></button><figcaption><span class="rt-fig-number">12</span><span class="rt-caption-text"><strong>Water systems / flood season</strong>Elevated rooms, refuge and boat routes amid inundated lower ground.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
   </div>
  </div>
- <div class="rt-water-points rt-water-points--after">
-  <article><h3>Collect</h3><p>Roofs and elevated platforms gather rainwater for proposed non-potable uses.</p></article>
-  <article><h3>Treat</h3><p>Wetland and wastewater systems create a potential relationship between environmental infrastructure and communal landscape.</p></article>
-  <article><h3>Overflow</h3><p>Sections anticipate seasonal change without assuming that planted treatment areas can safely receive every flood flow.</p></article>
- </div>
 </section>
 <section class="rt-section rt-assembly-section" id="assembly" aria-labelledby="assembly-title">
  <div class="rt-assembly-stack">
@@ -371,19 +386,26 @@
    <div class="rt-assembly-copy">
     <span class="rt-kicker">05 / Modular construction</span>
     <h2 id="assembly-title">A system assembled together.</h2>
-    <p>The architecture is studied as a set of replaceable elements, rather than one fixed object. A legible frame, lightweight enclosure and independent environmental systems support a possible process of prefabrication, local adaptation and phased assembly.</p>
-    <div class="rt-assembly-note"><span class="rt-small-heading">01 / Kit of parts</span><h3>Designed to be assembled and adapted.</h3><p>An independent structural frame, prefabricated enclosure and separable environmental components make the construction sequence legible. Connections and foundations would require further engineering.</p></div>
+    <p>Rather than treating the dwelling as a single finished object, the proposal separates it into three legible layers: a lightweight enclosure, a primary structural frame, and a kit of environmental systems. The exploded axonometric shows how these elements could be assembled independently, repaired over time and adapted to different neighbourhood needs.</p>
+    <div class="rt-assembly-detail">
+     <article><span class="rt-small-heading">01 / Envelope</span><h3>Replaceable layers for everyday life.</h3><p>Bamboo wall and flooring panels, a wooden ceiling and screened openings define the inhabited spaces without becoming the main load-bearing system. This distinction makes ventilation, shading and component replacement part of the architectural logic rather than afterthoughts.</p></article>
+     <article><span class="rt-small-heading">02 / Structure</span><h3>A raised frame with identifiable connections.</h3><p>Columns, primary beams and joint connectors establish a shared support grid, while the diagram proposes telescopic concrete foundations below the occupied deck. Their dimensions, flood resistance and suitability beside the railway would still require site-specific engineering.</p></article>
+     <article><span class="rt-small-heading">03 / Climate and water</span><h3>Environmental services as accessible parts.</h3><p>Rainwater gutters, solar panels, the proposed HydroHarvest system, sediment retention and storage units are shown as distinct assemblies. Keeping these systems visible and serviceable offers a basis for maintenance and phased installation; the drawing does not establish verified treatment performance.</p></article>
+    </div>
    </div>
-   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Prefabricated, community-assembled dwelling" aria-label="Enlarge: Prefabricated, community-assembled dwelling"><img src="assets/rising/rising-assembly-exploded.webp" width="878" height="1165" loading="lazy"  decoding="async" alt="Exploded axonometric of a modular dwelling showing foundations, roof, walls, beams, photovoltaic panels and water infrastructure"></button><figcaption><span class="rt-fig-number">13</span><span class="rt-caption-text"><strong>Prefabricated, community-assembled dwelling</strong>The exploded study separates foundations, frame, enclosure, ventilation and water components so their connections can be discussed and adapted.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+   <figure class="rt-figure"><button class="rt-media-button rt-zoom" type="button" data-title="Prefabricated, community-assembled dwelling / complete drawing" aria-label="Enlarge complete prefabricated dwelling drawing"><img src="assets/rising/rising-assembly-exploded-full.jpg" width="1526" height="2047" loading="lazy" decoding="async" alt="Complete uncropped exploded axonometric showing the roof, bamboo enclosure, structural frame, joint connectors, telescopic foundations, rainwater collection and storage, sediment retention, solar panels and delivery truck"></button><figcaption><span class="rt-fig-number">13</span><span class="rt-caption-text"><strong>Prefabricated, community-assembled dwelling</strong>The complete kit-of-parts study identifies the envelope, frame, foundations and environmental components as separable systems.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
   </div>
   <div class="rt-assembly-pair">
    <div class="rt-assembly-copy">
     <span class="rt-small-heading">02 / Collective construction</span>
     <h3>Building is a shared process.</h3>
-    <p>The six illustrated stages connect prefabricated delivery with local participation: discussion, groundwork, structural assembly and the installation of building systems.</p>
-    <p>The sequence is a proposal for collaboration, not a verified construction or delivery plan.</p>
+    <p>The six-panel sequence begins with prefabricated components being delivered to the site, followed by community design consultation. Ground anchoring and foundation preparation precede cooperative frame assembly; the final stages introduce ventilation and HydroHarvest equipment, then rooftop solar power.</p>
+    <div class="rt-assembly-detail">
+     <article><span class="rt-small-heading">From delivery to occupation</span><h3>Sequencing allows participation at different scales.</h3><p>The illustrations connect specialist work, local decision-making and straightforward assembly tasks. Prefabrication may limit prolonged disruption on a constrained riverbank, while a consistent structural kit could allow components to be installed or replaced in phases.</p></article>
+     <article><span class="rt-small-heading">Collective agency</span><h3>Consultation comes before construction.</h3><p>Participation is not simply a source of labour. Decisions about layout, shared uses, maintenance and access would need to be negotiated with residents before any construction sequence is fixed. Training, safe installation, financing and long-term stewardship remain essential questions for further development.</p></article>
+    </div>
    </div>
-   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Six stages of collaborative assembly" aria-label="Enlarge: Six stages of collaborative assembly"><img src="assets/rising/rising-assembly-process.webp" width="1005" height="1165" loading="lazy"  decoding="async" alt="Six architectural storyboard drawings of module delivery, community design participation, foundations, structural framing and equipment installation"></button><figcaption><span class="rt-fig-number">14</span><span class="rt-caption-text"><strong>Six stages of collaborative assembly</strong>Illustrated sequence from prefabricated delivery and community consultation to foundations, structural assembly and environmental systems.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+   <figure class="rt-figure"><button class="rt-media-button rt-zoom" type="button" data-title="Six stages of collaborative assembly / complete storyboard" aria-label="Enlarge complete six-stage assembly storyboard"><img src="assets/rising/rising-assembly-process-full.jpg" width="1753" height="2048" loading="lazy" decoding="async" alt="Complete uncropped six-stage storyboard: prefabricated delivery, community consultation, ground anchoring, cooperative frame assembly, ventilation and HydroHarvest installation, and rooftop solar installation"></button><figcaption><span class="rt-fig-number">14</span><span class="rt-caption-text"><strong>Six stages of collaborative assembly</strong>From modular delivery and community consultation to groundwork, frame construction and installation of water, ventilation and solar systems.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
   </div>
  </div>
 </section>
