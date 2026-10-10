@@ -135,6 +135,12 @@
 .ed-page .ed-drawing-tab.is-current{background:var(--ed-ink);border-color:var(--ed-ink);color:var(--ed-paper)}
 .ed-page .ed-drawing-tab:focus-visible{outline:2px solid var(--ed-accent);outline-offset:3px}
 .ed-page .ed-drawing-status{font:12px/1.6 Arial,sans-serif;color:var(--ed-muted);margin:0}
+.ed-page .ed-autoplay-toggle{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;margin-left:auto;border:1px solid var(--ed-rule);padding:10px 13px;background:transparent;color:var(--ed-ink);font:12px/1.3 Arial,sans-serif;cursor:pointer;white-space:nowrap;transition:border-color .18s,background .18s}
+.ed-page .ed-autoplay-toggle:hover{border-color:var(--ed-ink);background:rgba(25,26,24,.035)}
+.ed-page .ed-autoplay-toggle:focus-visible{outline:2px solid var(--ed-accent);outline-offset:3px}
+.ed-page .ed-autoplay-icon{display:inline-flex;width:13px;justify-content:center;align-items:center;font:12px/1 Arial,sans-serif}
+.ed-page #architecture .ed-drawings{transition:opacity .26s ease}
+.ed-page #architecture .ed-drawings.is-changing{opacity:.12}
 .ed-page #architecture .ed-drawings .ed-image{overflow:hidden}
 .ed-page #architecture .ed-drawings .ed-image img{transition:width .3s,transform .3s,filter .2s}
 .ed-page #architecture .ed-arch-side .ed-text-split [hidden]{display:none!important}
@@ -171,6 +177,7 @@
 }
 @media(prefers-reduced-motion:reduce){
  .ed-page #architecture .ed-drawings .ed-image img{transition:none}
+ .ed-page #architecture .ed-drawings{transition:none}
 }
 </style></head><body class="ed-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -218,9 +225,10 @@
  <div class="ed-drawing-switch" role="group" aria-label="Switch both architectural plan and section drawings">
   <button type="button" class="ed-drawing-tab is-current" data-view="basement" aria-pressed="true">B1 / Basement</button>
   <button type="button" class="ed-drawing-tab" data-view="ground" aria-pressed="false">01 / Ground Floor</button>
+  <button type="button" class="ed-autoplay-toggle" aria-label="Pause automatic plan and section slideshow" aria-pressed="false"><span class="ed-autoplay-icon" aria-hidden="true">Ⅱ</span><span class="ed-autoplay-label">Pause</span></button>
  </div>
- <p class="ed-drawing-status" aria-live="polite">Basement floor plan + Y–Y section</p>
- <p class="ed-drawing-hint">Switch floors to view the corresponding plan and section together.</p>
+ <p class="ed-drawing-status" aria-live="off">Basement floor plan + Y–Y section</p>
+ <p class="ed-drawing-hint">Automatically alternates between levels. Choose a floor manually, or pause to keep it on screen.</p>
  </div><div class="ed-text-split"><p class="ed-basement-note"><strong>Basement.</strong> Underground galleries for painting, photography, ceramics, calligraphy, sculpture and moving images are linked by a sequence of courts and passages.</p><p class="ed-basement-note"><strong>Y–Y section.</strong> The existing longitudinal section shows how recessed rooms, level changes and light wells connect the museum to the terrain above.</p><p class="ed-ground-note" hidden><strong>Ground floor + X–X section.</strong> The ground-floor plan locates the museum within the contours of the former battery, tracing its public approach, planted roof, exhibition spaces, and retained emplacements. Read alongside it, the X–X section reveals how the new architecture connects to the sloping landscape and the existing fortifications.</p></div></div><div class="ed-drawings" data-view="basement"><figure class="ed-figure ed-drawing ed-plan-figure">
       <button class="ed-image ed-zoom" type="button" data-title="Basement floor plan" aria-label="Enlarge image: Basement floor plan">
         <img src="assets/erdai/floor-plan.webp" alt="Architectural floor plan showing galleries organized around an angular courtyard with coastal contour lines" width="1600" loading="lazy"  decoding="async">
@@ -300,6 +308,11 @@
  const plan=holder.querySelector('.ed-plan-figure');
  const section=holder.querySelector('.ed-section-figure');
  const groundNote=document.querySelector('#architecture .ed-ground-note');
+ const autoplayButton=document.querySelector('#architecture .ed-autoplay-toggle');
+ const autoplayIcon=autoplayButton?.querySelector('.ed-autoplay-icon');
+ const autoplayLabel=autoplayButton?.querySelector('.ed-autoplay-label');
+ const lightbox=document.querySelector('#ed-lightbox');
+ const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
  const views={
   basement:{
    status:'Basement floor plan + Y–Y section',
@@ -359,7 +372,73 @@
    button.setAttribute('aria-pressed',String(active));
   });
  }
- for(const button of controls)button.addEventListener('click',()=>setView(button.dataset.view));
+ // Auto-play changes the plan and section together, never as independent slides.
+ const AUTO_DELAY=7000;
+ let playing=!reducedMotion.matches;
+ let visible=false;
+ let autoTimer=0;
+ let transitionTimer=0;
+ function updatePlaybackButton(){
+  if(!autoplayButton)return;
+  autoplayButton.setAttribute('aria-pressed',String(!playing));
+  autoplayButton.setAttribute('aria-label',playing?'Pause automatic plan and section slideshow':'Play automatic plan and section slideshow');
+  if(autoplayIcon)autoplayIcon.textContent=playing?'Ⅱ':'▶';
+  if(autoplayLabel)autoplayLabel.textContent=playing?'Pause':'Play';
+  status.setAttribute('aria-live',playing?'off':'polite');
+ }
+ function showView(key,animate=true){
+  if(!Object.prototype.hasOwnProperty.call(views,key)||key===holder.dataset.view)return;
+  window.clearTimeout(transitionTimer);
+  if(!animate||reducedMotion.matches){
+   holder.classList.remove('is-changing');
+   setView(key);
+   return;
+  }
+  holder.classList.add('is-changing');
+  transitionTimer=window.setTimeout(()=>{
+   setView(key);
+   window.requestAnimationFrame(()=>holder.classList.remove('is-changing'));
+  },180);
+ }
+ function scheduleNext(){
+  window.clearTimeout(autoTimer);
+  if(!playing||!visible||document.hidden||lightbox?.open)return;
+  autoTimer=window.setTimeout(()=>{
+   if(!playing||!visible||document.hidden||lightbox?.open)return;
+   showView(holder.dataset.view==='basement'?'ground':'basement');
+   scheduleNext();
+  },AUTO_DELAY);
+ }
+ controls.forEach(button=>button.addEventListener('click',()=>{
+  showView(button.dataset.view);
+  scheduleNext(); // Give the selected drawing a full interval before advancing.
+ }));
+ autoplayButton?.addEventListener('click',()=>{
+  playing=!playing;
+  updatePlaybackButton();
+  scheduleNext();
+ });
+ if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>{
+   const entry=entries[0];
+   visible=!!entry?.isIntersecting&&entry.intersectionRatio>=.1;
+   scheduleNext();
+  },{threshold:[0,.1,.25]});
+  observer.observe(holder);
+ }else{
+  visible=true;
+ }
+ document.addEventListener('visibilitychange',scheduleNext);
+ lightbox?.addEventListener('close',scheduleNext);
+ reducedMotion.addEventListener?.('change',event=>{
+  if(event.matches&&playing){
+   playing=false;
+   updatePlaybackButton();
+   scheduleNext();
+  }
+ });
  setView('basement');
+ updatePlaybackButton();
+ scheduleNext();
 })();
 </script></body></html>
