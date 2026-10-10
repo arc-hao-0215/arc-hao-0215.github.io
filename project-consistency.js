@@ -8,7 +8,7 @@
  if(!body?.classList.contains('portfolio-project'))return;
  const NAV='.lf-onpage,.ftb-inpage,.rt-onpage,.tc-onpage,.soc-onpage,.ed-onpage,.sa-jump,.bab-onpage,.gh-nav,.wp-onpage';
  const nav=document.querySelector(NAV);
- if(nav){
+ if(nav && !body.classList.contains('lf-page')){
   nav.setAttribute('aria-label','Explore this project');
   const links=[...nav.querySelectorAll(':scope > a[href^="#"]')];
   links.forEach((a,i)=>{
