@@ -146,3 +146,120 @@
   .research-article .essay-body > section:not(.essay-source) > p:not(.opening-proposition):not(.question-text):not(.abstract-text),
   .research-article .essay-body > div:not(.essay-source) > p:not(.opening-proposition):not(.question-text):not(.abstract-text) {font-size:16px !important;}
 }
+
+/* Research refinement / 2026-10-10: questions + credits */
+.research-article .essay-body section#question.research-question--unified {
+  box-sizing:border-box;
+  display:block !important;
+  padding:25px 0 28px !important;
+  margin:62px 0 68px !important;
+  border-top:1px solid var(--research-rule,#d9dad4) !important;
+  border-bottom:1px solid var(--research-rule,#d9dad4) !important;
+  min-width:0; max-width:100%;
+  scroll-margin-top:112px;
+}
+.research-article .essay-body section#question.research-question--unified > h2 {
+  display:block !important;
+  margin:0 0 15px !important;
+  padding:0 !important;
+  border:0 !important;
+  color:#80857e !important;
+  font:500 10px/1.55 Arial,Helvetica,sans-serif !important;
+  text-transform:uppercase !important;
+  letter-spacing:.09em !important;
+}
+.research-article .essay-body section#question.research-question--unified > p.question-text {
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  max-width:850px !important;
+  color:#272a26 !important;
+  font:400 clamp(22px,2.15vw,29px)/1.48 Arial,Helvetica,sans-serif !important;
+  letter-spacing:-.022em !important;
+  text-wrap:pretty; overflow-wrap:break-word;
+}
+/* Editorial research records — retain full provenance, reduce visual noise. */
+.research-article .essay-body section.research-authorship-block {
+  box-sizing:border-box;
+  display:grid !important;
+  grid-template-columns:148px minmax(0,1fr) !important;
+  gap:7px 24px !important;
+  margin:30px 0 25px !important;
+  padding:14px 0 3px !important;
+  border-top:1px solid #dedfd9 !important;
+  border-bottom:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.research-article .essay-body .research-authorship-block > .eyebrow {
+  display:block !important;
+  margin:2px 0 0 !important;
+  padding:0 !important;
+  font:500 10px/1.6 Arial,Helvetica,sans-serif !important;
+  text-transform:uppercase;
+  letter-spacing:.045em !important;
+  color:#8b8e87 !important;
+}
+.research-article .essay-body .research-authorship-block > p,
+.research-article .essay-body .research-authorship-block > p.research-authorship,
+.research-article .essay-body .research-authorship-block > p.civic-note {
+  box-sizing:border-box;
+  min-width:0;
+  max-width:100% !important;
+  grid-column:2;
+  margin:0 0 8px !important;
+  padding:0 !important;
+  color:#757a73 !important;
+  font:400 11.5px/1.65 Arial,Helvetica,sans-serif !important;
+  letter-spacing:0 !important;
+  overflow-wrap:anywhere;
+}
+.research-article .essay-body .research-authorship-block > p:first-of-type {grid-row:1;}
+.research-article .essay-body .research-authorship-block > p:not(:first-of-type) {grid-row:auto;}
+.research-article .essay-body .research-authorship-block :is(strong,em) {
+  color:#5c625a !important; font-weight:500 !important; font-style:normal !important;
+}
+.research-article .essay-body .research-authorship-block a {
+  color:#566057 !important; font:inherit !important; border-bottom:1px solid #c8ccc5 !important;
+  text-decoration:none !important; overflow-wrap:anywhere;
+}
+.research-article .essay-body .research-authorship-block a:hover {color:var(--accent,#a33522) !important;}
+/* Research scope belongs to the same quiet metadata tier, not a coloured callout. */
+.research-article .essay-body .research-metadata-note {
+  display:grid; grid-template-columns:148px minmax(0,1fr);
+  gap:10px 24px; margin:28px 0 34px !important;
+  padding:13px 0 !important; min-width:0;
+  border-top:1px solid #dedfd9 !important;
+  border-left:0 !important; border-bottom:1px solid #dedfd9 !important;
+  background:none !important;
+}
+.research-article .essay-body .research-metadata-note > .eyebrow {
+  color:#8b8e87 !important; font:500 10px/1.6 Arial,Helvetica,sans-serif !important;
+  text-transform:uppercase; letter-spacing:.045em !important;
+  margin:0 !important; padding:0 !important;
+}
+.research-article .essay-body .research-metadata-note > p {
+  margin:0 !important; color:#757a73 !important;
+  font:400 11.5px/1.65 Arial,Helvetica,sans-serif !important; min-width:0;
+}
+.research-article .essay-body .research-authorship-block + .essay-source {
+  margin-top:20px !important;
+}
+@media (max-width:760px) {
+  .research-article .essay-body section#question.research-question--unified {
+    padding:20px 0 24px !important; margin:46px 0 52px !important;
+  }
+  .research-article .essay-body section#question.research-question--unified > p.question-text {
+    font-size:clamp(21px,5.65vw,27px) !important; line-height:1.43 !important;
+  }
+  .research-article .essay-body section.research-authorship-block,
+  .research-article .essay-body .research-metadata-note {
+    grid-template-columns:minmax(0,1fr) !important; gap:7px !important;
+    padding-top:12px !important;
+  }
+  .research-article .essay-body .research-authorship-block > p,
+  .research-article .essay-body .research-authorship-block > p:first-of-type,
+  .research-article .essay-body .research-authorship-block > p:not(:first-of-type) {
+    grid-column:1 !important; grid-row:auto !important;
+  }
+}
