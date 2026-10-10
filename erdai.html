@@ -139,9 +139,8 @@
 .ed-page #architecture .ed-drawings .ed-image img{transition:width .3s,transform .3s,filter .2s}
 .ed-page #architecture .ed-arch-side .ed-text-split [hidden]{display:none!important}
 .ed-page #architecture .ed-drawing-hint{font:12px/1.66 Arial,sans-serif;color:var(--ed-muted);margin:9px 0 0;max-width:43ch}
-.ed-page #architecture .ed-drawings[data-view="ground"] .ed-image{cursor:default;background:#e7e7e4}
-.ed-page #architecture .ed-drawings[data-view="ground"] .ed-image:hover img{filter:none}
-.ed-page #architecture .ed-drawings[data-view="ground"] .ed-image:disabled{opacity:1}
+.ed-page #architecture .ed-drawings[data-view="ground"] .ed-image{cursor:zoom-in;background:#eeede9}
+.ed-page #architecture .ed-drawings[data-view="ground"] .ed-image img{width:100%;height:auto;object-fit:contain}
 .ed-page #architecture .ed-drawings img{width:100%;height:auto;max-width:100%;transform:none;object-fit:contain}
 .ed-page #architecture .ed-figure .ed-enlarge{letter-spacing:.06em}
 .ed-page #experience .ed-chapter-head{margin-bottom:57px}
@@ -222,7 +221,7 @@
  </div>
  <p class="ed-drawing-status" aria-live="polite">Basement floor plan + Y–Y section</p>
  <p class="ed-drawing-hint">Switch floors to view the corresponding plan and section together.</p>
- </div><div class="ed-text-split"><p class="ed-basement-note"><strong>Basement.</strong> Underground galleries for painting, photography, ceramics, calligraphy, sculpture and moving images are linked by a sequence of courts and passages.</p><p class="ed-basement-note"><strong>Y–Y section.</strong> The existing longitudinal section shows how recessed rooms, level changes and light wells connect the museum to the terrain above.</p><p class="ed-ground-note" hidden><strong>Ground floor + X–X section.</strong> The two drawings for this level are placeholders until the final plans are provided.</p></div></div><div class="ed-drawings" data-view="basement"><figure class="ed-figure ed-drawing ed-plan-figure">
+ </div><div class="ed-text-split"><p class="ed-basement-note"><strong>Basement.</strong> Underground galleries for painting, photography, ceramics, calligraphy, sculpture and moving images are linked by a sequence of courts and passages.</p><p class="ed-basement-note"><strong>Y–Y section.</strong> The existing longitudinal section shows how recessed rooms, level changes and light wells connect the museum to the terrain above.</p><p class="ed-ground-note" hidden><strong>Ground floor + X–X section.</strong> The ground-floor plan locates the museum within the contours of the former battery, tracing its public approach, planted roof, exhibition spaces, and retained emplacements. Read alongside it, the X–X section reveals how the new architecture connects to the sloping landscape and the existing fortifications.</p></div></div><div class="ed-drawings" data-view="basement"><figure class="ed-figure ed-drawing ed-plan-figure">
       <button class="ed-image ed-zoom" type="button" data-title="Basement floor plan" aria-label="Enlarge image: Basement floor plan">
         <img src="assets/erdai/floor-plan.webp" alt="Architectural floor plan showing galleries organized around an angular courtyard with coastal contour lines" width="1600" loading="lazy"  decoding="async">
       </button>
@@ -290,6 +289,8 @@
 </main><footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><a href="mailto:haochang0215@gmail.com">Get in touch</a><span>© 2026 Hao Chang</span></footer>
 <dialog id="ed-lightbox" aria-label="Expanded project image"><button class="ed-close" type="button" aria-label="Close enlarged image">Close ×</button><img alt=""><p></p></dialog>
 <script>(function(){const dialog=document.querySelector('#ed-lightbox');const img=dialog.querySelector('img');const title=dialog.querySelector('p');let trigger=null;document.querySelectorAll('.ed-zoom').forEach(button=>button.addEventListener('click',()=>{trigger=button;const source=button.querySelector('img');img.src=source.currentSrc||source.src;img.alt=source.alt;title.textContent=button.dataset.title||source.alt;dialog.showModal();}));dialog.querySelector('.ed-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});dialog.addEventListener('close',()=>{img.removeAttribute('src');if(trigger)trigger.focus({preventScroll:true})});})();</script>
+<script src="assets/erdai/ground-floor-image-data.js"></script>
+<script src="assets/erdai/x-section-image-data.js"></script>
 <script>
 (function(){
  const holder=document.querySelector('#architecture .ed-drawings');
@@ -314,19 +315,17 @@
     description:'The longitudinal section shows underground galleries, level changes and their relationship to the hillside.'}
   },
   ground:{
-   status:'Ground-floor plan + X–X section · Awaiting drawings',
-   plan:{src:'assets/erdai/ground-floor-plan-placeholder.svg',
-    alt:'Grey placeholder for the ground-floor architectural plan, to be uploaded',
-    title:'Ground-floor plan — pending',
-    label:'Ground-floor plan / 01 — pending',
-    description:'Placeholder: the ground-floor plan will be added when the drawing is available.',
-    pending:true},
-   section:{src:'assets/erdai/x-section-placeholder.svg',
-    alt:'Grey placeholder for the X-direction section, to be uploaded',
-    title:'X–X section — pending',
-    label:'X–X section — pending',
-    description:'Placeholder: the X-direction section will be added when the drawing is available.',
-    pending:true}
+   status:'Ground-floor plan + X–X section',
+   plan:{src:window.ERDAI_GROUND_FLOOR_IMAGE || 'assets/erdai/ground-floor-plan-placeholder.svg',
+    alt:'Ground-floor architectural plan showing the museum and retained battery emplacements within the detailed hillside contours',
+    title:'Ground-floor plan',
+    label:'Ground-floor plan / 01',
+    description:'Ground-level plan tracing the public route, planted roof, exhibition spaces and surviving battery structures within the surrounding topography.'},
+   section:{src:window.ERDAI_X_SECTION_IMAGE || 'assets/erdai/x-section-placeholder.svg',
+    alt:'X–X architectural section through the coastal terrain, showing the inserted museum galleries and retained fortifications',
+    title:'X–X section',
+    label:'X–X section',
+    description:'Cross-section revealing how the museum enters the hillside and how roof, daylight, galleries and historic battery structures meet the ground.'}
   }
  };
  function replaceDrawing(figure,drawing){
