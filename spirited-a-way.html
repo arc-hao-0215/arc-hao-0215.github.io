@@ -185,6 +185,100 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
  .sa-page #supply .sa-editorial-room-row .sa-room-pair .sa-media img{height:auto;object-fit:contain}
 }
 
+
+/* 2026-10-10: precise editorial alignments; preserve the full natural image proportions. */
+.sa-page #landscape .sa-landscape-visuals{
+ width:min(100%,1260px);max-width:1260px;margin-left:auto;margin-right:auto;
+}
+.sa-page #landscape .sa-top-pair,
+.sa-page #landscape .sa-support-evidence{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:clamp(18px,2.25vw,32px);align-items:start;
+}
+.sa-page #landscape .sa-top-pair .sa-media,
+.sa-page #landscape .sa-support-evidence .sa-media{
+ display:block!important;height:auto!important;min-height:0;
+ aspect-ratio:auto;background:transparent;overflow:visible;
+}
+.sa-page #landscape .sa-top-pair .sa-media img,
+.sa-page #landscape .sa-support-evidence .sa-media img{
+ display:block;width:100%;height:auto!important;aspect-ratio:auto!important;
+ object-fit:contain!important;max-width:100%;
+}
+.sa-page #landscape .sa-feature-row--mapping{
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:clamp(18px,2.25vw,32px);align-items:start;
+}
+.sa-page #landscape .sa-feature-row--mapping>.sa-figure{
+ grid-column:2;min-width:0;
+}
+.sa-page #landscape .sa-feature-row--mapping>.sa-figure img{
+ width:100%;height:auto;max-width:100%;object-fit:contain;
+}
+.sa-page .sa-route-layout{
+ display:grid;grid-template-columns:minmax(205px,.29fr) minmax(0,.71fr);
+ gap:clamp(20px,3.2vw,52px);width:min(100%,1260px);margin:0 auto;align-items:stretch;
+}
+.sa-page .sa-route-layout>.sa-masterplan{width:100%;min-width:0;margin:0;}
+.sa-page .sa-route-layout>.sa-masterplan .sa-media{height:auto;background:transparent}
+.sa-page .sa-route-layout>.sa-masterplan .sa-media img{
+ display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;
+}
+.sa-page .sa-route-index{
+ display:grid;grid-template-rows:repeat(3,minmax(0,1fr));margin:0 0 54px;
+}
+.sa-page .sa-route-index>a{
+ position:relative;display:flex;flex-direction:column;align-items:flex-start;
+ justify-content:center;gap:10px;padding:16px 25px 16px 0;
+ border-bottom:1px solid var(--sa-rule);min-width:0;text-decoration:none;
+}
+.sa-page .sa-route-index>a:first-child{border-top:1px solid var(--sa-rule)}
+.sa-page .sa-route-number{color:var(--sa-accent);font:11px/1.4 Arial,sans-serif;letter-spacing:.08em}
+.sa-page .sa-route-index strong{font:400 clamp(17px,1.55vw,23px)/1.23 Arial,sans-serif;letter-spacing:-.025em}
+.sa-page .sa-route-index small{color:var(--sa-muted);font:12px/1.6 Arial,sans-serif;max-width:230px}
+.sa-page .sa-route-arrow{position:absolute;right:6px;top:50%;transform:translateY(-50%);font:20px Arial,sans-serif;color:var(--sa-accent)}
+.sa-page .sa-route-index>a:hover strong,.sa-page .sa-route-index>a:focus-visible strong{color:var(--sa-accent)}
+.sa-page #tavern .sa-section-heading h2,
+.sa-page #supply .sa-section-heading h2,
+.sa-page #sky-burial .sa-section-heading h2{max-width:820px}
+.sa-page .sa-section-heading .sa-project-name{
+ display:block;color:var(--sa-accent);font:400 clamp(18px,1.75vw,24px)/1.3 Arial,sans-serif;
+ letter-spacing:-.015em;margin-bottom:9px;
+}
+.sa-page .sa-section-heading .sa-project-descriptor{display:block}
+.sa-page #tavern .sa-ground-floor-plan .sa-media{
+ position:relative;display:block;overflow:hidden;width:100%;height:auto!important;
+ aspect-ratio:2048/1616!important;background:#fff;
+}
+.sa-page #tavern .sa-ground-floor-plan .sa-media img{
+ position:absolute!important;display:block;inset:0 auto auto 0;max-width:none!important;
+ width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:initial!important;
+}
+@media(max-width:900px){
+ .sa-page .sa-route-layout{grid-template-columns:minmax(185px,.30fr) minmax(0,.70fr);gap:23px}
+ .sa-page .sa-route-index{margin-bottom:55px}
+ .sa-page .sa-route-index>a{padding:12px 19px 12px 0;gap:7px}
+ .sa-page .sa-route-index small{font-size:11px}
+}
+@media(max-width:700px){
+ .sa-page #landscape .sa-top-pair,
+ .sa-page #landscape .sa-support-evidence{grid-template-columns:1fr;gap:28px}
+ .sa-page #landscape .sa-feature-row--mapping{grid-template-columns:1fr;gap:24px}
+ .sa-page #landscape .sa-feature-row--mapping>.sa-figure{grid-column:auto}
+ .sa-page .sa-route-layout{grid-template-columns:1fr;gap:20px}
+ .sa-page .sa-route-index{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:none;gap:12px;margin:0;align-items:stretch}
+ .sa-page .sa-route-index>a{border-top:1px solid var(--sa-rule);border-bottom:1px solid var(--sa-rule);padding:14px 9px 14px 0;justify-content:flex-start}
+ .sa-page .sa-route-index strong{font-size:15px}
+ .sa-page .sa-route-index small{font-size:11px}
+ .sa-page .sa-route-arrow{display:none}
+ .sa-page .sa-section-heading .sa-project-name{font-size:19px}
+}
+@media(max-width:430px){
+ .sa-page .sa-route-index{grid-template-columns:1fr;gap:0}
+ .sa-page .sa-route-index>a{padding:15px 30px 15px 0;border-top:0}
+ .sa-page .sa-route-index>a:first-child{border-top:1px solid var(--sa-rule)}
+ .sa-page .sa-route-arrow{display:block}
+}
 </style><link rel="stylesheet" href="project-unified.css?v=20261009-editorial-v1"></head>
 <body class="sa-page"><a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Projects</a><a href="research.html">Research</a><a href="info.html">Info</a></nav></header>
@@ -194,11 +288,11 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
 <section class="sa-opening"><div><span class="sa-kicker">Project proposition</span><h2>How much architecture does a sacred landscape need?</h2></div><div class="sa-opening-copy"><p>Mount Kailash is both an extraordinary mountain landscape and a sacred destination shared by multiple religious traditions. Along its pilgrimage circuit, the need for rest, sanitation, safety and interpretation must coexist with an environment shaped by faith and ecological sensitivity.</p><p><em>Spirited A Way</em> proposes three architectural responses along the route: a renewed pilgrims’ inn, modular supply stations and a landscape-sensitive interpretation hall. Each explores how essential services can support the journey without becoming the landscape’s dominant presence.</p></div></section>
 <nav class="sa-jump" aria-label="Explore this project"><span class="sa-jump-label">Explore the project</span><a href="#landscape">01 Landscape</a><a href="#strategy">02 Route</a><a href="#tavern">03 First Tavern</a><a href="#supply">04 Supply Stations</a><a href="#sky-burial">05 Sky Burial</a></nav>
 <section class="sa-section" id="landscape" aria-labelledby="landscape-title"><div class="sa-section-heading"><span class="sa-kicker">01 / Landscape</span><h2 id="landscape-title">Reading a sacred landscape.</h2><p>The approximately 56-kilometre kora around Mount Kailash is shaped by ritual movement, sacred landmarks, exposed valleys and a highly seasonal mountain climate. The investigation connects territorial geography with the more intimate sequence of the pilgrimage route.</p></div>
-<div class="sa-two sa-top-pair">
+<div class="sa-two sa-top-pair sa-landscape-visuals">
  <figure class="sa-figure sa-drawing" data-image="kora-meso.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Territorial relationships" data-title="Territorial relationships"><img src="assets/spirited/kora-meso.webp" alt="Regional map locating Mount Kailash in relation to the Himalayas and surrounding countries." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">02</span><span class="sa-figure-copy"><strong>Territorial relationships</strong>The mountain and its pilgrimage network are situated within the wider Himalayan region.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
  <figure class="sa-figure sa-drawing" data-image="kora-micro.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Approach and local setting" data-title="Approach and local setting"><img src="assets/spirited/kora-micro.webp" alt="Detailed regional map of Mount Kailash, the kora route, nearby settlements and lakes." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">03</span><span class="sa-figure-copy"><strong>Approach and local setting</strong>Road access, settlements, monasteries and surrounding lakes establish the immediate context of the kora.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
 </div>
-<div class="sa-feature-row sa-feature-row--mapping sa-editorial-aligned">
+<div class="sa-feature-row sa-feature-row--mapping sa-editorial-aligned sa-landscape-visuals">
  <div class="sa-feature-copy">
    <span class="sa-minor">Landscape perception</span>
    <h3 class="sa-display-title">Mapping where the journey gathers meaning.</h3>
@@ -211,23 +305,25 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
  <h3 class="sa-display-title">Where cultural practices and climate shape the journey.</h3>
  <p>The three preceding mappings are brought together to evaluate conditions along the pilgrimage circuit. The study on the left identifies and assesses existing man-made artefacts, then traces how weather, seasonal changes and ritual practices influence pilgrimage behaviour. The map on the right synthesizes the findings into site typologies and environmental gradients.</p>
 </div>
-<div class="sa-two sa-support-evidence">
+<div class="sa-two sa-support-evidence sa-landscape-visuals">
  <figure class="sa-figure sa-drawing" data-image="perception-climate.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Perception and seasonal conditions" data-title="Perception and seasonal conditions"><img src="assets/spirited/perception-climate.webp" alt="Evaluation of existing built forms and a climate and pilgrimage timeline along the kora." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">05</span><span class="sa-figure-copy"><strong>Perception and seasonal conditions</strong>A 103-response survey assesses existing man-made artefacts; the timeline relates seasonal weather and cultural practices to patterns of pilgrimage.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
  <figure class="sa-figure sa-drawing" data-image="typology-gradients.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Site typologies and environmental gradients" data-title="Site typologies and environmental gradients"><img src="assets/spirited/typology-gradients.webp" alt="Analysis diagram classifying locations along Mount Kailash according to terrain risks, ecology and landscape visibility." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">06</span><span class="sa-figure-copy"><strong>Site typologies and environmental gradients</strong>A synthesis of the preceding mappings differentiates sites by exposure, accessibility, landscape visibility and ecological sensitivity.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
 </div>
 <p class="sa-method-note">The mappings inform the design questions and site selection; they are not evidence that any proposed intervention has been environmentally approved or constructed. <a href="research-ritual.html">Explore the separate research →</a></p></section>
 
 <section class="sa-section" id="strategy" aria-labelledby="strategy-title"><div class="sa-section-heading"><span class="sa-kicker">02 / Route strategy</span><h2 id="strategy-title">Three responses within one landscape system.</h2><p>Rather than placing identical structures at regular intervals, three proposals respond to distinct moments in the pilgrimage: renewed accommodation at First Tavern, modular rest and essential services along the route, and cultural interpretation near the ritual landscape. Their locations were considered through the wider mapping of terrain, climate, existing facilities and cultural practices.</p></div>
-<figure class="sa-figure sa-drawing sa-masterplan" data-image="route-masterplan.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Kangrinboqê kora / route-wide architectural plan" data-title="Kangrinboqê kora / route-wide architectural plan"><img src="assets/spirited/route-masterplan.webp" alt="Overall kora route planning study locating possible architectural interventions along the circular pilgrimage path." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">07</span><span class="sa-figure-copy"><strong>Kangrinboqê kora / route-wide architectural plan</strong>The route-wide study places potential interventions in relation to sacred landmarks, rest stops, circulation and landscape conditions; three proposals are detailed below.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
-<div class="sa-four-types sa-three-types" aria-label="Three architectural interventions">
-  <a href="#tavern"><span>01</span><strong>First Tavern</strong><small>Renovation / accommodation</small></a>
-  <a href="#supply"><span>02</span><strong>Supply Stations</strong><small>Modular shelter / services</small></a>
-  <a href="#sky-burial"><span>03</span><strong>Sky Burial Interpretation Hall</strong><small>Interpretation / distance</small></a>
-</div>
+<div class="sa-route-layout" aria-label="Route-wide plan and three architectural proposals">
+ <nav class="sa-route-index" aria-label="Select an architectural proposal">
+  <a href="#tavern"><span class="sa-route-number">01 / FIRST TAVERN</span><strong>Renovation &amp; accommodation</strong><small>A renewed pilgrims’ inn around a shared courtyard</small><span class="sa-route-arrow" aria-hidden="true">↗</span></a>
+  <a href="#supply"><span class="sa-route-number">02 / SUPPLY STATIONS</span><strong>Modular shelter &amp; services</strong><small>Distributed places for rest and essential support</small><span class="sa-route-arrow" aria-hidden="true">↗</span></a>
+  <a href="#sky-burial"><span class="sa-route-number">03 / SKY BURIAL INTERPRETATION HALL</span><strong>Interpretation &amp; distance</strong><small>A restrained intervention beside the sacred route</small><span class="sa-route-arrow" aria-hidden="true">↗</span></a>
+ </nav>
+ <figure class="sa-figure sa-drawing sa-masterplan" data-image="route-masterplan.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Kangrinboqê kora / route-wide architectural plan" data-title="Kangrinboqê kora / route-wide architectural plan"><img src="assets/spirited/route-masterplan.webp" alt="Overall kora route planning study locating possible architectural interventions along the circular pilgrimage path." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">07</span><span class="sa-figure-copy"><strong>Kangrinboqê kora / route-wide architectural plan</strong>The route-wide study places potential interventions in relation to sacred landmarks, rest stops, circulation and landscape conditions; three proposals are detailed below.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
+ </div>
 </section>
 
 <section class="sa-section" id="tavern" aria-labelledby="tavern-title">
-<div class="sa-section-heading"><span class="sa-kicker">03 / Accommodation</span><h2 id="tavern-title">Renewing shelter within an existing footprint.</h2><p>The First Tavern proposal reworks an existing pilgrim inn. Shared spaces, accommodation and circulation are reorganized around a protected courtyard, using renovation instead of a larger new building to support longer stays.</p></div>
+<div class="sa-section-heading"><span class="sa-kicker">03 / Accommodation</span><h2 id="tavern-title"><span class="sa-project-name">First Tavern</span><span class="sa-project-descriptor">Renewing shelter within an existing footprint.</span></h2><p>The First Tavern proposal reworks an existing pilgrim inn. Shared spaces, accommodation and circulation are reorganized around a protected courtyard, using renovation instead of a larger new building to support longer stays.</p></div>
 <div class="sa-feature-row sa-feature-row--opening">
   <div class="sa-feature-copy"><span class="sa-minor">Adaptive accommodation</span><h3>The courtyard becomes a point of return.</h3>
   <p>Existing accommodation and common facilities are reorganized around a sheltered courtyard rather than extending the building's footprint. A relief of the pilgrimage circuit turns the shared ground into a place to read and discuss the journey.</p>
@@ -240,13 +336,13 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
  <figure class="sa-figure sa-image" data-image="dirapuk-landscape.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Pilgrims and mountain landscape" data-title="The wider pilgrimage landscape"><img src="assets/spirited/dirapuk-landscape.webp" alt="Pilgrims and existing buildings set against the mountain landscape near Mount Kailash." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">09</span><span class="sa-figure-copy"><strong>Along the pilgrimage route</strong>The wider landscape view relates buildings and temporary places of rest to the movement of pilgrims through the valley.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
 </div>
 <div class="sa-feature-row sa-editorial-aligned sa-feature-row--tavern-plan">
- <div class="sa-feature-copy"><span class="sa-minor">Ground-floor organization</span><h3>A courtyard at the centre.</h3><p>Reception, dining, accommodation and shared services are arranged within the existing footprint. The single ground-floor plan makes their relationship to the central courtyard easier to read.</p></div>
- <figure class="sa-figure sa-drawing sa-plan-crop" data-image="tavern-plans.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Ground floor / courtyard and shared facilities" data-title="Ground floor / courtyard and shared facilities"><img src="assets/spirited/tavern-plans.webp" alt="Ground floor plan of the First Tavern showing central courtyard, accommodation, reception, cafeteria and support spaces." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">10</span><span class="sa-figure-copy"><strong>Ground floor / courtyard and shared facilities</strong>The ground floor arranges guest rooms and shared facilities around a sheltered courtyard.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
+ <div class="sa-feature-copy"><span class="sa-minor">First Tavern / Ground-floor plan</span><h3>A courtyard at the centre.</h3><p>Reception, dining, accommodation and shared services are arranged within the existing footprint. The single ground-floor plan makes their relationship to the central courtyard easier to read.</p></div>
+ <figure class="sa-figure sa-drawing sa-plan-crop sa-ground-floor-plan" data-image="tavern-plans.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Ground floor / courtyard and shared facilities" data-title="Ground floor / courtyard and shared facilities"><img src="assets/spirited/tavern-plans.webp" alt="Ground floor plan of the First Tavern showing central courtyard, accommodation, reception, cafeteria and support spaces." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">10</span><span class="sa-figure-copy"><strong>Ground floor / courtyard and shared facilities</strong>The ground floor arranges guest rooms and shared facilities around a sheltered courtyard.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
 </div>
 </section>
 
 <section class="sa-section" id="supply" aria-labelledby="supply-title">
-<div class="sa-section-heading"><span class="sa-kicker">04 / Modular infrastructure</span><h2 id="supply-title">Shelter as a kit of parts.</h2><p>Exposed stretches of the kora need essential services without the physical or operational footprint of a conventional hotel. The proposal develops prefabricated timber–aluminium units that can combine sleeping, dining, sanitation and service functions according to different stopping conditions.</p></div>
+<div class="sa-section-heading"><span class="sa-kicker">04 / Modular infrastructure</span><h2 id="supply-title"><span class="sa-project-name">Supply Stations</span><span class="sa-project-descriptor">Shelter as a kit of parts.</span></h2><p>Exposed stretches of the kora need essential services without the physical or operational footprint of a conventional hotel. The proposal develops prefabricated timber–aluminium units that can combine sleeping, dining, sanitation and service functions according to different stopping conditions.</p></div>
 <div class="sa-feature-row sa-feature-row--opening sa-editorial-aligned">
   <div class="sa-feature-copy"><span class="sa-minor">Distributed support</span><h3>Rest, replenish, continue.</h3>
   <p>Instead of concentrating services in one large building, repeatable modules can accommodate different stopping conditions along the route. Elevated supports, insulated enclosures and prefabricated components reduce the need for extensive site work.</p></div>
@@ -259,7 +355,7 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
 </section>
 
 <section class="sa-section" id="sky-burial" aria-labelledby="sky-burial-title">
-<div class="sa-section-heading"><span class="sa-kicker">05 / Interpretation</span><h2 id="sky-burial-title">Keeping distance from the sacred ground.</h2><p>The interpretation hall is conceived as a restrained setting for learning about the cultural and spiritual landscape near the sky burial platform. It stays away from the ritual ground: the studio proposal sets a separation of more than 300 metres from significant ritual locations, subject to further cultural and site-specific evaluation.</p></div>
+<div class="sa-section-heading"><span class="sa-kicker">05 / Interpretation</span><h2 id="sky-burial-title"><span class="sa-project-name">Sky Burial Interpretation Hall</span><span class="sa-project-descriptor">Keeping distance from the sacred ground.</span></h2><p>The interpretation hall is conceived as a restrained setting for learning about the cultural and spiritual landscape near the sky burial platform. It stays away from the ritual ground: the studio proposal sets a separation of more than 300 metres from significant ritual locations, subject to further cultural and site-specific evaluation.</p></div>
 <div class="sa-feature-row sa-feature-row--opening sa-editorial-aligned">
   <div class="sa-feature-copy"><span class="sa-minor">The ritual landscape</span><h3>The landscape comes before the building.</h3>
     <p>The proposed hall creates a separate place for orientation and interpretation. Sacred ground remains untouched by the visitor facilities; the experience begins with the mountain, the route and the significance of the ritual setting.</p></div>
