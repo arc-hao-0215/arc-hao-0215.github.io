@@ -1,0 +1,251 @@
+/*
+ * HAO CHANG — Portfolio Project Consistency Layer
+ * One shared interface for ten project essays, October 2026.
+ * Page-owned compositions, drawings, image proportions and story flow remain intact.
+ * This stylesheet loads LAST, above the legacy project-system/unified styles.
+ */
+.portfolio-project{
+  --pc-ink:#181917;
+  --pc-muted:#60615c;
+  --pc-rule:#d0cec8;
+  --pc-accent:#8c332b;
+  --pc-max:1680px;
+  --pc-chapter-space:clamp(76px,6.4vw,104px);
+  --pc-heading-gap:clamp(26px,3vw,40px);
+  --pc-control-h:36px;
+  color:var(--pc-ink);
+}
+.portfolio-project main{width:100%;max-width:var(--pc-max);margin-inline:auto;min-width:0;padding-inline:var(--gutter)}
+/* H1 / project identity: a stable typographic measure, not a uniform text layout. */
+.portfolio-project :is(.lf-project-head,.ftb-head,.rt-project-head,.tc-head,.soc-project-head,.ed-project-head,.sa-head,.bab-project-head,.gh-head,.wp-head) h1{
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:400;
+  font-size:clamp(50px,6.1vw,88px);
+  line-height:1.035;
+  letter-spacing:-.057em;
+  text-wrap:balance;
+}
+.portfolio-project :is(.lf-project-type,.ftb-type,.rt-project-type,.tc-project-type,.soc-project-type,.ed-project-type,.sa-subtitle,.bab-project-type,.gh-subtitle,.wp-type){
+  font-size:clamp(17px,1.42vw,21px);
+  line-height:1.4;
+  letter-spacing:-.014em;
+}
+/* Major headings belong to the same level, even when each project uses a unique grid. */
+.portfolio-project :is(
+  .lf-chapter-head h2,.ftb-chapter h2,.rt-chapter-head h2,.tc-chapter-head h2,
+  .soc-chapter-head h2,.ed-chapter-head h2,.sa-section-heading h2,
+  .bab-chapter-head h2,.gh-chapter-head h2,.wp-chapter h2
+){
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:400;
+  font-size:clamp(32px,3.05vw,46px)!important;
+  line-height:1.16;
+  letter-spacing:-.044em;
+  text-wrap:balance;
+}
+.portfolio-project :is(
+  .lf-opening h2,.ftb-intro h2,.rt-opening h2,.tc-opening h2,.soc-opening h2,
+  .ed-proposition h2,.sa-opening h2,.bab-opening h2,.gh-intro h2,.wp-opening h2
+){
+  font-size:clamp(30px,3vw,46px);
+  line-height:1.17;
+  letter-spacing:-.043em;
+  text-wrap:balance;
+}
+.portfolio-project :is(
+  .lf-kicker,.ftb-kicker,.rt-kicker,.tc-kicker,.soc-kicker,.ed-kicker,
+  .sa-kicker,.bab-kicker,.gh-kicker,.wp-label
+){
+  color:var(--pc-accent);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:11px;
+  font-weight:400;
+  line-height:1.6;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+}
+/* Shared chapter cadence, with project-specific feature layouts left untouched. */
+.portfolio-project :is(
+  .lf-section,.ftb-section,.rt-section,.tc-section,.soc-section,
+  .ed-chapter,.sa-section,.bab-section,.gh-section,.wp-section
+){padding-block:var(--pc-chapter-space);scroll-margin-top:110px}
+.portfolio-project :is(
+  .lf-chapter-head,.ftb-chapter,.rt-chapter-head,.tc-chapter-head,
+  .soc-chapter-head,.ed-chapter-head,.sa-section-heading,.bab-chapter-head,
+  .gh-chapter-head,.wp-chapter
+){margin-bottom:var(--pc-heading-gap)}
+/* The chapter index has consistent hierarchy, separators and focus/current state. */
+.portfolio-project :is(
+  .lf-onpage,.ftb-inpage,.rt-onpage,.tc-onpage,.soc-onpage,
+  .ed-onpage,.sa-jump,.bab-onpage,.gh-nav,.wp-onpage
+){
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  gap:12px clamp(16px,2.3vw,32px);
+  width:100%;
+  border-block:1px solid var(--pc-rule);
+  padding:16px 0;
+  min-height:55px;
+  font:400 11px/1.5 Arial,Helvetica,sans-serif;
+  letter-spacing:.015em;
+  color:var(--pc-muted);
+}
+.portfolio-project :is(
+  .lf-onpage,.ftb-inpage,.rt-onpage,.tc-onpage,.soc-onpage,
+  .ed-onpage,.sa-jump,.bab-onpage,.gh-nav,.wp-onpage
+)>:first-child:not(a){
+  font-size:11px;
+  color:var(--pc-accent);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  margin-right:auto;
+}
+.portfolio-project :is(
+  .lf-onpage,.ftb-inpage,.rt-onpage,.tc-onpage,.soc-onpage,
+  .ed-onpage,.sa-jump,.bab-onpage,.gh-nav,.wp-onpage
+)>a[href^="#"]{
+  display:inline-flex;align-items:center;flex-shrink:0;
+  color:var(--pc-muted);white-space:nowrap;
+  padding:3px 0 5px;border-bottom:1px solid transparent;
+  text-decoration:none;transition:color .2s ease,border-color .2s ease;
+}
+.portfolio-project :is(
+  .lf-onpage,.ftb-inpage,.rt-onpage,.tc-onpage,.soc-onpage,
+  .ed-onpage,.sa-jump,.bab-onpage,.gh-nav,.wp-onpage
+)>a:is(:hover,:focus-visible,.is-project-active){
+  color:var(--pc-ink);border-bottom-color:var(--pc-accent);
+}
+/* Figure captions: number | title and description | viewing hint. */
+.portfolio-project :is(
+  .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,
+  .ed-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure
+)>figcaption{
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr) auto;
+  column-gap:14px;
+  row-gap:8px;
+  align-items:start;
+  padding-top:12px;
+  color:var(--pc-muted);
+  font:400 12px/1.55 Arial,Helvetica,sans-serif;
+  max-width:100%;
+}
+.portfolio-project :is(
+  .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,
+  .ed-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure
+)>figcaption>:first-child{
+  color:var(--pc-accent);
+  font-variant-numeric:tabular-nums;
+  font-size:12px;
+}
+.portfolio-project :is(
+  .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,
+  .ed-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure
+)>figcaption>:nth-child(2){min-width:0;overflow-wrap:anywhere}
+.portfolio-project :is(
+  .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,
+  .ed-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure
+)>figcaption>:nth-child(2) strong{
+  display:block;color:var(--pc-ink);font-size:13px;font-weight:400;
+  margin-bottom:3px;
+}
+.portfolio-project :is(
+  .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,
+  .ed-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure
+)>figcaption>:nth-child(3){
+  color:var(--pc-muted);
+  font:400 11px/1.45 Arial,Helvetica,sans-serif;
+  white-space:nowrap;text-transform:uppercase;letter-spacing:.025em;
+}
+/* Uniform appearance and accessible touch area; original click handlers remain unchanged. */
+.portfolio-project button:is(.ps-prev,.ps-next,.ps-play-toggle){
+  display:inline-flex!important;
+  align-items:center;justify-content:center;
+  min-width:var(--pc-control-h);
+  min-height:var(--pc-control-h);
+  padding:7px 11px;
+  border:1px solid var(--pc-rule);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  color:var(--pc-ink);
+  font:400 0/1 Arial,Helvetica,sans-serif!important;
+  letter-spacing:0;
+  cursor:pointer;
+  transition:background .18s ease,border-color .18s ease;
+}
+.portfolio-project button:is(.ps-prev,.ps-next,.ps-play-toggle)>*{display:none!important}
+.portfolio-project button:is(.ps-prev,.ps-next,.ps-play-toggle):hover{
+  border-color:var(--pc-ink);background:rgba(24,25,23,.045);
+}
+.portfolio-project button:is(.ps-prev,.ps-next,.ps-play-toggle):focus-visible{
+  outline:2px solid var(--pc-accent);outline-offset:3px;
+}
+.portfolio-project button.ps-prev::after{content:"←";font:400 16px/1 Arial,Helvetica,sans-serif}
+.portfolio-project button.ps-next::after{content:"→";font:400 16px/1 Arial,Helvetica,sans-serif}
+.portfolio-project button.ps-play-toggle{min-width:75px;padding-inline:11px}
+.portfolio-project button.ps-play-toggle[aria-pressed="false"]::after{
+  content:"Ⅱ  Pause";font:400 12px/1.2 Arial,Helvetica,sans-serif;
+}
+.portfolio-project button.ps-play-toggle[aria-pressed="true"]::after{
+  content:"▶  Play";font:400 12px/1.2 Arial,Helvetica,sans-serif;
+}
+.portfolio-project :is(.ftb-carousel-index,.tc-carousel-status,.sa-carousel-count,.wp-carousel-count,.gh-plan-counter,.gh-plan-count){
+  font:400 11px/1.5 Arial,Helvetica,sans-serif;
+  color:var(--pc-muted);
+  font-variant-numeric:tabular-nums;letter-spacing:.05em;
+}
+.portfolio-project :is(.ftb-controls,.tc-carousel-controls,.sa-carousel-controls,.wp-carousel-controls,.gh-plan-controls){
+  font-family:Arial,Helvetica,sans-serif;color:var(--pc-muted);
+}
+.portfolio-project .ftb-controls{gap:12px}
+.portfolio-project .ftb-controls-main{gap:12px}
+.portfolio-project .sa-carousel-controls{gap:8px}
+.portfolio-project .sa-carousel-controls .sa-carousel-count{margin-right:auto}
+.portfolio-project .sa-carousel-controls .ps-play-toggle{order:1}
+.portfolio-project .sa-carousel-controls .ps-prev{order:2}
+.portfolio-project .sa-carousel-controls .ps-next{order:3}
+.portfolio-project .wp-carousel-buttons{display:flex;align-items:center;gap:8px}
+.portfolio-project .wp-carousel-buttons .ps-play-toggle{order:1}
+.portfolio-project .wp-carousel-buttons .ps-prev{order:2}
+.portfolio-project .wp-carousel-buttons .ps-next{order:3}
+/* Keep existing individual lightbox implementations; harmonize their close affordance. */
+.portfolio-project dialog::backdrop{background:rgba(0,0,0,.84)}
+.portfolio-project dialog button:focus-visible{outline:2px solid var(--pc-accent);outline-offset:3px}
+.portfolio-project .ps-section-inview{scroll-margin-top:110px}
+@media(max-width:750px){
+  .portfolio-project{--pc-chapter-space:clamp(52px,9vw,68px);--pc-heading-gap:24px;--pc-control-h:40px}
+  .portfolio-project :is(.lf-project-head,.ftb-head,.rt-project-head,.tc-head,.soc-project-head,.ed-project-head,.sa-head,.bab-project-head,.gh-head,.wp-head) h1{
+    font-size:clamp(42px,10vw,67px);line-height:1.035;
+  }
+  .portfolio-project :is(.lf-chapter-head h2,.ftb-chapter h2,.rt-chapter-head h2,.tc-chapter-head h2,.soc-chapter-head h2,.ed-chapter-head h2,.sa-section-heading h2,.bab-chapter-head h2,.gh-chapter-head h2,.wp-chapter h2){
+    font-size:clamp(29px,7.3vw,40px)!important;
+  }
+  .portfolio-project :is(.lf-onpage,.ftb-inpage,.rt-onpage,.tc-onpage,.soc-onpage,.ed-onpage,.sa-jump,.bab-onpage,.gh-nav,.wp-onpage){
+    flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;
+    scrollbar-width:thin;gap:20px;padding:12px 0;
+    -webkit-overflow-scrolling:touch;
+  }
+  .portfolio-project :is(.lf-onpage,.ftb-inpage,.rt-onpage,.tc-onpage,.soc-onpage,.ed-onpage,.sa-jump,.bab-onpage,.gh-nav,.wp-onpage)>:first-child:not(a){
+    margin-right:8px;
+  }
+  .portfolio-project :is(.lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure)>figcaption{
+    grid-template-columns:25px minmax(0,1fr);gap:6px 10px;
+  }
+  .portfolio-project :is(.lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,.sa-figure,.bab-figure,.gh-figure,.wp-figure)>figcaption>:nth-child(3){
+    grid-column:2;white-space:normal;
+  }
+  .portfolio-project button:is(.ps-prev,.ps-next,.ps-play-toggle){min-height:40px}
+}
+@media(prefers-reduced-motion:reduce){
+  .portfolio-project :is(.ps-reveal,.ps-reveal.ps-visible){transition:none!important;transform:none!important;opacity:1!important}
+  .portfolio-project button:is(.ps-prev,.ps-next,.ps-play-toggle){transition:none}
+}
+/* A tiny shared reveal motion that cannot hide any content when JS is unavailable. */
+@media(prefers-reduced-motion:no-preference){
+  .portfolio-project.ps-motion-ready .ps-reveal{opacity:0;transform:translateY(14px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,1,.36,1)}
+  .portfolio-project.ps-motion-ready .ps-reveal.ps-visible{opacity:1;transform:translateY(0)}
+}
