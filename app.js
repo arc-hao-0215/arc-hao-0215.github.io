@@ -1,7 +1,67 @@
 const $=(s)=>document.querySelector(s),$$=(s)=>[...document.querySelectorAll(s)];
 function setPressed(buttons,active){buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===active)))}
-$$('[data-mode]').forEach(b=>b.addEventListener('click',()=>{setPressed($$('[data-mode]'),b);$('#visual-view').hidden=b.dataset.mode!=='visual';$('#index-view').hidden=b.dataset.mode!=='index';const u=new URL(location);if(b.dataset.mode==='index')u.searchParams.set('view','index');else u.searchParams.delete('view');history.replaceState(null,'',u)}));
-if(new URL(location).searchParams.get('view')==='index')$('[data-mode=index]')?.click();
+/* Homepage Grid / Index: short sequential crossfade without changing layout. */
+{
+  const modeButtons = $('[data-mode]');
+  const views = { visual: $('#visual-view'), index: $('#index-view') };
+  if (modeButtons.length && views.visual && views.index) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let currentMode = 'visual';
+    let switching = false;
+
+    const applyImmediately = (mode) => {
+      for (const [name, view] of Object.entries(views)) {
+        view.hidden = name !== mode;
+        view.classList.toggle('is-view-visible', name === mode);
+      }
+      currentMode = mode;
+    };
+    const setView = (mode, animate = true) => {
+      if (switching || !views[mode]) return;
+      const button = modeButtons.find(b => b.dataset.mode === mode);
+      if (!button) return;
+      setPressed(modeButtons, button);
+      const u = new URL(location.href);
+      if (mode === 'index') u.searchParams.set('view', 'index');
+      else u.searchParams.delete('view');
+      history.replaceState(null, '', u);
+      if (mode === currentMode) return;
+
+      const mayAnimate = animate && document.body.classList.contains('home-page')
+        && !reducedMotion.matches;
+      if (!mayAnimate) {
+        applyImmediately(mode);
+        return;
+      }
+      switching = true;
+      const outgoing = views[currentMode], incoming = views[mode];
+      outgoing.classList.remove('is-view-visible');
+      window.setTimeout(() => {
+        outgoing.hidden = true;
+        incoming.hidden = false;
+        incoming.classList.remove('is-view-visible');
+        if (document.hidden) {
+          incoming.classList.add('is-view-visible');
+          currentMode = mode;
+          switching = false;
+          return;
+        }
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          incoming.classList.add('is-view-visible');
+          currentMode = mode;
+          switching = false;
+        }));
+      }, 180);
+    };
+    modeButtons.forEach(button => button.addEventListener('click',
+      () => setView(button.dataset.mode)));
+    if (new URL(location.href).searchParams.get('view') === 'index') {
+      setView('index', false);
+    } else {
+      applyImmediately('visual');
+    }
+  }
+}
 $$('[data-research]').forEach(b=>b.addEventListener('click',()=>{setPressed($$('[data-research]'),b);$('#research-map').hidden=b.dataset.research!=='map';$('#research-index').hidden=b.dataset.research!=='index'}));
 // Self-contained world atlas; no tile service, API key, or external scripts.
 const atlas=$('#world-map');
