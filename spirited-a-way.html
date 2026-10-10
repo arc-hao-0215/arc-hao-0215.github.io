@@ -251,6 +251,68 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
  .sa-page .sa-route-index>a:first-child{border-top:1px solid var(--sa-rule)}
  .sa-page .sa-route-arrow{display:block}
 }
+
+/* 2026-10-10: two full-width First Tavern renders; one Sky Burial interior carousel. */
+.sa-page #tavern .sa-feature-row.sa-tavern-visual-row,
+.sa-page #sky-burial .sa-feature-row.sa-interior-carousel-row{
+ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);
+ gap:clamp(30px,5.8vw,100px);align-items:start;
+}
+.sa-page #tavern .sa-tavern-visual-row>.sa-figure{
+ width:100%;min-width:0;max-width:none;margin:0;grid-column:2;grid-row:1;
+}
+.sa-page #tavern .sa-tavern-visual-row>.sa-feature-copy{grid-column:1;grid-row:1}
+.sa-page #tavern .sa-tavern-visual-row>.sa-figure .sa-media{
+ width:100%;height:auto;display:block;background:transparent;
+}
+.sa-page #tavern .sa-tavern-visual-row:not(.sa-feature-row--tavern-plan)>.sa-figure .sa-media img{
+ display:block;width:100%;max-width:100%;height:auto;aspect-ratio:auto;object-fit:contain;
+}
+.sa-page #sky-burial .sa-interior-carousel-row>.sa-feature-copy{grid-column:1;grid-row:1}
+.sa-page #sky-burial .sa-interior-carousel-row>.sa-interior-carousel{
+ grid-column:2;grid-row:1;width:100%;min-width:0;
+}
+.sa-page .sa-interior-carousel{outline-offset:5px}
+.sa-page .sa-carousel-stage{position:relative;aspect-ratio:2048/1298;width:100%;overflow:hidden;background:transparent}
+.sa-page .sa-carousel-slide{position:absolute;inset:0;width:100%;height:100%;margin:0}
+.sa-page .sa-carousel-slide[hidden]{display:none!important}
+.sa-page .sa-carousel-slide>.sa-media{
+ width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+ background:transparent;overflow:hidden;
+}
+.sa-page .sa-carousel-slide>.sa-media img{
+ display:block;width:100%;height:100%;max-width:100%;
+ aspect-ratio:auto;object-fit:contain!important;object-position:center;
+}
+.sa-page .sa-carousel-below{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start;padding-top:12px}
+.sa-page .sa-carousel-caption{display:grid;grid-template-columns:32px minmax(0,1fr);gap:16px;font:12px/1.6 Arial,sans-serif;color:var(--sa-muted)}
+.sa-page .sa-carousel-caption strong{display:block;font-weight:400;font-size:13px;color:var(--sa-ink);margin-bottom:3px}
+.sa-page .sa-carousel-controls{display:flex;align-items:center;justify-content:flex-end;gap:8px;font:11px/1.4 Arial,sans-serif;color:var(--sa-muted);white-space:nowrap}
+.sa-page .sa-carousel-count{margin-right:4px;font-variant-numeric:tabular-nums}
+.sa-page .sa-carousel-controls button{
+ min-height:33px;min-width:33px;display:inline-flex;align-items:center;justify-content:center;
+ border:1px solid var(--sa-rule);border-radius:0;background:transparent;color:var(--sa-ink);
+ cursor:pointer;font:14px/1 Arial,sans-serif;
+}
+.sa-page .sa-carousel-controls .sa-carousel-pause{font-size:12px;gap:6px;padding:0 10px;min-width:76px}
+.sa-page .sa-carousel-controls button:hover,.sa-page .sa-carousel-controls button:focus-visible{
+ border-color:var(--sa-ink);outline-offset:3px;
+}
+@media(max-width:900px){
+ .sa-page #tavern .sa-feature-row.sa-tavern-visual-row,
+ .sa-page #sky-burial .sa-feature-row.sa-interior-carousel-row{gap:26px}
+ .sa-page .sa-carousel-below{grid-template-columns:1fr}
+ .sa-page .sa-carousel-controls{justify-content:flex-end}
+}
+@media(max-width:700px){
+ .sa-page #tavern .sa-feature-row.sa-tavern-visual-row,
+ .sa-page #sky-burial .sa-feature-row.sa-interior-carousel-row{grid-template-columns:1fr;gap:24px;margin:42px 0}
+ .sa-page #tavern .sa-tavern-visual-row>.sa-figure,
+ .sa-page #tavern .sa-tavern-visual-row>.sa-feature-copy,
+ .sa-page #sky-burial .sa-interior-carousel-row>.sa-feature-copy,
+ .sa-page #sky-burial .sa-interior-carousel-row>.sa-interior-carousel{grid-column:auto;grid-row:auto}
+ .sa-page .sa-carousel-below{gap:9px}
+}
 </style><link rel="stylesheet" href="project-unified.css?v=20261009-editorial-v1"></head>
 <body class="sa-page"><a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Projects</a><a href="research.html">Research</a><a href="info.html">Info</a></nav></header>
@@ -296,18 +358,18 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
 
 <section class="sa-section" id="tavern" aria-labelledby="tavern-title">
 <div class="sa-section-heading"><span class="sa-kicker">03 / Accommodation</span><h2 id="tavern-title"><span class="sa-project-name">First Tavern</span><span class="sa-project-descriptor">Renewing shelter within an existing footprint.</span></h2><p>The First Tavern proposal reworks an existing pilgrim inn. Shared spaces, accommodation and circulation are reorganized around a protected courtyard, using renovation instead of a larger new building to support longer stays.</p></div>
-<div class="sa-feature-row sa-feature-row--opening">
+<div class="sa-feature-row sa-feature-row--opening sa-tavern-visual-row">
   <div class="sa-feature-copy"><span class="sa-minor">Adaptive accommodation</span><h3>The courtyard becomes a point of return.</h3>
   <p>Existing accommodation and common facilities are reorganized around a sheltered courtyard rather than extending the building's footprint. A relief of the pilgrimage circuit turns the shared ground into a place to read and discuss the journey.</p>
   <p>Stone, earth and timber maintain continuity with the surrounding built landscape.</p></div>
   <figure class="sa-figure sa-image" data-image="tavern-courtyard.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Courtyard / a map beneath the feet" data-title="Courtyard / a map beneath the feet"><img src="assets/spirited/tavern-courtyard.webp" alt="Rendered courtyard of a renovated pilgrims' inn with a large carved map of the Mount Kailash circuit in the ground." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">08</span><span class="sa-figure-copy"><strong>Courtyard / a map beneath the feet</strong>A relief of the kora is embedded into the shared ground, allowing the journey to be read and discussed within the renovated inn.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
 </div>
 
-<div class="sa-feature-row sa-editorial-aligned sa-feature-row--tavern-setting">
+<div class="sa-feature-row sa-editorial-aligned sa-feature-row--tavern-setting sa-tavern-visual-row">
  <div class="sa-feature-copy"><span class="sa-minor">Landscape setting</span><h3>Accommodation within a larger journey.</h3><p>The pilgrimage route is experienced through the movement of travellers, the established buildings and the expansive mountain landscape.</p></div>
  <figure class="sa-figure sa-image" data-image="dirapuk-landscape.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Pilgrims and mountain landscape" data-title="The wider pilgrimage landscape"><img src="assets/spirited/dirapuk-landscape.webp" alt="Pilgrims and existing buildings set against the mountain landscape near Mount Kailash." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">09</span><span class="sa-figure-copy"><strong>Along the pilgrimage route</strong>The wider landscape view relates buildings and temporary places of rest to the movement of pilgrims through the valley.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
 </div>
-<div class="sa-feature-row sa-editorial-aligned sa-feature-row--tavern-plan">
+<div class="sa-feature-row sa-editorial-aligned sa-feature-row--tavern-plan sa-tavern-visual-row">
  <div class="sa-feature-copy"><span class="sa-minor">First Tavern / Ground-floor plan</span><h3>A courtyard at the centre.</h3><p>Reception, dining, accommodation and shared services are arranged within the existing footprint. The single ground-floor plan makes their relationship to the central courtyard easier to read.</p></div>
  <figure class="sa-figure sa-drawing sa-plan-crop sa-ground-floor-plan" data-image="tavern-plans.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Ground floor / courtyard and shared facilities" data-title="Ground floor / courtyard and shared facilities"><img src="assets/spirited/tavern-plans.webp" alt="Ground floor plan of the First Tavern showing central courtyard, accommodation, reception, cafeteria and support spaces." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">10</span><span class="sa-figure-copy"><strong>Ground floor / courtyard and shared facilities</strong>The ground floor arranges guest rooms and shared facilities around a sheltered courtyard.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
 </div>
@@ -333,10 +395,40 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
     <p>The proposed hall creates a separate place for orientation and interpretation. Sacred ground remains untouched by the visitor facilities; the experience begins with the mountain, the route and the significance of the ritual setting.</p></div>
   <figure class="sa-figure sa-image" data-image="sky-burial-landscape.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: The ritual landscape" data-title="The ritual landscape"><img src="assets/spirited/sky-burial-landscape.webp" alt="Pilgrims, prayer flags and mountain landscape at the Mount Kailash pilgrimage site." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">17</span><span class="sa-figure-copy"><strong>The ritual landscape</strong>The prayer-flag setting, mountain and approaching pilgrims establish the scale and significance of the place before the design intervention is introduced.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
 </div>
-<div class="sa-feature-row sa-editorial-aligned sa-editorial-axon"><div class="sa-feature-copy"><span class="sa-minor">Architectural approach</span><h3>A building drawn into the terrain.</h3><p>The partially embedded hall brings exhibition, film and observation into a restrained sequence, avoiding a singular monument against the sacred mountain landscape.</p></div><figure class="sa-figure sa-drawing" data-image="sky-burial-axon.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Spatial sequence / interpretation, film and observation" data-title="Spatial sequence / interpretation, film and observation"><img src="assets/spirited/sky-burial-axon.webp" alt="Sectional axonometric diagram of the proposed interpretation hall, observation deck and exhibition functions." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">18</span><span class="sa-figure-copy"><strong>Spatial sequence / interpretation, film and observation</strong>The sectional axonometric links indoor exhibition, film room and viewing deck without requiring a singular monument on the site.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure></div><div class="sa-subhead sa-subhead--compact"><div><span class="sa-minor">Interior experience</span><h3>Two ways of looking outward.</h3></div><p>An interpretive gallery and a terrain display allow visitors to engage with the cultural landscape while retaining a direct visual connection with the mountain beyond.</p></div>
-<div class="sa-two sa-room-pair">
-<figure class="sa-figure " data-image="sky-burial-interior-1.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Exhibition and a distant view" data-title="Exhibition and a distant view"><img src="assets/spirited/sky-burial-interior-1.webp" alt="Interior architectural rendering of a timber exhibition gallery with a long glazed façade overlooking the Mount Kailash landscape." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">19</span><span class="sa-figure-copy"><strong>Exhibition and a distant view</strong>The gallery opens toward the landscape while offering a separate place to encounter cultural interpretation.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
-<figure class="sa-figure " data-image="sky-burial-interior-2.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Landscape within the exhibition" data-title="Landscape within the exhibition"><img src="assets/spirited/sky-burial-interior-2.webp" alt="Rendering of an interpretation hall with mountain model, timber exhibition walls and framed mountain views." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">20</span><span class="sa-figure-copy"><strong>Landscape within the exhibition</strong>A physical terrain display and carefully positioned windows reconnect the exhibition sequence to the mountain beyond.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
+<div class="sa-feature-row sa-editorial-aligned sa-editorial-axon"><div class="sa-feature-copy"><span class="sa-minor">Architectural approach</span><h3>A building drawn into the terrain.</h3><p>The partially embedded hall brings exhibition, film and observation into a restrained sequence, avoiding a singular monument against the sacred mountain landscape.</p></div><figure class="sa-figure sa-drawing" data-image="sky-burial-axon.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Spatial sequence / interpretation, film and observation" data-title="Spatial sequence / interpretation, film and observation"><img src="assets/spirited/sky-burial-axon.webp" alt="Sectional axonometric diagram of the proposed interpretation hall, observation deck and exhibition functions." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">18</span><span class="sa-figure-copy"><strong>Spatial sequence / interpretation, film and observation</strong>The sectional axonometric links indoor exhibition, film room and viewing deck without requiring a singular monument on the site.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure></div>
+<div class="sa-feature-row sa-editorial-aligned sa-interior-carousel-row">
+ <div class="sa-feature-copy">
+  <span class="sa-minor">Interior experience</span>
+  <h3>Two ways of looking outward.</h3>
+  <p>The long glazed exhibition gallery maintains an immediate connection to the mountain and the passing journey, keeping the sacred landscape present even while visitors pause inside.</p>
+  <p>A more enclosed terrain gallery shifts attention toward the spatial and cultural geography of the kora. A physical landscape model and carefully framed views allow the pilgrimage route to be studied from a respectful distance.</p>
+ </div>
+ <div class="sa-interior-carousel" id="sa-interior-carousel" role="region" tabindex="0" aria-roledescription="carousel" aria-label="Sky Burial Interpretation Hall interior images">
+  <div class="sa-carousel-stage">
+   <figure class="sa-figure sa-carousel-slide" data-slide-number="19" data-slide-title="Exhibition and a distant view" data-slide-caption="The glazed gallery connects cultural interpretation with the mountain landscape beyond.">
+    <button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Exhibition and a distant view" data-title="Exhibition and a distant view">
+     <img src="assets/spirited/sky-burial-interior-1.webp" alt="Interior architectural rendering of a timber exhibition gallery with a long glazed façade overlooking the Mount Kailash landscape." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')">
+    </button>
+   </figure>
+   <figure class="sa-figure sa-carousel-slide" data-slide-number="20" data-slide-title="Landscape within the exhibition" data-slide-caption="A physical terrain display and carefully framed mountain views connect the exhibition sequence to the wider landscape." hidden aria-hidden="true">
+    <button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Landscape within the exhibition" data-title="Landscape within the exhibition">
+     <img src="assets/spirited/sky-burial-interior-2.webp" alt="Rendering of an interpretation hall with mountain model, timber exhibition walls and framed mountain views." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')">
+    </button>
+   </figure>
+  </div>
+  <div class="sa-carousel-below">
+   <div class="sa-carousel-caption" aria-live="polite" aria-atomic="true">
+    <span class="sa-figure-number" id="sa-interior-fig-number">19</span>
+    <span class="sa-figure-copy"><strong id="sa-interior-fig-title">Exhibition and a distant view</strong><span id="sa-interior-fig-description">The glazed gallery connects cultural interpretation with the mountain landscape beyond.</span></span>
+   </div>
+   <div class="sa-carousel-controls">
+    <span class="sa-carousel-count" id="sa-interior-count" aria-label="Slide 1 of 2">01 / 02</span>
+    <button type="button" class="sa-carousel-control" id="sa-interior-prev" aria-label="Previous interior image" title="Previous image">←</button>
+    <button type="button" class="sa-carousel-control" id="sa-interior-next" aria-label="Next interior image" title="Next image">→</button>
+    <button type="button" class="sa-carousel-pause" id="sa-interior-pause" aria-pressed="false" aria-label="Pause automatic slideshow" title="Pause slideshow">Ⅱ <span>Pause</span></button>
+   </div>
+  </div>
+ </div>
 </div>
 </section>
 <section class="sa-bottom"><span class="sa-kicker">Scope &amp; development</span><p>This project is an academic landscape architecture and facility-planning proposal, not an approved or completed intervention. Its diagrams and renders test relationships between site selection, ritual landscape, adaptive reuse, distributed shelter and construction logistics. Further development would require the involvement of religious custodians and local communities, as well as structural, ecological, hazard, service and operational assessment.</p></section>
@@ -373,6 +465,56 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
  const cover=document.getElementById('sa-cover');
  const upgraded=new Image();upgraded.onload=()=>{cover.src='assets/spirited/supply-landscape.webp'};
  upgraded.src='assets/spirited/supply-landscape.webp';
+ const interior=document.getElementById('sa-interior-carousel');
+ if(interior){
+  const slides=Array.from(interior.querySelectorAll('.sa-carousel-slide'));
+  const number=interior.querySelector('#sa-interior-fig-number');
+  const title=interior.querySelector('#sa-interior-fig-title');
+  const description=interior.querySelector('#sa-interior-fig-description');
+  const count=interior.querySelector('#sa-interior-count');
+  const pauseButton=interior.querySelector('#sa-interior-pause');
+  let current=0,paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches,timer=null;
+  const stop=()=>{if(timer!==null){window.clearInterval(timer);timer=null;}};
+  const show=(next)=>{
+   current=(next+slides.length)%slides.length;
+   slides.forEach((slide,i)=>{
+    slide.hidden=i!==current;
+    slide.setAttribute('aria-hidden',i===current?'false':'true');
+   });
+   const active=slides[current];
+   number.textContent=active.dataset.slideNumber;
+   title.textContent=active.dataset.slideTitle;
+   description.textContent=active.dataset.slideCaption;
+   count.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+   count.setAttribute('aria-label','Slide '+(current+1)+' of '+slides.length);
+  };
+  const start=()=>{
+   stop();
+   if(!paused&&!document.hidden&&slides.length>1){
+    timer=window.setInterval(()=>show(current+1),6000);
+   }
+  };
+  const setPaused=(value)=>{
+   paused=value;
+   pauseButton.setAttribute('aria-pressed',paused?'true':'false');
+   pauseButton.setAttribute('aria-label',paused?'Resume automatic slideshow':'Pause automatic slideshow');
+   pauseButton.title=paused?'Play slideshow':'Pause slideshow';
+   pauseButton.innerHTML=paused?'▶ <span>Play</span>':'Ⅱ <span>Pause</span>';
+   start();
+  };
+  interior.querySelector('#sa-interior-prev').addEventListener('click',()=>{show(current-1);start();});
+  interior.querySelector('#sa-interior-next').addEventListener('click',()=>{show(current+1);start();});
+  pauseButton.addEventListener('click',()=>setPaused(!paused));
+  interior.addEventListener('keydown',(event)=>{
+   if(event.key==='ArrowLeft'){event.preventDefault();show(current-1);start();}
+   if(event.key==='ArrowRight'){event.preventDefault();show(current+1);start();}
+  });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start();});
+  interior.querySelectorAll('.sa-zoom').forEach(button=>button.addEventListener('click',()=>setPaused(true)));
+  show(0);
+  setPaused(paused);
+ }
+
 })();
 </script>
 </body></html>
