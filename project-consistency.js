@@ -73,7 +73,7 @@
   }
  });
  /* Content remains visible if scripting is unavailable or motion is reduced. */
- if(!matchMedia('(prefers-reduced-motion: reduce)').matches &&
+ if(!body.classList.contains('pm-v2') && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
    'IntersectionObserver' in window){
   const headings=[...document.querySelectorAll(
    '.ftb-chapter,.rt-chapter-head,.tc-chapter-head,.soc-chapter-head,.ed-chapter-head,.sa-section-heading,.bab-chapter-head,.gh-chapter-head,.wp-chapter'
