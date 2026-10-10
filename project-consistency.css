@@ -249,3 +249,15 @@
   .portfolio-project.ps-motion-ready .ps-reveal{opacity:0;transform:translateY(14px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,1,.36,1)}
   .portfolio-project.ps-motion-ready .ps-reveal.ps-visible{opacity:1;transform:translateY(0)}
 }
+
+/* The same counter-left / pause-and-arrows-right reading order in all carousels. */
+.portfolio-project .ftb-controls{justify-content:flex-end;flex-wrap:wrap}
+.portfolio-project .ftb-controls-main{display:contents}
+.portfolio-project .ftb-carousel-index{order:0;margin-right:auto}
+.portfolio-project .ftb-controls .ps-play-toggle{order:1}
+.portfolio-project .ftb-controls .ps-prev{order:2}
+.portfolio-project .ftb-controls .ps-next{order:3}
+.portfolio-project .gh-plan-controls .gh-plan-dots{order:0;margin-right:auto}
+.portfolio-project .gh-plan-controls .ps-play-toggle{order:1}
+.portfolio-project .gh-plan-controls .ps-prev{order:2}
+.portfolio-project .gh-plan-controls .ps-next{order:3}
