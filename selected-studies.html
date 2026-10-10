@@ -22,8 +22,7 @@
 .ow-page .ow-grid .ow-card{display:flex;flex-direction:column;min-width:0;margin:0}
 .ow-page .ow-grid .ow-image{display:block;position:relative;width:100%;aspect-ratio:1/1;padding:0;overflow:hidden;background:#ebeae5;border:0;border-radius:0;text-align:left;cursor:zoom-in;color:inherit}
 .ow-page .ow-grid .ow-image img{display:block;width:100%;height:100%;aspect-ratio:1/1;max-height:none;max-width:none;object-position:center;transition:transform .5s ease}
-.ow-page .ow-grid .ow-art .ow-image img{object-fit:contain}
-.ow-page .ow-grid .ow-photo .ow-image img{object-fit:cover}
+.ow-page .ow-grid .ow-image img{object-fit:cover;object-position:50% 50%;transform-origin:center center}
 .ow-page .ow-grid .ow-image:hover img{transform:scale(1.02)}
 .ow-view{position:absolute;right:10px;bottom:10px;padding:8px 11px;background:var(--paper);font:11px/1.2 Arial,sans-serif;color:var(--ink);opacity:0;transition:opacity .2s ease}
 .ow-image:hover .ow-view,.ow-image:focus-visible .ow-view{opacity:1}
@@ -61,198 +60,225 @@ body.ow-is-open{overflow:hidden}
 @media(max-width:760px){.ow-intro{padding:26px 0 46px}.ow-intro h1{font-size:clamp(44px,9vw,68px)}.ow-section{padding:56px 0 68px}.ow-section-heading{grid-template-columns:1fr;gap:12px;margin-bottom:24px}.ow-section-heading p{grid-column:1}.ow-page .ow-grid.editorial-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 16px}.ow-page .ow-grid .ow-caption h3{font-size:18px}.ow-more-grid{grid-template-columns:1fr}.ow-more-grid>div{grid-column:1}.ow-after{grid-template-columns:1fr;gap:7px}.ow-lightbox-inner{padding:57px 12px 20px}.ow-lightbox-meta{grid-template-columns:1fr;gap:2px}}
 @media(max-width:440px){.ow-page .ow-grid.editorial-grid{grid-template-columns:1fr}.ow-page .ow-grid .ow-caption h3{font-size:21px}.ow-nav span{flex-basis:100%}.ow-lightbox-bar{grid-template-columns:1fr}.ow-lightbox-controls{justify-content:flex-end}}
 @media(prefers-reduced-motion:reduce){.ow-page *{transition:none!important}}
+
+/* Artwork index — medium, role and year follow original work labels. */
+.ow-page .ow-grid .ow-caption .ow-card-note{font:12px/1.6 Arial,sans-serif;color:var(--grey);margin:7px 0 0}
+.ow-page .ow-grid .ow-caption .project-subtitle{font-size:13px}
+.ow-page .ow-grid .ow-image img{object-fit:cover!important;object-position:center center!important;transform-origin:center center}
+.ow-page .ow-grid .ow-image{background:#151515}
 </style></head>
 <body class="ow-page"><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Projects</a><a href="research.html">Research</a><a href="info.html">Info</a></nav></header>
 <main id="main" class="ow-main"><header class="ow-intro"><div class="ow-breadcrumb"><a href="index.html">Projects / 11</a><span>Selected Studies · 2017–2024</span></div><h1>Other Ways of Making</h1><p class="ow-subtitle">Art, Performance &amp; Editorial Design</p><p class="ow-intro-copy">A selection of drawings, performances and printed work. Beyond architecture, these studies approach visual storytelling, collective movement and the everyday experience of making.</p></header>
 <nav class="ow-nav" aria-label="Categories"><span>Explore by medium</span><a href="#drawing">01 / Drawing &amp; Image-Making</a><a href="#performance">02 / Performance &amp; Movement</a><a href="#editorial">03 / Editorial &amp; Graphic Design</a></nav>
 <section class="ow-section" id="drawing" aria-labelledby="drawing-title">
  <div class="ow-section-heading"><span class="ow-kicker">01 / 08 WORKS</span><h2 id="drawing-title">Drawing &amp; Image-Making</h2><p>Illustrations, mixed media and observational sketches explore visual storytelling, imagined worlds and attentive observation.</p></div>
- <div class="editorial-grid ow-grid"><article class="project-card ow-card ow-art">
+ <div class="editorial-grid ow-grid"><article class="project-card ow-card">
   <button type="button" class="project-image ow-image" data-artwork="0" aria-label="Enlarge full image: The Sickly Feast">
    <img src="assets/selected-studies/drawing-01.webp" alt="An illustrated feast and anthropomorphic fast food, painted in watercolour." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">01 / Visual Narratives</span><span class="year">2017</span>
-   <div><h3>The Sickly Feast</h3><p class="project-subtitle">Watercolour · 2017</p></div>
+   <div><h3>The Sickly Feast</h3><p class="project-subtitle">Water Color</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-art">
+<article class="project-card ow-card">
   <button type="button" class="project-image ow-image" data-artwork="1" aria-label="Enlarge full image: The Digital Cage">
    <img src="assets/selected-studies/drawing-02.webp" alt="A figure holding a smartphone beside an enclosed toucan in a forest." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">02 / Visual Narratives</span><span class="year">2017</span>
-   <div><h3>The Digital Cage</h3><p class="project-subtitle">Printmaking · 2017</p></div>
+   <div><h3>The Digital Cage</h3><p class="project-subtitle">Printmaking</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-art">
+<article class="project-card ow-card">
   <button type="button" class="project-image ow-image" data-artwork="2" aria-label="Enlarge full image: Untitled — Mixed-Media Study">
    <img src="assets/selected-studies/drawing-03.webp" alt="Mixed-media visual study combining design software icons, urban forms and a compact disc." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">03 / Visual Narratives</span>
-   <div><h3>Untitled — Mixed-Media Study</h3><p class="project-subtitle">Watercolour &amp; collage</p></div>
+   <div><h3>Untitled — Mixed-Media Study</h3><p class="project-subtitle">Mixed Media · Watercolour &amp; Collage</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-art">
+<article class="project-card ow-card">
   <button type="button" class="project-image ow-image" data-artwork="3" aria-label="Enlarge full image: Untitled — Illustration">
    <img src="assets/selected-studies/drawing-04.webp" alt="Expressive illustration showing people looking into a densely imagined world." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">04 / Visual Narratives</span>
-   <div><h3>Untitled — Illustration</h3><p class="project-subtitle">Mixed media</p></div>
+   <div><h3>Untitled — Illustration</h3><p class="project-subtitle">Mixed Media</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-art">
+<article class="project-card ow-card">
   <button type="button" class="project-image ow-image" data-artwork="4" aria-label="Enlarge full image: Restraint and Observation">
    <img src="assets/selected-studies/drawing-05.webp" alt="Watercolour depicting a lotus and hands against a dramatic field of light." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">05 / Visual Narratives</span><span class="year">2017</span>
-   <div><h3>Restraint and Observation</h3><p class="project-subtitle">Watercolour · 2017</p></div>
+   <div><h3>Restraint and Observation</h3><p class="project-subtitle">Water Color</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-art">
+<article class="project-card ow-card">
   <button type="button" class="project-image ow-image" data-artwork="5" aria-label="Enlarge full image: Contemplation">
    <img src="assets/selected-studies/drawing-06.webp" alt="Black-ink drawing composed of small interlocking figures, structures and objects." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">06 / Visual Narratives</span><span class="year">2017</span>
-   <div><h3>Contemplation</h3><p class="project-subtitle">Ink · 2017</p></div>
+   <div><h3>Contemplation</h3><p class="project-subtitle">Water Ink</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-art">
+<article class="project-card ow-card">
   <button type="button" class="project-image ow-image" data-artwork="6" aria-label="Enlarge full image: Architectural Observation">
    <img src="assets/selected-studies/sketch-01.webp" alt="Ink study of a courtyard and traditional roof forms." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">07 / Observational Drawings</span>
-   <div><h3>Architectural Observation</h3><p class="project-subtitle">Ink drawing</p></div>
+   <div><h3>Architectural Observation</h3><p class="project-subtitle">Ink Drawing</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-art">
+<article class="project-card ow-card">
   <button type="button" class="project-image ow-image" data-artwork="7" aria-label="Enlarge full image: Residential Study">
    <img src="assets/selected-studies/sketch-02.webp" alt="Pencil sketch of a house among plants and steps." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">08 / Observational Drawings</span>
-   <div><h3>Residential Study</h3><p class="project-subtitle">Pencil drawing</p></div>
+   <div><h3>Residential Study</h3><p class="project-subtitle">Pencil Drawing</p></div>
   </div>
  </article></div>
  
  </section>
 <section class="ow-section" id="performance" aria-labelledby="performance-title">
  <div class="ow-section-heading"><span class="ow-kicker">02 / 08 WORKS</span><h2 id="performance-title">Performance &amp; Movement</h2><p>Experimental theatre and ensemble dance, where choreographed bodies, shifting light and collective movement shape the stage.</p></div>
- <div class="editorial-grid ow-grid"><article class="project-card ow-card ow-photo">
-  <button type="button" class="project-image ow-image" data-artwork="8" aria-label="Enlarge full image: Scene 01 — Gathering">
+ <div class="editorial-grid ow-grid"><article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="8" aria-label="Enlarge full image: Cabin Fever — Gathering">
    <img src="assets/selected-studies/performance-01.webp" alt="Stage performance, dramatic shadows and raised hands." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">01 / Cabin Fever</span><span class="year">2019</span>
-   <div><h3>Scene 01 — Gathering</h3><p class="project-subtitle">Experimental theatre · 2019</p></div>
+   <div><h3>Cabin Fever — Gathering</h3><p class="project-subtitle">Experimental Theatre</p><p class="ow-card-note">Choreographer &amp; Director · February–May 2019</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-photo">
-  <button type="button" class="project-image ow-image" data-artwork="9" aria-label="Enlarge full image: Scene 02 — Collective Movement">
+<article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="9" aria-label="Enlarge full image: Cabin Fever — Collective Movement">
    <img src="assets/selected-studies/performance-02.webp" alt="A group of performers in black moving together across the stage." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">02 / Cabin Fever</span><span class="year">2019</span>
-   <div><h3>Scene 02 — Collective Movement</h3><p class="project-subtitle">Experimental theatre · 2019</p></div>
+   <div><h3>Cabin Fever — Collective Movement</h3><p class="project-subtitle">Experimental Theatre</p><p class="ow-card-note">Choreographer &amp; Director · February–May 2019</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-photo">
-  <button type="button" class="project-image ow-image" data-artwork="10" aria-label="Enlarge full image: Scene 03 — Light and Gesture">
+<article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="10" aria-label="Enlarge full image: Cabin Fever — Light and Gesture">
    <img src="assets/selected-studies/performance-03.webp" alt="Performers under isolated spotlights with raised arms." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">03 / Cabin Fever</span><span class="year">2019</span>
-   <div><h3>Scene 03 — Light and Gesture</h3><p class="project-subtitle">Experimental theatre · 2019</p></div>
+   <div><h3>Cabin Fever — Light and Gesture</h3><p class="project-subtitle">Experimental Theatre</p><p class="ow-card-note">Choreographer &amp; Director · February–May 2019</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-photo">
-  <button type="button" class="project-image ow-image" data-artwork="11" aria-label="Enlarge full image: Scene 04 — Assembly">
+<article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="11" aria-label="Enlarge full image: Cabin Fever — Assembly">
    <img src="assets/selected-studies/performance-04.webp" alt="Group gathered in low light during a theatrical performance." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">04 / Cabin Fever</span><span class="year">2019</span>
-   <div><h3>Scene 04 — Assembly</h3><p class="project-subtitle">Experimental theatre · 2019</p></div>
+   <div><h3>Cabin Fever — Assembly</h3><p class="project-subtitle">Experimental Theatre</p><p class="ow-card-note">Choreographer &amp; Director · February–May 2019</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-photo">
-  <button type="button" class="project-image ow-image" data-artwork="12" aria-label="Enlarge full image: Scene 05 — Paper">
+<article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="12" aria-label="Enlarge full image: Cabin Fever — Paper">
    <img src="assets/selected-studies/performance-05.webp" alt="Performers in white among papers suspended in the air." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">05 / Cabin Fever</span><span class="year">2019</span>
-   <div><h3>Scene 05 — Paper</h3><p class="project-subtitle">Experimental theatre · 2019</p></div>
+   <div><h3>Cabin Fever — Paper</h3><p class="project-subtitle">Experimental Theatre</p><p class="ow-card-note">Choreographer &amp; Director · February–May 2019</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-photo">
-  <button type="button" class="project-image ow-image" data-artwork="13" aria-label="Enlarge full image: Scene 06 — Exchange">
+<article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="13" aria-label="Enlarge full image: Cabin Fever — Exchange">
    <img src="assets/selected-studies/performance-06.webp" alt="Performers gathering with flowers during a stage production." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">06 / Cabin Fever</span><span class="year">2019</span>
-   <div><h3>Scene 06 — Exchange</h3><p class="project-subtitle">Experimental theatre · 2019</p></div>
+   <div><h3>Cabin Fever — Exchange</h3><p class="project-subtitle">Experimental Theatre</p><p class="ow-card-note">Choreographer &amp; Director · February–May 2019</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-photo">
-  <button type="button" class="project-image ow-image" data-artwork="14" aria-label="Enlarge full image: Stage I — Formation">
+<article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="14" aria-label="Enlarge full image: Shigshir — Formation">
    <img src="assets/selected-studies/dance-01.webp" alt="Dance troupe in a spacious stage formation with blue lighting." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">07 / Shigshir</span><span class="year">2021</span>
-   <div><h3>Stage I — Formation</h3><p class="project-subtitle">Mongolian ensemble dance · 2021</p></div>
+   <div><h3>Shigshir — Formation</h3><p class="project-subtitle">Mongolian Ensemble Dance</p><p class="ow-card-note">Dancer · Tsinghua Dance Troupe · December 2021</p></div>
   </div>
  </article>
-<article class="project-card ow-card ow-photo">
-  <button type="button" class="project-image ow-image" data-artwork="15" aria-label="Enlarge full image: Stage II — Ensemble">
+<article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="15" aria-label="Enlarge full image: Shigshir — Ensemble">
    <img src="assets/selected-studies/dance-02.webp" alt="Dance ensemble in rhythmic formation on stage." loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
    <span class="eyebrow">08 / Shigshir</span><span class="year">2021</span>
-   <div><h3>Stage II — Ensemble</h3><p class="project-subtitle">Mongolian ensemble dance · 2021</p></div>
+   <div><h3>Shigshir — Ensemble</h3><p class="project-subtitle">Mongolian Ensemble Dance</p><p class="ow-card-note">Dancer · Tsinghua Dance Troupe · December 2021</p></div>
   </div>
  </article></div>
  
  </section>
 <section class="ow-section" id="editorial" aria-labelledby="editorial-title">
- <div class="ow-section-heading"><span class="ow-kicker">03 / 01 WORKS</span><h2 id="editorial-title">Editorial &amp; Graphic Design</h2><p>Printed communication and visual sequencing become a means of gathering shared local narratives.</p></div>
- <div class="editorial-grid ow-grid"><article class="project-card ow-card ow-art">
+ <div class="ow-section-heading"><span class="ow-kicker">03 / 03 WORKS</span><h2 id="editorial-title">Editorial &amp; Graphic Design</h2><p>Printed communication and visual sequencing become a means of gathering shared local narratives.</p></div>
+ <div class="editorial-grid ow-grid"><article class="project-card ow-card">
   <button type="button" class="project-image ow-image" data-artwork="16" aria-label="Enlarge full image: Their Story">
    <img src="assets/other-ways-of-making-cover.webp" alt="Printed volumes of the Their Story community calendar" loading="lazy" decoding="async">
    <span class="ow-view" aria-hidden="true">VIEW ↗</span>
   </button>
   <div class="card-caption ow-caption">
-   <span class="eyebrow">01 / Their Story</span><span class="year">2024</span>
-   <div><h3>Their Story</h3><p class="project-subtitle">Community calendar · 2024</p></div>
+   <span class="eyebrow">01 / Editorial Design</span><span class="year">2024</span>
+   <div><h3>Their Story</h3><p class="project-subtitle">Community Calendar &amp; Editorial Design</p><p class="ow-card-note">Eastern District, Hong Kong · Field research sponsored by Swire Properties</p></div>
+  </div>
+ </article>
+
+<article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="17" aria-label="Enlarge full image: Vers Une Architecture">
+   <img src="assets/selected-studies/vers-une-architecture.webp" alt="Black-and-white book-cover design for Vers Une Architecture by Le Corbusier" loading="lazy" decoding="async">
+   <span class="ow-view" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <div class="card-caption ow-caption">
+   <span class="eyebrow">02 / Book Cover Design</span><span class="year">2022</span>
+   <div><h3>Vers Une Architecture</h3><p class="project-subtitle">Book Cover Design</p></div>
+  </div>
+ </article>
+<article class="project-card ow-card">
+  <button type="button" class="project-image ow-image" data-artwork="18" aria-label="Enlarge full image: PUF Security folder design">
+   <img src="assets/selected-studies/puf-security-folder.webp" alt="PUF Security folder graphic with blue and yellow key motif on black background" loading="lazy" decoding="async">
+   <span class="ow-view" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <div class="card-caption ow-caption">
+   <span class="eyebrow">03 / Folder Design</span><span class="year">2020</span>
+   <div><h3>PUF Security</h3><p class="project-subtitle">Folder Design · Marcom Internship</p></div>
   </div>
  </article></div>
  <p class="ow-story"><strong>Their Story</strong> was developed through community research in Hong Kong’s Eastern District, translating local narratives into a printed calendar. Developed through the Swire Properties Bi-city Youth Cultural Leadership Programme; field research sponsored by Swire Properties.</p>
- <div class="ow-more"><span class="ow-kicker">ADDITIONAL GRAPHIC STUDIES</span><div class="ow-more-grid"><div><h3>Vers Une Architecture</h3><p>Book-cover design · 2022</p></div><div><h3>Exhibition Design</h3><p>Hong Kong Palace Museum · Learning &amp; Engagement Internship · 2024</p></div></div></div>
+ <div class="ow-more"><span class="ow-kicker">ADDITIONAL DESIGN EXPERIENCE</span><div class="ow-more-grid"><div><h3>Exhibition Design</h3><p>Hong Kong Palace Museum · Learning &amp; Engagement Internship · 2024</p></div></div></div>
  </section>
 <div class="ow-after"><span class="ow-kicker">SELECTED WORK</span><p>This collection spans illustration, observational drawings, collaborative performance and community editorial design. Separate photography studies from 2023–2024 also form part of this wider creative practice.</p></div>
 <section class="credits"><h2>Project credits</h2><p>Selected visual work by Hao Chang.<br>Cabin Fever — Choreographer &amp; director, 2019.<br>Shigshir — Mongolian ensemble dance, Tsinghua Dance Troupe, 2021.<br>Their Story — Eastern District Community Calendar Project, field research sponsored by Swire Properties, 2024.</p></section>
 <a class="next-project" href="ancient-trails.html"><span class="eyebrow">Next project / 01</span><h2>Lightly in the Forest</h2></a></main>
 <footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><a href="mailto:haochang0215@gmail.com">Get in touch</a><span>© 2026 Hao Chang</span></footer>
-<dialog id="ow-lightbox" class="ow-lightbox" aria-label="Full-size artwork"><div class="ow-lightbox-inner"><button type="button" class="ow-close" aria-label="Close full-size artwork">Close ×</button><div class="ow-lightbox-image"><img alt=""></div><div class="ow-lightbox-bar"><div class="ow-lightbox-meta"><span class="ow-lightbox-count">01 / 17</span><div><strong class="ow-lightbox-title"></strong><p class="ow-lightbox-medium"></p></div></div><div class="ow-lightbox-controls"><button type="button" data-prev aria-label="Previous artwork">←</button><button type="button" data-next aria-label="Next artwork">→</button></div></div></div></dialog><script>(()=>{
+<dialog id="ow-lightbox" class="ow-lightbox" aria-label="Full-size artwork"><div class="ow-lightbox-inner"><button type="button" class="ow-close" aria-label="Close full-size artwork">Close ×</button><div class="ow-lightbox-image"><img alt=""></div><div class="ow-lightbox-bar"><div class="ow-lightbox-meta"><span class="ow-lightbox-count">01 / 19</span><div><strong class="ow-lightbox-title"></strong><p class="ow-lightbox-medium"></p></div></div><div class="ow-lightbox-controls"><button type="button" data-prev aria-label="Previous artwork">←</button><button type="button" data-next aria-label="Next artwork">→</button></div></div></div></dialog><script>(()=>{
 "use strict";
 const dialog=document.getElementById("ow-lightbox"),image=dialog.querySelector(".ow-lightbox-image img"),count=dialog.querySelector(".ow-lightbox-count"),title=dialog.querySelector(".ow-lightbox-title"),medium=dialog.querySelector(".ow-lightbox-medium");
 const buttons=Array.from(document.querySelectorAll(".ow-image"));
