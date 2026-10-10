@@ -219,6 +219,11 @@
 }
 @media(max-width:1330px){
   .gh-page .gh-concept-row,.gh-page .gh-modes-row{grid-template-columns:minmax(0,1fr);gap:25px}
+  .gh-page .gh-elements{grid-template-columns:minmax(0,1fr);gap:25px}
+  .gh-page .gh-elements>.gh-elements-note{grid-column:1;grid-row:1;height:auto!important}
+  .gh-page .gh-elements>.gh-figure{grid-column:1;grid-row:2}
+  .gh-page .gh-elements-note .gh-element-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;row-gap:10px}
+
   .gh-page .gh-concept-row>.gh-concept-notes,.gh-page .gh-modes-row>.gh-modes-note{grid-column:1;grid-row:auto;height:auto!important}
   .gh-page .gh-concept-row>.gh-figure,.gh-page .gh-modes-row>.gh-figure{grid-column:1;grid-row:auto}
   .gh-page .gh-concept-row .gh-concept-notes{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;gap:18px}
@@ -227,6 +232,7 @@
   .gh-page .gh-modes-row .gh-modes-intro{grid-column:1/-1}
 }
 @media(max-width:820px){
+  .gh-page .gh-elements .gh-element-list{grid-template-columns:1fr}
   .gh-page .gh-elements .gh-elements-note{height:auto!important}
   .gh-page .gh-elements .gh-element-list{gap:0}
 }
@@ -324,7 +330,7 @@ document.addEventListener('visibilitychange',restart);render(0);restart()})();</
     raf=0;
     const width=window.innerWidth;
     entries.forEach(({row,media})=>{
-      const useMatch=width>1330 || (row.classList.contains('gh-elements')&&width>820);
+      const useMatch=width>1330;
       row.style.setProperty('--gh-matched-image-height',useMatch?Math.round(media.getBoundingClientRect().height)+'px':'auto');
     });
   }
