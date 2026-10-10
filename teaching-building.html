@@ -99,36 +99,41 @@
 }
 @media(max-width:500px){.gh-page .gh-plan-controls{gap:4px;flex-wrap:wrap}.gh-page .gh-plan-controls button{font-size:10px;padding:9px 3px}}
 
-/* 10 October refinement — image-locked editorial typography */
+/* BEFORE / NOW / FUTURE: compact horizontal editorial triptych.
+   Only the text composition changes; the image remains in its original grid track. */
 .gh-page .gh-concept-row .gh-concept-notes{
-  height:var(--gh-matched-image-height,auto);
+  height:auto!important;
   min-height:0;
   display:grid;
-  grid-template-rows:repeat(3,minmax(0,1fr));
-  gap:0;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:auto;
+  align-content:start;
+  align-items:start;
+  column-gap:clamp(13px,1.75vw,29px);
+  row-gap:0;
   margin:0;
 }
 .gh-page .gh-concept-row .gh-concept-notes article{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  display:block;
+  min-width:0;
   border-top:1px solid var(--gh-line);
-  padding:5px 0;
-  min-height:0;
+  padding:11px 0 0;
 }
 .gh-page .gh-concept-row .gh-concept-notes small{
+  display:block;
   font:10px/1.35 Arial,sans-serif;
   letter-spacing:.11em;
-  margin:0 0 4px;
+  margin:0 0 9px;
 }
 .gh-page .gh-concept-row .gh-concept-notes h3{
-  font:400 clamp(18px,1.55vw,23px)/1.14 Arial,sans-serif;
-  letter-spacing:-.028em;
-  margin:0 0 5px;
+  font:400 clamp(17px,1.22vw,23px)/1.15 Arial,sans-serif;
+  letter-spacing:-.03em;
+  overflow-wrap:normal;
+  margin:0 0 10px;
 }
 .gh-page .gh-concept-row .gh-concept-notes p{
-  font:clamp(12px,.88vw,14px)/1.46 Georgia,"Times New Roman",serif;
-  max-width:48ch;
+  font:clamp(12px,.77vw,13px)/1.52 Georgia,"Times New Roman",serif;
+  max-width:none;
   margin:0;
 }
 .gh-page .gh-elements .gh-elements-note{
@@ -183,6 +188,8 @@
   margin:0;
   max-width:60ch;
 }
+/* Breathing room between the exploded architectural kit and the two use scenarios. */
+.gh-page .gh-modes-row{margin-top:clamp(54px,5.6vw,92px)}
 .gh-page .gh-modes-row .gh-modes-note{
   height:var(--gh-matched-image-height,auto);
   min-height:0;
@@ -226,8 +233,8 @@
 
   .gh-page .gh-concept-row>.gh-concept-notes,.gh-page .gh-modes-row>.gh-modes-note{grid-column:1;grid-row:auto;height:auto!important}
   .gh-page .gh-concept-row>.gh-figure,.gh-page .gh-modes-row>.gh-figure{grid-column:1;grid-row:auto}
-  .gh-page .gh-concept-row .gh-concept-notes{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;gap:18px}
-  .gh-page .gh-concept-row .gh-concept-notes article{justify-content:start}
+  .gh-page .gh-concept-row .gh-concept-notes{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;column-gap:clamp(16px,2.3vw,30px);row-gap:0}
+  .gh-page .gh-concept-row .gh-concept-notes article{display:block}
   .gh-page .gh-modes-row .gh-modes-note{display:grid;grid-template-columns:1fr 1fr;gap:25px 22px}
   .gh-page .gh-modes-row .gh-modes-intro{grid-column:1/-1}
 }
@@ -237,7 +244,7 @@
   .gh-page .gh-elements .gh-element-list{gap:0}
 }
 @media(max-width:600px){
-  .gh-page .gh-concept-row .gh-concept-notes{grid-template-columns:1fr;gap:15px}
+  .gh-page .gh-concept-row .gh-concept-notes{grid-template-columns:1fr;gap:22px}
   .gh-page .gh-modes-row .gh-modes-note{grid-template-columns:1fr;gap:23px}
   .gh-page .gh-modes-row .gh-modes-intro{grid-column:1}
   .gh-page .gh-hero .gh-zoom{height:clamp(290px,86vw,500px)!important}
@@ -315,7 +322,6 @@ dots.forEach((v,i)=>v.addEventListener('click',()=>{render(i);restart()}));
 pause.addEventListener('click',()=>{playing=!playing;pause.textContent=playing?'PAUSE Ⅱ':'PLAY ▶';pause.setAttribute('aria-pressed',String(!playing));pause.setAttribute('aria-label',playing?'Pause automatic slideshow':'Play automatic slideshow');restart()});
 document.addEventListener('visibilitychange',restart);render(0);restart()})();</script><script>(function(){
   const pairs=[
-    ['.gh-concept-row','.gh-concept-notes'],
     ['.gh-elements','.gh-elements-note'],
     ['.gh-modes-row','.gh-modes-note']
   ];
