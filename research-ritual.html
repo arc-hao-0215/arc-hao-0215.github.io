@@ -86,6 +86,17 @@
 }
 @media(prefers-reduced-motion:reduce){.rr-figure img{transition:none}}
 </style>
+<script>function rrFallback(img){
+  if(img.dataset.fallback){
+    img.onerror=null;
+    img.src=img.dataset.fallback;
+    const a=img.closest('a');if(a)a.href=img.dataset.fallback;
+    const copy=img.closest('figure')?.querySelector('.rr-cap-copy');
+    if(copy&&img.dataset.fallbackCaption)copy.textContent=img.dataset.fallbackCaption;
+  }else{
+    const fig=img.closest('figure');if(fig)fig.classList.add('rr-hidden');
+  }
+}</script>
 <script src="app.js?v=20261008-cursor-v2" defer></script>
 </head>
 <body class="image-free rr-page">
@@ -224,17 +235,6 @@
 <footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><a href="mailto:haochang0215@gmail.com">Get in touch</a><span>© 2026 Hao Chang</span></footer>
 <dialog class="rr-lightbox" id="rr-image-dialog" aria-label="Research image viewer"><div class="rr-lightbox-head"><span id="rr-lightbox-title">Research / Image</span><button type="button" id="rr-lightbox-close" aria-label="Close image">Close ×</button></div><img id="rr-lightbox-image" src="" alt=""></dialog>
 <script>
-function rrFallback(img){
-  if(img.dataset.fallback){
-    img.onerror=null;
-    img.src=img.dataset.fallback;
-    const a=img.closest('a');if(a)a.href=img.dataset.fallback;
-    const copy=img.closest('figure')?.querySelector('.rr-cap-copy');
-    if(copy&&img.dataset.fallbackCaption)copy.textContent=img.dataset.fallbackCaption;
-  }else{
-    const fig=img.closest('figure');if(fig)fig.classList.add('rr-hidden');
-  }
-}
 document.addEventListener('DOMContentLoaded',()=>{
   const dialog=document.getElementById('rr-image-dialog');
   const full=document.getElementById('rr-lightbox-image');
