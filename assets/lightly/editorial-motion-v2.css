@@ -1,0 +1,122 @@
+/*
+  LIGHTLY IN THE FOREST — Motion Study v2 · 2026-10-10
+  The motion language belongs to this project only.
+  No changes to image aspect ratios, drawing crops, page content, or lightbox.
+*/
+
+/* 01 / A restrained, one-time cinematic entrance. */
+@media (prefers-reduced-motion:no-preference) {
+  .lf-page.lf-r2-ready .lf-project-head .lf-heading-top {
+    animation:lf-r2-copy .66s cubic-bezier(.22,1,.36,1) both;
+  }
+  .lf-page.lf-r2-ready .lf-project-head h1 {
+    animation:lf-r2-copy .85s .09s cubic-bezier(.22,1,.36,1) both;
+  }
+  .lf-page.lf-r2-ready .lf-project-head .lf-project-type {
+    animation:lf-r2-copy .72s .18s cubic-bezier(.22,1,.36,1) both;
+  }
+  .lf-page.lf-r2-ready .lf-project-head :is(.lf-meta,.lf-recognition) {
+    animation:lf-r2-copy .7s .26s cubic-bezier(.22,1,.36,1) both;
+  }
+  .lf-page.lf-r2-ready .lf-figure--hero .lf-media-button img {
+    animation:lf-r2-hero 1.38s cubic-bezier(.22,1,.36,1) both;
+    transform-origin:center 52%;
+  }
+  .lf-page.lf-r2-ready .lf-figure--hero > figcaption {
+    animation:lf-r2-copy .7s .48s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes lf-r2-copy {
+    from {opacity:0;transform:translate3d(0,12px,0)}
+    to {opacity:1;transform:translate3d(0,0,0)}
+  }
+  @keyframes lf-r2-hero {
+    from {opacity:.74;transform:scale(1.035)}
+    to {opacity:1;transform:scale(1)}
+  }
+
+  /* 02 / Drawings and captions enter in two beats, without image masking. */
+  .lf-page.lf-r2-ready .lf-r2-figure > .lf-media-button {
+    opacity:0;
+    transform:translate3d(0,20px,0);
+    transition:opacity .84s cubic-bezier(.22,1,.36,1),
+               transform .84s cubic-bezier(.22,1,.36,1);
+    transition-delay:var(--lf-r2-delay,0ms);
+  }
+  .lf-page.lf-r2-ready .lf-r2-figure > figcaption {
+    opacity:0;
+    transform:translate3d(0,9px,0);
+    transition:opacity .72s ease,transform .72s cubic-bezier(.22,1,.36,1);
+    transition-delay:calc(var(--lf-r2-delay,0ms) + 160ms);
+  }
+  .lf-page.lf-r2-ready .lf-r2-figure.lf-r2-in > :is(.lf-media-button,figcaption) {
+    opacity:1;transform:translate3d(0,0,0);
+  }
+
+  /* 03 / Analytical sets are read as 01 → 02 → 03 rather than one block. */
+  .lf-page.lf-r2-ready .lf-r2-card {
+    opacity:0;
+    transform:translate3d(0,15px,0);
+    transition:opacity .72s cubic-bezier(.22,1,.36,1),
+               transform .72s cubic-bezier(.22,1,.36,1);
+    transition-delay:var(--lf-r2-delay,0ms);
+  }
+  .lf-page.lf-r2-ready .lf-r2-card.lf-r2-in {
+    opacity:1;transform:translate3d(0,0,0);
+  }
+  .lf-page.lf-r2-ready .lf-r2-subhead {
+    opacity:0;
+    transform:translate3d(0,14px,0);
+    transition:opacity .7s cubic-bezier(.22,1,.36,1),
+               transform .7s cubic-bezier(.22,1,.36,1);
+  }
+  .lf-page.lf-r2-ready .lf-r2-subhead.lf-r2-in {
+    opacity:1;transform:translate3d(0,0,0);
+  }
+}
+
+/* 04 / A reading indicator next to the original, untouched site plan. */
+.lf-page .lf-plan-list li {
+  position:relative;
+  padding-left:11px;
+  transition:opacity .3s ease, color .3s ease;
+}
+.lf-page .lf-plan-list li::before {
+  content:"";
+  position:absolute;left:0;top:13px;bottom:13px;width:2px;
+  background:var(--lf-red);
+  transform:scaleY(0);
+  transform-origin:top;
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+@media (min-width:1001px) {
+  .lf-page .lf-plan-layout.lf-r2-plan-reading .lf-plan-list li:not(.lf-r2-step-current) {
+    opacity:.53;
+  }
+  .lf-page .lf-plan-layout.lf-r2-plan-reading .lf-plan-list li.lf-r2-step-current {
+    color:var(--lf-ink);opacity:1;
+  }
+  .lf-page .lf-plan-layout.lf-r2-plan-reading .lf-plan-list li.lf-r2-step-current::before {
+    transform:scaleY(1);
+  }
+  .lf-page .lf-plan-layout.lf-r2-plan-reading .lf-plan-list li.lf-r2-step-current span {
+    color:var(--lf-red);
+  }
+}
+/* Mobile plan text sits above the drawing, so it remains fully legible. */
+@media (max-width:1000px) {
+  .lf-page .lf-plan-list li {padding-left:0}
+  .lf-page .lf-plan-list li::before {display:none}
+}
+@media (prefers-reduced-motion:reduce) {
+  .lf-page .lf-project-head :is(.lf-heading-top,h1,.lf-project-type,.lf-meta,.lf-recognition),
+  .lf-page .lf-figure--hero :is(.lf-media-button img,figcaption),
+  .lf-page .lf-r2-figure > :is(.lf-media-button,figcaption),
+  .lf-page .lf-r2-card,
+  .lf-page .lf-r2-subhead {
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+  .lf-page .lf-plan-list li,.lf-page .lf-plan-list li::before {transition:none!important}
+}
