@@ -294,6 +294,94 @@
       }
     }
 
+
+    /* Editorial motion — homepage only; never change image geometry or layout. */
+    .home-hero-line,
+    .home-closing-line {
+      display: block;
+    }
+    #selected-work .home-view-fade[hidden] { display: none !important; }
+    #selected-work .editorial-grid .card-caption { position: relative; }
+    @media (hover: hover) and (pointer: fine) {
+      #selected-work .editorial-grid .card-caption::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 0;
+        height: 1px;
+        background: var(--ink);
+        transition: width .4s cubic-bezier(.22, 1, .36, 1);
+        pointer-events: none;
+      }
+      #selected-work .editorial-grid .project-card:hover .card-caption::after,
+      #selected-work .editorial-grid .project-card:focus-within .card-caption::after {
+        width: 100%;
+      }
+      #selected-work .editorial-grid .card-caption h2 a {
+        display: inline-block;
+        transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+      }
+      #selected-work .editorial-grid .project-card:hover .card-caption h2 a,
+      #selected-work .editorial-grid .project-card:focus-within .card-caption h2 a {
+        transform: translateX(3px);
+      }
+      #selected-work .editorial-grid .project-image img {
+        transition-duration: .55s;
+        transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+      }
+    }
+    @keyframes home-editorial-rise {
+      from { opacity: 0; transform: translate3d(0, 16px, 0); }
+      to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      body.home-page.home-motion-ready .hero-copy .home-hero-line {
+        animation: home-editorial-rise .85s cubic-bezier(.22, 1, .36, 1) both;
+      }
+      body.home-page.home-motion-ready .hero-copy .home-hero-line:nth-child(1) { animation-delay: .08s; }
+      body.home-page.home-motion-ready .hero-copy .home-hero-line:nth-child(2) { animation-delay: .17s; }
+      body.home-page.home-motion-ready .hero-copy .home-hero-line:nth-child(3) { animation-delay: .26s; }
+      body.home-page.home-motion-ready .hero-copy .home-hero-line:nth-child(4) { animation-delay: .35s; }
+      body.home-page.home-motion-ready .hero-copy .intro-aside p,
+      body.home-page.home-motion-ready .hero-bottom #hero-caption,
+      body.home-page.home-motion-ready .hero-bottom .hero-controls {
+        animation: home-editorial-rise .8s cubic-bezier(.22, 1, .36, 1) both;
+      }
+      body.home-page.home-motion-ready .hero-copy .intro-aside p:nth-child(1) { animation-delay: .52s; }
+      body.home-page.home-motion-ready .hero-copy .intro-aside p:nth-child(2) { animation-delay: .64s; }
+      body.home-page.home-motion-ready .hero-bottom #hero-caption { animation-delay: .68s; }
+      body.home-page.home-motion-ready .hero-bottom .hero-controls { animation-delay: .76s; }
+
+      body.home-page .home-reveal-pending {
+        opacity: 0;
+        transform: translate3d(0, 16px, 0);
+        transition: opacity .65s cubic-bezier(.22, 1, .36, 1),
+                    transform .65s cubic-bezier(.22, 1, .36, 1);
+        transition-delay: var(--home-reveal-delay, 0ms);
+      }
+      body.home-page .home-reveal-pending.is-visible {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+      body.home-page #selected-work .home-view-fade {
+        transition: opacity .18s ease, transform .18s ease;
+      }
+      body.home-page #selected-work .home-view-fade:not(.is-view-visible) {
+        opacity: 0;
+        transform: translate3d(0, 8px, 0);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body.home-page .home-reveal-pending,
+      body.home-page #selected-work .home-view-fade {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -343,7 +431,7 @@
       </div>
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-copy">
-        <h1>Architecture across<br>changing landscapes,<br>infrastructures, and<br><span>collective life.</span></h1>
+        <h1><span class="home-hero-line">Architecture across</span><span class="home-hero-line">changing landscapes,</span><span class="home-hero-line">infrastructures, and</span><span class="home-hero-line">collective life.</span></h1>
         <div class="intro-aside">
           <p>Hao Chang<br>Architectural designer</p>
           <p>Selected work<br>2024–2026</p>
@@ -381,7 +469,7 @@
       </div>
 
       <!-- GRID VIEW -->
-      <div id="visual-view" class="editorial-grid">
+      <div id="visual-view" class="editorial-grid home-view-fade is-view-visible">
 
         <article class="project-card card-01">
           <a class="project-image" href="ancient-trails.html" aria-label="Open Lightly in the Forest"><img src="assets/lightly-in-the-forest-hero.webp" alt="Lightly in the Forest, exterior rendering" loading="lazy" decoding="async"></a>
@@ -533,7 +621,7 @@
       </div>
 
       <!-- INDEX VIEW -->
-      <div id="index-view" hidden>
+      <div id="index-view" class="home-view-fade" hidden>
         <div class="index-head">
           <span>No.</span><span>Project</span><span>Place</span><span>Territory</span><span>Year</span>
         </div>
@@ -663,10 +751,54 @@
 
     <section class="closing">
       <span class="eyebrow">An ongoing enquiry</span>
-      <p>How can architecture hold together<br>ecological change and collective life?</p>
+      <p><span class="home-closing-line">How can architecture hold together</span><span class="home-closing-line">ecological change and collective life?</span></p>
       <a class="line-link" href="research.html">Read the research essays</a>
     </section>
   </main>
+
+  <!-- Homepage editorial motion: progressive enhancement, no external library. -->
+  <script>
+    (() => {
+      const start = () => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) return;
+        document.body.classList.add('home-motion-ready');
+        if (!('IntersectionObserver' in window)) return;
+
+        const sectionBar = document.querySelector('#selected-work .section-bar');
+        const cards = [...document.querySelectorAll('#visual-view .project-card')];
+        const closing = [
+          document.querySelector('.closing .eyebrow'),
+          ...document.querySelectorAll('.closing .home-closing-line'),
+          document.querySelector('.closing .line-link')
+        ];
+        const targets = [sectionBar, ...cards, ...closing].filter(Boolean);
+        const observer = new IntersectionObserver((entries, activeObserver) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            activeObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+
+        targets.forEach((element) => {
+          if (element.classList.contains('project-card')) {
+            const column = cards.indexOf(element) % 4;
+            element.style.setProperty('--home-reveal-delay', (column * 65) + 'ms');
+          } else if (closing.includes(element)) {
+            element.style.setProperty('--home-reveal-delay', (closing.indexOf(element) * 100) + 'ms');
+          }
+          element.classList.add('home-reveal-pending');
+          observer.observe(element);
+        });
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start, { once: true });
+      } else {
+        start();
+      }
+    })();
+  </script>
 
   <footer>
     <a class="wordmark" href="index.html">HAO CHANG</a>
