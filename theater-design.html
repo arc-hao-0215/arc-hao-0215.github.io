@@ -208,6 +208,43 @@
  .tc-page .tc-swot-letter{font-size:44px;}
 }
 
+
+
+/* 2026-10-10: proportional image columns and independently pausable editorial slideshows. */
+.tc-page #context .tc-split-layout--analysis,
+.tc-page #context .tc-split-layout--portrait {grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4.2vw,70px);}
+.tc-page #context .tc-site-elements .tc-media {overflow:hidden;}
+.tc-page #context .tc-site-elements .tc-media img {display:block;width:106%;max-width:none;transform:translateX(-2.83%);height:auto;object-fit:contain;}
+.tc-page #context .tc-context-archive {margin-top:clamp(48px,5vw,70px);}
+.tc-page #context .tc-context-details {grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4.2vw,70px);align-items:start;margin:26px 0 0;}
+.tc-page #context .tc-context-details--following {margin-top:clamp(42px,4.6vw,66px);}
+.tc-page #context .tc-context-details .tc-editorial-media .tc-figure,
+.tc-page #drawings .tc-plan-slide .tc-editorial-media .tc-figure {margin:0;width:100%;max-width:100%;}
+.tc-page #context .tc-context-details .tc-media img,
+.tc-page #drawings .tc-plan-slide .tc-media img {display:block;width:100%;max-width:100%;height:auto;object-fit:contain;}
+.tc-page #drawings .tc-plan-slide {grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4.2vw,70px);}
+.tc-page #drawings .tc-plan-slide .tc-editorial-copy .tc-split-note {font:12px/1.7 Arial,Helvetica,sans-serif;color:var(--tc-muted);border-top:1px solid var(--tc-rule);padding-top:16px;margin-top:28px;}
+.tc-page #interior .tc-carousel-controls,
+.tc-page #drawings .tc-carousel-controls {width:calc((100% - clamp(28px,4.2vw,70px))*1.15/2);margin-left:auto;}
+.tc-page .tc-carousel-play-toggle {min-width:86px;font-weight:600;}
+.tc-page .tc-carousel-play-toggle[aria-pressed="true"] {border-color:var(--tc-ink);}
+.tc-page .tc-carousel-play-toggle:focus-visible {outline:2px solid var(--tc-accent);outline-offset:3px;}
+@media(max-width:900px){
+  .tc-page #context .tc-split-layout--analysis,
+  .tc-page #context .tc-split-layout--portrait,
+  .tc-page #context .tc-context-details,
+  .tc-page #drawings .tc-plan-slide {grid-template-columns:1fr;}
+  .tc-page #interior .tc-carousel-controls,
+  .tc-page #drawings .tc-carousel-controls {width:100%;margin-left:0;}
+}
+@media(max-width:720px){
+  .tc-page #context .tc-split-layout--analysis,
+  .tc-page #context .tc-split-layout--portrait,
+  .tc-page #context .tc-context-details,
+  .tc-page #drawings .tc-plan-slide {display:flex;flex-direction:column;gap:25px;}
+  .tc-page #drawings .tc-carousel-navigation {width:100%;justify-content:space-between;}
+  .tc-page .tc-carousel-play-toggle {min-width:75px;}
+}
 </style>
 <link rel="stylesheet" href="project-unified.css?v=20261009-editorial-v1"></head>
 <body class="tc-page">
@@ -231,7 +268,7 @@
     <p>Wudaokou brings students, office workers and residents into close proximity. Site mapping, movement analysis and conversations with people nearby pointed to demand for places to gather beyond the event schedule or commercial setting.</p>
     <p class="tc-split-note">The drawings examine traffic, land use, parking and surrounding building heights. Enlarge the image to read the original annotations.</p>
   </div>
-  <div class="tc-split-visual"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The site between learning, work and housing" aria-label="Enlarge image: The site between learning, work and housing"><img src="assets/theater/condenser-site-elements.webp" width="2048" height="1088" loading="lazy" decoding="async" alt="Four site diagrams studying pedestrian and traffic networks, land uses, parking and surrounding building heights in Wudaokou."></button><figcaption><span class="tc-fig-no">02</span><span class="tc-fig-copy"><strong>The site between learning, work and housing</strong>Traffic, land use, parking and surrounding building heights map the institutional and residential setting around the proposed theatre.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+  <div class="tc-split-visual"><figure class="tc-figure tc-site-elements"><button class="tc-media tc-zoom" type="button" data-title="The site between learning, work and housing" aria-label="Enlarge image: The site between learning, work and housing"><img src="assets/theater/condenser-site-elements.webp" width="2048" height="1088" loading="lazy" decoding="async" alt="Four site diagrams studying pedestrian and traffic networks, land uses, parking and surrounding building heights in Wudaokou."></button><figcaption><span class="tc-fig-no">02</span><span class="tc-fig-copy"><strong>The site between learning, work and housing</strong>Traffic, land use, parking and surrounding building heights map the institutional and residential setting around the proposed theatre.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
 </div>
 <div class="tc-space tc-split-layout tc-split-layout--portrait">
   <div class="tc-split-copy tc-split-copy--sub">
@@ -249,13 +286,20 @@
 
   </div>
   <div class="tc-split-visual"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Neighbourhood voices and a first site diagnosis" aria-label="Enlarge image: Neighbourhood voices and a first site diagnosis"><img src="assets/theater/condenser-site-voices.webp" width="1463" height="2047" loading="lazy" decoding="async" alt="Composite site axonometric with interview callouts, survey charts and SWOT analysis."></button><figcaption><span class="tc-fig-no">03</span><span class="tc-fig-copy"><strong>Neighbourhood voices and a first site diagnosis</strong>Illustrated interview notes, visitor profiles and a SWOT summary locate the project’s civic aspirations within its immediate urban context.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
-</div><div class="tc-tech"><details><summary>Additional context drawings / site history and street conditions</summary><p class="tc-note">The detailed source drawings are retained at their original proportions for closer inspection; enlarge each image to read the labels.</p>
-<figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The development of Wudaokou" aria-label="Enlarge image: The development of Wudaokou"><img src="assets/theater/condenser-context.webp" width="985" height="2048" loading="lazy" decoding="async" alt="Vertical analytical board with aerial map of Wudaokou and a timeline of urban development."></button><figcaption><span class="tc-fig-no">04</span><span class="tc-fig-copy"><strong>The development of Wudaokou</strong>A historical sequence and site map trace the transition from an institutional edge toward a denser mixed-use district.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-<figure class="tc-figure tc-image-spacer"><button class="tc-media tc-zoom" type="button" data-title="Edges, street sections and skyline" aria-label="Enlarge image: Edges, street sections and skyline"><img src="assets/theater/condenser-street-analysis.webp" width="2048" height="1110" loading="lazy" decoding="async" alt="Paired road sections, a traffic intensity graph, street facade sequences and skyline diagram."></button><figcaption><span class="tc-fig-no">05</span><span class="tc-fig-copy"><strong>Edges, street sections and skyline</strong>Street widths, frontage conditions and the surrounding skyline identify the different scales and character of the surrounding streets.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+</div><div class="tc-tech tc-context-archive"><details><summary>Additional context drawings / site history and street conditions</summary>
+<p class="tc-note">The original drawings retain their proportions and can be enlarged to read annotations.</p>
+<div class="tc-editorial-split tc-context-details">
+  <div class="tc-editorial-copy tc-editorial-copy--sub"><span class="tc-kicker">C / Urban transformation</span><h3>From institutional edge to an urban crossroads.</h3><p>The historical site map and development timeline situate Wudaokou within the wider evolution of the university district. The patterns of expansion make the need for a shared civic place more legible.</p><p>Open the image to examine the original street names, phases and annotations without cropping.</p></div>
+  <div class="tc-editorial-media"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The development of Wudaokou" aria-label="Enlarge image: The development of Wudaokou"><img src="assets/theater/condenser-context.webp" width="985" height="2048" loading="lazy" decoding="async" alt="Vertical analytical board with aerial map of Wudaokou and a timeline of urban development."></button><figcaption><span class="tc-fig-no">04</span><span class="tc-fig-copy"><strong>The development of Wudaokou</strong>A historical sequence and site map trace the transition from an institutional edge toward a denser mixed-use district.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+</div>
+<div class="tc-editorial-split tc-context-details tc-context-details--following">
+  <div class="tc-editorial-copy tc-editorial-copy--sub"><span class="tc-kicker">D / Street conditions</span><h3>Reading the urban edges.</h3><p>Road sections, traffic intensity, frontage and skyline studies describe the different scales of streets surrounding the site.</p><p>These observations inform the theatre’s public approach and the transition between the city and its interior.</p></div>
+  <div class="tc-editorial-media"><figure class="tc-figure"><button class="tc-media tc-zoom" type="button" data-title="Edges, street sections and skyline" aria-label="Enlarge image: Edges, street sections and skyline"><img src="assets/theater/condenser-street-analysis.webp" width="2048" height="1110" loading="lazy" decoding="async" alt="Paired road sections, a traffic intensity graph, street facade sequences and skyline diagram."></button><figcaption><span class="tc-fig-no">05</span><span class="tc-fig-copy"><strong>Edges, street sections and skyline</strong>Street widths, frontage conditions and the surrounding skyline identify the different scales and character of the surrounding streets.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+</div>
 </details></div></section>
 <section class="tc-section" id="approach" aria-labelledby="approach-title"><div class="tc-chapter-head"><span class="tc-kicker">02 / Architectural approach</span><h2 id="approach-title">Opening the block. Making room for encounter.</h2><p>Rather than designing a self-contained theatre box, the proposal reworks the volume around arrival, public permeability and a connected interior landscape. Two main approaches inform the entrances, while ticketed and backstage programmes remain legible and distinct.</p></div>
 <figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Four moves from block to public roof" aria-label="Enlarge image: Four moves from block to public roof"><img src="assets/theater/condenser-form.webp" width="2048" height="383" loading="lazy" decoding="async" alt="Four side-by-side axonometric steps showing form generation from a solid site mass to opened ground and a rooftop garden."></button><figcaption><span class="tc-fig-no">06</span><span class="tc-fig-copy"><strong>Four moves from block to public roof</strong>The mass is raised and cut to invite movement, two performance volumes are organised within it, and the roof becomes an additional setting for collective life.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-<div class="tc-flow-points"><article><small>01 / OPEN</small><h3>A porous ground</h3><p>Carve and lift the southwest corner to establish a public threshold rather than a closed perimeter.</p></article><article><small>02 / CONCENTRATE</small><h3>Two performance rooms</h3><p>Give the blue and orange auditoria clear identities within a shared building envelope.</p></article><article><small>03 / EXTEND</small><h3>Beyond the auditorium</h3><p>Carry public occupation through stairs, terraces and an accessible roof landscape.</p></article></div>
+
 <div class="tc-space tc-feature"><div>
 <figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The social condenser as a spatial idea" aria-label="Enlarge image: The social condenser as a spatial idea"><img src="assets/theater/condenser-concept.webp" width="1763" height="2048" loading="lazy" decoding="async" alt="Vertical experimental conceptual collage with layered performance scenes, open floors, movement and social-cohesion text on a black field."></button><figcaption><span class="tc-fig-no">07</span><span class="tc-fig-copy"><strong>The social condenser as a spatial idea</strong>The conceptual collage explores the transition from passive spectatorship to spatial openness, collective movement and interaction.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
 </div><div class="tc-feature-copy"><span class="tc-kicker">Concept / Collective life</span><h3>Performance is not confined to the stage.</h3><p>The project draws on the social condenser as an architectural argument for unexpected encounters between different users and activities.</p><p>This does not erase the technical and acoustic requirements of a theatre. It instead assigns the spaces between performance rooms—entrances, foyers, stairs and landings—a civic role of their own.</p></div></div></section>
@@ -263,7 +307,7 @@
 <figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Programmes connected by a vertical public route" aria-label="Enlarge image: Programmes connected by a vertical public route"><img src="assets/theater/condenser-circulation.webp" width="1960" height="2048" loading="lazy" decoding="async" alt="Detailed exploded axonometric of the theatre with labelled floors, public circulation, auditorium, gallery, backstage, viewing deck and roof garden."></button><figcaption><span class="tc-fig-no">08</span><span class="tc-fig-copy"><strong>Programmes connected by a vertical public route</strong>The exploded axonometric locates the theatres, rehearsal studios, multipurpose hall, exhibition gallery, viewing decks, backstage areas and rooftop destinations within one spatial framework.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
 </div><div class="tc-feature-copy"><span class="tc-kicker">Sectional sequence</span><h3>The route is also a room.</h3><p>Visitors move through a series of informal thresholds rather than a single foyer emptied into an auditorium. Landings, overlooks and broad stairs allow circulation and social occupation to coexist.</p><p>Audience routes are differentiated from servicing and backstage circulation. Accessible alternatives, life safety, acoustic separation and simultaneous occupation would require detailed resolution beyond this academic proposal.</p></div></div></section>
 <section class="tc-section" id="interior" aria-label="04 / Everyday civic interior">
-<div class="tc-carousel" role="region" aria-roledescription="carousel" aria-label="Three views of the everyday civic interior">
+<div class="tc-carousel" data-tc-carousel role="region" aria-roledescription="carousel" aria-label="Three views of the everyday civic interior">
 <article class="tc-slide" role="group" aria-roledescription="slide" aria-label="1 of 3: Atrium" >
 <div class="tc-editorial-split tc-slide-editorial">
 <div class="tc-editorial-copy"><span class="tc-kicker">04 / Everyday civic interior</span><h2>Between performances, the building stays alive.</h2><p>Generous stairs, interconnected foyers and visible movement between levels establish a spatial setting for more than ticketed attendance. The building invites people to linger before and after a performance—or to come without seeing one.</p></div>
@@ -284,19 +328,35 @@
 </article>
 <div class="tc-carousel-controls" role="group" aria-label="Switch between interior perspectives">
 <div class="tc-carousel-indicators"><button type="button" data-tc-slide="0" class="tc-carousel-dot is-active" aria-label="View 1: Atrium" aria-pressed="true">01</button><button type="button" data-tc-slide="1" class="tc-carousel-dot" aria-label="View 2: Forum" aria-pressed="false">02</button><button type="button" data-tc-slide="2" class="tc-carousel-dot" aria-label="View 3: Roof route" aria-pressed="false">03</button></div>
-<div class="tc-carousel-navigation"><span class="tc-carousel-status" role="status" aria-live="polite">01 / 03 · Atrium</span><button type="button" class="tc-carousel-arrow" data-tc-direction="-1" aria-label="Previous interior view">← <span>Previous</span></button><button type="button" class="tc-carousel-arrow" data-tc-direction="1" aria-label="Next interior view"><span>Next</span> →</button></div>
+<div class="tc-carousel-navigation"><span class="tc-carousel-status" role="status" aria-live="off">01 / 03 · Atrium</span><button type="button" class="tc-carousel-arrow tc-carousel-play-toggle" data-tc-autoplay-toggle aria-label="Pause automatic interior slideshow" aria-pressed="false">Ⅱ Pause</button><button type="button" class="tc-carousel-arrow" data-tc-direction="-1" aria-label="Previous interior view">← <span>Previous</span></button><button type="button" class="tc-carousel-arrow" data-tc-direction="1" aria-label="Next interior view"><span>Next</span> →</button></div>
 </div></div>
 </section>
 <section class="tc-section" id="theatres" aria-labelledby="theatres-title"><div class="tc-editorial-split tc-theatre-editorial"><div class="tc-editorial-copy"><span class="tc-kicker">05 / Performance & envelope</span><h2 id="theatres-title">Distinct theatres inside a shared civic frame.</h2><p>The enclosed auditoria support concentrated performance while the surrounding building creates an expanded public life. Blue and orange volumes give the two performance environments a distinct spatial presence; a translucent envelope reveals traces of the activity within.</p></div><div class="tc-editorial-media"><figure class="tc-figure tc-auditorium-figure"><button class="tc-media tc-zoom" type="button" data-title="The Blue / an enclosed space for performance" aria-label="Enlarge image: The Blue / an enclosed space for performance"><span class="tc-composite-panels" aria-label="Auditorium rendering aligned above the corresponding building site section"><span class="tc-composite-panel tc-composite-panel--render"><img src="assets/theater/condenser-auditorium.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Main rendering of a blue multi-balcony theatre during stage rehearsal above a smaller architectural site section."></span><span class="tc-composite-panel tc-composite-panel--section" aria-hidden="true"><img src="assets/theater/condenser-auditorium.webp" width="2048" height="1446" loading="lazy" decoding="async" alt=""></span></span></button><figcaption><span class="tc-fig-no">12</span><span class="tc-fig-copy"><strong>The Blue / an enclosed space for performance</strong>A dedicated auditorium retains a focused theatrical environment. The accompanying site section shows how the hall sits within the larger architectural and urban structure.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div></div>
 <div class="tc-space tc-editorial-split tc-theatre-editorial tc-theatre-editorial--secondary"><div class="tc-editorial-copy tc-editorial-copy--sub"><span class="tc-kicker">B / After dark</span><h3>An inhabited facade, rather than a blank box.</h3><p>The proposal contrasts cooler western and warmer southern volumes inside a translucent polycarbonate enclosure. Seen from the city, movement, light and occupation would give the theatre a second presence after dark.</p></div><div class="tc-editorial-media"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Four sides / two atmospheres" aria-label="Enlarge image: Four sides / two atmospheres"><img src="assets/theater/condenser-elevations.webp" width="2048" height="1281" loading="lazy" decoding="async" alt="Four building elevation drawings on a dark background displaying warm orange and cool blue illuminated theatre interiors."></button><figcaption><span class="tc-fig-no">13</span><span class="tc-fig-copy"><strong>Four sides / two atmospheres</strong>Facade studies test the contrast between the cooler blue theatre and warmer orange theatre behind a common translucent outer surface.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div></div></section>
 <section class="tc-section" id="drawings" aria-labelledby="drawings-title"><div class="tc-chapter-head"><span class="tc-kicker">06 / Architectural drawings</span><h2 id="drawings-title">Plans for two kinds of public life.</h2><p>The plans clarify the distinct demands of enclosed auditoria, service rooms, circulation and shared space. The building sections follow the floor plans to reveal how these programmes meet vertically.</p></div>
-<div class="tc-tech"><details open><summary>01 / Ground and lower levels</summary>
-<figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Ground and second-floor organisation" aria-label="Enlarge image: Ground and second-floor organisation"><img src="assets/theater/condenser-plans-lower.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Paired detailed first and second floor architectural plans with auditorium geometry, entrances, corridors, surrounding site and auxiliary rooms."></button><figcaption><span class="tc-fig-no">14</span><span class="tc-fig-copy"><strong>Ground and second-floor organisation</strong>The lower plans locate the public arrival zone, auditorium access, enclosed rooms and their supporting programme.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-</details><details><summary>02 / Upper foyers and public levels</summary>
-<figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Third and fourth floors" aria-label="Enlarge image: Third and fourth floors"><img src="assets/theater/condenser-plans-upper.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Paired detailed third and fourth floor architectural plans including large theatre hall, stairs and connected lobby spaces."></button><figcaption><span class="tc-fig-no">15</span><span class="tc-fig-copy"><strong>Third and fourth floors</strong>The upper-level plans show how the theatre volumes, foyers and public stair connections change through the building.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-</details><details><summary>03 / Basement (B1) and performance hall</summary>
-<figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Basement level (B1) and auditorium stage plan" aria-label="Enlarge image: Basement level (B1) and auditorium stage plan"><img src="assets/theater/condenser-plans-roof.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Architectural basement level B1 plan on the left and detailed auditorium seating and stage plan on the right."></button><figcaption><span class="tc-fig-no">16</span><span class="tc-fig-copy"><strong>Basement (B1) and auditorium / stage plan</strong>The left drawing shows the basement level (B1); the right drawing details the auditorium seating and stage layout.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-</details></div><div class="tc-space tc-post-plans">
+<div class="tc-carousel tc-plan-carousel" data-tc-carousel role="region" aria-roledescription="carousel" aria-label="Three sets of theatre floor plans">
+<article class="tc-slide" role="group" aria-roledescription="slide" aria-label="1 of 3: Lower levels">
+  <div class="tc-editorial-split tc-slide-editorial tc-plan-slide">
+    <div class="tc-editorial-copy tc-editorial-copy--sub"><span class="tc-kicker">01 / Ground and lower levels</span><h3>The ground as a public threshold.</h3><p>The first and second floor plans establish the theatre’s arrival and main auditorium access. Public circulation is organised around the enclosed performance volumes, with supporting rooms held along the edges.</p><p class="tc-split-note">View the complete architectural drawings at their original aspect ratio; click to enlarge and read the details.</p></div>
+    <div class="tc-editorial-media"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Ground and second-floor organisation" aria-label="Enlarge image: Ground and second-floor organisation"><img src="assets/theater/condenser-plans-lower.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Paired detailed first and second floor architectural plans with auditorium geometry, entrances, corridors, surrounding site and auxiliary rooms."></button><figcaption><span class="tc-fig-no">14</span><span class="tc-fig-copy"><strong>Ground and second-floor organisation</strong>The lower plans locate the public arrival zone, auditorium access, enclosed rooms and their supporting programme.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+  </div>
+</article>
+<article class="tc-slide" role="group" aria-roledescription="slide" aria-label="2 of 3: Upper levels" hidden>
+  <div class="tc-editorial-split tc-slide-editorial tc-plan-slide">
+    <div class="tc-editorial-copy tc-editorial-copy--sub"><span class="tc-kicker">02 / Upper foyers and public levels</span><h3>The public route continues upward.</h3><p>Across the third and fourth floors, shared foyers and gathering areas connect the performance rooms. The plans reveal how circulation and places to pause work together on successive levels.</p><p class="tc-split-note">View the complete architectural drawings at their original aspect ratio; click to enlarge and read the details.</p></div>
+    <div class="tc-editorial-media"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Third and fourth floors" aria-label="Enlarge image: Third and fourth floors"><img src="assets/theater/condenser-plans-upper.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Paired detailed third and fourth floor architectural plans including large theatre hall, stairs and connected lobby spaces."></button><figcaption><span class="tc-fig-no">15</span><span class="tc-fig-copy"><strong>Third and fourth floors</strong>The upper-level plans show how the theatre volumes, foyers and public stair connections change through the building.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+  </div>
+</article>
+<article class="tc-slide" role="group" aria-roledescription="slide" aria-label="3 of 3: Basement and hall" hidden>
+  <div class="tc-editorial-split tc-slide-editorial tc-plan-slide">
+    <div class="tc-editorial-copy tc-editorial-copy--sub"><span class="tc-kicker">03 / Basement (B1) and performance hall</span><h3>Performance meets its supporting spaces.</h3><p>The basement and auditorium stage plans make the relationship between seating, stage, circulation and service areas explicit, completing the reading of public and performance programmes.</p><p class="tc-split-note">View the complete architectural drawings at their original aspect ratio; click to enlarge and read the details.</p></div>
+    <div class="tc-editorial-media"><figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="Basement level (B1) and auditorium stage plan" aria-label="Enlarge image: Basement level (B1) and auditorium stage plan"><img src="assets/theater/condenser-plans-roof.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Architectural basement level B1 plan on the left and detailed auditorium seating and stage plan on the right."></button><figcaption><span class="tc-fig-no">16</span><span class="tc-fig-copy"><strong>Basement (B1) and auditorium / stage plan</strong>The left drawing shows the basement level (B1); the right drawing details the auditorium seating and stage layout.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+  </div>
+</article>
+<div class="tc-carousel-controls" role="group" aria-label="Navigate architectural floor plans">
+<div class="tc-carousel-indicators"><button type="button" data-tc-slide="0" class="tc-carousel-dot is-active" aria-label="View 1: Ground and lower levels" aria-pressed="true">01</button><button type="button" data-tc-slide="1" class="tc-carousel-dot" aria-label="View 2: Upper foyers and public levels" aria-pressed="false">02</button><button type="button" data-tc-slide="2" class="tc-carousel-dot" aria-label="View 3: Basement and performance hall" aria-pressed="false">03</button></div>
+<div class="tc-carousel-navigation"><span class="tc-carousel-status" role="status" aria-live="off">01 / 03 · Lower levels</span><button type="button" class="tc-carousel-arrow tc-carousel-play-toggle" data-tc-autoplay-toggle aria-label="Pause automatic plan slideshow" aria-pressed="false">Ⅱ Pause</button><button type="button" class="tc-carousel-arrow" data-tc-direction="-1" aria-label="Previous plan">← <span>Previous</span></button><button type="button" class="tc-carousel-arrow" data-tc-direction="1" aria-label="Next plan"><span>Next</span> →</button></div>
+</div></div><div class="tc-space tc-post-plans">
 <div class="tc-subhead"><span class="tc-kicker">04 / Building sections</span><h3>The volume becomes legible in section.</h3><p>After reading the plans, the longitudinal and transverse sections explain how the auditoria, foyers, vertical circulation and below-grade support areas fit together.</p></div>
 <figure class="tc-figure "><button class="tc-media tc-zoom" type="button" data-title="The building read in section" aria-label="Enlarge image: The building read in section"><img src="assets/theater/condenser-sections.webp" width="2048" height="472" loading="lazy" decoding="async" alt="Paired architectural section drawings showing auditorium, public atrium, multiple floors and below-grade service areas."></button><figcaption><span class="tc-fig-no">17</span><span class="tc-fig-copy"><strong>The building read in section</strong>Long and transverse sections establish the relation between large auditorium volumes, underground servicing, public stairs and upper shared spaces.</span><span class="tc-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
 </div>
@@ -309,19 +369,54 @@
 <script>(()=>{const dialog=document.querySelector('#tc-lightbox');if(!dialog||typeof dialog.showModal!=='function')return;const photo=dialog.querySelector('img'),caption=dialog.querySelector('p');let trigger=null;document.querySelectorAll('.tc-zoom').forEach(btn=>btn.addEventListener('click',()=>{trigger=btn;const thumb=btn.querySelector('img');photo.src=thumb.currentSrc||thumb.src;photo.alt=thumb.alt;caption.textContent=btn.dataset.title||thumb.alt;dialog.showModal()}));dialog.querySelector('.tc-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',ev=>{if(ev.target===dialog)dialog.close()});dialog.addEventListener('close',()=>{photo.removeAttribute('src');trigger?.focus()})})();</script>
 
 <script>
-(()=>{const carousel=document.querySelector('#interior .tc-carousel');if(!carousel)return;
-const slides=[...carousel.querySelectorAll('.tc-slide')],selectors=[...carousel.querySelectorAll('[data-tc-slide]')],status=carousel.querySelector('.tc-carousel-status');
-const labels=['Atrium','Forum','Roof route'];let active=0;
-function show(index){
-active=(index+slides.length)%slides.length;
-slides.forEach((slide,i)=>{slide.hidden=i!==active;});
-selectors.forEach((btn,i)=>{const chosen=i===active;btn.classList.toggle('is-active',chosen);btn.setAttribute('aria-pressed',String(chosen));});
-status.textContent=String(active+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0')+' · '+labels[active];
-}
-carousel.querySelectorAll('[data-tc-direction]').forEach(btn=>btn.addEventListener('click',()=>show(active+Number(btn.dataset.tcDirection))));
-selectors.forEach(btn=>btn.addEventListener('click',()=>show(Number(btn.dataset.tcSlide))));
-carousel.addEventListener('keydown',ev=>{if(ev.altKey||ev.ctrlKey||ev.metaKey||ev.target.closest('.tc-media'))return;if(ev.key==='ArrowLeft'||ev.key==='ArrowRight'){ev.preventDefault();show(active+(ev.key==='ArrowRight'?1:-1));}});
-show(0);
+/* The Condenser: one accessible auto-carousel controller for perspective views and plans. */
+(()=>{
+  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-tc-carousel]').forEach(carousel=>{
+    const slides=[...carousel.querySelectorAll('.tc-slide')];
+    const selectors=[...carousel.querySelectorAll('[data-tc-slide]')];
+    const status=carousel.querySelector('.tc-carousel-status');
+    const toggle=carousel.querySelector('[data-tc-autoplay-toggle]');
+    if(!slides.length||!toggle||!status)return;
+    const labels=slides.map(slide=>(slide.getAttribute('aria-label')||'').replace(/^\d+ of \d+:\s*/, ''));
+    let active=0,playing=!reducedMotion.matches,visible=true;
+    const delay=5800;
+    const lightbox=document.querySelector('#tc-lightbox');
+    function show(index){
+      active=(index+slides.length)%slides.length;
+      slides.forEach((slide,i)=>{slide.hidden=i!==active;});
+      selectors.forEach((btn,i)=>{
+        const selected=i===active;
+        btn.classList.toggle('is-active',selected);
+        btn.setAttribute('aria-pressed',String(selected));
+      });
+      status.textContent=String(active+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0')+' · '+labels[active];
+    }
+    function updateToggle(){
+      toggle.textContent=playing?'Ⅱ Pause':'▶ Play';
+      toggle.setAttribute('aria-pressed',String(!playing));
+      toggle.setAttribute('aria-label',(playing?'Pause':'Play')+' automatic '+(carousel.closest('#drawings')?'floor plan':'interior')+' slideshow');
+      status.setAttribute('aria-live',playing?'off':'polite');
+    }
+    toggle.addEventListener('click',()=>{playing=!playing;updateToggle();});
+    carousel.querySelectorAll('[data-tc-direction]').forEach(button=>button.addEventListener('click',()=>show(active+Number(button.dataset.tcDirection))));
+    selectors.forEach(button=>button.addEventListener('click',()=>show(Number(button.dataset.tcSlide))));
+    carousel.addEventListener('keydown',event=>{
+      if(event.altKey||event.ctrlKey||event.metaKey||event.target.closest('.tc-media'))return;
+      if(event.key==='ArrowLeft'||event.key==='ArrowRight'){
+        event.preventDefault();show(active+(event.key==='ArrowRight'?1:-1));
+      }
+    });
+    if('IntersectionObserver' in window){
+      const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;},{threshold:.12});
+      observer.observe(carousel);
+    }
+    window.setInterval(()=>{
+      if(playing&&visible&&!document.hidden&&!lightbox?.open&&!carousel.contains(document.activeElement))show(active+1);
+    },delay);
+    show(0);
+    updateToggle();
+  });
 })();
 </script>
 
