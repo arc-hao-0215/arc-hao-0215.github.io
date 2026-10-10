@@ -313,6 +313,125 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
  .sa-page #sky-burial .sa-interior-carousel-row>.sa-interior-carousel{grid-column:auto;grid-row:auto}
  .sa-page .sa-carousel-below{gap:9px}
 }
+
+/* 2026-10-10: three diagram alignments, full-size route plan and English technical guide. */
+/* Landscape triptych uses exactly the same 50/50 columns as the two maps above it. */
+.sa-page #landscape .sa-feature-row--mapping{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:clamp(18px,2.25vw,32px)!important;align-items:start;
+}
+.sa-page #landscape .sa-feature-row--mapping>.sa-feature-copy{
+ grid-column:1;grid-row:1;min-width:0;
+}
+.sa-page #landscape .sa-feature-row--mapping>.sa-figure{
+ grid-column:2;grid-row:1;min-width:0;max-width:100%;
+}
+.sa-page #landscape .sa-feature-row--mapping .sa-media,
+.sa-page #landscape .sa-feature-row--mapping .sa-media img{
+ display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;
+}
+/* Route plan: full-width intact drawing; the 01–03 index sits at the upper right. */
+.sa-page #strategy .sa-route-layout{
+ display:grid;grid-template-columns:minmax(0,1fr)!important;
+ gap:clamp(18px,2.2vw,32px);align-items:start;width:100%;margin:0;
+}
+.sa-page #strategy .sa-route-index{
+ grid-column:1;display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:none;
+ gap:clamp(12px,1.8vw,28px);width:min(100%,810px);
+ justify-self:end;margin:0;padding:0;min-height:0;
+}
+.sa-page #strategy .sa-route-index>a{
+ display:grid;grid-template-columns:30px minmax(0,1fr) 15px;
+ align-items:start;justify-content:start;gap:8px;
+ min-height:74px;margin:0;padding:12px 0 8px;
+ border-top:1px solid var(--sa-rule);border-bottom:1px solid var(--sa-rule);
+}
+.sa-page #strategy .sa-route-index>a:first-child{border-top:1px solid var(--sa-rule)}
+.sa-page #strategy .sa-route-index .sa-route-number{
+ font:11px/1.5 Arial,sans-serif;letter-spacing:.07em;color:var(--sa-accent);
+}
+.sa-page #strategy .sa-route-index strong{
+ font:400 clamp(13px,1.12vw,17px)/1.32 Arial,sans-serif;letter-spacing:-.02em;
+}
+.sa-page #strategy .sa-route-index .sa-route-arrow{
+ position:static;transform:none;align-self:start;justify-self:end;
+ font:15px/1 Arial,sans-serif;
+}
+.sa-page #strategy .sa-route-layout>.sa-masterplan{
+ grid-column:1;grid-row:2;width:100%;min-width:0;max-width:none;
+ margin:0;
+}
+.sa-page #strategy .sa-masterplan .sa-media{display:block;overflow:visible;background:transparent}
+.sa-page #strategy .sa-masterplan .sa-media img{
+ display:block;width:100%;max-width:100%;height:auto;aspect-ratio:auto;object-fit:contain;
+}
+/* The original technical illustrations remain untouched. English explanation is alongside. */
+.sa-page #supply .sa-technical-explainer>.sa-feature-copy{
+ padding-top:6px;max-width:500px;
+}
+.sa-page #supply .sa-technical-explainer .sa-feature-copy>p{
+ max-width:490px;
+}
+.sa-page #supply .sa-stage-glossary{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:17px 19px;list-style:none;
+ margin:23px 0 0;padding:22px 0 0;border-top:1px solid var(--sa-rule);
+ counter-reset:sa-stage;
+}
+.sa-page #supply .sa-stage-glossary>li{
+ display:flex;flex-direction:column;gap:4px;
+ min-width:0;counter-increment:sa-stage;
+ font:12px/1.52 Arial,sans-serif;color:var(--sa-muted);
+}
+.sa-page #supply .sa-stage-glossary>li strong{
+ font:400 13px/1.38 Arial,sans-serif;color:var(--sa-ink);
+}
+.sa-page #supply .sa-stage-glossary>li strong::before{
+ content:counter(sa-stage,decimal-leading-zero) " / ";
+ color:var(--sa-accent);font:11px/1.45 Arial,sans-serif;
+}
+.sa-page #supply .sa-layer-guide{
+ margin:24px 0 0;padding-top:17px;border-top:1px solid var(--sa-rule);
+ display:grid;gap:17px;
+}
+.sa-page #supply .sa-layer-guide>div{display:grid;gap:4px}
+.sa-page #supply .sa-layer-id{
+ color:var(--sa-accent);font:11px/1.45 Arial,sans-serif;letter-spacing:.06em;
+}
+.sa-page #supply .sa-layer-guide strong{
+ font:400 15px/1.4 Arial,sans-serif;color:var(--sa-ink);
+}
+.sa-page #supply .sa-layer-guide p{
+ font:13px/1.6 Arial,sans-serif;color:var(--sa-muted);
+ margin:0;
+}
+@media(max-width:900px){
+ .sa-page #strategy .sa-route-index{width:100%}
+ .sa-page #supply .sa-stage-glossary{gap:15px 12px}
+}
+@media(max-width:700px){
+ .sa-page #landscape .sa-feature-row--mapping{
+  grid-template-columns:1fr!important;gap:24px!important;
+ }
+ .sa-page #landscape .sa-feature-row--mapping>.sa-feature-copy,
+ .sa-page #landscape .sa-feature-row--mapping>.sa-figure{
+  grid-column:1;grid-row:auto;
+ }
+ .sa-page #strategy .sa-route-index{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .sa-page #strategy .sa-route-index>a{
+  display:flex;flex-direction:column;align-items:flex-start;min-height:90px;gap:5px;
+  padding:10px 5px 10px 0;border-top:1px solid var(--sa-rule);
+ }
+ .sa-page #strategy .sa-route-index strong{font-size:12px}
+ .sa-page #strategy .sa-route-index .sa-route-arrow{display:none}
+ .sa-page #supply .sa-stage-glossary{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:430px){
+ .sa-page #strategy .sa-route-index{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .sa-page #strategy .sa-route-index>a{border-top:1px solid var(--sa-rule);padding:10px 0}
+ .sa-page #supply .sa-stage-glossary{grid-template-columns:1fr}
+}
 </style><link rel="stylesheet" href="project-unified.css?v=20261009-editorial-v1"></head>
 <body class="sa-page"><a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Projects</a><a href="research.html">Research</a><a href="info.html">Info</a></nav></header>
@@ -347,10 +466,10 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
 
 <section class="sa-section" id="strategy" aria-labelledby="strategy-title"><div class="sa-section-heading"><span class="sa-kicker">02 / Route strategy</span><h2 id="strategy-title">Three responses within one landscape system.</h2><p>Rather than placing identical structures at regular intervals, three proposals respond to distinct moments in the pilgrimage: renewed accommodation at First Tavern, modular rest and essential services along the route, and cultural interpretation near the ritual landscape. Their locations were considered through the wider mapping of terrain, climate, existing facilities and cultural practices.</p></div>
 <div class="sa-route-layout" aria-label="Route-wide plan and three architectural proposals">
- <nav class="sa-route-index" aria-label="Select an architectural proposal">
-  <a href="#tavern"><span class="sa-route-number">01 / FIRST TAVERN</span><strong>Renovation &amp; accommodation</strong><small>A renewed pilgrims’ inn around a shared courtyard</small><span class="sa-route-arrow" aria-hidden="true">↗</span></a>
-  <a href="#supply"><span class="sa-route-number">02 / SUPPLY STATIONS</span><strong>Modular shelter &amp; services</strong><small>Distributed places for rest and essential support</small><span class="sa-route-arrow" aria-hidden="true">↗</span></a>
-  <a href="#sky-burial"><span class="sa-route-number">03 / SKY BURIAL INTERPRETATION HALL</span><strong>Interpretation &amp; distance</strong><small>A restrained intervention beside the sacred route</small><span class="sa-route-arrow" aria-hidden="true">↗</span></a>
+ <nav class="sa-route-index" aria-label="Jump to the three architectural interventions">
+  <a href="#tavern"><span class="sa-route-number">01</span><strong>First Tavern</strong><span class="sa-route-arrow" aria-hidden="true">↗</span></a>
+  <a href="#supply"><span class="sa-route-number">02</span><strong>Supply Stations</strong><span class="sa-route-arrow" aria-hidden="true">↗</span></a>
+  <a href="#sky-burial"><span class="sa-route-number">03</span><strong>Sky Burial Interpretation Hall</strong><span class="sa-route-arrow" aria-hidden="true">↗</span></a>
  </nav>
  <figure class="sa-figure sa-drawing sa-masterplan" data-image="route-masterplan.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Kangrinboqê kora / route-wide architectural plan" data-title="Kangrinboqê kora / route-wide architectural plan"><img src="assets/spirited/route-masterplan.webp" alt="Overall kora route planning study locating possible architectural interventions along the circular pilgrimage path." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">07</span><span class="sa-figure-copy"><strong>Kangrinboqê kora / route-wide architectural plan</strong>The route-wide study places potential interventions in relation to sacred landmarks, rest stops, circulation and landscape conditions; three proposals are detailed below.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure>
  </div>
@@ -384,8 +503,32 @@ display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30
 </div>
 <div class="sa-feature-row sa-editorial-aligned "><div class="sa-feature-copy"><span class="sa-minor">Modular organization</span><h3>Different uses, one construction logic.</h3><p>Sleeping, dining and service rooms can be combined according to local capacity and seasonal needs.</p></div><figure class="sa-figure sa-drawing" data-image="supply-plans.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Modular floor plan / repeated functional units" data-title="Modular floor plan / repeated functional units"><img src="assets/spirited/supply-plans.webp" alt="Architectural plans for modular supply stations showing repeated sleeping, dining and service rooms." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">12</span><span class="sa-figure-copy"><strong>Modular floor plan / repeated functional units</strong>Standard modules can be combined to provide sleeping rooms, shared dining, sanitary facilities and basic services.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure></div>
 <div class="sa-feature-row sa-editorial-aligned sa-editorial-room-row"><div class="sa-feature-copy"><span class="sa-minor">Everyday occupation</span><h3>From a bed to a shared table.</h3><p>Compact overnight accommodation and collective dining share the same modular construction system.</p></div><div class="sa-two sa-room-pair"><figure class="sa-figure sa-image" data-image="supply-bedroom.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Overnight accommodation" data-title="Overnight accommodation"><img src="assets/spirited/supply-bedroom.webp" alt="Warm timber interior of a compact modular pilgrim sleeping unit with bunks, window and table." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">13</span><span class="sa-figure-copy"><strong>Overnight accommodation</strong>Built-in timber furnishings offer an efficient arrangement for resting and storing supplies.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure><figure class="sa-figure sa-image" data-image="supply-dining.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Shared dining and recovery" data-title="Shared dining and recovery"><img src="assets/spirited/supply-dining.webp" alt="Timber dining interior with tables, pilgrims and framed mountain views." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">14</span><span class="sa-figure-copy"><strong>Shared dining and recovery</strong>Communal tables transform the same construction logic into a place to eat, pause and exchange information.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure></div></div>
-<div class="sa-feature-row sa-editorial-aligned "><div class="sa-feature-copy"><span class="sa-minor">Construction and servicing</span><h3>From fabrication to deployment.</h3><p>The sequence links prefabrication, shipping, storage, assembly and later maintenance of the shelter modules.</p></div><figure class="sa-figure sa-drawing" data-image="supply-assembly.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Eight stages / from material supply to occupation" data-title="Eight stages / from material supply to occupation"><img src="assets/spirited/supply-assembly.webp" alt="Eight-step axonometric construction diagram showing manufacture, transport, installation and replication." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">15</span><span class="sa-figure-copy"><strong>Eight stages / from material supply to occupation</strong>Shipping, fabrication, storage, deployment, structural assembly, plug-in modules, services and repetition form one construction strategy.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure></div>
-<div class="sa-feature-row sa-editorial-aligned "><div class="sa-feature-copy"><span class="sa-minor">Building section</span><h3>Layers designed for maintenance.</h3><p>Photovoltaic roofing, aluminium framing, insulated timber enclosures and raised supports are studied as separate, maintainable layers.</p></div><figure class="sa-figure sa-drawing" data-image="supply-detail.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Building section / replaceable layers" data-title="Building section / replaceable layers"><img src="assets/spirited/supply-detail.webp" alt="Detailed architectural section through a modular timber shelter showing photovoltaic panels, insulation, framing and foundations." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">16</span><span class="sa-figure-copy"><strong>Building section / replaceable layers</strong>The technical study distinguishes the photovoltaic roof, aluminium frame, insulation, prefabricated timber enclosure and raised support structure.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure></div>
+<div class="sa-feature-row sa-editorial-aligned sa-technical-explainer"><div class="sa-feature-copy">
+  <span class="sa-minor">Construction and servicing / 08 steps</span>
+  <h3>From fabrication to deployment.</h3>
+  <p>The eight-step diagram traces a repeatable supply chain, from off-site material preparation to a functioning shelter. The following English guide corresponds to the numbered stages and Chinese annotations in the drawing.</p>
+  <ol class="sa-stage-glossary" aria-label="Eight stages of shelter construction">
+    <li><strong>Shipping</strong><span>Timber and components travel from the processing yard to the route.</span></li>
+    <li><strong>Manufactory</strong><span>Materials are cut and prepared as transportable building elements.</span></li>
+    <li><strong>Storage</strong><span>Prefabricated parts are stored for staged delivery and assembly.</span></li>
+    <li><strong>Deployment</strong><span>A truck carries components for an individual shelter unit.</span></li>
+    <li><strong>Structure</strong><span>A lightweight prefabricated frame is assembled on site.</span></li>
+    <li><strong>Module Plug-in</strong><span>Enclosed functional modules are fitted into the frame.</span></li>
+    <li><strong>Facilities Installation</strong><span>Photovoltaics, access steps and service elements are added.</span></li>
+    <li><strong>Unit Duplication</strong><span>The same kit of parts is repeated where facilities are needed.</span></li>
+  </ol>
+  </div><figure class="sa-figure sa-drawing" data-image="supply-assembly.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Eight stages / from material supply to occupation" data-title="Eight stages / from material supply to occupation"><img src="assets/spirited/supply-assembly.webp" alt="Eight-step axonometric construction diagram showing manufacture, transport, installation and replication." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">15</span><span class="sa-figure-copy"><strong>Eight stages / from material supply to occupation</strong>Shipping, fabrication, storage, deployment, structural assembly, plug-in modules, services and repetition form one construction strategy.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure></div>
+<div class="sa-feature-row sa-editorial-aligned sa-technical-explainer"><div class="sa-feature-copy">
+  <span class="sa-minor">Building section / material layers</span>
+  <h3>Layers designed for maintenance.</h3>
+  <p>The section separates the energy-producing roof, protective envelope, service channels and elevated base into legible components. Each is designed to be fabricated or maintained independently, rather than treating the shelter as a single permanent mass.</p>
+  <div class="sa-layer-guide" aria-label="English explanation of section labels">
+    <div><span class="sa-layer-id">01 / ROOF</span><strong>Solar and weather protection</strong><p>Photovoltaic panels sit above a 3 mm profiled aluminium sheet, carried by a fire-resistant aluminium-alloy frame.</p></div>
+    <div><span class="sa-layer-id">02 / ENVELOPE</span><strong>Insulation and prefabricated timber</strong><p>Two 100 mm polyurethane-foam layers are shown with spruce wood panels to form the insulated enclosure.</p></div>
+    <div><span class="sa-layer-id">03 / SERVICES</span><strong>Accessible wiring</strong><p>A designated cable channel separates building services from the primary structure for inspection and replacement.</p></div>
+    <div><span class="sa-layer-id">04 / BASE</span><strong>Raised, replaceable support</strong><p>A prefabricated steel base and perforated aluminium elements organize the interface between the enclosed module and the ground.</p></div>
+  </div>
+  </div><figure class="sa-figure sa-drawing" data-image="supply-detail.webp"><button type="button" class="sa-media lf-zoom sa-zoom" aria-label="Enlarge image: Building section / replaceable layers" data-title="Building section / replaceable layers"><img src="assets/spirited/supply-detail.webp" alt="Detailed architectural section through a modular timber shelter showing photovoltaic panels, insulation, framing and foundations." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('sa-unavailable')"></button><figcaption><span class="sa-figure-number">16</span><span class="sa-figure-copy"><strong>Building section / replaceable layers</strong>The technical study distinguishes the photovoltaic roof, aluminium frame, insulation, prefabricated timber enclosure and raised support structure.</span><span class="sa-enlarge">Enlarge ↗</span></figcaption></figure></div>
 </section>
 
 <section class="sa-section" id="sky-burial" aria-labelledby="sky-burial-title">
