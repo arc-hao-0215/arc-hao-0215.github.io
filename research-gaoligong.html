@@ -124,10 +124,36 @@
         align-items: flex-start;
       }
     }
+  
+/* Gaoligong research: photographs are field evidence, never cropped into project renders. */
+.research-gaoligong .ga-field-figure{margin:36px 0 50px;padding:0;background:transparent;max-width:100%;min-width:0}
+.research-gaoligong .ga-field-figure[hidden]{display:none}
+.research-gaoligong .ga-zoom{position:relative;display:block;width:100%;height:auto;margin:0;padding:0;text-align:left;border:0;background:transparent;cursor:zoom-in}
+.research-gaoligong .ga-zoom img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;aspect-ratio:auto}
+.research-gaoligong .ga-zoom-hint{position:absolute;bottom:16px;right:16px;background:rgba(245,244,240,.9);color:#151515;padding:7px 10px;font:10px/1.4 Arial,sans-serif;letter-spacing:.09em;opacity:0;transition:opacity .2s}
+.research-gaoligong .ga-zoom:hover .ga-zoom-hint,.research-gaoligong .ga-zoom:focus-visible .ga-zoom-hint{opacity:1}
+.research-gaoligong .ga-field-figure figcaption{display:block;border-top:1px solid var(--line,#cecdc8);margin-top:11px;padding-top:10px;color:var(--grey,#696965);font:12px/1.65 Arial,sans-serif}
+.research-gaoligong .ga-field-figure figcaption em{font-style:normal;color:var(--ink,#151515)}
+.research-gaoligong .ga-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;column-gap:6%;margin:38px 0 50px}
+.research-gaoligong .ga-split .ga-field-figure{margin:0}
+.research-gaoligong .ga-split .ga-field-note{border-top:1px solid var(--line,#cecdc8);padding-top:15px;align-self:start}
+.research-gaoligong .ga-split .ga-field-note .eyebrow{display:block;margin-bottom:12px}
+.research-gaoligong .ga-split .ga-field-note p{font:16px/1.75 Georgia,serif;color:#3e403a;margin-top:0}
+.research-gaoligong .ga-plate img{width:100%;height:auto;object-fit:contain}
+.research-gaoligong .ga-sequence-caption{color:var(--grey,#696965)!important;font:13px/1.75 Arial,sans-serif!important;margin:24px 0}
+.research-gaoligong .ga-chapter-intro{border-top:1px solid var(--line,#cecdc8);padding-top:12px;margin-bottom:18px;font:12px/1.5 Arial,sans-serif;color:var(--grey,#696965)}
+.research-gaoligong #ga-image-lightbox{width:min(96vw,1600px);max-width:96vw;max-height:95vh;padding:48px 18px 18px;background:var(--paper,#f5f4f0);border:0;box-shadow:0 15px 65px #0006}
+.research-gaoligong #ga-image-lightbox::backdrop{background:rgba(10,13,12,.91)}
+.research-gaoligong #ga-image-lightbox img{display:block;width:auto;height:auto;max-width:100%;max-height:79vh;object-fit:contain;margin:auto}
+.research-gaoligong #ga-image-lightbox .ga-lightbox-close{position:absolute;right:14px;top:10px;text-decoration:underline;font:12px/1.5 Arial,sans-serif}
+.research-gaoligong #ga-image-lightbox p{margin:12px auto 0;text-align:center;font:12px/1.5 Arial,sans-serif;color:var(--grey,#696965)}
+@media(max-width:760px){.research-gaoligong .ga-split{grid-template-columns:1fr;row-gap:20px}.research-gaoligong .ga-zoom-hint{opacity:1}.research-gaoligong .ga-field-figure{margin:28px 0 42px}.research-gaoligong #ga-image-lightbox{padding:46px 8px 12px}}
+@media(prefers-reduced-motion:reduce){.research-gaoligong .ga-zoom-hint{transition:none}}
+
   </style>
 </head>
 
-<body class="image-free">
+<body class="research-gaoligong">
 
   <a class="skip" href="#main">Skip to content</a>
 
@@ -183,18 +209,25 @@
 
           <section id="proposition">
             <span class="eyebrow">Opening proposition</span>
-            <p class="opening-proposition">An ancient route does not disappear when it stops carrying travellers. Its traces remain in the settlements, productive landscapes and everyday practices that once depended on it.</p>
+            <p class="opening-proposition">A mountain is more than the landscape we see. It is also the history of how people move, work, cultivate and inhabit it.</p>
             <p>In the Gaoligong Mountains of western Yunnan, the historic Yongchang Trail has gradually lost its role as a major transport corridor. Yet the surrounding landscape is far from abandoned. Tea cultivation, processing, village life and ecological processes continue to shape the territory.</p>
-            <p>This research examines the mountain not as a scenic wilderness or a collection of isolated heritage sites, but as a working landscape whose history, economy and ecology remain intertwined.</p>
+            <p>This research examines the mountain not as a scenic wilderness or a collection of isolated heritage sites, but as a working landscape whose history, economy and ecology remain intertwined. Historical maps are read alongside walking routes, vernacular spaces, forest-floor observations and encounters with people familiar with the tea landscape.</p>
             <div class="method-lens">
               <span class="eyebrow">Research scope</span>
-              <p>Historical review · Site observation · Topographic and vegetation mapping · Documentation of existing village and tea-production facilities</p>
+              <p>Historical review · Territorial and topographic mapping · Field walks and photographic observation · Informal on-site conversations · Documentation of existing tea-production and village spaces</p>
             </div>
+          <figure class="ga-field-figure ga-full" data-ga-asset="02-tea-house-view.webp">
+  <button type="button" class="ga-zoom" aria-label="Enlarge image: Looking from beneath an existing bamboo tea-house roof toward a mountain tree and people gathering on a terrace." data-ga-zoom="assets/research-gaoligong/02-tea-house-view.webp">
+    <img loading="lazy" decoding="async" src="assets/research-gaoligong/02-tea-house-view.webp" alt="Looking from beneath an existing bamboo tea-house roof toward a mountain tree and people gathering on a terrace." onerror="this.closest('figure').hidden=true">
+    <span class="ga-zoom-hint" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <figcaption><em>Field observation / Tea house and mountain setting.</em> Existing bamboo construction frames a landscape that is both inhabited and worked.</figcaption>
+</figure>
           </section>
 
           <section id="question" class="research-question">
             <h2>Research question</h2>
-            <p class="question-text">What remains of a historic mountain route after its transport function declines, and how do tea production, local livelihoods and ecological conditions continue to shape the landscape around it?</p>
+            <p class="question-text">How does an ancient trading route continue to shape a mountain landscape long after its original transport function has declined?</p>
           </section>
 
           <section id="trail">
@@ -204,6 +237,19 @@
             <p>The Yongchang Trail formed part of the wider network of historic overland routes connecting southwestern China with Southeast and South Asia. Crossing the Gaoligong Mountains, the route linked settlements, trading posts and mountain passes through which people, commodities and cultural practices circulated. Its history survives in dispersed physical traces, including former caravan stations, beacon towers, charcoal kilns, stone paths and landmarks associated with the movement of traders and pack animals. <a class="source-cite" href="#ref-G1" aria-label="Reference G1">[G1]</a></p>
             <p>The opening of the Baoshan–Tengchong road in 1952 marked a major change in regional mobility. According to the historical account assembled in the thesis, motorised transportation increasingly displaced the older caravan network. Sections of the mountain route declined in use, while new roads altered connections between villages and surrounding settlements.</p>
             <p>In Dahaoping, this transition can be understood as more than the deterioration of a historic path. The former relationship between movement, settlement and exchange gradually changed. The surviving fragments document both the historical significance of the corridor and the transformation of the territorial system around it.</p>
+          <p class="ga-sequence-caption">The following two maps should be read at different scales: the regional overland network establishes the wider geography of movement; the Dahaoping survey identifies surviving local stations, monuments and landscape landmarks.</p><figure class="ga-field-figure ga-plate" data-ga-asset="06-regional-trail-map.webp">
+  <button type="button" class="ga-zoom" aria-label="Enlarge image: Regional territorial map of the Southwest Silk Road in Baoshan City with routes, protected land and settlements." data-ga-zoom="assets/research-gaoligong/06-regional-trail-map.webp">
+    <img loading="lazy" decoding="async" src="assets/research-gaoligong/06-regional-trail-map.webp" alt="Regional territorial map of the Southwest Silk Road in Baoshan City with routes, protected land and settlements." onerror="this.closest('figure').hidden=true">
+    <span class="ga-zoom-hint" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <figcaption><em>Regional territorial reading.</em> The Southwest Silk Road and surrounding transport, settlement and ecological networks. Entire original map preserved; select to enlarge.</figcaption>
+</figure><figure class="ga-field-figure ga-plate" data-ga-asset="03-dahaoping-trail-map.webp">
+  <button type="button" class="ga-zoom" aria-label="Enlarge image: Detailed topographic map of Dahaoping Tea Horse Trail and nine recorded heritage nodes." data-ga-zoom="assets/research-gaoligong/03-dahaoping-trail-map.webp">
+    <img loading="lazy" decoding="async" src="assets/research-gaoligong/03-dahaoping-trail-map.webp" alt="Detailed topographic map of Dahaoping Tea Horse Trail and nine recorded heritage nodes." onerror="this.closest('figure').hidden=true">
+    <span class="ga-zoom-hint" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <figcaption><em>Dahaoping heritage survey.</em> Historic nodes along the Tea Horse Trail, from tea production facilities to milestones and former stations. Entire original plate preserved.</figcaption>
+</figure>
           </section>
 
           <section id="tea-history">
@@ -213,6 +259,13 @@
             <p>Tea cultivation gives Dahaoping a second historical narrative, one that extends beyond the decline of the caravan route. A local historical account cited in the thesis traces the Feng family's promotion of tea cultivation to approximately 1916. Associated with the movement known as <em>Xing Cha Fei Yan</em> (兴茶废烟, promoting tea cultivation in place of opium), the initiative sought to replace opium production with an alternative agricultural livelihood. <a class="source-cite" href="#ref-G2" aria-label="Reference G2">[G2]</a></p>
             <p>This history connects a change in cultivation to broader questions of local economy and social reform. Tea was not simply another crop introduced into the mountains; its expansion was associated with a reorganisation of productive activity and the economic identity of the area.</p>
             <p>The Fenglaoye Ancient Tea Garden preserves an important part of this narrative. The thesis describes approximately 3,000 <em>mu</em> of old, extensively managed tea woodland, together with facilities associated with tea processing and local tea culture. Its significance cannot be reduced to the age of its trees or its visual character: cultivation also embodies accumulated knowledge of harvesting, processing, climate and terrain.</p>
+          <div class="ga-split"><div class="ga-field-note"><span class="eyebrow">Research method / Local conversations</span><p>Present-day site conversations and annotated mapping helped locate productive spaces, routes and material traces. They complement historical documents but should not be treated as independent proof of the events recorded around 1916.</p></div><figure class="ga-field-figure ga-side" data-ga-asset="08-field-interview-mapping.webp">
+  <button type="button" class="ga-zoom" aria-label="Enlarge image: Outdoor on-site conversation with an elder near a timber tea house, an annotated field map held in the foreground." data-ga-zoom="assets/research-gaoligong/08-field-interview-mapping.webp">
+    <img loading="lazy" decoding="async" src="assets/research-gaoligong/08-field-interview-mapping.webp" alt="Outdoor on-site conversation with an elder near a timber tea house, an annotated field map held in the foreground." onerror="this.closest('figure').hidden=true">
+    <span class="ga-zoom-hint" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <figcaption><em>Field exchange.</em> On-site discussion and working map at the Fenglaoye tea garden.</figcaption>
+</figure></div>
           </section>
 
           <section id="forest">
@@ -222,6 +275,13 @@
             <p>The tea woodland at Fenglaoye differs from the highly regular geometry commonly associated with intensive plantations. Tea trees grow among forest vegetation and across irregular mountain slopes. The site investigation describes a low-input cultivation practice in which the trees are maintained without routine chemical fertilisation, pesticide application or systematic vegetation clearance.</p>
             <p>Many tea trees recorded in the study reach approximately two to three metres in height. Their growth patterns make harvesting physically demanding, involving reaching, bending branches and selectively collecting leaves. These observations complicate a simple distinction between natural forest and cultivated land. The garden is neither untouched wilderness nor a landscape entirely reconstructed for agricultural production; its character reflects a continuing interaction between ecological processes and human labour.</p>
             <p>The terrain is experienced differently according to the activity taking place. A hillside that appears picturesque to a visitor may be demanding working ground for someone gathering tea leaves. An opening between trees may serve harvesting access rather than represent vacant land. Vegetation mapping alone cannot describe the productive geography of the woodland; seasonal labour, access and maintenance also matter.</p>
+          <div class="ga-split"><div class="ga-field-note"><span class="eyebrow">Field method / Walking the site</span><p>Following the route on foot makes changes in slope, access, vegetation and ground conditions apparent. Walking documents the mountain as an everyday terrain rather than a distant view.</p></div><figure class="ga-field-figure ga-side" data-ga-asset="09-mountain-walk.webp">
+  <button type="button" class="ga-zoom" aria-label="Enlarge image: Research group walking single file across a steep sunny mountain slope with dense vegetation." data-ga-zoom="assets/research-gaoligong/09-mountain-walk.webp">
+    <img loading="lazy" decoding="async" src="assets/research-gaoligong/09-mountain-walk.webp" alt="Research group walking single file across a steep sunny mountain slope with dense vegetation." onerror="this.closest('figure').hidden=true">
+    <span class="ga-zoom-hint" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <figcaption><em>Transect walk.</em> Field observation across slopes, vegetation and informal access paths.</figcaption>
+</figure></div>
           </section>
 
           <section id="processing">
@@ -231,6 +291,13 @@
             <p>Tea production continues beyond harvesting. The site documentation records an existing timber tea-processing workshop containing bamboo withering racks and a traditional masonry stove used in the initial preparation of tea leaves. These ordinary facilities reveal how production is organised around the handling and transformation of harvested material.</p>
             <p>The nearby tea house accommodates practices associated with <em>Leixiang Cha</em> (雷响茶), a local tradition of roasting and preparing tea. Together, these places connect agricultural work with local knowledge, hospitality and forms of social exchange.</p>
             <p>Timber columns, woven bamboo enclosures, earth walls and rough stone surfaces appear in the existing facilities and settlement fabric. Rather than constituting a single architectural style, these materials reflect practical relationships with available resources, climate and everyday use. A workshop can be significant both for its material character and for the processes it preserves: tools, work surfaces and spatial arrangements document a way of making.</p>
+          <figure class="ga-field-figure ga-plate" data-ga-asset="04-vernacular-materials.webp">
+  <button type="button" class="ga-zoom" aria-label="Enlarge image: Uncropped five-panel photographic sheet of local wooden stairs, timber, woven bamboo wall, tea hearth and mountain structures." data-ga-zoom="assets/research-gaoligong/04-vernacular-materials.webp">
+    <img loading="lazy" decoding="async" src="assets/research-gaoligong/04-vernacular-materials.webp" alt="Uncropped five-panel photographic sheet of local wooden stairs, timber, woven bamboo wall, tea hearth and mountain structures." onerror="this.closest('figure').hidden=true">
+    <span class="ga-zoom-hint" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <figcaption><em>Vernacular material atlas.</em> Thresholds, timber steps, woven bamboo, hearths and local construction practices; original five-panel composition preserved.</figcaption>
+</figure>
           </section>
 
           <section id="ecology">
@@ -241,6 +308,13 @@
             <p>GIS-based analysis undertaken for the thesis identifies substantial slope variation, commonly between approximately 15 and 30 degrees across the study area. The northern part of the surveyed tea-garden site is comparatively gentle, while the southern portion contains steeper and more extensive tea woodland. The thesis characterises the regional climate as humid and strongly influenced by the monsoon, with annual precipitation exceeding 1,500 millimetres and much of the rainfall concentrated between May and October.</p>
             <p>Persistent moisture, seasonal runoff and temperature variation shape both vegetation and everyday work. Tree roots, forest soils, understory vegetation and drainage patterns form interconnected systems that are not visible in a single plan or photograph. At the same time, established tea cultivation demonstrates a history of human use. Ecology and livelihood are overlapping conditions rather than opposing categories.</p>
             <p>The thesis documents these conditions at landscape scale; it does not constitute a comprehensive biodiversity assessment or an independent determination of protected-area boundaries.</p>
+          <figure class="ga-field-figure ga-plate" data-ga-asset="05-forest-biodiversity.webp">
+  <button type="button" class="ga-zoom" aria-label="Enlarge image: Uncropped five-panel photographic sheet with moss, flowering plants, amphibian, forest and fungi." data-ga-zoom="assets/research-gaoligong/05-forest-biodiversity.webp">
+    <img loading="lazy" decoding="async" src="assets/research-gaoligong/05-forest-biodiversity.webp" alt="Uncropped five-panel photographic sheet with moss, flowering plants, amphibian, forest and fungi." onerror="this.closest('figure').hidden=true">
+    <span class="ga-zoom-hint" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <figcaption><em>Ecological field observations.</em> Forest understory, moisture, vegetation, fungi and observed small fauna. Photographs are not a systematic species survey.</figcaption>
+</figure>
           </section>
 
           <section id="village">
@@ -251,6 +325,13 @@
             <p>Cultivation, harvesting, preparing and consuming tea connect the agricultural landscape with domestic routines and places of gathering. The productive geography extends beyond the plantation, encompassing workspaces, processing facilities, routes between sites and areas of everyday exchange.</p>
             <p>Historical traces are distributed throughout this wider territory, including the old tea factory, Huangzhuyuanpu (黄竹园铺) and the Fengkou monument (风口大碑). The survey also records ordinary logistical and commemorative places, including loading areas, roads and burial grounds. Such spaces may appear incidental in a visitor-oriented account of the mountain, but they belong to the village's everyday geography.</p>
             <p>The village is an inhabited territory in which productive, domestic, commemorative and logistical activities coexist. A fuller account of how they interact would require resident interviews and observation across the agricultural calendar; the thesis provides a spatial investigation rather than a complete ethnographic study.</p>
+          <div class="ga-split"><div class="ga-field-note"><span class="eyebrow">Research method / Everyday knowledge</span><p>The tea house is more than a picturesque structure. It provides a setting for shared practices, informal exchange and conversations about the surrounding landscape. Field photographs document such encounters without replacing a systematic interview study.</p></div><figure class="ga-field-figure ga-side" data-ga-asset="01-field-conversation.webp">
+  <button type="button" class="ga-zoom" aria-label="Enlarge image: Researchers and local participants talking around a laptop in an existing bamboo tea house." data-ga-zoom="assets/research-gaoligong/01-field-conversation.webp">
+    <img loading="lazy" decoding="async" src="assets/research-gaoligong/01-field-conversation.webp" alt="Researchers and local participants talking around a laptop in an existing bamboo tea house." onerror="this.closest('figure').hidden=true">
+    <span class="ga-zoom-hint" aria-hidden="true">VIEW ↗</span>
+  </button>
+  <figcaption><em>Tea house as a social setting.</em> Conversation during the field visit.</figcaption>
+</figure></div>
           </section>
 
           <section id="tourism">
@@ -270,7 +351,7 @@
             <p>The investigation brings together three histories often considered separately: the Yongchang Trail and its changing role after modern transportation; the establishment and continuation of tea cultivation and its material infrastructure; and the mountain's steep terrain, seasonal climate and forest systems within which settlement and production have developed.</p>
             <p>These histories do not occupy separate layers. They intersect in paths, workshops, trees, village spaces and the routines through which the territory is used and maintained. The available documentation establishes some of their spatial relationships, while leaving important questions open. Household economic data, systematic interviews, seasonal labour records and comprehensive ecological surveys would be needed to understand how those relationships operate and change over time.</p>
             <blockquote class="research-pullquote">The Gaoligong Mountains are not an empty natural setting surrounding fragments of history. They are a working territory in which the afterlife of trade, the continuity of tea cultivation, everyday village practices and ecological processes remain inseparable.</blockquote>
-            <p>This is a reading of an existing place, not a prescription for a future building. The research stands on its observations of a lived landscape, regardless of whether an architectural project follows.</p>
+            <p>The research records a living territory, while recognising the limits of a short field investigation. Further seasonal observation, locally grounded oral histories and ecological data could deepen understanding of the relationships documented here.</p>
           </section>
 
           <!-- FIELD FILM: After Research, Before Authorship -->
@@ -331,7 +412,7 @@
           <!-- Authorship -->
           <section class="research-authorship-block">
             <span class="eyebrow">Research basis</span>
-            <p class="research-authorship">Site investigation, historical review and mapping by Hao Chang · Tsinghua University, 2026<br>Graduation thesis adviser: Martijn de Geus · Source: Chapters 1 and 3 of the 2026 graduation thesis</p>
+            <p class="research-authorship">Site investigation, historical review and mapping by Hao Chang · Tsinghua University, 2026<br>Graduation thesis adviser: Martijn de Geus · Research material: Chapters 1 and 3 of the 2026 graduation thesis</p>
           </section>
 
           <!-- References -->
@@ -341,7 +422,7 @@
             <ol class="research-bibliography">
               <li id="ref-G1"><span class="source-kind">G1 / Primary research</span>
                 <h3>Hao Chang (2026). 古道新生：南方丝绸之路高黎贡山自然生态度假空间设计.</h3>
-                <p>Tsinghua University graduation thesis. Chapter 1: Yongchang Trail and historical background; Chapter 3: Dahaoping village, Fenglaoye tea garden, terrain mapping and existing facilities. The present research essay uses its investigation material, not its architectural proposal.</p>
+                <p>Tsinghua University graduation thesis. Chapter 1: Yongchang Trail and historical background; Chapter 3: Dahaoping village, Fenglaoye tea garden, terrain mapping and existing facilities. This essay draws on the thesis’s historical investigation and existing-condition field documentation.</p>
               </li>
               <li id="ref-G2"><span class="source-kind">G2 / Local historical source, cited in thesis</span>
                 <h3>Mangbang Township Cultural Station (2021). 芒棒镇大蒿坪社封氏家族与“兴茶废烟”历史档案汇编.</h3>
@@ -386,6 +467,30 @@
 
     </article>
   </main>
+
+
+  <dialog id="ga-image-lightbox" aria-label="Enlarged field research image">
+    <button type="button" class="ga-lightbox-close" aria-label="Close enlarged image">Close ×</button>
+    <img alt="">
+    <p></p>
+  </dialog>
+  <script>
+    (() => {
+      const d = document.getElementById('ga-image-lightbox');
+      if (!d) return;
+      const picture = d.querySelector('img'), caption = d.querySelector('p');
+      document.querySelectorAll('.ga-zoom').forEach(button => button.addEventListener('click', () => {
+        const preview = button.querySelector('img');
+        picture.src = button.dataset.gaZoom;
+        picture.alt = preview.alt;
+        caption.textContent = button.closest('figure').querySelector('figcaption')?.textContent || '';
+        if (typeof d.showModal === 'function') d.showModal();
+      }));
+      d.querySelector('.ga-lightbox-close').addEventListener('click', () => d.close());
+      d.addEventListener('click', e => { if (e.target === d) d.close(); });
+      d.addEventListener('close', () => picture.removeAttribute('src'));
+    })();
+  </script>
 
   <!-- Footer -->
   <footer>
