@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  const dialog=document.querySelector('#rb-lightbox'),full=dialog?.querySelector('img'),caption=dialog?.querySelector('figcaption');
  document.querySelectorAll('.rb-zoom').forEach(b=>b.addEventListener('click',()=>{
    if(!dialog||!dialog.showModal){window.open(b.dataset.full,'_blank','noopener');return}
-   full.src=b.dataset.full;full.alt=b.querySelector('img')?.alt||'Research figure';caption.textContent=b.dataset.caption||'';dialog.showModal();
+   full.src=b.dataset.full;full.alt=b.querySelector('img')?.alt||'Research figure';caption.textContent=(b.dataset.caption||'').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&');dialog.showModal();
  }));
  dialog?.querySelector('.rb-lightbox-close')?.addEventListener('click',()=>dialog.close());
  dialog?.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
