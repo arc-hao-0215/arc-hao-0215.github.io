@@ -1,0 +1,160 @@
+/*
+ * HAO CHANG — Editorial Motion System / v2 (nine project pages)
+ * Complements ancient-trails' established motion vocabulary without
+ * cropping, splitting, resizing, or modifying existing architectural media.
+ * Project-specific carousels and drawing-switchers remain independent.
+ */
+.portfolio-project.pm-v2{
+ --pm-red:#8c332b;
+ --pm-paper:#f5f4f0;
+ --pm-border:#d0cec8;
+}
+.portfolio-project.pm-v2 .pm-chapter-nav{
+ position:sticky;
+ top:0;
+ z-index:80;
+ background:rgba(245,244,240,.975);
+ -webkit-backdrop-filter:blur(12px);
+ backdrop-filter:blur(12px);
+ box-shadow:0 9px 22px rgba(24,25,23,.035);
+ scrollbar-width:none;
+}
+.portfolio-project.pm-v2 .pm-chapter-nav::-webkit-scrollbar{display:none}
+.portfolio-project.pm-v2 .pm-chapter-nav > a{
+ position:relative;
+ transition:color .24s ease;
+}
+.portfolio-project.pm-v2 .pm-chapter-nav > a::after{
+ content:"";
+ position:absolute;left:0;right:0;bottom:0;height:1px;
+ background:var(--pm-red);
+ transform:scaleX(0);
+ transform-origin:left;
+ transition:transform .42s cubic-bezier(.22,1,.36,1);
+}
+.portfolio-project.pm-v2 .pm-chapter-nav > a[aria-current="location"]::after{
+ transform:scaleX(1)
+}
+.pm-reading-progress{
+ position:fixed;z-index:110;left:0;top:0;
+ width:100%;height:2px;pointer-events:none;
+ background:#8c332b;
+ transform:scaleX(0);
+ transform-origin:left center;
+}
+.portfolio-project.pm-v2 .pm-section{
+ position:relative;
+ scroll-margin-top:78px;
+}
+/* Chapter-entry red rule, same restrained treatment as Ancient Trails. */
+.portfolio-project.pm-v2 .pm-section::before{
+ content:"";
+ position:absolute;left:0;top:-1px;
+ width:min(132px,32%);height:1px;
+ background:var(--pm-red);
+ transform:scaleX(0);
+ transform-origin:left;
+ transition:transform .85s cubic-bezier(.22,1,.36,1);
+ pointer-events:none;
+}
+.portfolio-project.pm-v2 .pm-section.pm-section-in::before{transform:scaleX(1)}
+/* Subtle, scroll-linked item marker. No overlay or fake site-plan coordinates. */
+.portfolio-project.pm-v2 .pm-reading-list .pm-reading-item{
+ position:relative;
+ padding-left:10px;
+ transition:opacity .28s ease,color .28s ease;
+}
+.portfolio-project.pm-v2 .pm-reading-list .pm-reading-item::before{
+ content:"";
+ position:absolute;top:12px;bottom:12px;left:0;width:2px;
+ background:var(--pm-red);
+ transform:scaleY(0);
+ transform-origin:top;
+ transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+@media (min-width:1001px){
+ .portfolio-project.pm-v2 .pm-reading-list.pm-reading-active .pm-reading-item:not(.pm-reading-current){opacity:.54}
+ .portfolio-project.pm-v2 .pm-reading-list.pm-reading-active .pm-reading-item.pm-reading-current{opacity:1}
+ .portfolio-project.pm-v2 .pm-reading-list.pm-reading-active .pm-reading-item.pm-reading-current::before{transform:scaleY(1)}
+}
+/* All entrance effects are progressive enhancements: static if JS unavailable. */
+@media (prefers-reduced-motion:no-preference){
+ .portfolio-project.pm-v2.pm-ready .pm-headline > h1{
+   animation:pm-copy .85s .09s cubic-bezier(.22,1,.36,1) both;
+ }
+ .portfolio-project.pm-v2.pm-ready .pm-headline > :first-child:not(h1){
+   animation:pm-copy .68s cubic-bezier(.22,1,.36,1) both;
+ }
+ .portfolio-project.pm-v2.pm-ready .pm-headline > h1 ~ :not(h1){
+   animation:pm-copy .73s .22s cubic-bezier(.22,1,.36,1) both;
+ }
+ .portfolio-project.pm-v2.pm-ready .pm-hero img{
+   animation:pm-cinematic 1.35s cubic-bezier(.22,1,.36,1) both;
+   transform-origin:center center;
+ }
+ .portfolio-project.pm-v2.pm-ready .pm-hero > figcaption{
+   animation:pm-copy .72s .48s cubic-bezier(.22,1,.36,1) both;
+ }
+ @keyframes pm-copy{
+  from{opacity:0;transform:translate3d(0,13px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+ }
+ @keyframes pm-cinematic{
+  from{opacity:.73;transform:scale(1.027)}
+  to{opacity:1;transform:scale(1)}
+ }
+ /* More conservative image scale for precise drawing-first hero compositions. */
+ .portfolio-project.pm-v2.pm-drawing-hero.pm-ready .pm-hero img{
+   animation-name:pm-cinematic-drawing;
+ }
+ @keyframes pm-cinematic-drawing{
+  from{opacity:.73;transform:scale(1.012)}
+  to{opacity:1;transform:scale(1)}
+ }
+ .portfolio-project.pm-v2.pm-motion-ready .pm-reveal{
+   opacity:0;
+   transform:translate3d(0,16px,0);
+   transition:opacity .77s cubic-bezier(.22,1,.36,1),
+              transform .77s cubic-bezier(.22,1,.36,1);
+   transition-delay:var(--pm-delay,0ms);
+ }
+ .portfolio-project.pm-v2.pm-motion-ready .pm-reveal.pm-in{
+   opacity:1;transform:translate3d(0,0,0);
+ }
+ .portfolio-project.pm-v2.pm-motion-ready .pm-figure > figcaption{
+   opacity:0;
+   transform:translate3d(0,9px,0);
+   transition:opacity .67s cubic-bezier(.22,1,.36,1),
+              transform .67s cubic-bezier(.22,1,.36,1);
+   transition-delay:calc(var(--pm-delay,0ms) + 150ms);
+ }
+ .portfolio-project.pm-v2.pm-motion-ready .pm-figure.pm-in > figcaption{
+   opacity:1;transform:translate3d(0,0,0);
+ }
+ .portfolio-project.pm-v2.pm-motion-ready .pm-analysis{
+   transform:translate3d(0,14px,0);
+ }
+ .portfolio-project.pm-v2.pm-motion-ready .pm-analysis.pm-in{
+   transform:translate3d(0,0,0);
+ }
+}
+@media (max-width:1000px){
+ .portfolio-project.pm-v2 .pm-reading-list .pm-reading-item{padding-left:0}
+ .portfolio-project.pm-v2 .pm-reading-list .pm-reading-item::before{display:none}
+}
+@media (max-width:700px){
+ .portfolio-project.pm-v2 .pm-chapter-nav{top:0}
+ .portfolio-project.pm-v2 .pm-section{scroll-margin-top:65px}
+}
+/* Honor system preferences, including changes during a session. */
+@media (prefers-reduced-motion:reduce){
+ .portfolio-project.pm-v2 :is(.pm-reveal,.pm-reveal.pm-in,.pm-figure>figcaption,.pm-figure.pm-in>figcaption,.pm-headline>*,.pm-hero img){
+  opacity:1!important;transform:none!important;transition:none!important;
+  animation:none!important;
+ }
+ .portfolio-project.pm-v2 .pm-section::before,
+ .portfolio-project.pm-v2 .pm-chapter-nav>a::after,
+ .portfolio-project.pm-v2 .pm-reading-list .pm-reading-item{
+  transition:none!important
+ }
+}
