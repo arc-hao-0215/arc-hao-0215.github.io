@@ -44,6 +44,25 @@
   ['.ftb-carousel .ftb-toggle,.tc-carousel [data-tc-autoplay-toggle],.ed-drawing-switch .ed-autoplay-toggle,#sa-interior-pause,.wp-carousel [data-carousel-toggle],[data-gh-plan-pause]','ps-play-toggle']
  ];
  controls.forEach(([selector,cls])=>document.querySelectorAll(selector).forEach(b=>b.classList.add(cls)));
+ /* Give the older carousel implementations the same arrow-key interaction.
+  * Delegate to existing buttons so original slide notes, counters and timers stay synced.
+  */
+ [
+  ['.ftb-carousel','[data-dir="-1"]','[data-dir="1"]'],
+  ['.wp-carousel','[data-carousel-prev]','[data-carousel-next]'],
+  ['.gh-plan-controls','[data-gh-plan-prev]','[data-gh-plan-next]'],
+  ['.ed-drawing-switch','[data-view="basement"]','[data-view="ground"]']
+ ].forEach(([rootSelector,prevSelector,nextSelector])=>{
+  document.querySelectorAll(rootSelector).forEach(root=>{
+   if(!root.hasAttribute('tabindex'))root.setAttribute('tabindex','0');
+   root.addEventListener('keydown',event=>{
+    if(event.altKey||event.ctrlKey||event.metaKey||event.shiftKey)return;
+    if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;
+    event.preventDefault();
+    root.querySelector(event.key==='ArrowLeft'?prevSelector:nextSelector)?.click();
+   });
+  });
+ });
  /* Harmonize the small zoom hint while leaving captions and original credits intact. */
  document.querySelectorAll('figure figcaption').forEach(caption=>{
   const last=caption.lastElementChild;
