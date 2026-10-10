@@ -212,6 +212,62 @@
 @media(max-width:700px){.rt-page .rt-context-grid{grid-template-columns:1fr}.rt-page .rt-context-notes{margin-top:25px}.rt-page .rt-inline-heading{display:block}.rt-page .rt-inline-heading .rt-small-heading{display:block;margin-bottom:6px}.rt-page .rt-compare-head{display:block}.rt-page .rt-compare-head p{margin-top:11px}.rt-page .rt-comparison-grid{grid-template-columns:1fr;gap:32px}.rt-page .rt-comparison-grid:before{display:none}.rt-page .rt-season-head h3{font-size:34px}.rt-page .rt-sectional-comparison{margin-top:53px}}
 
 @media(prefers-reduced-motion:reduce){.rt-page .rt-media-button img{transition:none}}
+
+/* October 2026: paired seasonal explanation, draggable section comparison, left-text / right-image assembly */
+.rt-page .rt-context-season-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,5vw,74px);align-items:start;margin-top:clamp(36px,5.2vw,75px);padding-top:20px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-context-visuals{display:block}
+.rt-page .rt-context-season-row .rt-context-seasonal{padding:0;border:0;min-width:0}
+.rt-page .rt-context-season-notes{min-width:0;padding-top:clamp(3px,1.4vw,19px)}
+.rt-page .rt-context-season-notes h3{font-size:clamp(25px,2.65vw,39px);font-weight:400;line-height:1.19;letter-spacing:-.04em;max-width:520px;margin:12px 0 18px}
+.rt-page .rt-context-season-intro,.rt-page .rt-season-text-blocks p{font:15px/1.78 Georgia,"Times New Roman",serif;color:#50504c;max-width:520px}
+.rt-page .rt-season-text-blocks{margin-top:clamp(23px,3.2vw,47px)}
+.rt-page .rt-season-text-blocks article{padding:19px 0 22px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-season-text-blocks h4{margin:7px 0 10px;font:400 clamp(19px,1.8vw,26px)/1.25 Arial,sans-serif;letter-spacing:-.035em}
+.rt-page .rt-season-text-blocks .rt-small-heading{font-size:10px}
+.rt-page .rt-section-compare-labels{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 12px;color:var(--rt-red);font:11px/1.6 Arial,sans-serif;letter-spacing:.065em}
+.rt-page .rt-section-compare-labels span:last-child{text-align:right}
+.rt-page .rt-section-compare-labels small{display:block;color:var(--rt-muted);font-size:11px;letter-spacing:0;text-transform:none}
+.rt-page .rt-section-compare-frame{position:relative;isolation:isolate;overflow:hidden;background:#e8e8e6;width:100%;line-height:0}
+.rt-page .rt-section-compare-frame>img{display:block;width:100%;height:auto}
+.rt-page .rt-section-compare-wet{position:absolute;inset:0;overflow:hidden;clip-path:inset(0 0 0 var(--rt-reveal));pointer-events:none}
+.rt-page .rt-section-compare-wet img{display:block;width:100%;height:100%;object-fit:fill}
+.rt-page .rt-section-compare-divider{position:absolute;z-index:2;left:var(--rt-reveal);top:0;bottom:0;width:2px;transform:translateX(-50%);background:var(--rt-red);pointer-events:none}
+.rt-page .rt-section-compare-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--rt-red);border-radius:50%;background:var(--rt-paper);color:var(--rt-ink);font:24px/1 Arial,sans-serif;letter-spacing:-.09em;box-shadow:0 2px 8px #0002}
+.rt-page .rt-section-compare-range{position:absolute;inset:0;z-index:3;display:block;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:ew-resize;touch-action:pan-y;appearance:none;-webkit-appearance:none}
+.rt-page .rt-section-compare-frame:focus-within{outline:2px solid var(--rt-red);outline-offset:3px}
+.rt-page .rt-section-compare-bottom{display:flex;justify-content:space-between;gap:20px 35px;align-items:flex-start;margin-top:13px}
+.rt-page .rt-section-compare-caption{display:flex;gap:15px;max-width:650px;font:12px/1.55 Arial,sans-serif;color:var(--rt-muted)}
+.rt-page .rt-section-compare-caption strong{display:block;color:var(--rt-ink);font-size:13px;font-weight:400;margin-bottom:4px}
+.rt-page .rt-section-compare-actions{display:flex;gap:15px;flex-wrap:wrap;justify-content:flex-end}
+.rt-page .rt-section-compare-actions button{padding:2px 0 5px;border:0;border-bottom:1px solid var(--rt-rule);color:var(--rt-ink);background:transparent;font:12px/1.5 Arial,sans-serif;cursor:zoom-in}
+.rt-page .rt-section-compare-actions button:hover{border-color:var(--rt-ink)}
+.rt-page .rt-section-compare-actions button:focus-visible{outline:2px solid var(--rt-red);outline-offset:3px}
+.rt-page .rt-assembly-stack{display:grid;gap:clamp(58px,7vw,110px)}
+.rt-page .rt-assembly-pair{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);align-items:start;gap:clamp(30px,5.5vw,95px)}
+.rt-page .rt-assembly-pair+.rt-assembly-pair{padding-top:clamp(28px,4vw,55px);border-top:1px solid var(--rt-rule)}
+.rt-page .rt-assembly-copy{max-width:490px;min-width:0}
+.rt-page .rt-assembly-copy h2{font:400 clamp(31px,3.25vw,49px)/1.18 Arial,sans-serif;letter-spacing:-.045em;margin:0 0 26px;text-wrap:balance}
+.rt-page .rt-assembly-copy h3{font:400 clamp(23px,2.3vw,34px)/1.24 Arial,sans-serif;letter-spacing:-.035em;margin:12px 0 17px}
+.rt-page .rt-assembly-copy p{font:15px/1.78 Georgia,"Times New Roman",serif;color:#50504c;margin:0 0 15px}
+.rt-page .rt-assembly-note{border-top:1px solid var(--rt-rule);padding-top:23px;margin-top:clamp(30px,5vw,78px)}
+.rt-page .rt-assembly-pair>.rt-figure{min-width:0}
+.rt-page .rt-assembly-pair .rt-media-button{background:transparent}
+.rt-page .rt-assembly-pair .rt-media-button img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:700px){
+ .rt-page .rt-context-season-row{grid-template-columns:minmax(0,1fr);gap:24px;margin-top:39px}
+ .rt-page .rt-context-season-notes{padding-top:6px}
+ .rt-page .rt-context-season-notes h3{font-size:31px}
+ .rt-page .rt-section-compare-labels{font-size:10px}
+ .rt-page .rt-section-compare-labels small{font-size:10px}
+ .rt-page .rt-section-compare-handle{width:33px;height:33px;font-size:19px}
+ .rt-page .rt-section-compare-bottom{flex-direction:column}
+ .rt-page .rt-section-compare-actions{justify-content:flex-start}
+ .rt-page .rt-assembly-stack{gap:47px}
+ .rt-page .rt-assembly-pair{grid-template-columns:minmax(0,1fr);gap:20px}
+ .rt-page .rt-assembly-pair+.rt-assembly-pair{padding-top:30px}
+ .rt-page .rt-assembly-note{margin-top:33px}
+}
+
 </style>
 <link rel="stylesheet" href="project-system.css?v=20261009-v1">
 <link rel="stylesheet" href="project-unified.css?v=20261009-editorial-v1"></head>
@@ -234,12 +290,25 @@
 <nav class="rt-onpage" aria-label="Sections of this project"><span class="rt-nav-label">Explore the project</span><a href="#context">01 Context</a><a href="#strategy">02 Strategy</a><a href="#seasons">03 Two Seasons</a><a href="#water">04 Water Systems</a><a href="#assembly">05 Assembly</a></nav>
 <section class="rt-section" id="context" aria-labelledby="context-title">
  <div class="rt-chapter-head"><span class="rt-kicker">01 / Urban context</span><h2 id="context-title">A river within a sinking metropolis.</h2><p>The Ciliwung passes through densely inhabited communities where flooding, changes to drainage and exposure of existing settlements intersect. The design reads the river edge and elevated railway as shared infrastructure rather than leftover space.</p></div>
+
  <div class="rt-context-grid">
-  <div class="rt-context-visuals">
-   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Jakarta / river and urban exposure" aria-label="Enlarge: Jakarta / river and urban exposure"><img src="assets/rising/rising-context-map.webp" width="939" height="1161" loading="lazy"  decoding="async" alt="Composite city-scale map of Jakarta marking the Ciliwung River, Kampung Melayu, population density and risk-related annotations"></button><figcaption><span class="rt-fig-number">02</span><span class="rt-caption-text"><strong>Jakarta / river and urban exposure</strong>Territorial study situating Kampung Melayu along the Ciliwung in relation to settlement density, flood exposure, canals and the city's wider environmental pressures.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-   <div class="rt-context-seasonal"><div class="rt-inline-heading"><span class="rt-small-heading">Seasonal context</span><span>From macro analysis to everyday responses</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="A seasonal pattern of adaptation" aria-label="Enlarge: A seasonal pattern of adaptation"><img src="assets/rising/rising-response-chart.webp" width="935" height="775" loading="lazy"  decoding="async" alt="Diagram showing seasonal shifts in rainfall and flood response, with silhouettes indicating daily life across changing water levels"></button><figcaption><span class="rt-fig-number">03</span><span class="rt-caption-text"><strong>A seasonal pattern of adaptation</strong>A conceptual diagram of how everyday activities and community responses shift between wet and dry seasons; indicated flood heights are not verified site forecasts.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
-  </div>
+  <div class="rt-context-visuals"><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Jakarta / river and urban exposure" aria-label="Enlarge: Jakarta / river and urban exposure"><img src="assets/rising/rising-context-map.webp" width="939" height="1161" loading="lazy"  decoding="async" alt="Composite city-scale map of Jakarta marking the Ciliwung River, Kampung Melayu, population density and risk-related annotations"></button><figcaption><span class="rt-fig-number">02</span><span class="rt-caption-text"><strong>Jakarta / river and urban exposure</strong>Territorial study situating Kampung Melayu along the Ciliwung in relation to settlement density, flood exposure, canals and the city's wider environmental pressures.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
   <div class="rt-context-notes"><div><span class="rt-small-heading">The condition</span><h3>Flooding changes more than the waterline.</h3><p>When water occupies the ground, access to neighbours, services and shared places can become as important as the condition of individual buildings. Any spatial response needs to address these connections, not just lift structures above a presumed level.</p><p>Metropolitan subsidence and coastal processes are part of Jakarta's wider water story, but the riverine flood exposure at Kampung Melayu must be distinguished from the city's northern tidal conditions.</p></div></div>
+ </div>
+ <div class="rt-context-season-row">
+  <div class="rt-context-seasonal">
+   <div class="rt-inline-heading"><span class="rt-small-heading">Seasonal context</span><span>From macro analysis to everyday responses</span></div>
+   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="A seasonal pattern of adaptation" aria-label="Enlarge: A seasonal pattern of adaptation"><img src="assets/rising/rising-response-chart.webp" width="935" height="775" loading="lazy"  decoding="async" alt="Diagram showing seasonal shifts in rainfall and flood response, with silhouettes indicating daily life across changing water levels"></button><figcaption><span class="rt-fig-number">03</span><span class="rt-caption-text"><strong>A seasonal pattern of adaptation</strong>A conceptual diagram of how everyday activities and community responses shift between wet and dry seasons; indicated flood heights are not verified site forecasts.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  </div>
+  <div class="rt-context-season-notes">
+   <span class="rt-small-heading">Everyday adaptation</span>
+   <h3>Two seasons, two ways of living with water.</h3>
+   <p class="rt-context-season-intro">The rhythm of the river shapes when the ground can be occupied, how neighbours move, and where collective life takes place.</p>
+   <div class="rt-season-text-blocks">
+    <article><span class="rt-small-heading">01 / Musim Kemarau</span><h4>Dry Season</h4><p>When the water recedes, streets and river edges become everyday public spaces for gathering, trade and movement. Access to shared services and the river landscape remains essential.</p></article>
+    <article><span class="rt-small-heading">02 / Musim Hujan</span><h4>Wet Season</h4><p>As water rises, activities and routes shift to higher ground. Continued access, places of refuge and connections between neighbours become more important as low-lying areas flood.</p></article>
+   </div>
+  </div>
  </div>
 </section>
 <section class="rt-section" id="strategy" aria-labelledby="strategy-title">
@@ -267,10 +336,19 @@
   <div class="rt-comparison-tile"><div class="rt-season-head"><span class="rt-small-heading">01 / Musim Kemarau</span><h3>Dry Season</h3><p>Daily use / public ground</p></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="An everyday elevated street" aria-label="Enlarge: An everyday elevated street"><img src="assets/rising/rising-dry-civic.webp" width="1264" height="770" loading="lazy"  decoding="async" alt="Architectural rendering of children and residents using the timber boardwalk and shared rooms during the dry season"></button><figcaption><span class="rt-fig-number">07</span><span class="rt-caption-text"><strong>An everyday elevated street</strong>Shared decks connect neighbourhood life, workshops and circulation.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><p class="rt-comparison-narrative">The raised neighbourhood street connects workshops, markets, shared rooms and the accessible river landscape.</p></div>
   <div class="rt-comparison-tile"><div class="rt-season-head"><span class="rt-small-heading">02 / Musim Hujan</span><h3>Flood Season</h3><p>High water / access and refuge</p></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="A network that changes with the flood" aria-label="Enlarge: A network that changes with the flood"><img src="assets/rising/rising-flood-refuge.webp" width="1264" height="770" loading="lazy"  decoding="async" alt="Rendering of flooded courtyards, boats and people occupying elevated timber walkways beneath the railway viaduct"></button><figcaption><span class="rt-fig-number">08</span><span class="rt-caption-text"><strong>A network that changes with the flood</strong>Elevated routes, temporary refuge and boat access support adaptation.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><p class="rt-comparison-narrative">The same network may provide boat landings, higher-level movement and temporary refuge. Emergency operation still requires testing.</p></div>
  </div>
- <div class="rt-sectional-comparison">
-  <div class="rt-compare-head"><h3>Continuous sections</h3><p>Full-width drawings make the long sections easier to read. Open either image to inspect the complete detail.</p></div>
-  <div class="rt-section-strip"><div class="rt-section-strip-label"><span>01 / DRY SEASON</span><span>Everyday civic ground</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Dry season / continuous civic section" aria-label="Enlarge: Dry season / continuous civic section"><img src="assets/rising/rising-dry-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long architectural section showing active communal uses and raised circulation in dry conditions"></button><figcaption><span class="rt-fig-number">09</span><span class="rt-caption-text"><strong>Dry / continuous civic section</strong>Markets, dwellings and shared rooms connect through an accessible public ground.</span><span class="rt-fig-action" aria-hidden="true">View full section ↗</span></figcaption></figure></div>
-  <div class="rt-section-strip"><div class="rt-section-strip-label"><span>02 / FLOOD SEASON</span><span>Elevated access and refuge</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Flood season / continuous refuge section" aria-label="Enlarge: Flood season / continuous refuge section"><img src="assets/rising/rising-flood-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long black-and-white section of community spaces and elevated dwellings during inundation"></button><figcaption><span class="rt-fig-number">10</span><span class="rt-caption-text"><strong>Flood / continuous refuge section</strong>The same structure supports higher-level access as the ground floods.</span><span class="rt-fig-action" aria-hidden="true">View full section ↗</span></figcaption></figure></div>
+ <div class="rt-sectional-comparison" aria-label="Compare dry and wet season architectural sections">
+  <div class="rt-compare-head"><h3>Continuous sections</h3><p>Drag the central handle left or right to reveal how the same architecture responds to dry and flood seasons. Both complete sections are available to enlarge.</p></div>
+  <div class="rt-section-compare-labels"><span>01 / DRY SEASON <small>Everyday civic ground</small></span><span>02 / WET SEASON <small>Elevated access and refuge</small></span></div>
+  <div class="rt-section-compare-frame" style="--rt-reveal:50%">
+   <img src="assets/rising/rising-dry-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long architectural section showing active communal uses and raised circulation in dry conditions">
+   <div class="rt-section-compare-wet"><img src="assets/rising/rising-flood-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long black-and-white section of community spaces and elevated dwellings during inundation"></div>
+   <div class="rt-section-compare-divider" aria-hidden="true"><span class="rt-section-compare-handle">↔</span></div>
+   <input class="rt-section-compare-range" type="range" min="0" max="100" step="1" value="50" aria-label="Compare the dry season on the left and the wet season on the right" aria-valuetext="50% dry season and 50% wet season">
+  </div>
+  <div class="rt-section-compare-bottom">
+   <div class="rt-section-compare-caption"><span class="rt-fig-number">09–10</span><div><strong>One continuous section / changing water levels</strong><p>The dry-season civic ground transitions into a network of elevated access and temporary refuge during inundation.</p></div></div>
+   <div class="rt-section-compare-actions"><button type="button" class="rt-zoom" data-image="assets/rising/rising-dry-section.webp" data-title="Dry season / continuous civic section" data-alt="Full long section illustrating everyday civic activities in the dry season">View dry section ↗</button><button type="button" class="rt-zoom" data-image="assets/rising/rising-flood-section.webp" data-title="Flood season / continuous refuge section" data-alt="Full long section illustrating elevated access and refuge during the flood season">View wet section ↗</button></div>
+  </div>
  </div>
 </section>
 <section class="rt-section" id="water" aria-labelledby="water-title">
@@ -287,11 +365,26 @@
   <article><h3>Overflow</h3><p>Sections anticipate seasonal change without assuming that planted treatment areas can safely receive every flood flow.</p></article>
  </div>
 </section>
-<section class="rt-section" id="assembly" aria-labelledby="assembly-title">
- <div class="rt-chapter-head"><span class="rt-kicker">05 / Modular construction</span><h2 id="assembly-title">A system assembled together.</h2><p>The architecture is studied as a set of replaceable elements, rather than one fixed object. A legible frame, lightweight enclosure and independent environmental systems support a possible process of prefabrication, local adaptation and phased assembly.</p></div>
- <div class="rt-assembly-grid">
-  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Prefabricated, community-assembled dwelling" aria-label="Enlarge: Prefabricated, community-assembled dwelling"><img src="assets/rising/rising-assembly-exploded.webp" width="878" height="1165" loading="lazy"  decoding="async" alt="Exploded axonometric of a modular dwelling showing foundations, roof, walls, beams, photovoltaic panels and water infrastructure"></button><figcaption><span class="rt-fig-number">13</span><span class="rt-caption-text"><strong>Prefabricated, community-assembled dwelling</strong>The exploded study separates foundations, frame, enclosure, ventilation and water components so their connections can be discussed and adapted.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
-  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Six stages of collaborative assembly" aria-label="Enlarge: Six stages of collaborative assembly"><img src="assets/rising/rising-assembly-process.webp" width="1005" height="1165" loading="lazy"  decoding="async" alt="Six architectural storyboard drawings of module delivery, community design participation, foundations, structural framing and equipment installation"></button><figcaption><span class="rt-fig-number">14</span><span class="rt-caption-text"><strong>Six stages of collaborative assembly</strong>Illustrated sequence from prefabricated delivery and community consultation to foundations, structural assembly and environmental systems.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+<section class="rt-section rt-assembly-section" id="assembly" aria-labelledby="assembly-title">
+ <div class="rt-assembly-stack">
+  <div class="rt-assembly-pair">
+   <div class="rt-assembly-copy">
+    <span class="rt-kicker">05 / Modular construction</span>
+    <h2 id="assembly-title">A system assembled together.</h2>
+    <p>The architecture is studied as a set of replaceable elements, rather than one fixed object. A legible frame, lightweight enclosure and independent environmental systems support a possible process of prefabrication, local adaptation and phased assembly.</p>
+    <div class="rt-assembly-note"><span class="rt-small-heading">01 / Kit of parts</span><h3>Designed to be assembled and adapted.</h3><p>An independent structural frame, prefabricated enclosure and separable environmental components make the construction sequence legible. Connections and foundations would require further engineering.</p></div>
+   </div>
+   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Prefabricated, community-assembled dwelling" aria-label="Enlarge: Prefabricated, community-assembled dwelling"><img src="assets/rising/rising-assembly-exploded.webp" width="878" height="1165" loading="lazy"  decoding="async" alt="Exploded axonometric of a modular dwelling showing foundations, roof, walls, beams, photovoltaic panels and water infrastructure"></button><figcaption><span class="rt-fig-number">13</span><span class="rt-caption-text"><strong>Prefabricated, community-assembled dwelling</strong>The exploded study separates foundations, frame, enclosure, ventilation and water components so their connections can be discussed and adapted.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  </div>
+  <div class="rt-assembly-pair">
+   <div class="rt-assembly-copy">
+    <span class="rt-small-heading">02 / Collective construction</span>
+    <h3>Building is a shared process.</h3>
+    <p>The six illustrated stages connect prefabricated delivery with local participation: discussion, groundwork, structural assembly and the installation of building systems.</p>
+    <p>The sequence is a proposal for collaboration, not a verified construction or delivery plan.</p>
+   </div>
+   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Six stages of collaborative assembly" aria-label="Enlarge: Six stages of collaborative assembly"><img src="assets/rising/rising-assembly-process.webp" width="1005" height="1165" loading="lazy"  decoding="async" alt="Six architectural storyboard drawings of module delivery, community design participation, foundations, structural framing and equipment installation"></button><figcaption><span class="rt-fig-number">14</span><span class="rt-caption-text"><strong>Six stages of collaborative assembly</strong>Illustrated sequence from prefabricated delivery and community consultation to foundations, structural assembly and environmental systems.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  </div>
  </div>
 </section>
 <section class="rt-conclusion"><span class="rt-kicker">Scope &amp; development</span><p>Rising Tides, Resilient Lives is an unbuilt architectural and civic-infrastructure proposal. The seasonal sections, water systems and modular construction are spatial studies, not verified engineering or emergency management plans. Flood elevations, foundations, structural interfaces with the railway, water-treatment performance, site governance, and community-led delivery would require further development. Its companion research addresses documented experiences of flooding, displacement, adaptation and recovery independently of this design.</p></section>
@@ -311,14 +404,28 @@
  document.querySelectorAll('.rt-zoom').forEach(button=>button.addEventListener('click',()=>{
   trigger=button;
   const image=button.querySelector('img');
-  enlarged.src=image.currentSrc||image.src;
-  enlarged.alt=image.alt;
-  label.textContent=button.dataset.title||image.alt;
+  enlarged.src=image?(image.currentSrc||image.src):button.dataset.image;
+  enlarged.alt=image?image.alt:(button.dataset.alt||'');
+  label.textContent=button.dataset.title||enlarged.alt;
   dialog.showModal();
  }));
  dialog.querySelector('.rt-close').addEventListener('click',()=>dialog.close());
  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
  dialog.addEventListener('close',()=>{enlarged.removeAttribute('src');trigger?.focus()});
+})();
+
+(() => {
+ document.querySelectorAll('.rt-section-compare-frame').forEach(frame=>{
+  const range=frame.querySelector('.rt-section-compare-range');
+  if(!range)return;
+  const update=()=>{
+   const value=Number(range.value);
+   frame.style.setProperty('--rt-reveal',value+'%');
+   range.setAttribute('aria-valuetext',value+'% dry season and '+(100-value)+'% wet season');
+  };
+  range.addEventListener('input',update);
+  update();
+ });
 })();
 </script>
 </body>
