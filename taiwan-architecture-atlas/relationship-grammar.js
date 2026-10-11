@@ -53,11 +53,33 @@
     }
     return "associated";
   }
+  function yearKind(e){
+    const label=e.label||"";
+    if(!Number.isFinite(e.year))return null;
+    if(/建築獎名錄|得獎名錄|得獎作品|獲獎/.test(label))return "AWARD YEAR";
+    if(e.semantic==="recognized")return "AWARDED";
+    if(e.semantic==="studied")return /畢業|取得/.test(label)?"GRADUATED":"EDUCATION";
+    if(e.semantic==="taught")return "TEACHING";
+    if(e.semantic==="led")return "LEADERSHIP";
+    if(e.semantic==="founded")return "FOUNDED";
+    if(e.semantic==="worked")return "EMPLOYMENT";
+    if(e.semantic==="designed"){
+      if(/試營運/.test(label))return "TRIAL OPENING";
+      if(/開幕|啟用|落成|完工/.test(label))return "BUILDING EVENT";
+      return "DOCUMENTED";
+    }
+    if(e.semantic==="curated")return "RESEARCH";
+    if(e.semantic==="contextual")return "SITE RECORD";
+    if(e.semantic==="belonged")return "FACILITY";
+    return "RECORD";
+  }
+
   // Keep actor/target orientation as sidecar metadata for the relation panel.
   // Its canonical edge endpoints and original source text remain unchanged.
   D.edges.forEach(e=>{
     e.semantic=classify(e);
     e.visual=rules[e.semantic];
+    e.yearKind=yearKind(e);
   });
   D.relationshipGrammar=rules;
   D.relationLegend=["studied","taught","led","founded","worked","associated","collaborated","designed","consulted","authored","recognized","curated","belonged","contextual"];
