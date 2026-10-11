@@ -250,8 +250,8 @@ function draw(){
    ctx.fillStyle=state.dark?"#8a928c":"#a0a6a0";
    ctx.fillText(String(yr),x,54);
  }
- const undatedX=3590*camera.scale+camera.x;
- if(undatedX>20&&undatedX<W-10){ctx.fillStyle=state.dark?"#87948a":"#9ba19a";ctx.fillText("UNDATED",undatedX,54);}
+ const undatedX=72*camera.scale+camera.x;
+ if(undatedX>20&&undatedX<W-10){ctx.fillStyle=state.dark?"#87948a":"#9ba19a";ctx.fillText("DATE UNKNOWN",undatedX,54);}
  ctx.restore();
  // Dim default network edges and highlight the selected constellation.
  const visibleEdges=currentEdges();
@@ -373,6 +373,75 @@ function details(id){
  const cited=[...new Set([...(n?.sources||[]),...connected])].map(i=>sources.get(i)).filter(Boolean);
  return {n,list,cited};
 }
+
+function documentedTimeline(n){
+ if(!n)return[];
+ const story=D.stories?.[n.id];
+ if(story){
+   return story.map((s,i)=>{
+     const other=byId.get(s.node);
+     return other?{id:other.id,year:s.year,display:s.year===null?"BEFORE 1993":String(s.year),name:other.name,kind:s.role,label:s.label,src:[s.src],order:i}:null;
+   }).filter(Boolean);
+ }
+ const events=[];
+ const push=(other,e,kind)=>{
+   if(!other||!e)return;
+   const year=Number.isFinite(e.year)?e.year:factualYear(other);
+   if(!Number.isFinite(year))return; // Unverified events have no dated timeline step.
+   events.push({id:other.id,year,display:String(year),name:other.name,kind,label:e.label||"",src:e.src||[]});
+ };
+ if(n.type==="person"){
+   const careers=(adjacency.get(n.id)||[]).filter(t=>byId.has(t.n));
+   const associatedPractices=careers.filter(t=>byId.get(t.n).type==="practice");
+   for(const t of careers){
+     const other=byId.get(t.n);
+     if(t.e.type==="education"&&other.type==="institution")push(other,t.e,"education");
+     if(t.e.type==="affiliation"&&other.type==="practice")push(other,t.e,"affiliation");
+   }
+   if(Number.isFinite(n.chronology?.year)){
+     events.push({id:n.id,year:n.chronology.year,display:String(n.chronology.year),name:n.name,kind:"career",label:n.chronology.label,src:[n.chronology.source].filter(Boolean)});
+   }
+   for(const t of careers){if(byId.get(t.n).type==="work"&&t.e.type==="design")push(byId.get(t.n),t.e,"completed");}
+   const practiceIds=new Set(associatedPractices.map(t=>t.n));
+   edges.filter(e=>practiceIds.has(e.a)||practiceIds.has(e.b)).forEach(e=>{
+     if(e.type!=="design")return;
+     const w=byId.get(practiceIds.has(e.a)?e.b:e.a);
+     if(w?.type==="work")push(w,e,"completed");
+   });
+ }else if(n.type==="practice"){
+   if(Number.isFinite(n.chronology?.year))events.push({id:n.id,year:n.chronology.year,display:String(n.chronology.year),name:n.name,kind:"foundation",label:n.chronology.label,src:[n.chronology.source].filter(Boolean)});
+   for(const a of adjacency.get(n.id)||[]){
+     const other=byId.get(a.n);
+     if(other?.type==="work"&&a.e.type==="design")push(other,a.e,"completed");
+   }
+ }else if(n.type==="institution"){
+   if(n.chronology?.basis==="founded")events.push({id:n.id,year:n.chronology.year,display:String(n.chronology.year),name:n.name,kind:"foundation",label:n.chronology.label,src:[n.chronology.source].filter(Boolean)});
+   for(const a of adjacency.get(n.id)||[]){
+     const other=byId.get(a.n);
+     if(other?.type==="person"&&a.e.type==="education")push(other,a.e,"education");
+   }
+ }else if(n.type==="work"){
+   if(Number.isFinite(n.chronology?.year))events.push({id:n.id,year:n.chronology.year,display:String(n.chronology.year),name:n.name,kind:n.chronology.basis,label:n.chronology.label,src:[n.chronology.source].filter(Boolean)});
+ }
+ const weight={education:0,affiliation:1,career:2,foundation:3,completed:4};
+ events.sort((a,b)=>a.year-b.year+(weight[a.kind]||0)*.00001-(weight[b.kind]||0)*.00001);
+ const unique=new Set();
+ return events.filter(v=>{const key=v.id+"|"+v.year+"|"+v.kind;if(unique.has(key))return false;unique.add(key);return true;}).slice(0,20);
+}
+function timelineHTML(n){
+ const milestones=documentedTimeline(n);
+ if(milestones.length<2)return"";
+ const items=milestones.map((e,i)=>
+   '<button type="button" class="timeline-step" data-node="'+escape(e.id)+'">'+
+   '<span class="timeline-time">'+escape(e.display)+'</span>'+
+   '<span class="timeline-detail"><b>'+escape(e.name)+'</b><small>'+escape(e.label)+' · '+escape(e.src.join(" / "))+'</small></span>'+
+   '<span class="timeline-arrow">↗</span></button>'
+ ).join("");
+ return '<div class="selection-subhead">CHRONOLOGICAL RELATIONSHIPS <span>'+milestones.length+'</span></div>'+
+   '<div class="timeline-intro">依教育、任職、成立及作品事件排序。相鄰節點不代表彼此直接有關係；請以各條關係來源為準。</div>'+
+   '<div class="timeline-steps">'+items+'</div>';
+}
+
 function renderSelection(){
  const panel=$("#selection-panel"),inner=$("#selection-inner");
  const {n,list,cited}=details(state.selected);
@@ -393,7 +462,8 @@ function renderSelection(){
  inner.innerHTML='<div class="selection-content"><span class="selection-label">'+escape(tag.toUpperCase())+' / ENTITY '+String(nodes.indexOf(n)+1).padStart(3,"0")+'</span>'+
   '<h2>'+escape(n.name)+'</h2><div class="selection-en">'+escape(n.en)+'</div>'+
   '<div class="selection-meta"><span>REFERENCE YEAR <b>'+(Number.isFinite(n.year)?n.year:'UNDATED')+'</b></span><span>LINKS <b>'+list.length+'</b></span></div>'+
-  '<p class="selection-desc">'+escape(n.desc)+'</p>'+compareText+cmp+
+  '<p class="selection-desc">'+escape(n.desc)+'</p>'+
+  '<p class="chronology-meta">'+escape(n.chronology?.label|| (n._placementBasis==='relationship-context'?'DIAGRAM ORDER ONLY / Not a verified founding, graduation or completion date.':'Chronology referenced to linked evidence.'))+'</p>'+compareText+cmp+timelineHTML(n)+
   '<div class="selection-subhead">DOCUMENTED CONNECTIONS <span>'+row.length+'</span></div>'+
   row.map(x=>'<button type="button" class="rel-node" data-node="'+escape(x.n)+'"><span><b>'+escape(byId.get(x.n).name)+'</b><small>'+escape(x.e.label)+(x.e.year?' / '+x.e.year:'')+' · '+escape((x.e.src||[]).join(", "))+'</small></span><span class="rel-arrow">↗</span></button>').join("")+
   '<div class="selection-subhead">SOURCES & REFERENCES <span>'+cited.length+'</span></div>'+
