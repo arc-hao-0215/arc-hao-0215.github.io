@@ -19,13 +19,17 @@ const regions=[
  {name:"Europe",label:"EUROPE",cy:185},
  {name:"United States / Global",label:"UNITED STATES / GLOBAL",cy:390},
  {name:"Japan / East Asia",label:"JAPAN / EAST ASIA",cy:585},
- {name:"Taiwan — North",label:"TAIWAN / NORTH",cy:795},
- {name:"Taiwan — North & Yilan",label:"TAIWAN / YILAN",cy:980},
- {name:"Taiwan — Central",label:"TAIWAN / CENTRAL",cy:1185},
- {name:"Taiwan — Across Regions",label:"TAIWAN / CROSS-REGIONAL",cy:1375},
- {name:"Region to verify",label:"REGION TO VERIFY",cy:1615}
+ {name:"Hong Kong / East Asia",label:"HONG KONG / EAST ASIA",cy:745},
+ {name:"Taiwan — North",label:"TAIWAN / NORTH",cy:905},
+ {name:"Taiwan — North & Yilan",label:"TAIWAN / YILAN",cy:1080},
+ {name:"Taiwan — Central",label:"TAIWAN / CENTRAL",cy:1250},
+ {name:"Taiwan — South",label:"TAIWAN / SOUTH",cy:1430},
+ {name:"Taiwan — East",label:"TAIWAN / EAST",cy:1605},
+ {name:"Taiwan — Offshore Islands",label:"TAIWAN / OFFSHORE ISLANDS",cy:1775},
+ {name:"Taiwan — Across Regions",label:"TAIWAN / CROSS-REGIONAL",cy:1950},
+ {name:"Region to verify",label:"REGION TO VERIFY",cy:2130}
 ];
-const WORLD={width:4300,height:2110,yearStart:1880,yearEnd:1995};
+const WORLD={width:4300,height:2510,yearStart:1880,yearEnd:1995};
 const coordinate=yr=>155+(yr-WORLD.yearStart)*22.1;
 const hash=s=>{let h=2166136261>>>0;for(const c of String(s)){h=Math.imul(h^c.codePointAt(0),16777619)>>>0;}return h;};
 const jitter=(s,salt=0)=>((hash(s+"|"+salt)%10000)/10000)-.5;
@@ -51,7 +55,7 @@ function decorate(){
  // never silently shifted to another year.
  const withinBand=new Map();
  withBirth.sort((a,b)=>a.birthYear-b.birthYear||a.name.localeCompare(b.name,"zh-Hant")).forEach(n=>{
-   const reg=regions.find(r=>r.name===n.workRegion)||regions[7];
+   const reg=regions.find(r=>r.name===n.workRegion)||regions[regions.length-1];
    const key=reg.name+"|"+n.birthYear;
    const tally=withinBand.get(key)||0;withinBand.set(key,tally+1);
    n._x=coordinate(n.birthYear);n._y=reg.cy+jitter(n.id,5)*130+tally*43;
@@ -126,10 +130,10 @@ function getTheme(){return state.dark?{
 }:{bg:"#f5f5f2",ink:"#172123",muted:"#637070",grid:"#cbd1cc",faint:"#ced2cf",dim:"#9fa6a2"};}
 function resetFit(){
  const plotWidth=2900;
- camera.scale=Math.min((W-105)/plotWidth,(H-110)/1720);
+ camera.scale=Math.min((W-105)/plotWidth,(H-110)/2370);
  camera.scale=Math.max(camera.min,camera.scale);
  camera.x=(W-plotWidth*camera.scale)/2-90*camera.scale;
- camera.y=(H-1720*camera.scale)/2+20;
+ camera.y=(H-2370*camera.scale)/2+20;
  schedule();
 }
 function toScreen(n){return{x:n._x*camera.scale+camera.x,y:n._y*camera.scale+camera.y};}
@@ -356,7 +360,7 @@ function sourceAnchors(ids){
 }
 function relationHeading(entity,key){
  const grammar={
-  studied:"STUDIED AT",taught:"TAUGHT AT",led:"LED / HEADED",founded:"FOUNDED",
+  studied:"STUDIED AT",mentored:"STUDIED UNDER",family:"FAMILY / KINSHIP",taught:"TAUGHT AT",led:"LED / HEADED",founded:"FOUNDED",
   worked:"WORKED AT",associated:"PROFESSIONAL ASSOCIATIONS",collaborated:"COLLABORATED WITH",
   designed:entity.type==="work"?"DESIGNED BY":"DESIGNED",consulted:"TECHNICAL CONTRIBUTIONS",
   recognized:"AWARDS & RECOGNITION",curated:"RESEARCH / CURATORIAL WORK",
@@ -396,10 +400,11 @@ function renderDrawer(){
  const birth=verifiedBirth(n)?"BORN "+n.birthYear+(n.deathYear?"—"+n.deathYear:""):n.type==="person"?"BIRTH YEAR NOT VERIFIED":"";
  const sourcesAll=new Set(n.sources||[]);
  for(const e of relatedTo(n.id))for(const s of e.src||[])sourcesAll.add(s);
- const badges=n.type==="person"?"Architectural practitioner / person":n.type==="practice"?"Architectural practice / office":(categories[n.type]||n.type);
+ const badges=n.type==="person"?(n.role||"Architecture-related person"):n.type==="practice"?"Architectural practice / office":(categories[n.type]||n.type);
  let html='<div class="record-type">'+esc(badges.toUpperCase())+'</div>'+
    '<h1 class="record-name">'+esc(n.name)+'</h1><div class="record-en">'+esc(n.en)+'</div>'+
    (birth?'<div class="record-life">'+esc(birth)+'</div>':"")+
+   (n.birthStatus==="wikipedia-reported"?'<div class="record-field">BIRTH YEAR SOURCE <b>WIKIPEDIA / PROVISIONAL</b> · '+sourceAnchors(n.birthSourceIds||[])+'</div>':"")+
    (n.type==="person"?'<div class="record-field">PRIMARY WORK REGION <b>'+esc(n.workRegion||"To verify")+'</b></div>':"")+
    (n.birthStatus==="conflicting-sources"?'<div class="record-dispute">出生年份有相互矛盾的來源：'+esc((n.birthCandidates||[]).join(" / "))+'。在核實前不將人物放到確定出生年的時間軸上。'+sourceAnchors(n.birthSourceIds)+'</div>':"")+
    (n.type==="person"&&n.birthYear===null&&n.birthStatus!=="conflicting-sources"?'<div class="record-dispute">出生年份尚未以足夠可靠的文獻核實。此人物位於獨立待考區，不按職涯事件推算出生年。</div>':"")+
@@ -601,7 +606,7 @@ function connectUI(){
    if(n?.id!==hover?.id){hover=n;schedule();}
    canvas.style.cursor=n?"pointer":"grab";
    const tip=$("#tooltip");
-   if(n){tip.hidden=false;tip.innerHTML='<b>'+esc(n.name)+'</b><small>'+(n.type==="person"?(verifiedBirth(n)?"BORN "+n.birthYear:"BIRTH YEAR UNVERIFIED"):(categories[n.type]||n.type))+'</small>';tip.style.left=Math.min(W-240,e.clientX-rect.left+16)+"px";tip.style.top=Math.max(78,e.clientY-rect.top-45)+"px";}else tip.hidden=true;
+   if(n){tip.hidden=false;tip.innerHTML='<b>'+esc(n.name)+'</b><small>'+(n.type==="person"?(verifiedBirth(n)?"BORN "+n.birthYear+(n.birthStatus==="wikipedia-reported"?" · WIKIPEDIA SOURCE":""):"BIRTH YEAR UNVERIFIED"):(categories[n.type]||n.type))+'</small>';tip.style.left=Math.min(W-240,e.clientX-rect.left+16)+"px";tip.style.top=Math.max(78,e.clientY-rect.top-45)+"px";}else tip.hidden=true;
  });
  canvas.addEventListener("pointerup",e=>{
    const cur=pointers.get(e.pointerId);
