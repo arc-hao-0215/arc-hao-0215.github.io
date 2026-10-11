@@ -13,7 +13,33 @@ const sources=new Map(D.sources.map(s=>[s.id,s]));
 const types=Object.keys(D.categories), edgeTypes=[...new Set(edges.map(e=>e.type))];
 const typeNames={person:"PEOPLE / 人物",practice:"PRACTICES / 事務所",institution:"SCHOOLS & INSTITUTIONS / 學校與機構",work:"BUILDINGS & PROJECTS / 作品",publication:"PUBLICATIONS / 出版",event:"EXHIBITIONS & AWARDS / 展覽與獎項"};
 const colors={person:"#141a17",practice:"#bb5843",institution:"#466778",work:"#989c97",publication:"#789064",event:"#9a7758"};
-const relColors={design:"#a7a9a3",affiliation:"#ae7770",education:"#819695",engineering:"#9b9c94",client:"#a3a7a0"};
+const grammar=D.relationshipGrammar||{};
+const spotColors={person:"#e7ece9",practice:"#f3a38b",institution:"#85b7e3",work:"#a3aaa3",publication:"#a9c6a1",event:"#e0b782"};
+const relColors={design:"#c2a5d4",affiliation:"#b4cda7",education:"#83afd8",engineering:"#ccada9",client:"#a1a9b1"};
+function semantic(e){return grammar[e.semantic]||{en:e.type.toUpperCase(),zh:D.relations[e.type]||e.type,color:relColors[e.type]||"#a6adb0",dash:[],order:100};}
+function lineStyle(e,highlight=false){
+ const meta=semantic(e);
+ ctx.strokeStyle=meta.color;
+ ctx.lineWidth=highlight?2:1;
+ ctx.setLineDash(meta.dash||[]);
+}
+function edgeCaption(e,at){
+ const n=byId.get(e.a===state.selected?e.b:e.a);
+ if(!n)return;
+ const p=screen(n);
+ const meta=semantic(e);
+ const when=Number.isFinite(e.year)?(" · "+e.year):"";
+ const label=meta.zh+when;
+ const tx=p.x+10, ty=p.y+20+at*13;
+ if(tx>W-30||ty<75||ty>H-45||tx<4)return;
+ ctx.save();ctx.globalAlpha=1;ctx.textAlign="left";ctx.textBaseline="middle";
+ ctx.font="9px 'DM Mono','Noto Sans TC',monospace";
+ const width=ctx.measureText(label).width;
+ ctx.fillStyle=backgroundColor();ctx.fillRect(tx-2,ty-6,width+6,13);
+ ctx.fillStyle=meta.color;ctx.fillText(label,tx,ty);
+ ctx.restore();
+}
+
 const themes={
  postwar:{label:"Postwar modernism",subtitle:"東海大學、現代主義、戰後專業化",ids:["pei","chen","zhangzk","feng","wang","tunghai","tunghaiarch","luce","sunhall","han"]},
  yilan:{label:"Sheng-Yuan Huang / Career sequence",subtitle:"東海 → 耶魯 → Moss → 黃聲遠 → 田中央 → 作品",ids:(D.stories?.huang||[]).map(s=>(byId.get(s.node)||nodes.find(n=>n.name===s.node))?.id).filter(Boolean)},
@@ -21,7 +47,7 @@ const themes={
  global:{label:"Taiwan × Global",subtitle:"國際合作與臺灣建築文化",ids:["ito","itoassoc","ntt","oma","tpac","koolhaas","gianotten","mecanoo","weiwuying","houben","pei"]},
  journals:{label:"Architectural discourse",subtitle:"專業刊物與戰後建築史研究",ids:nodes.filter(n=>n.type==="publication").map(n=>n.id)}
 };
-const state={year:2026,types:new Set(types),rels:new Set(edgeTypes),selected:null,hover:null,activeThread:null,compare:false,compared:[],dark:false,moving:false};
+const state={year:2026,types:new Set(types),rels:new Set(edgeTypes),selected:null,hover:null,activeThread:null,compare:false,compared:[],dark:true,moving:false};
 let dpr=1,W=0,H=0,frame=0;
 const scene={w:3700,h:1550};
 const camera={scale:1,x:0,y:0,minimum:.2,maximum:3.5};
@@ -287,13 +313,16 @@ function draw(){
  }
  ctx.lineCap="round";
  normal.forEach(e=>{
-   ctx.beginPath();curve(e);ctx.strokeStyle=state.dark?"rgba(181,192,185,.15)":"rgba(35,39,38,.16)";ctx.lineWidth=.7;
-   ctx.stroke();
+   ctx.beginPath();curve(e);lineStyle(e,false);
+   ctx.globalAlpha=focus?.055:(state.dark?.27:.22);
+   ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
  });
  important.forEach(e=>{
-   ctx.beginPath();curve(e);
+   ctx.beginPath();curve(e);lineStyle(e,true);
    const inPath=pathEdges.has([e.a,e.b].sort().join("|"));
-   ctx.strokeStyle=inPath?"#cf5d47":state.dark?"#e6b29a":"#a54935";ctx.lineWidth=inPath?2.4:1.8;ctx.stroke();
+   if(inPath)ctx.lineWidth=3;
+   ctx.globalAlpha=state.dark?1:.96;
+   ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
  });
  // Node spots followed by labels. Render labels at screen-fixed size for readable dense map.
  const drawn=currentNodes().sort((a,b)=>(degree.get(a.id)||0)-(degree.get(b.id)||0));
@@ -308,7 +337,7 @@ function draw(){
    if(focused){ctx.fillStyle=backgroundColor();ctx.fill();ctx.strokeStyle=state.dark?"#eee":"#111";ctx.lineWidth=1;ctx.stroke();}
    ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);
    ctx.globalAlpha=muted?.10:1;
-   ctx.fillStyle=colors[n.type]||ink;ctx.fill();
+   ctx.fillStyle=state.dark?(spotColors[n.type]||ink):(colors[n.type]||ink);ctx.fill();
    ctx.globalAlpha=1;
    hitPoints.push({n,x:p.x,y:p.y});
  });
@@ -339,9 +368,20 @@ function draw(){
    if(prominent){
      ctx.fillStyle=backgroundColor();ctx.fillRect(box.x,box.y,box.w,box.h);
    }
-   ctx.fillStyle=prominent?(state.dark?"#ffa387":"#9f432e"):ink;
+   ctx.fillStyle=prominent?(state.dark?"#fbf6ee":"#9f432e"):ink;
    ctx.fillText(n.name,tx,ty);
    ctx.globalAlpha=1;
+ }
+ // Link annotation labels echo Kyle's local semantic sublabels: color and
+ // typed, dated relationship — rendered only for the currently focused node.
+ if(state.selected){
+   const local=important.filter(e=>e.a===state.selected||e.b===state.selected).slice(0,22);
+   const stagger=new Map();
+   local.forEach(e=>{
+     const id=e.a===state.selected?e.b:e.a;
+     const level=stagger.get(id)||0;stagger.set(id,level+1);
+     edgeCaption(e,level);
+   });
  }
  ctx.restore();
  $("#visibility-stats").textContent=currentNodes().length+" NODES · "+currentEdges().length+" CONNECTIONS";
