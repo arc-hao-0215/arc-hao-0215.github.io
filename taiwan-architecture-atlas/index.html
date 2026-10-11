@@ -1,92 +1,91 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f4f2ed">
-  <meta name="description" content="Taiwan Architecture Atlas — 以可查證資料探索臺灣建築人物、事務所、學校與作品之間的關係。">
-  <title>Taiwan Architecture Atlas — 臺灣建築知識網絡</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d272a'/%3E%3Ccircle cx='20' cy='25' r='6' fill='%23e89e71'/%3E%3Ccircle cx='46' cy='18' r='5' fill='%23a0a98a'/%3E%3Ccircle cx='43' cy='48' r='8' fill='%238ca9b8'/%3E%3Cpath d='M20 25 46 18 43 48 20 25' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=1">
-  <script src="./data.js?v=1" defer></script>
-  <script src="./app.js?v=1" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f7f4">
+<meta name="description" content="Architecture in Taiwan, All at Once — a living, source-based interactive map of architects, practices, schools, works and discourse.">
+<title>Architecture in Taiwan, All at Once — 臺灣建築關係圖譜</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%23f7f7f4'/%3E%3Ccircle cx='15' cy='20' r='4' fill='%230b0c0c'/%3E%3Ccircle cx='42' cy='15' r='4' fill='%230b0c0c'/%3E%3Ccircle cx='39' cy='46' r='4' fill='%230b0c0c'/%3E%3Cpath d='M15 20 Q22 -1 42 15 M42 15 Q55 29 39 46 M39 46 Q4 51 15 20' fill='none' stroke='%23b75437' stroke-width='1'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="atlas-v2.css?v=20261011-02">
+<script defer src="data.js?v=20261011-02"></script>
+<script defer src="expanded-data.js?v=20261011-02"></script>
+<script defer src="atlas-v2.js?v=20261011-02"></script>
 </head>
 <body>
-  <div class="site-shell">
-    <header class="topbar">
-      <a class="brand" href="./" aria-label="Taiwan Architecture Atlas 首頁"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>TAIWAN<br>ARCHITECTURE <em>ATLAS</em></span></a>
-      <nav class="topnav" aria-label="主要導覽">
-        <button class="topnav-link active" data-view="network">NETWORK <span>網絡</span></button>
-        <button class="topnav-link" data-view="index">INDEX <span>索引</span></button>
-        <button class="topnav-link" data-view="about">ABOUT <span>關於</span></button>
-      </nav>
-      <div class="top-right"><span class="edition">RESEARCH PREVIEW <span class="edition-dot"></span> 2026.10</span><button id="mobile-toggle" class="mobile-menu" aria-label="切換側欄" aria-expanded="false">☰</button></div>
-    </header>
-    <div class="workspace">
-      <aside class="sidebar" id="sidebar">
-        <div class="sidebar-intro">
-          <div class="eyebrow">AN OPEN ARCHITECTURAL INDEX <span>001</span></div>
-          <h1>臺灣建築<br><i>知識網絡</i></h1>
-          <p>追索人物、事務所、教育與建築作品之間，<strong>有來源可驗證</strong>的連結。</p>
-          <span class="subhead">AN ATLAS OF PEOPLE, PRACTICES &amp; PLACES</span>
-        </div>
-        <div class="section-block">
-          <label class="field-title" for="search">SEARCH THE ATLAS <span>搜尋</span></label>
-          <div class="search-field"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" autocomplete="off" placeholder="人物、事務所、作品… /" aria-label="搜尋圖譜節點"><kbd>/</kbd></div>
-          <div id="search-results" class="search-results" role="listbox" hidden></div>
-        </div>
-        <div class="section-block filter-section">
-          <div class="field-title">FILTER BY TYPE <span>類別</span></div>
-          <div class="filters" id="filters">
-            <label class="filter"><input type="checkbox" value="person" checked><span class="swatch person"></span><span>人物</span><small>PEOPLE</small><b id="count-person">0</b></label>
-            <label class="filter"><input type="checkbox" value="practice" checked><span class="swatch practice"></span><span>事務所</span><small>PRACTICES</small><b id="count-practice">0</b></label>
-            <label class="filter"><input type="checkbox" value="institution" checked><span class="swatch institution"></span><span>機構與學校</span><small>INSTITUTIONS</small><b id="count-institution">0</b></label>
-            <label class="filter"><input type="checkbox" value="work" checked><span class="swatch work"></span><span>建築作品</span><small>WORKS</small><b id="count-work">0</b></label>
-          </div>
-        </div>
-        <div class="section-block period-section">
-          <div class="field-title">TEMPORAL LENS <span>時間</span></div>
-          <div class="time-header"><span>THROUGH <b id="year-label">2026</b></span><button class="small-link" id="year-all">RESET ↗</button></div>
-          <input type="range" id="year" min="1950" max="2026" step="1" value="2026" aria-label="顯示此年份以前的資料">
-          <div class="range-markers"><span>1950</span><span>1980</span><span>2000</span><span>2026</span></div>
-          <p class="note">年份為圖譜事件的參考錨點，<strong>不是人物出生年份</strong>。現階段不代表完整史料覆蓋。</p>
-        </div>
-        <div class="section-block relation-section">
-          <div class="field-title">FOLLOW A RELATION <span>關係</span></div>
-          <div class="relation-legend"><span><i class="relation-dot design"></i>建築設計 / 委託</span><span><i class="relation-dot affiliation"></i>任職 / 創立</span><span><i class="relation-dot education"></i>教育 / 校園</span><span><i class="relation-dot engineering"></i>工程 / 合作</span></div>
-        </div>
-        <div class="sidebar-footer"><div class="sidebar-tally"><div><strong id="node-stat">0</strong><span>ENTITIES</span></div><div><strong id="edge-stat">0</strong><span>VERIFIED LINKS</span></div></div><button id="random-node" class="explore-btn">EXPLORE A CONNECTION <span>↗</span></button><p>Prototype dataset · selective, not exhaustive<br>所有關係皆應可回溯至公開來源。</p></div>
-      </aside>
-      <main class="main-stage" id="main">
-        <section id="network-view" class="view active" aria-label="建築關係網絡">
-          <div class="stage-head"><div><span class="eyebrow">FIG. 01 / INTERACTIVE NETWORK</span><h2>Connections across time.</h2><p>選取一個節點以追蹤其關聯。滾輪縮放，拖曳移動，雙擊空白處還原。</p></div><div class="stage-head-action"><button class="outline-btn" id="reset-view">RESET VIEW ↺</button></div></div>
-          <div class="graph-frame" id="graph-frame" tabindex="0" aria-label="可縮放的建築網絡圖，使用方向鍵移動，按加減號縮放">
-            <svg id="graph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 850" role="img" aria-label="臺灣建築人物與作品關係圖">
-              <defs><pattern id="grid-dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".9" fill="#8c9792" opacity=".20"/></pattern></defs>
-              <rect x="0" y="0" width="1500" height="850" fill="url(#grid-dots)"/>
-              <g id="axis-layer"></g><g id="links-layer"></g><g id="nodes-layer"></g>
-            </svg>
-            <div class="canvas-kicker">TAIWAN ARCHITECTURE ATLAS <span>↗</span> 1945—PRESENT</div>
-            <div class="canvas-tools"><button id="zoom-in" aria-label="放大圖表">+</button><button id="zoom-out" aria-label="縮小圖表">−</button><button id="zoom-home" aria-label="重置圖表">⌖</button></div>
-            <div class="canvas-hint">SCROLL TO ZOOM <span>·</span> DRAG TO PAN <span>·</span> SELECT TO TRACE</div>
-            <div id="graph-tooltip" class="graph-tooltip" hidden></div>
-          </div>
-          <div class="graph-under"><span><span class="pulsedot"></span> DOCUMENTED CONNECTIONS ONLY</span><span>Research atlas, not a complete genealogy</span><button id="export-csv">DOWNLOAD DATA ↗</button></div>
-        </section>
-        <section id="index-view" class="view" aria-label="建築節點索引">
-          <div class="page-head"><span class="eyebrow">INDEX / 002</span><h2>People, practices<br>&amp; places.</h2><p>按名稱尋找節點，進入關係圖查看來源。</p></div>
-          <div class="index-toolbar"><label for="index-search">FILTER INDEX / 搜尋索引</label><input id="index-search" type="search" placeholder="輸入中文或英文名稱…"></div>
-          <div id="index-list" class="index-list"></div>
-        </section>
-        <section id="about-view" class="view" aria-label="關於本計畫">
-          <div class="page-head"><span class="eyebrow">ABOUT / 003</span><h2>Making architectural<br><i>relationships legible.</i></h2><p>臺灣建築知識網絡是可持續增補的研究型數位索引。</p></div>
-          <div class="about-grid"><div><span class="eyebrow">01 / THE IDEA</span><h3>不是排行榜，而是關係網。</h3><p>本計畫收錄與臺灣建築文化相關的人物、事務所、教育機構及作品，記錄彼此之間可查證的專業關係。收錄與否並不等於重要性的評比；尚未連線也不等於不存在關係。</p></div><div><span class="eyebrow">02 / EVIDENCE</span><h3>每一條線，都需要證據。</h3><p>資料應由官方機構、校史、事務所、建築專業媒體或學術研究支持。建築設計、任職、創辦、共同合作與教育關係分開記錄，不以風格相似推定師承或思想影響。</p></div><div><span class="eyebrow">03 / SCOPE</span><h3>一個刻意有限的起點。</h3><p>目前的選例重點為戰後至當代的幾組著名建築事件，包含東海大學現代主義建築、公共文化設施、地方實踐及國際合作。這不是臺灣建築史的完整名錄。</p></div><div><span class="eyebrow">04 / CONTRIBUTE</span><h3>開放校訂與擴充。</h3><p>歡迎提供可查證的補充、誤植或作品歸屬更正。請在 GitHub 提交 Issue，附上人物／機構名稱、關係類型、具體年月及一手來源。</p><a href="https://github.com/arc-hao-0215/arc-hao-0215.github.io/issues/new" target="_blank" rel="noopener noreferrer" class="inline-link">SUGGEST A CORRECTION ↗</a></div></div>
-          <div class="about-source"><span class="eyebrow">RESEARCH &amp; SOURCES</span><h3>Built on attributable records.</h3><p>本網站保留來源連結，並以資料檔案儲存每個節點與關係的出處。所連結的外部資料與圖片版權仍歸原權利人所有，網站不重製未授權的照片或圖說。</p><div id="sources-list"></div></div>
-        </section>
-      </main>
-      <aside class="detail-panel" id="detail-panel" aria-label="節點資訊"><button class="detail-close" id="detail-close" aria-label="關閉資訊欄">×</button><div id="detail-body" class="detail-body"><div class="empty-detail"><span class="crosshair">＋</span><span class="eyebrow">SELECT AN ENTITY</span><h2>Every connection<br>has a story.</h2><p>從網絡圖或索引選取節點，查看關聯、年份與原始資料。</p><div class="empty-line"></div><small>ATTRIBUTION BEFORE INTERPRETATION</small></div></div></aside>
-    </div>
-    <footer class="footer"><span>© 2026 TAIWAN ARCHITECTURE ATLAS <span class="footer-divide">/</span> INDEPENDENT RESEARCH PROTOTYPE</span><span>BUILT WITH SOURCES, NOT ASSUMPTIONS. <span class="footer-divide">↗</span></span></footer>
+<div class="app">
+<header class="site-head">
+  <a class="logotype" href="./" aria-label="Architecture in Taiwan, All at Once homepage">
+    <span class="logo-title">ARCHITECTURE<br>IN TAIWAN</span>
+    <span class="logo-slash">/</span>
+    <span class="logo-tag">ALL AT ONCE,<br>RIGHT NOW.</span>
+  </a>
+  <div class="head-caption"><b>臺灣建築關係圖譜</b><span>A LIVING NETWORK OF ARCHITECTURAL CULTURE<br>1945—PRESENT / WORK IN PROGRESS</span></div>
+  <a class="head-issue" href="https://github.com/arc-hao-0215/arc-hao-0215.github.io/issues/new" target="_blank" rel="noopener noreferrer">SUBMIT A SOURCE <span>↗</span></a>
+</header>
+<div class="command-bar">
+  <div class="search-shell">
+    <label for="search" class="sr-only">Search all nodes</label>
+    <span class="search-symbol" aria-hidden="true">⌕</span>
+    <input id="search" type="search" autocomplete="off" placeholder="SEARCH PEOPLE, PRACTICES, SCHOOLS, WORKS…／搜尋人物、學校、作品">
+    <span class="search-key">/</span>
+    <div class="search-matches" id="search-matches" role="listbox" hidden></div>
   </div>
+  <nav class="commands" aria-label="Graph controls">
+    <button type="button" class="command" id="filter-btn" aria-expanded="false" aria-controls="filter-panel">FILTER <span>≡</span></button>
+    <button type="button" class="command" id="highlight-btn" aria-expanded="false" aria-controls="highlight-panel">HIGHLIGHTS <span>⌄</span></button>
+    <button type="button" class="command" id="compare-btn" aria-pressed="false">COMPARE <span>↔</span></button>
+    <button type="button" class="command" id="guide-btn">GUIDE <span>?</span></button>
+    <button type="button" class="command" id="about-btn">ABOUT <span>↗</span></button>
+    <button type="button" class="command night-toggle" id="night-btn" aria-pressed="false">NIGHT <span>◐</span></button>
+  </nav>
+</div>
+<main class="field-wrap" id="field-wrap" aria-label="The architecture relation map">
+ <canvas id="network" aria-label="Interactive network visualization. Use search for keyboard navigation." tabindex="0"></canvas>
+ <div class="field-caption"><span class="field-serial">NETWORK MAP / 001</span><span>ARCHITECTURAL RELATIONSHIPS ARE DOCUMENTED — NOT ASSUMED.</span></div>
+ <div class="graph-top-right"><span id="visibility-stats">LOADING DATA…</span><button type="button" id="fit-btn" aria-label="Reset graph view">FIT VIEW ↗</button></div>
+ <div class="graph-bottom-left"><span class="blink-dot"></span><b id="active-mode">COMPLETE NETWORK</b><span class="minor">DRAG TO PAN &nbsp; / &nbsp; SCROLL TO ZOOM &nbsp; / &nbsp; SELECT TO TRACE</span></div>
+ <div class="graph-bottom-right">
+   <button type="button" id="zoom-plus" aria-label="Zoom in">+</button><button type="button" id="zoom-minus" aria-label="Zoom out">−</button><button type="button" id="zoom-reset" aria-label="Reset view">⌖</button>
+ </div>
+ <div class="hover-label" id="hover-label" hidden></div>
+ <div class="selection-panel" id="selection-panel" hidden aria-live="polite">
+    <div class="selection-header"><span id="selection-kicker">SELECTED RECORD</span><button id="close-selection" aria-label="Close selection">×</button></div>
+    <div id="selection-inner"></div>
+ </div>
+ <div class="filter-panel floating-panel" id="filter-panel" hidden>
+   <div class="panel-top"><b>FILTER THE NETWORK</b><button type="button" class="panel-close" data-close="filter-panel">×</button></div>
+   <div class="panel-eyebrow">ENTITY CATEGORIES / 類別</div>
+   <div class="filter-items" id="filter-items"></div>
+   <div class="panel-rule"></div>
+   <div class="panel-eyebrow">THROUGH YEAR / 文獻年代</div>
+   <div class="year-row"><b id="year-label">2026</b><button type="button" id="year-reset">ALL ↗</button></div>
+   <input type="range" id="year" min="1945" max="2026" value="2026" aria-label="Show records through year">
+   <div class="year-ends"><span>1945</span><span>2026</span></div>
+   <div class="panel-rule"></div>
+   <div class="panel-eyebrow">CONNECTION TYPES / 關係類型</div>
+   <div id="relation-items"></div>
+   <p class="filter-note">時間座標採研究紀錄與獎項年份，不代表出生或完工年份。所有研究仍在增補與查核。</p>
+   <div class="panel-bottom"><button type="button" id="all-filter-reset">RESET FILTERS</button><button type="button" data-close="filter-panel">APPLY ↗</button></div>
+ </div>
+ <div class="highlight-panel floating-panel" id="highlight-panel" hidden>
+   <div class="panel-top"><b>RESEARCH HIGHLIGHTS</b><button type="button" class="panel-close" data-close="highlight-panel">×</button></div>
+   <p>SELECT A RESEARCH THREAD TO TRACE ITS LOCAL NETWORK.</p>
+   <div id="highlight-items"></div>
+ </div>
+ <div class="modal-backdrop" id="modal-backdrop" hidden></div>
+ <section class="modal" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+   <button type="button" class="modal-close" id="modal-close" aria-label="Close">×</button>
+   <span class="eyebrow" id="modal-eyebrow">A RESEARCH MAP / NOT A RANKING</span>
+   <h1 id="modal-title">Architecture in Taiwan,<br><em>all at once.</em></h1>
+   <div id="modal-body"></div>
+ </section>
+</main>
+<footer class="info-footer">
+ <div class="footer-left">ARCHITECTURE IN TAIWAN <span class="footer-red">↗</span> AN INDEPENDENT RESEARCH PROTOTYPE</div>
+ <div class="footer-center"><span id="count-entities">—</span> ENTITIES &nbsp; · &nbsp; <span id="count-links">—</span> DOCUMENTED RELATIONS &nbsp; · &nbsp; <span id="count-sources">—</span> SOURCES</div>
+ <div class="footer-right"><button type="button" id="export-csv">EXPORT DATA ↓</button><button type="button" id="share-btn">SHARE VIEW ↗</button></div>
+</footer>
+</div>
 </body>
 </html>
