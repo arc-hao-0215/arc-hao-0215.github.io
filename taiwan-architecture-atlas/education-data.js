@@ -56,8 +56,8 @@
  const tongji=node("同濟大學建築與城市規劃學院","institution",null,"包曉雯於2000年獲同濟大學建築學士之機構；校院名稱做機構索引，未核實學院歷史成立日期。","S43","Tongji University Architecture");
  edge(bao.name,tongji.name,"education","同濟大學建築學士（2000）",2000,"S43");
  edge(bao.name,"大元聯合建築師事務所","affiliation","2003年加入上海辦公室，現為協同主持與總經理",2003,"S43");
- const yale=node("耶魯大學建築學院","institution",null,"黃聲遠建築教育相關機構，亞洲大學講座資料記錄其1991年取得耶魯建築碩士。","S46","Yale School of Architecture");
- edge("黃聲遠",yale.name,"education","1991年取得耶魯建築碩士",1991,"S46");
+ const yale=node("耶魯大學建築學院","institution",null,"黃聲遠建築教育相關機構，亞洲大學講座文字記錄其取得耶魯建築碩士，未載明授予年度。","S46","Yale School of Architecture");
+ edge("黃聲遠",yale.name,"education","取得耶魯大學建築碩士，亞洲大學講座文字未載學位授予年份",undefined,"S46");
  cite("黃聲遠","S46");
  D.researchNotes.schoolConnections="新一輪依事務所、系所官網履歷建立跨代教育和雇用連結；師生、校友、曾任教、曾任職分開在文案中註明，未核實畢業年份保留空白。";
 })();
