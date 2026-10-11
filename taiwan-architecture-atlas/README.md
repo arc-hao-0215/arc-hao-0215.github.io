@@ -1,6 +1,6 @@
 # Architecture in Taiwan, All at Once / 臺灣建築關係圖譜
 
-**Research edition 03 / documented chronology — updated 2026-10-11**
+**Research edition 04 / relation grammar and documented chronology — updated 2026-10-11**
 
 Live GitHub Pages path (subject to Pages publishing): **https://arc-hao-0215.github.io/taiwan-architecture-atlas/**
 
@@ -11,7 +11,7 @@ The previous three-column dashboard has been replaced by a full-window, zoomable
 ## Dataset in this edition
 
 - **364 entities**: 97 people, 89 practices, 18 institutions, 148 buildings/projects, 10 publications, 2 exhibition/award events.
-- **334 typed relationships**. Every relationship records at least one source ID that resolves to a source URL; these are documented links, not stylistic similarity or inferred mentorship.
+- **334 evidence-linked relationships**. Every relationship records at least one source ID that resolves to a source URL; these are documented links, not stylistic similarity or inferred mentorship.
 - **57 linked bibliography/reference records** across government archives, university histories, architectural practices, award registers, journal feature essays and relevant academic research.
 - **34 entities explicitly marked undated** where the research record does not establish an adequate date. The timeline does **not** shove undated institutions to 2020–2026. Where a relationship provides some historical context, a node gets a visually inferred (non-factual) antecedent position; otherwise it stays in an undated start area. Such visual positions are not asserted as verified dates.
 
@@ -52,6 +52,32 @@ Notice that **Yale University and Eric Owen Moss Architects are both connected t
 **Source-first date semantics:** `n.chronology = {year, basis, label, source}` records a factually supported event. `_diagramYear` is a client-derived visual placement and should never be cited as founding/completion date if `_placementBasis === "relationship-context"`. Original `n.year` is retained for source records such as award years. For a school, `education-context` may locate the school near a known educational connection, **not** its institutional founding.
 
 
+
+## Relation grammar edition — 2026-10-11
+
+A distinction absent from earlier editions is now implemented: **relation types are part of the visual encoding**, not merely a list in an information panel.
+
+- **Studied at / 就讀・畢業** — blue dashed lines; only documented degree or alumni statements.
+- **Taught at / 任教** — pale blue dotted lines; not equivalent to graduating from a school.
+- **Led / 主持** — amber solid line for department heads and leadership.
+- **Founded / 創辦** — green solid line for a documented founding relationship.
+- **Worked at / 任職** — ochre dashed line for explicit employment history.
+- **Associated with / 關聯** — neutral dotted line if the source establishes some association but not a founder/employment claim.
+- **Collaborated with / 合作** — light green line when the existing source text explicitly describes collaboration.
+- **Designed / 設計** — violet solid line from named designer or design firm to the building/work.
+- Further codes are available for technical contributions, publications, awards, site context, hosting and curatorial research.
+
+Selection now shows a **grouped relationship panel** with the category header, target node, actual source-backed claim, event date where supported, *date kind* and clickable reference IDs; the graph shows matching colored line styles and local link captions. The graph has a persistent clickable legend to enable/disable particular semantic types; FILTER includes every available relation type.
+
+The display also distinguishes **AWARD YEAR** from **GRADUATED**, **FOUNDED**, **EMPLOYMENT** and **BUILDING EVENT**. 175 relationships currently refer to award-year documentation; a dated award listing must not be mistaken for a completion-year statement.
+
+### Present limits
+
+This is still a **selective research dataset**, not the equivalently detailed biography corpus shown in Kyle Miller's example. In the current 334 source-linked relations, many are project/design associations and relatively few encode direct collaboration, employment, degree histories or authored publications. In particular, *Wrote* will only appear where a source actually verifies an authorship relationship; the site does not manufacture book–author or mentor–student links for visual symmetry. General `associated` links remain labeled broadly until stronger evidence establishes a more precise type.
+
+The screenshot-based Kyle-inspired design uses distinct colors and dash patterns; it is an independent implementation, not copied code or data.
+
+
 ## Navigation and interactions
 
 - Search by Traditional Chinese/English names; press `/` for immediate focus.
@@ -78,7 +104,7 @@ Pure browser-native frontend — **no package manager or build step required**.
 | `editorial-data.js` | Contextual journal-based analyses of individual works |
 | `education-data.js` | Alumni, advanced education, career bridges |
 | `lineage-bridges.js` | Verified graduation years and cross-office links |
-| `chronology-data.js` | Source-backed founding / study / career / completion dates, Huang Sheng-yuan example |\n| `README.md` | Research and editorial guidelines |
+| `chronology-data.js` | Source-backed founding / study / career / completion dates, Huang Sheng-yuan example |\n| `relationship-grammar.js` | Evidence-aware link semantics, readable colors/dashes, date event types |\n| `README.md` | Research and editorial guidelines |
 
 Assets from the older first prototype (`styles.css` and `app.js`) are retained but no longer loaded.
 
