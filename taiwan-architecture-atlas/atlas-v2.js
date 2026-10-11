@@ -11,8 +11,8 @@ const nodes=D.nodes,edges=D.edges;
 const byId=new Map(nodes.map(n=>[n.id,n]));
 const sources=new Map(D.sources.map(s=>[s.id,s]));
 const types=Object.keys(D.categories), edgeTypes=[...new Set(edges.map(e=>e.type))];
-const typeNames={person:"PEOPLE / 人物",practice:"PRACTICES / 事務所",institution:"SCHOOLS & INSTITUTIONS / 學校與機構",work:"BUILDINGS & PROJECTS / 作品",publication:"PUBLICATIONS / 出版"};
-const colors={person:"#141a17",practice:"#bb5843",institution:"#466778",work:"#989c97",publication:"#789064"};
+const typeNames={person:"PEOPLE / 人物",practice:"PRACTICES / 事務所",institution:"SCHOOLS & INSTITUTIONS / 學校與機構",work:"BUILDINGS & PROJECTS / 作品",publication:"PUBLICATIONS / 出版",event:"EXHIBITIONS & AWARDS / 展覽與獎項"};
+const colors={person:"#141a17",practice:"#bb5843",institution:"#466778",work:"#989c97",publication:"#789064",event:"#9a7758"};
 const relColors={design:"#a7a9a3",affiliation:"#ae7770",education:"#819695",engineering:"#9b9c94",client:"#a3a7a0"};
 const themes={
  postwar:{label:"Postwar modernism",subtitle:"東海大學、現代主義、戰後專業化",ids:["pei","chen","zhangzk","feng","wang","tunghai","tunghaiarch","luce","sunhall","han"]},
@@ -33,7 +33,7 @@ const degree=new Map(nodes.map(n=>[n.id,0]));
 edges.forEach(e=>{degree.set(e.a,(degree.get(e.a)||0)+1);degree.set(e.b,(degree.get(e.b)||0)+1);});
 const adjacency=new Map(nodes.map(n=>[n.id,[]]));
 edges.forEach(e=>{adjacency.get(e.a)?.push({n:e.b,e});adjacency.get(e.b)?.push({n:e.a,e});});
-const yearOf=n=>Math.min(2026,Math.max(1945,n.year||1980));
+const yearOf=n=>Number.isFinite(n?.year)?Math.min(2026,Math.max(1945,n.year)):null;
 function layout(){
  const refY=n=>125+pseudo(n.id,4)*1300;
  const yPos=new Map();
@@ -51,13 +51,14 @@ function layout(){
    yPos.set(n.id,Math.max(70,Math.min(1480,anchor+(pseudo(n.id,7)-.5)*330)));
  });
  nodes.forEach(n=>{
-   const time=(yearOf(n)-1945)/81;
-   n._x=116+time*3340+(pseudo(n.id,3)-.5)*52;
+   const date=yearOf(n);
+   const time=date===null?null:(date-1945)/81;
+   n._x=date===null?3530+pseudo(n.id,3)*130:116+time*3280+(pseudo(n.id,3)-.5)*52;
    n._y=yPos.get(n.id)??refY(n);
    n._radius=n.type==="person"?4.7:n.type==="practice"?4.3:n.type==="institution"?3.9:n.type==="publication"?3.5:2.8;
  });
 }
-function visible(n){return !!n&&state.types.has(n.type)&&yearOf(n)<=state.year;}
+function visible(n){return !!n&&state.types.has(n.type)&&(yearOf(n)===null||yearOf(n)<=state.year);}
 function edgeVisible(e){return visible(byId.get(e.a))&&visible(byId.get(e.b))&&state.rels.has(e.type)&&(!e.year||e.year<=state.year);}
 function currentEdges(){return edges.filter(edgeVisible);}
 function currentNodes(){return nodes.filter(visible);}
@@ -145,6 +146,8 @@ function draw(){
    ctx.fillStyle=state.dark?"#8a928c":"#a0a6a0";
    ctx.fillText(String(yr),x,54);
  }
+ const undatedX=3590*camera.scale+camera.x;
+ if(undatedX>20&&undatedX<W-10){ctx.fillStyle=state.dark?"#87948a":"#9ba19a";ctx.fillText("UNDATED",undatedX,54);}
  ctx.restore();
  // Dim default network edges and highlight the selected constellation.
  const visibleEdges=currentEdges();
@@ -285,7 +288,7 @@ function renderSelection(){
  }
  inner.innerHTML='<div class="selection-content"><span class="selection-label">'+escape(tag.toUpperCase())+' / ENTITY '+String(nodes.indexOf(n)+1).padStart(3,"0")+'</span>'+
   '<h2>'+escape(n.name)+'</h2><div class="selection-en">'+escape(n.en)+'</div>'+
-  '<div class="selection-meta"><span>REFERENCE YEAR <b>'+n.year+'</b></span><span>LINKS <b>'+list.length+'</b></span></div>'+
+  '<div class="selection-meta"><span>REFERENCE YEAR <b>'+(Number.isFinite(n.year)?n.year:'UNDATED')+'</b></span><span>LINKS <b>'+list.length+'</b></span></div>'+
   '<p class="selection-desc">'+escape(n.desc)+'</p>'+compareText+cmp+
   '<div class="selection-subhead">DOCUMENTED CONNECTIONS <span>'+row.length+'</span></div>'+
   row.map(x=>'<button type="button" class="rel-node" data-node="'+escape(x.n)+'"><span><b>'+escape(byId.get(x.n).name)+'</b><small>'+escape(x.e.label)+(x.e.year?' / '+x.e.year:'')+' · '+escape((x.e.src||[]).join(", "))+'</small></span><span class="rel-arrow">↗</span></button>').join("")+
