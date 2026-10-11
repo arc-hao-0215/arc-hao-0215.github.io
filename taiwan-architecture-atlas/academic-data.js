@@ -70,7 +70,7 @@ if(ncku.sources&&!ncku.sources.includes("S27"))ncku.sources.push("S27");
 const tunghai=get("東海大學建築學系");
 const thuHeads=["胡兆煇","詹耀文","張樞","洪文雄","黃業強","曾成德","羅時瑋","劉舜仁","陳格理","關華山","邱浩修"];
 thuHeads.forEach((name,index)=>{
- const who=add(name,"person",Math.min(2026,1965+index*5),"東海大學建築系歷史沿革將其列為曾主持系務之教授；原網頁並未於此提供精確任職區間，因此圖譜年份僅為暫定視覺座標。","S28");
+ const who=add(name,"person",null,"東海大學建築系歷史沿革將其列為曾主持系務之教授；原網頁並未於此提供精確任職區間，因此圖譜年份僅為暫定視覺座標。","S28");
  edge(who,tunghai,"education","官方系史列名曾主持建築系系務（任職年份待考）",undefined,"S28");
 });
 for(const name of ["陳其寬","漢寶德"]){
@@ -84,8 +84,8 @@ const golden=add("1967年第一屆建築金鼎獎","event",1967,
  const p=add(name,"person",1967,"1967年第一屆建築金鼎獎十大優秀建築師之一，見中央研究院臺灣史研究所期刊之歷史文獻引述。","S29");
  edge(p,golden,"recognition","1967年第一屆建築金鼎獎優秀建築師名單",1967,"S29");
 });
-const waseda=add("早稻田大學","institution",1945,"日本建築教育機構；學術文獻指出林慶豐、陳仁和及吉阪隆正等與早稻田建築教育體系相關。1945只是本圖時間顯示起點，非學校創立年。","S29","Waseda University");
-const yoshizaka=add("吉阪隆正","person",1950,"早稻田大學建築教育體系相關建築師；臺灣戰後建築史文獻將其與臺灣建築師的日本系譜並述。圖譜年份僅為定位，非確切畢業年。","S29","Takamasa Yoshizaka");
+const waseda=add("早稻田大學","institution",null,"日本建築教育機構；學術文獻指出林慶豐、陳仁和及吉阪隆正等與早稻田建築教育體系相關。1945只是本圖時間顯示起點，非學校創立年。","S29","Waseda University");
+const yoshizaka=add("吉阪隆正","person",null,"早稻田大學建築教育體系相關建築師；臺灣戰後建築史文獻將其與臺灣建築師的日本系譜並述。圖譜年份僅為定位，非確切畢業年。","S29","Takamasa Yoshizaka");
 ["林慶豐","陳仁和","吉阪隆正"].forEach(name=>edge(name,waseda,"education","建築史論文指出其出自早稻田建築教育體系",undefined,"S29"));
 const exhibition=add("誰是建築師？二戰後臺灣現代建築師制度的演變","event",2022,
 "國立臺灣博物館於2022年舉辦之研究特展，展示戰後臺灣專業制度及建築師文化變遷，源自早期建築師譜系研究。","S30","Who Is an Architect? Postwar Taiwan");
