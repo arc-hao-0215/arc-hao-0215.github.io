@@ -28,9 +28,11 @@
 .rr-method-strip{margin:28px 0 4px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .rr-method-strip>div{font:12px/1.55 Arial,Helvetica,sans-serif;color:var(--grey)}
 .rr-method-strip strong{display:block;color:var(--ink);font:500 clamp(19px,2.3vw,29px)/1.25 Arial,Helvetica,sans-serif;letter-spacing:-.035em;margin-bottom:7px}
-.rr-page .essay-body .rr-figure{min-width:0;width:100%;margin:34px 0 48px}
-.rr-page .essay-body .rr-figure--wide{width:min(112%,1100px);margin-left:-5.5%}
-.rr-page .essay-body .rr-figure--portrait{width:min(76%,680px);margin-left:auto;margin-right:auto}
+/* All diagrams share the essay's left edge. The shared editorial CSS caps figures at
+   max-width:100%, so the previous 112% width + negative margin shifted them left. */
+.rr-page .essay-body .rr-figure{box-sizing:border-box;min-width:0;width:100%;max-width:100%;margin:34px 0 48px}
+.rr-page .essay-body .rr-figure--wide{width:100%;max-width:100%;margin-left:0;margin-right:0}
+.rr-page .essay-body .rr-figure--portrait{width:min(100%,680px);max-width:100%;margin-left:0;margin-right:0}
 .rr-figure a{display:block;line-height:0;cursor:zoom-in;outline-offset:4px}
 .rr-figure img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;filter:none;background:#f3f2ed;transition:opacity .25s ease}
 .rr-figure a:hover img{opacity:.92}
