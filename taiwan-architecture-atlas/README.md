@@ -19,9 +19,9 @@ An independent, open-ended, source-based digital atlas of architecture in Taiwan
 
 ### Latest verified structure
 
-- **372 entities** in the initial integrated dataset: 99 people, 90 practices, 150 works, plus institutions, publications and events.
-- **350 evidence-linked relationship records**.
-- **82 bibliographic/source records**.
+- **373 entities** in the initial integrated dataset: 100 people, 90 practices, 150 works, plus institutions, publications and events.
+- **351 evidence-linked relationship records**.
+- **83 bibliographic/source records**.
 - **17 birth-year-anchored people**, with the majority still marked unverified. The correct response is *more biographical research*, not synthetic birth years.
 
 These totals are expected to change after source validation and new editorial contributions.
