@@ -57,3 +57,23 @@
 @media(max-width:1000px){.rb-page .essay-layout{grid-template-columns:minmax(140px,.75fr) minmax(0,2.6fr);gap:3%}.rb-page .rb-split{grid-template-columns:1fr;gap:22px}.rb-page .rb-split .rb-sidecopy{max-width:750px}}
 @media(max-width:760px){.rb-page .essay-layout{display:block;padding-top:34px}.rb-page .essay-layout aside{position:static;max-height:none;margin:0 0 45px;padding:0}.rb-page .essay-layout aside nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:none}.rb-page .essay-body{max-width:none}.rb-page .rb-section{margin-top:55px;padding-top:25px}.rb-page .rb-definition,.rb-page .rb-comparison{grid-template-columns:1fr;gap:16px}.rb-page .rb-evidence{grid-template-columns:1fr;gap:18px}.rb-page .rb-figure{margin:27px 0 42px}.rb-page .rb-figure figcaption{grid-template-columns:33px 1fr;gap:8px}.rb-page .rb-lightbox{padding:45px 12px 18px}.rb-page .essay-body .rb-section h2{font-size:clamp(27px,7vw,38px)}}
 @media(prefers-reduced-motion:no-preference){.rb-page.rb-motion .rb-section{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}.rb-page.rb-motion .rb-section.rb-inview{opacity:1;transform:none}}
+
+
+/* Glossary contribution: concise hierarchy and quiet editorial links */
+.rb-page .essay-body .rb-contribution{margin:38px 0 0;padding:21px 0 0;border:0;border-top:1px solid var(--line);background:transparent}
+.rb-page .essay-body .rb-contribution>.eyebrow{display:block;margin:0 0 11px;font:10px/1.5 Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+.rb-page .essay-body .rb-contribution>p{max-width:710px;margin:0;color:var(--grey);font:13px/1.7 Arial,Helvetica,sans-serif}
+.rb-page .rb-contribution-links{display:flex;flex-wrap:wrap;gap:9px 26px;margin-top:13px}
+.rb-page .rb-contribution-links a{display:inline-block;padding:0 0 3px;border-bottom:1px solid var(--line);color:var(--ink);font:12px/1.6 Arial,Helvetica,sans-serif;text-decoration:none;transition:color .2s,border-color .2s}
+.rb-page .rb-contribution-links a:hover,.rb-page .rb-contribution-links a:focus-visible{color:var(--accent);border-color:var(--accent)}
+
+/* Map uses exactly the same two-column proportions as the aerial photo above */
+.rb-page .rb-parcel-layout{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.4fr);gap:30px;align-items:start;margin:34px 0 30px}
+.rb-page .rb-parcel-layout .rb-figure{margin:0;min-width:0}
+.rb-page .essay-body .rb-parcel-aside>p{margin:0;font:15px/1.8 Georgia,"Times New Roman",serif}
+.rb-page .rb-parcel-aside .rb-evidence{display:grid;grid-template-columns:minmax(0,1fr);gap:15px;margin:27px 0 0}
+.rb-page .rb-parcel-aside .rb-evidence>div{padding-top:12px}
+.rb-page .rb-parcel-aside .rb-evidence b{font-size:14px}
+.rb-page .rb-parcel-aside .rb-quiet-note{margin-top:24px;padding-top:14px}
+@media(max-width:1000px){.rb-page .rb-parcel-layout{grid-template-columns:minmax(0,1fr);gap:23px}.rb-page .rb-parcel-aside .rb-evidence{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}
+@media(max-width:760px){.rb-page .essay-body .rb-contribution{margin-top:29px;padding-top:17px}.rb-page .essay-body .rb-contribution>p{font-size:12px;line-height:1.7}.rb-page .rb-contribution-links{gap:8px 20px}.rb-page .rb-parcel-layout{gap:16px;margin-top:26px}.rb-page .rb-parcel-aside .rb-evidence{grid-template-columns:minmax(0,1fr);gap:13px}.rb-page .rb-parcel-aside .rb-evidence>div{padding-top:11px}}
