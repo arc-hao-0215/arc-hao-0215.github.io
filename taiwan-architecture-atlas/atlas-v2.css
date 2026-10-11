@@ -33,3 +33,54 @@
 .timeline-arrow{font-size:12px;color:var(--focus)}
 .timeline-step:hover{background:var(--soft)}
 .timeline-step:focus-visible{outline:1px solid var(--focus);outline-offset:1px}
+
+
+/* Relation grammar edition: different facts get different color, dash and labels. */
+.relation-key{position:absolute;z-index:5;left:22px;top:66px;max-width:calc(100% - 380px);display:flex;align-items:center;gap:3px;flex-wrap:wrap}
+.legend-item,.legend-more{border:1px solid transparent;background:transparent;display:flex;align-items:center;gap:6px;color:var(--sub);padding:5px 6px;font:9px var(--mono);letter-spacing:.005em;white-space:nowrap}
+.legend-item:hover,.legend-item:focus-visible{border-color:var(--hair);color:var(--ink)}
+.legend-item.disabled{opacity:.3;text-decoration:line-through}
+.legend-line{display:inline-block;border-top-width:2px;width:21px;height:0}
+.legend-more{border-left:1px solid var(--hair);padding-left:11px;color:var(--focus)}
+.relation-filter-sample{width:25px;height:0;display:inline-block;border-top-width:2px;border-left:0;border-right:0;border-bottom:0;flex-shrink:0}
+.relation-check{min-height:25px;gap:10px}
+.relation-check>span{line-height:1.3}
+.relation-check small{font-size:10px;color:var(--sub);margin-left:5px}
+.selection-panel{right:0;top:0;bottom:0;max-height:none;width:min(400px,31vw);box-shadow:-8px 0 35px #0003;border-top:0;border-bottom:0;border-right:0}
+.selection-content h2{font-size:31px;line-height:1.2;margin-top:14px}
+.relation-group{border-top:1px solid var(--soft);margin-top:15px}
+.relation-group-head{display:flex;align-items:center;gap:8px;font:600 10px var(--mono);letter-spacing:.015em;margin:0;padding:13px 0 10px;line-height:1.4}
+.relation-group-head small{font:400 9px 'Noto Sans TC','Inter',sans-serif;color:var(--sub);margin-left:3px}
+.relation-group-head b{font:10px var(--mono);color:var(--sub);margin-left:auto}
+.relation-sample{display:inline-block;border-top:2px solid var(--link-color);width:25px;flex-shrink:0}
+.relation-sample.dashed{border-top-style:dashed}
+.relation-entry{padding:9px 0 11px;border-top:1px solid var(--soft)}
+.relation-entity-link{padding:0;border:0;background:transparent;color:var(--ink);font-size:13px;line-height:1.5;font-weight:500;display:flex;align-items:start;justify-content:space-between;width:100%;text-align:left;gap:10px}
+.relation-entity-link:hover{color:var(--link-color)}
+.relation-link-arrow{font-family:var(--mono);font-size:12px;color:var(--link-color)}
+.relation-note{font-size:10.5px;line-height:1.65;color:var(--sub);margin:5px 12px 0 0}
+.relation-facts{margin-top:5px;display:flex;align-items:start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.edge-year{font:10px var(--mono);color:var(--link-color)}
+.edge-year.unsure{font-size:9px;color:var(--gray)}
+.relation-sources{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.edge-evidence{font:9px var(--mono);color:var(--sub);text-decoration:underline;text-decoration-color:var(--link-color);text-underline-offset:3px}
+.edge-evidence:hover{color:var(--link-color)}
+.night .relation-key{color:#c4ccc5}
+.night .selection-panel{background:#1a1e1d;box-shadow:-10px 0 38px #0004}
+.night .relation-entity-link{color:#f1f2ef}
+.night .relation-entity-link:hover{color:var(--link-color)}
+.night .relation-note{color:#abb5af}
+.night .relation-entity-link:focus-visible{outline-color:var(--link-color)}
+@media(max-width:1100px){
+ .relation-key{max-width:calc(100% - 350px);left:12px;gap:0}
+ .legend-item{font-size:8px;padding:4px}
+ .legend-line{width:14px}
+ .selection-panel{width:345px;top:0;bottom:0}
+}
+@media(max-width:760px){
+ .relation-key{top:66px;left:8px;right:8px;max-width:none;background:var(--page);border:1px solid var(--hair);padding:3px;gap:0;overflow-x:auto;flex-wrap:nowrap}
+ .legend-item{flex-shrink:0;font-size:8px}
+ .graph-top-right{top:110px}
+ .selection-panel{width:min(360px,calc(100vw - 15px));top:0;bottom:0}
+ .relation-sources{justify-content:flex-start}
+}
