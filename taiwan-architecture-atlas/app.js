@@ -5,8 +5,9 @@ const $=id=>document.getElementById(id);
 const byId=new Map(D.nodes.map(n=>[n.id,n]));
 const T=D.types, R=D.regions, K=D.relations;
 const colors={person:'#4d7e98',office:'#a98252',building:'#c84c38',school:'#627d65',institution:'#627d65',publication:'#867c9b',collective:'#867c9b'};
+const highlights=[{id:'women',name:'女性建築專業',ids:['chiu','xiu','qing','xu-liyu','guo-zhongduan','women']},{id:'trans',name:'跨國合作',ids:['pei','ban','oma','banfirm','tpac','tnam']},{id:'education',name:'建築教育',ids:['thu','cycu','tnnua','ncku-arch','tamkang-arch','han','yao']},{id:'public',name:'公共建築',ids:['sun','luce','nmp','nmns','taijiang','nanmen','tpac','tnam','tfam','zhongshan']}];
 const edgeColors={design:'#c84c38',contribute:'#a98252',campus:'#4d7e98',located:'#627d65',found:'#a98252',led:'#627d65',education:'#4d7e98',subject:'#867c9b'};
-const st={types:new Set(Object.keys(T)),regions:new Set(R.map(x=>x.id)),relations:new Set(Object.keys(K)),year:2026,query:'',selected:null,hideUndated:false,history:[],view:{x:0,y:0,w:2300,h:1100},pointer:null,dragged:false,story:null,storyIndex:0};
+const st={types:new Set(Object.keys(T)),regions:new Set(R.map(x=>x.id)),relations:new Set(Object.keys(K)),year:2026,query:'',highlight:null,selected:null,hideUndated:false,history:[],view:{x:0,y:0,w:2300,h:1100},pointer:null,dragged:false,story:null,storyIndex:0};
 const svg=$('graph'), area=$('graphContainer'), tip=$('hoverTip'), container=$('app');
 const NS='http://www.w3.org/2000/svg', X0=255, X1=1640, y0=170, YSTEP=188, VIEW_W=2310;
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -61,13 +62,14 @@ function drawBackground(){
  SVGappend(g,'text',{x:1860,y:70,class:'axis-sub'},'NO DATE IN THE CITED SOURCES');
 }
 const neighbours=id=>new Set(D.edges.filter(e=>st.relations.has(e.type)&&(e.from===id||e.to===id)).map(e=>e.from===id?e.to:e.from));
+function highlighted(){const h=highlights.find(x=>x.id===st.highlight);if(!h)return null;const targets=new Set(h.ids);const near=new Set(targets);for(const e of D.edges){if(!st.relations.has(e.type))continue;if(targets.has(e.from))near.add(e.to);if(targets.has(e.to))near.add(e.from)}return {targets,near}}
 function activeEdges(){
  return D.edges.filter(e=>st.relations.has(e.type)&&visible(byId.get(e.from))&&visible(byId.get(e.to)));
 }
 function draw(){
  svg.replaceChildren();drawBackground();
  const all=D.nodes.filter(visible),shown=new Set(all.map(n=>n.id));
- const adjacent=st.selected?neighbours(st.selected):null;
+ const adjacent=st.selected?neighbours(st.selected):null;const hi=highlighted();
  const edges=SVGappend(svg,'g',{id:'edge-layer'});
  for(const e of D.edges){
   if(!st.relations.has(e.type)||!shown.has(e.from)||!shown.has(e.to))continue;
@@ -76,12 +78,13 @@ function draw(){
   const direct=st.selected&&(e.from===st.selected||e.to===st.selected);
   const mid=(a.x+b.x)/2;
   const path=SVGappend(edges,'path',{d:'M '+a.x+' '+a.y+' C '+mid+' '+a.y+' '+mid+' '+b.y+' '+b.x+' '+b.y,class:'edge'+(direct?' is-active':''),stroke:edgeColors[e.type]||'#aaa'});
-  if(st.selected&&!direct)path.style.opacity='.035';
+  if(st.selected&&!direct)path.style.opacity='.035';else if(!st.selected&&hi){path.style.opacity=(hi.targets.has(e.from)||hi.targets.has(e.to))?'.78':'.025';if(hi.targets.has(e.from)||hi.targets.has(e.to))path.style.strokeWidth='2.0'}
  }
  const group=SVGappend(svg,'g',{id:'node-layer'});
  for(const n of all){
   const p=positions.get(n.id),selected=n.id===st.selected,near=adjacent?.has(n.id);
   let cls='node'+(selected?' is-selected':'')+(near?' is-highlight':'')+(st.selected&&!selected&&!near?' is-dim':'');
+  if(hi&&!st.selected){if(!hi.near.has(n.id))cls+=' is-dim';else if(hi.targets.has(n.id))cls+=' is-highlight'}
   if(st.query&&!st.selected){const q=st.query.toLocaleLowerCase();if(!(n.name+' '+n.english+' '+n.summary).toLocaleLowerCase().includes(q))cls+=' is-dim'}
   const g=SVGappend(group,'g',{class:cls,'data-id':n.id,transform:'translate('+p.x+' '+p.y+')',role:'button',tabindex:'0','aria-label':n.name+'，'+T[n.type]});
   SVGappend(g,'circle',{class:'halo',cx:0,cy:0,r:14,fill:'none',stroke:colors[n.type], 'stroke-width':2});
@@ -150,6 +153,7 @@ function buildFilters(){
   const name=document.createElement('span');name.textContent=label;name.style.flex='1';l.append(name);
   const count=document.createElement('span');count.className='count';count.textContent=D.nodes.filter(n=>n.type===type).length;l.append(count);wrap.append(l);
  }
+ const high=$('highlightChips');for(const item of highlights){const b=document.createElement('button');b.type='button';b.className='highlight-chip';b.textContent=item.name;b.dataset.highlight=item.id;b.setAttribute('aria-pressed','false');b.onclick=()=>{st.highlight=st.highlight===item.id?null:item.id;high.querySelectorAll('button').forEach(x=>{x.classList.toggle('active',x.dataset.highlight===st.highlight);x.setAttribute('aria-pressed',String(x.dataset.highlight===st.highlight))});draw()};high.append(b)}
  const region=$('regionFilters');
  for(const rg of R){const b=document.createElement('button');b.type='button';b.className='region-chip active';b.textContent=rg.name;b.dataset.region=rg.id;
   b.onclick=()=>{st.regions.has(rg.id)?st.regions.delete(rg.id):st.regions.add(rg.id);b.classList.toggle('active',st.regions.has(rg.id));draw()};
@@ -208,6 +212,7 @@ function closeModal(){$('modalBackdrop').classList.add('hidden')}
 function events(){
  $('searchInput').addEventListener('input',e=>{st.query=e.target.value;searchResults();draw()});
  $('searchClear').onclick=()=>{st.query='';$('searchInput').value='';searchResults();draw()};
+ $('clearHighlight').onclick=()=>{st.highlight=null;$('highlightChips').querySelectorAll('button').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false')});draw()};
  $('allTypes').onclick=()=>{st.types=new Set(Object.keys(T));$('typeFilters').querySelectorAll('input').forEach(x=>x.checked=true);draw()};
  $('allRegions').onclick=()=>{st.regions=new Set(R.map(x=>x.id));$('regionFilters').querySelectorAll('button').forEach(x=>x.classList.add('active'));draw()};
  $('yearRange').oninput=e=>{st.year=+e.target.value;$('yearVal').textContent=st.year;draw()};
