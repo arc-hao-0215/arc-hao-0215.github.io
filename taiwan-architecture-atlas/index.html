@@ -2,97 +2,60 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f7f7f4">
-<meta name="description" content="Architecture in Taiwan, All at Once — a living, source-based interactive map of architects, practices, schools, works and discourse.">
-<title>Architecture in Taiwan, All at Once — 臺灣建築關係圖譜</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%23f7f7f4'/%3E%3Ccircle cx='15' cy='20' r='4' fill='%230b0c0c'/%3E%3Ccircle cx='42' cy='15' r='4' fill='%230b0c0c'/%3E%3Ccircle cx='39' cy='46' r='4' fill='%230b0c0c'/%3E%3Cpath d='M15 20 Q22 -1 42 15 M42 15 Q55 29 39 46 M39 46 Q4 51 15 20' fill='none' stroke='%23b75437' stroke-width='1'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="atlas-v2.css?v=20261011-relations-v1">
-<script defer src="data.js?v=20261011-02"></script>
-<script defer src="expanded-data.js?v=20261011-02"></script>
-<script defer src="academic-data.js?v=20261011-03"></script>
-<script defer src="editorial-data.js?v=20261011-04"></script>
-<script defer src="education-data.js?v=20261011-05"></script>
-<script defer src="lineage-bridges.js?v=20261011-06"></script>
-<script defer src="chronology-data.js?v=20261011-chronology-v3"></script>
-<script defer src="relationship-grammar.js?v=20261011-relations-v1"></script>
-<script defer src="atlas-v2.js?v=20261011-relations-v1"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111416">
+<meta name="description" content="Architecture in Taiwan, All at Once — a sourced relationship atlas with birth-year geography and architect–practice–project connections.">
+<title>Architecture in Taiwan, All at Once — 臺灣建築文化關係圖譜</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111416'/%3E%3Ccircle cx='14' cy='38' r='5' fill='%23a6c8da'/%3E%3Ccircle cx='36' cy='14' r='5' fill='%23d9d6cb'/%3E%3Ccircle cx='51' cy='48' r='5' fill='%23bad6b7'/%3E%3Cpath d='M14 38 36 14 51 48 14 38' stroke='%23d6b68e' stroke-width='1.4' fill='none'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./genealogy.css?v=20261011-a">
+<script defer src="./data.js?v=20261011-a"></script>
+<script defer src="./expanded-data.js?v=20261011-a"></script>
+<script defer src="./academic-data.js?v=20261011-a"></script>
+<script defer src="./editorial-data.js?v=20261011-a"></script>
+<script defer src="./education-data.js?v=20261011-a"></script>
+<script defer src="./lineage-bridges.js?v=20261011-a"></script>
+<script defer src="./chronology-data.js?v=20261011-a"></script>
+<script defer src="./biographical-data.js?v=20261011-a"></script>
+<script defer src="./person-links.js?v=20261011-a"></script>
+<script defer src="./relationship-grammar.js?v=20261011-a"></script>
+<script defer src="./genealogy.js?v=20261011-a"></script>
 </head>
-<body class="night">
-<div class="app">
-<header class="site-head">
-  <a class="logotype" href="./" aria-label="Architecture in Taiwan, All at Once homepage">
-    <span class="logo-title">ARCHITECTURE<br>IN TAIWAN</span>
-    <span class="logo-slash">/</span>
-    <span class="logo-tag">ALL AT ONCE,<br>RIGHT NOW.</span>
-  </a>
-  <div class="head-caption"><b>臺灣建築關係圖譜</b><span>A LIVING NETWORK OF ARCHITECTURAL CULTURE<br>1945—PRESENT / WORK IN PROGRESS</span></div>
-  <a class="head-issue" href="https://github.com/arc-hao-0215/arc-hao-0215.github.io/issues/new" target="_blank" rel="noopener noreferrer">SUBMIT A SOURCE <span>↗</span></a>
+<body class="dark">
+<div class="site">
+<header class="masthead">
+ <a class="wordmark" href="./" aria-label="首頁">ARCHITECTURE IN TAIWAN <span>ALL AT ONCE</span><i>↗</i></a>
+ <div class="mast-note">A LIVING ATLAS OF ARCHITECTURAL CULTURE <strong>臺灣建築關係圖譜</strong></div>
+ <a class="contribute" href="https://github.com/arc-hao-0215/arc-hao-0215.github.io/issues/new" target="_blank" rel="noopener noreferrer">SUBMIT A CONNECTION ↗</a>
 </header>
-<div class="command-bar">
-  <div class="search-shell">
-    <label for="search" class="sr-only">Search all nodes</label>
-    <span class="search-symbol" aria-hidden="true">⌕</span>
-    <input id="search" type="search" autocomplete="off" placeholder="SEARCH PEOPLE, PRACTICES, SCHOOLS, WORKS…／搜尋人物、學校、作品">
-    <span class="search-key">/</span>
-    <div class="search-matches" id="search-matches" role="listbox" hidden></div>
-  </div>
-  <nav class="commands" aria-label="Graph controls">
-    <button type="button" class="command" id="filter-btn" aria-expanded="false" aria-controls="filter-panel">FILTER <span>≡</span></button>
-    <button type="button" class="command" id="highlight-btn" aria-expanded="false" aria-controls="highlight-panel">HIGHLIGHTS <span>⌄</span></button>
-    <button type="button" class="command" id="compare-btn" aria-pressed="false">COMPARE <span>↔</span></button>
-    <button type="button" class="command" id="guide-btn">GUIDE <span>?</span></button>
-    <button type="button" class="command" id="about-btn">ABOUT <span>↗</span></button>
-    <button type="button" class="command night-toggle" id="night-btn" aria-pressed="false">NIGHT <span>◐</span></button>
-  </nav>
+<div class="toolbar">
+ <div class="searchbox"><span class="searchicon" aria-hidden="true">⌕</span><label class="sr" for="search">Search entities</label><input id="search" type="search" autocomplete="off" placeholder="Search architects, offices, buildings, schools… / 搜尋人物、事務所、作品"><kbd>/</kbd><div class="suggestions" id="suggestions" hidden></div></div>
+ <nav class="controls" aria-label="探索工具">
+  <button type="button" id="people-btn" class="tool active">MAP <span>主圖</span></button>
+  <button type="button" id="offices-btn" class="tool">OFFICES <span>事務所</span></button>
+  <button type="button" id="connections-btn" class="tool">CONNECTIONS <span>線型</span></button>
+  <button type="button" id="highlights-btn" class="tool">HIGHLIGHTS <span>探索</span></button>
+  <button type="button" id="guide-btn" class="tool">GUIDE <span>?</span></button>
+  <button type="button" id="theme-btn" class="tool" aria-pressed="true">NIGHT <span>◐</span></button>
+ </nav>
 </div>
-<main class="field-wrap" id="field-wrap" aria-label="The architecture relation map">
- <canvas id="network" aria-label="Interactive network visualization. Use search for keyboard navigation." tabindex="0"></canvas>
- <div class="field-caption"><span class="field-serial">NETWORK MAP / 001</span><span>RELATIONS HAVE DISTINCT MEANINGS, COLORS &amp; LINE STYLES</span></div>
- <div class="relation-key" id="relation-key" aria-label="關係類型圖例"></div>
- <div class="graph-top-right"><span id="visibility-stats">LOADING DATA…</span><button type="button" id="fit-btn" aria-label="Reset graph view">FIT VIEW ↗</button></div>
- <div class="graph-bottom-left"><span class="blink-dot"></span><b id="active-mode">COMPLETE NETWORK</b><span class="minor">DRAG TO PAN &nbsp; / &nbsp; SCROLL TO ZOOM &nbsp; / &nbsp; SELECT FOR CHRONOLOGY</span></div>
- <div class="graph-bottom-right">
-   <button type="button" id="zoom-plus" aria-label="Zoom in">+</button><button type="button" id="zoom-minus" aria-label="Zoom out">−</button><button type="button" id="zoom-reset" aria-label="Reset view">⌖</button>
- </div>
- <div class="hover-label" id="hover-label" hidden></div>
- <div class="selection-panel" id="selection-panel" hidden aria-live="polite">
-    <div class="selection-header"><span id="selection-kicker">SELECTED RECORD</span><button id="close-selection" aria-label="Close selection">×</button></div>
-    <div id="selection-inner"></div>
- </div>
- <div class="filter-panel floating-panel" id="filter-panel" hidden>
-   <div class="panel-top"><b>FILTER THE NETWORK</b><button type="button" class="panel-close" data-close="filter-panel">×</button></div>
-   <div class="panel-eyebrow">ENTITY CATEGORIES / 類別</div>
-   <div class="filter-items" id="filter-items"></div>
-   <div class="panel-rule"></div>
-   <div class="panel-eyebrow">THROUGH YEAR / 文獻年代</div>
-   <div class="year-row"><b id="year-label">2026</b><button type="button" id="year-reset">ALL ↗</button></div>
-   <input type="range" id="year" min="1945" max="2026" value="2026" aria-label="Show records through year">
-   <div class="year-ends"><span>1945</span><span>2026</span></div>
-   <div class="panel-rule"></div>
-   <div class="panel-eyebrow">CONNECTION TYPES / 關係類型</div>
-   <div id="relation-items"></div>
-   <p class="filter-note">年份可能代表畢業、創立、任職、落成或得獎；點選連線檢查關係類型及來源。</p>
-   <div class="panel-bottom"><button type="button" id="all-filter-reset">RESET FILTERS</button><button type="button" data-close="filter-panel">APPLY ↗</button></div>
- </div>
- <div class="highlight-panel floating-panel" id="highlight-panel" hidden>
-   <div class="panel-top"><b>RESEARCH HIGHLIGHTS</b><button type="button" class="panel-close" data-close="highlight-panel">×</button></div>
-   <p>SELECT A RESEARCH THREAD TO TRACE ITS LOCAL NETWORK.</p>
-   <div id="highlight-items"></div>
- </div>
- <div class="modal-backdrop" id="modal-backdrop" hidden></div>
- <section class="modal" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
-   <button type="button" class="modal-close" id="modal-close" aria-label="Close">×</button>
-   <span class="eyebrow" id="modal-eyebrow">A RESEARCH MAP / NOT A RANKING</span>
-   <h1 id="modal-title">Architecture in Taiwan,<br><em>all at once.</em></h1>
-   <div id="modal-body"></div>
- </section>
+<main class="workspace" id="workspace">
+ <canvas id="network" tabindex="0" aria-label="臺灣建築文化關係圖。人物水平位置以可查證出生年排列，垂直依主要工作地域分區。使用搜尋、鍵盤方向鍵和右側資料欄探索。" ></canvas>
+ <div class="axis-title"><strong>BIRTH YEAR / 出生年份</strong><span>Horizontal positioning applies to people only. 只有人物使用出生年座標。</span></div>
+ <div class="axis-ruler" id="axis-ruler" aria-label="出生年份時間尺"></div>
+ <div class="region-rail" id="region-rail" aria-label="工作地域導覽"></div>
+ <div class="stage-caption" id="stage-caption">SELECT A PERSON TO TRACE THEIR CULTURAL NETWORK</div>
+ <div class="zoom-controls"><button id="zoom-in" aria-label="放大">+</button><button id="zoom-out" aria-label="縮小">−</button><button id="fit" aria-label="回到全圖">FIT</button></div>
+ <div class="statusbar"><span><i class="statusdot"></i><b id="visible-count">—</b> VISIBLE PEOPLE / <b id="links-count">—</b> LINKS</span><span class="status-hint">DRAG TO PAN · WHEEL TO ZOOM · CLICK TO OPEN · ESC TO CLEAR</span><button type="button" id="export-btn">EXPORT CSV ↓</button></div>
+ <div id="tooltip" class="hover" hidden></div>
+ <div id="floating" class="floating" hidden></div>
+ <aside id="drawer" class="drawer" hidden aria-label="人物、事務所或作品的關係與證據">
+  <div class="drawer-top"><div class="nav-history"><button id="history-prev" aria-label="上一筆瀏覽記錄" disabled>‹</button><button id="history-next" aria-label="下一筆瀏覽記錄" disabled>›</button><small id="history-counter">RECORD</small></div><button id="drawer-close" class="drawer-close" aria-label="關閉">×</button></div>
+  <div id="drawer-content" class="drawer-content"></div>
+ </aside>
+ <div id="overlay" class="overlay" hidden></div>
+ <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading" hidden><button id="modal-close" class="modal-close" aria-label="關閉">×</button><div id="modal-body"></div></div>
 </main>
-<footer class="info-footer">
- <div class="footer-left">ARCHITECTURE IN TAIWAN <span class="footer-red">↗</span> AN INDEPENDENT RESEARCH PROTOTYPE</div>
- <div class="footer-center"><span id="count-entities">—</span> ENTITIES &nbsp; · &nbsp; <span id="count-links">—</span> DOCUMENTED RELATIONS &nbsp; · &nbsp; <span id="count-sources">—</span> SOURCES</div>
- <div class="footer-right"><button type="button" id="export-csv">EXPORT DATA ↓</button><button type="button" id="share-btn">SHARE VIEW ↗</button></div>
-</footer>
+<footer class="footer"><div>ARCHITECTURE IN TAIWAN <span>↗</span> SOURCE-BASED RESEARCH EDITION</div><div><strong id="total-people">—</strong> PEOPLE <span class="divider">/</span> <strong id="total-offices">—</strong> OFFICES <span class="divider">/</span> <strong id="total-works">—</strong> WORKS <span class="divider">/</span> <strong id="total-sources">—</strong> SOURCES</div><div>INDEPENDENT PROJECT · 2026</div></footer>
 </div>
 </body>
 </html>
