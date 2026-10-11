@@ -8,6 +8,7 @@
   const byId=new Map(D.nodes.map(n=>[n.id,n]));
   const rules={
     studied:{en:"STUDIED AT",zh:"就讀／畢業",color:"#83afd8",dash:[5,3],order:10},
+    mentored:{en:"STUDIED UNDER",zh:"師承／受教",color:"#8cbbeb",dash:[4,2],order:15},
     taught:{en:"TAUGHT AT",zh:"任教",color:"#a6c7d7",dash:[2,3],order:20},
     led:{en:"LED",zh:"主持／領導",color:"#dbaf76",dash:[],order:30},
     founded:{en:"FOUNDED",zh:"創辦",color:"#acd0ab",dash:[],order:40},
@@ -28,6 +29,8 @@
     const institution=[a,b].find(n=>n?.type==="institution");
     const work=[a,b].find(n=>n?.type==="work");
     const practice=[a,b].find(n=>n?.type==="practice");
+    if(e.type==="mentorship")return "mentored";
+    if(e.type==="collaboration")return "collaborated";
     if(e.type==="recognition")return "recognized";
     if(e.type==="context")return "contextual";
     if(e.type==="curatorial")return "curated";
@@ -82,5 +85,5 @@
     e.yearKind=yearKind(e);
   });
   D.relationshipGrammar=rules;
-  D.relationLegend=["studied","taught","led","founded","worked","associated","collaborated","designed","consulted","authored","recognized","curated","belonged","contextual"];
+  D.relationLegend=["studied","mentored","taught","led","founded","worked","associated","collaborated","designed","consulted","authored","recognized","curated","belonged","contextual"];
 })();
