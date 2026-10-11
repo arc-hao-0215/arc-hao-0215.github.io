@@ -1,132 +1,81 @@
-# Architecture in Taiwan, All at Once / 臺灣建築關係圖譜
+# Architecture in Taiwan, All at Once
+## Research edition 05 — Birth-year anchored architectural culture map (2026-10-11)
 
-**Research edition 04 / relation grammar and documented chronology — updated 2026-10-11**
+**Public site:** https://arc-hao-0215.github.io/taiwan-architecture-atlas/
 
-Live GitHub Pages path (subject to Pages publishing): **https://arc-hao-0215.github.io/taiwan-architecture-atlas/**
+An independent, open-ended, source-based digital atlas of architecture in Taiwan. Its interactive **reading grammar**, not code or assets, is informed by Kyle Miller's [Architecture All At Once, Right Now](https://architectureallatonce.com/), where the **primary people map** has birth year on the horizontal axis and principal working geography on the vertical axis. It adds a substantial **practice-to-works** browsing system appropriate for documenting Taiwanese architecture.
 
-An independent, experimental, source-linked network atlas of Taiwan's architectural culture. Inspired by the interaction and visual-density concept of Kyle Miller's *Architecture All At Once, Right Now* (https://architectureallatonce.com/). No source code, images, archival data, identity assets or visual files have been copied from that project.
+**Do not treat this atlas as a comprehensive or fully verified national record.** The seed corpus is award-heavy, and many biography, education, authorship, collaboration and historic credits still require dedicated research.
 
-The previous three-column dashboard has been replaced by a full-window, zoomable/pannable Canvas network with minimalist black-on-off-white information design, nuanced node styling, thin curved connections and floating research tools.
+### What changed in Edition 05
 
-## Dataset in this edition
+1. **People use verified birth years.** Person nodes no longer borrow graduation, professional return, award, firm creation or project years for the main X coordinate.
+2. **Unverified births remain unverified.** People without a reliable birth date appear in a separate 'BIRTH YEAR NOT VERIFIED' register accessible from the left navigator and search, not falsely on the dated ruler. For conflicting dates (notably Wang Da-hong's 1917/1918 and Yang Cho-cheng's 1914/1915), the panel shows both sources and does not force a false resolution.
+3. **Vertical groups represent practice geography**, not nationality, ethnicity, passport or birth location. Region classifications are provisional research tags, subject to further documentation.
+4. **Other entities are annotations/satellites**, linked to related people or practices. Their horizontal positions are *not* birth/founding/completion dates.
+5. **Separate relation types**: studied at, studied under/mentored, taught at, led, founded, worked at, collaboration, association, designed, technical contribution, awards, site context and research. Colors and dash patterns are used on the map, while each record in the panel includes its own wording, date kind and source link.
+6. **Offices and their works are first-class.** OFFICE index → choose a practice → review its sourced design works chronologically. Completed/opening dates are distinguished from *Taiwan Architecture Award year*, and a person who merely worked for an office is **not credited for the office's entire subsequent portfolio**. Only persons documented as founders can browse all office projects as office-affiliated context; individual work authorship is shown only from its direct relation records.
+7. **Navigation**: search, hover, click, pan/zoom, click birth-year ruler or work-region, source citations, browse ‹ / › history, highlights, connection filters, light/night, links to individual nodes and CSV export.
 
-- **364 entities**: 97 people, 89 practices, 18 institutions, 148 buildings/projects, 10 publications, 2 exhibition/award events.
-- **334 evidence-linked relationships**. Every relationship records at least one source ID that resolves to a source URL; these are documented links, not stylistic similarity or inferred mentorship.
-- **57 linked bibliography/reference records** across government archives, university histories, architectural practices, award registers, journal feature essays and relevant academic research.
-- **34 entities explicitly marked undated** where the research record does not establish an adequate date. The timeline does **not** shove undated institutions to 2020–2026. Where a relationship provides some historical context, a node gets a visually inferred (non-factual) antecedent position; otherwise it stays in an undated start area. Such visual positions are not asserted as verified dates.
+### Latest verified structure
 
-These counts describe the *curated prototype database*, not the entirety of Taiwan's architectural history. Sources and labels require continuing editorial fact-checking, particularly archive links and older multi-designer attributions.
+- **372 entities** in the initial integrated dataset: 99 people, 90 practices, 150 works, plus institutions, publications and events.
+- **350 evidence-linked relationship records**.
+- **82 bibliographic/source records**.
+- **17 birth-year-anchored people**, with the majority still marked unverified. The correct response is *more biographical research*, not synthetic birth years.
 
-## Research emphasis
+These totals are expected to change after source validation and new editorial contributions.
 
-1. **Award corpus** (1992–2025): works, designers and practice attribution based on entries in [《建築師》雜誌：歷屆得獎](https://www.twarchitect.org.tw/award_winner/). An award-source `year` is the **award year**, not the work's completion or firm's founding. Edition 03 uses separately sourced `chronology` records for known completion, opening, career and founding events. Some historical project titles are shortened for browsing; consult source listings for full archival names.
-2. **Postwar practice**: architecture historians' accounts and National Taiwan Museum institutional history, including [戰後臺灣現代建築師譜系調查研究](https://nckur.lib.ncku.edu.tw/retrieve/466614/243946.pdf) and discussions of the 1967 建築金鼎獎.
-3. **Education and careers**: historically attested architecture department chairs at NCKU and Tunghai, named alumni and graduated years, selective overseas education, past employers and university teaching relationships; based on [東海建築系](https://arch.thu.edu.tw/about/6/), [成大建築系](https://www.arch.ncku.edu.tw/cht/article/about.html), [姚仁喜事務所](https://krisyaoartech.com/zh-tw/team) and [郭旭原實踐大學官方履歷](https://www.arch.usc.edu.tw/scad/about/faculty/vis/hsu-yuan.html).
-4. **Project contextual research**: richer essays from professional journals (not just award lists), including NTU Humanities Building, Shoushan Zoo, New Taipei City Art Museum, Pingtung Main Library, and Yilan's transport/civic infrastructure.
-5. **Discourse**: selected journals, exhibitions and history publications, not yet a full bibliography nor a validated influence graph.
+### A relationship is a claim, not a line for visual beauty
 
+Each edge links two actual IDs and has `type`, a precise `label`, optional `year` and one or more source IDs. The presentation adapter `relationship-grammar.js` derives semantic categories. It NEVER creates new unverified mentorship, collaboration or authored-publication links by itself.
 
-## Edition 03: chronological architectural genealogy
+Do not infer that:
 
-**Reason for the change:** the original graphic positioned `year: null` schools and employers in a late 'undated' cluster, so established schools such as Tamkang appeared after 2020. It also used award years as if they were project completion dates and placed several architect nodes on the same date as their buildings.
+- People born the same year knew one another.
+- Sharing an employer or alma mater means a direct teacher–student or philosophical influence.
+- An architect employed by a firm designed *every* later firm work.
+- A project recorded in an annual award database was completed in the award year.
+- A studio physically shown near a person on the map was established the year the person was born.
+- Geography tags equal citizenship/national identity.
+- Missing links imply that no such historical relationship existed.
 
-**New arrangement:** schools and documented educational affiliations are upstream; employment and career episodes lead towards the architect's local practice; the firm's documented founding or first recorded association precedes its projects; buildings are ordered by **confirmed completion / opening** years where established. For other entries, the chart uses a conditional relationship-context placement for legibility and describes that as **not** a verified historical date. Do not treat a diagrammatic positional constraint as a new claim of founding, graduation or historical influence.
+### Year semantics
 
-**Case-study trace:** click **黃聲遠** at `#entity=huang`, or use **HIGHLIGHTS → Sheng-Yuan Huang / Career sequence**. The evidence-based chronological panel shows:
+| Field | Meaning |
+|---|---|
+| `birthYear` | Year a person was born, from an attributable biography. **Main x coordinate, people only** |
+| `deathYear` | Died (when verified) |
+| `year` (legacy node) | Original seed corpus reference or award-year record; **never interpret uniformly** |
+| `chronology.year` | Specific evidenced professional/cultural event, tagged with `basis` |
+| `edge.year` | Date of the particular relationship claim; `yearKind` distinguishes graduation, employment, awarded, etc. |
+| `workRegion` | Provisional work-geography category used for a person's vertical band |
+| Unverified birth | No dated X position; appears in a separate unknown-birth register |
 
-| Time | Record | Attribution and source |
-| --- | --- | --- |
-| 1986 | 東海大學建築系, B.Arch | 2018 Taiwan Pavilion research booklet; Rice Architecture biography |
-| 1991 | 耶魯大學, M.Arch | Same |
-| 1991 / before return in 1993 | Eric Owen Moss Architects, Project Associate | Taiwan Pavilion booklet (precise end date not established) |
-| Before 1993 | North Carolina State University teaching | Taiwan Pavilion booklet, exact years not established |
-| 1993 | Huang returns to Taiwan | Taiwan Pavilion booklet |
-| 1994 | 田中央 established in Yilan | Taiwan Pavilion booklet / TOTO Gallery MA biographical record |
-| 2012 trial / 2013 regular operation | 羅東文化工場 | Luodong Cultural Working House official institutional history |
-| 2014 completed / 2015 opened | 雲門劇場 | Central News Agency completion report / Cloud Gate Dance Theatre official website |
+### Data files
 
-Notice that **Yale University and Eric Owen Moss Architects are both connected to Huang**, **not** directly to one another. Their order in a person-centered chronology does not imply a relationship between those institutions.
+| File | Responsibility |
+|---|---|
+| `index.html` | Current published home page |
+| `genealogy.css`, `genealogy.js` | Independent full-canvas interaction and visual UI |
+| `data.js` | Initial sourced buildings / people / practice cases |
+| `expanded-data.js` | Historical annual architecture award entries and publication nodes |
+| `academic-data.js` | Official educational histories and institutional links |
+| `editorial-data.js` | Publication-grounded contextual research notes |
+| `education-data.js`, `lineage-bridges.js` | Alumni, degrees, teaching, documented office work |
+| `chronology-data.js` | Particular event chronologies incl. Huang Sheng-yuan |
+| `biographical-data.js`, `person-links.js` | Verified/contested birth-year facts and documented mentorship / collaboration |
+| `relationship-grammar.js` | Relationship semantic interpretation and line styles |
+| `index-genealogy.html` | Staging snapshot of edition 05 entry point |
+| `README.md` | Research methodology and contribution protocol |
+| `atlas-v2.js`, `atlas-v2.css`, `styles.css`, `app.js` | Unused archived earlier visual versions (kept to avoid destructive removal) |
 
-**Tamkang Architecture:** established in **1964**, supported by the department's historical documentation. The institution's foundation appears in the historical 1960s context rather than in the right-hand 2020s.
+### Validation
 
-**Source-first date semantics:** `n.chronology = {year, basis, label, source}` records a factually supported event. `_diagramYear` is a client-derived visual placement and should never be cited as founding/completion date if `_placementBasis === "relationship-context"`. Original `n.year` is retained for source records such as award years. For a school, `education-context` may locate the school near a known educational connection, **not** its institutional founding.
+2026-10-11, Edition 05: Source URLs and relationship identifiers checked for internal referential integrity; all new JavaScript parsed; simulated interaction smoke test covered application initialisation, search, Huang Sheng-yuan source panel, Canvas draw and the full office index. A browser-based responsive visual QA and live GitHub Pages deployment check are **not** yet verified.
 
+### Further work
 
+The current graph is honest about its incompleteness. The next high-priority research tasks are to increase sourced birth years, distinguish university graduations from teaching appointments, collect true former-employer/co-author/collaboration records from primary biographies, assign qualified work-region metadata to more people, cross-check attribution in award inventories, and add original bibliographic entries and dates for the key theoretical authors and editors.
 
-## Relation grammar edition — 2026-10-11
-
-A distinction absent from earlier editions is now implemented: **relation types are part of the visual encoding**, not merely a list in an information panel.
-
-- **Studied at / 就讀・畢業** — blue dashed lines; only documented degree or alumni statements.
-- **Taught at / 任教** — pale blue dotted lines; not equivalent to graduating from a school.
-- **Led / 主持** — amber solid line for department heads and leadership.
-- **Founded / 創辦** — green solid line for a documented founding relationship.
-- **Worked at / 任職** — ochre dashed line for explicit employment history.
-- **Associated with / 關聯** — neutral dotted line if the source establishes some association but not a founder/employment claim.
-- **Collaborated with / 合作** — light green line when the existing source text explicitly describes collaboration.
-- **Designed / 設計** — violet solid line from named designer or design firm to the building/work.
-- Further codes are available for technical contributions, publications, awards, site context, hosting and curatorial research.
-
-Selection now shows a **grouped relationship panel** with the category header, target node, actual source-backed claim, event date where supported, *date kind* and clickable reference IDs; the graph shows matching colored line styles and local link captions. The graph has a persistent clickable legend to enable/disable particular semantic types; FILTER includes every available relation type.
-
-The display also distinguishes **AWARD YEAR** from **GRADUATED**, **FOUNDED**, **EMPLOYMENT** and **BUILDING EVENT**. 175 relationships currently refer to award-year documentation; a dated award listing must not be mistaken for a completion-year statement.
-
-### Present limits
-
-This is still a **selective research dataset**, not the equivalently detailed biography corpus shown in Kyle Miller's example. In the current 334 source-linked relations, many are project/design associations and relatively few encode direct collaboration, employment, degree histories or authored publications. In particular, *Wrote* will only appear where a source actually verifies an authorship relationship; the site does not manufacture book–author or mentor–student links for visual symmetry. General `associated` links remain labeled broadly until stronger evidence establishes a more precise type.
-
-The screenshot-based Kyle-inspired design uses distinct colors and dash patterns; it is an independent implementation, not copied code or data.
-
-
-## Navigation and interactions
-
-- Search by Traditional Chinese/English names; press `/` for immediate focus.
-- Mouse drag to pan; wheel to zoom; `FIT VIEW` resets.
-- Click a node to focus its documented local connections, see descriptions and original source URLs; its panel includes clickable **CHRONOLOGICAL RELATIONSHIPS**, when enough dated events are available.
-- FILTER by people, firms, institutions, buildings, publications, events; independently limit relationship types and history year.
-- HIGHLIGHTS are predefined introductory research threads, not verified intellectual lineages.
-- COMPARE two nodes for the shortest **documented** path and common immediate neighbors. A path reflects only records present here; it does **not** establish mentoring, causation or historical influence.
-- NIGHT view, direct URL to a selected node (`#entity=<id>`), CSV export, Guide and About.
-- Mobile devices keep the interactive map with horizontally scrollable controls. This is not yet a complete accessible nonvisual directory.
-
-## Implementation
-
-Pure browser-native frontend — **no package manager or build step required**.
-
-| File | Role |
-| --- | --- |
-| `index.html` | Site navigation, floating panels and canvas |
-| `atlas-v2.css` | Responsive visual design |
-| `atlas-v2.js` | Canvas rendering, focus, search, filters, comparison, exports |
-| `data.js` | Initial museum/practice/works records |
-| `expanded-data.js` | Architectural award corpus / journals |
-| `academic-data.js` | Postwar academic historiography, schools and historical awards |
-| `editorial-data.js` | Contextual journal-based analyses of individual works |
-| `education-data.js` | Alumni, advanced education, career bridges |
-| `lineage-bridges.js` | Verified graduation years and cross-office links |
-| `chronology-data.js` | Source-backed founding / study / career / completion dates, Huang Sheng-yuan example |\n| `relationship-grammar.js` | Evidence-aware link semantics, readable colors/dashes, date event types |\n| `README.md` | Research and editorial guidelines |
-
-Assets from the older first prototype (`styles.css` and `app.js`) are retained but no longer loaded.
-
-## Editorial rules for contributions
-
-- **Always provide an exact attributed claim and original source**; ideally add dates with their true meanings and linked independent corroboration where available.
-- Differentiate `design`, `affiliation`, `education`, `client`, `recognition`, `curatorial`, `context` and `engineering` and use edge labels to state exact facts. A shared degree-granting institution, award or workplace is not necessarily mentorship.
-- Record `year: null` if the reference year is unknown; *do not invent approximate graduation years or firm establishment dates*. Some old award list-derived event-year anchors are only visual references; consult the record descriptions.
-- Keep historically ambiguous design authorship explicit. Credit local executive architects, collaborators and engineering teams, where documented.
-- Institution and publication nodes should not be interpreted as personal lineage without citations.
-- Respect original photographers' and archives' reproduction rights. Current interface uses generated Canvas shapes, not scraped unlicensed photos.
-- The network is intentionally incomplete. Absence of a connection does not imply the absence of a real-world relationship.
-- Edit via a GitHub PR or issue with the exact claim, relationship type, start/end dates if documented, and publicly accessible evidence.
-
-## Validation
-
-On 2026-10-11: syntax checks across all JS modules, dataset assembly, unique node/source IDs, valid edge endpoints, typed relationships and resolvable source IDs were tested; numerical x-order of all design relationships and the Huang example were also checked. **No in-browser cross-device test or live GitHub Pages publication validation was available during this build.** Source websites may change; links and older credits should be audited during subsequent scholarship.
-
-## Suggested next research directions
-
-- Chronological educational and employment network from oral histories, verified CVs and alumni rosters; don't infer teacher–student relations.
-- Women practitioners, landscape architects, public-sector planning and Indigenous building culture (currently underrepresented).
-- Further periodicals, research papers and architecture exhibition lineages.
-- Expand under-covered periods including Japanese colonial built heritage and earlier architectural histories; be explicit about disciplinary boundaries and periodization.
-- Community-reviewed factual corrections and source health checks, then searchable bibliography / structured export.
+Submit contributions through [Issues](https://github.com/arc-hao-0215/arc-hao-0215.github.io/issues/new) with a specific relationship claim, who or what it connects, sources, dated event type (if known), and uncertainty.
