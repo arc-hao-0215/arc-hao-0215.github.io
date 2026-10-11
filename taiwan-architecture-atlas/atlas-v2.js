@@ -16,7 +16,7 @@ const colors={person:"#141a17",practice:"#bb5843",institution:"#466778",work:"#9
 const relColors={design:"#a7a9a3",affiliation:"#ae7770",education:"#819695",engineering:"#9b9c94",client:"#a3a7a0"};
 const themes={
  postwar:{label:"Postwar modernism",subtitle:"東海大學、現代主義、戰後專業化",ids:["pei","chen","zhangzk","feng","wang","tunghai","tunghaiarch","luce","sunhall","han"]},
- yilan:{label:"Yilan / Public life",subtitle:"黃聲遠、田中央、地方公共建築",ids:["huang","fieldoffice","luodong"]},
+ yilan:{label:"Sheng-Yuan Huang / Career sequence",subtitle:"東海 → 耶魯 → Moss → 黃聲遠 → 田中央 → 作品",ids:(D.stories?.huang||[]).map(s=>byId.get(s.node)?.id).filter(Boolean)},
  practice:{label:"Recent Taiwan architecture",subtitle:"歷屆臺灣建築獎與事務所網絡",ids:[]},
  global:{label:"Taiwan × Global",subtitle:"國際合作與臺灣建築文化",ids:["ito","itoassoc","ntt","oma","tpac","koolhaas","gianotten","mecanoo","weiwuying","houben","pei"]},
  journals:{label:"Architectural discourse",subtitle:"專業刊物與戰後建築史研究",ids:nodes.filter(n=>n.type==="publication").map(n=>n.id)}
@@ -154,6 +154,19 @@ function layout(){
    yPos.set(n.id,Math.max(70,Math.min(1480,anchor+(pseudo(n.id,7)-.5)*350)));
  });
  const priority={institution:0,person:1,practice:2,publication:2,event:2,work:3};
+ // Keep the documented Huang career corridor visually coherent while
+ // preserving each node's independent evidence-bearing chronological position.
+ const huangY={
+   "東海大學建築學系":480,
+   "耶魯大學建築學院":570,
+   "Eric Owen Moss Architects":710,
+   "北卡羅萊納州立大學":830,
+   "黃聲遠":635,
+   "田中央":765,
+   "羅東文化工場":700,
+   "雲門劇場":825
+ };
+ nodes.forEach(n=>{if(Object.prototype.hasOwnProperty.call(huangY,n.name))yPos.set(n.id,huangY[n.name]);});
  nodes.forEach(n=>{
    const date=n._diagramYear;
    const time=date===null?null:(date-1945)/81;
@@ -557,7 +570,7 @@ function showModal(kind){
    $("#modal-body").innerHTML='<p>每個圓點代表一個人物、設計事務所、學校／機構、作品或建築刊物。淡色曲線表示有來源記載的關係；點選後會顯示相關節點、具體關係類型與參考文獻。</p>'+
    '<div class="dual"><div><span class="eyebrow">01 / NAVIGATION</span><h2>Pan, zoom, select.</h2><p>拖曳平移、滾輪縮放。按 / 搜尋，點選節點沿著關係繼續探索；FIT VIEW 回到全圖。</p></div>'+
    '<div><span class="eyebrow">02 / EXPLORE</span><h2>Search, trace, compare.</h2><p>FILTER 可限定資料類型與時間；HIGHLIGHTS 提供研究切面；COMPARE 選取兩點後搜尋已記錄的最短關係路徑。</p></div>'+
-   '<div><span class="eyebrow">03 / TIME</span><h2>Chronology is provisional.</h2><p>圖譜的水平時間座標是相關事件或獎項的參考年份，不是人物出生年份、事務所創辦年或確切落成年。</p></div>'+
+   '<div><span class="eyebrow">03 / TIME</span><h2>Chronology is provisional.</h2><p>水平位置區分學校成立或教育關聯、人物職涯、事務所創立及建築落成／試營運；若只有得獎資料則使用得獎年份。尚未核實的資料僅按關係相對定位，不能當成已查證日期。</p></div>'+
    '<div><span class="eyebrow">04 / CAUTION</span><h2>Source ≠ influence.</h2><p>共同列名於得獎名錄不代表師徒或思想傳承。收錄資料並不完整，網絡中心性不代表建築成就的高低。</p></div></div>';
  }else{
   $("#modal-body").innerHTML='<p>這是一個持續擴充的臺灣建築文化關係研究計畫。第一批以戰後建築史、教育譜系，以及《建築師》雜誌歷屆臺灣建築獎的得獎設計團隊與作品為基礎。目的是讓專業關係可以被探索、檢查和引用，而不是將知名度等同於建築價值。</p>'+
