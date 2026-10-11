@@ -1,14 +1,14 @@
 /*
  * Project figure captions | 2026-10-11
  * Research-inspired number + freely wrapping caption layout.
- * Scoped to the nine project pages; media and lightboxes unchanged.
+ * Scoped to all ten project pages; media and lightboxes unchanged.
  */
 .portfolio-project :is(
- .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+ .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
  .sa-figure,.bab-figure,.gh-figure,.wp-figure
 ){min-width:0;max-width:100%}
 .portfolio-project :is(
- .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+ .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
  .sa-figure,.bab-figure,.gh-figure,.wp-figure
 )>figcaption{
  box-sizing:border-box;
@@ -27,11 +27,11 @@
  font:400 12px/1.58 Arial,Helvetica,sans-serif;
 }
 .portfolio-project :is(
- .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+ .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
  .sa-figure,.bab-figure,.gh-figure,.wp-figure
 )>figcaption *,
 .portfolio-project :is(
- .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+ .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
  .sa-figure,.bab-figure,.gh-figure,.wp-figure
 )>figcaption>*{
  box-sizing:border-box;
@@ -42,24 +42,24 @@
  word-break:normal!important;
 }
 .portfolio-project :is(
- .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+ .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
  .sa-figure,.bab-figure,.gh-figure,.wp-figure
 )>figcaption>:first-child,
 .portfolio-project :is(
- .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+ .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
  .sa-figure,.bab-figure,.gh-figure,.wp-figure
 )>figcaption>:nth-child(2){
  display:block!important;
 }
 .portfolio-project :is(
- .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+ .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
  .sa-figure,.bab-figure,.gh-figure,.wp-figure
 )>figcaption>:first-child{
  white-space:nowrap!important;
  font-variant-numeric:tabular-nums;
 }
 .portfolio-project :is(
- .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+ .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
  .sa-figure,.bab-figure,.gh-figure,.wp-figure
 )>figcaption>:nth-child(2) strong{
  display:block;
@@ -71,14 +71,14 @@
 }
 /* Image itself remains the zoom target; omit repeated VIEW labels as on Research. */
 .portfolio-project :is(
- .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+ .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
  .sa-figure,.bab-figure,.gh-figure,.wp-figure
 )>figcaption>:nth-child(3){display:none!important}
 /* Nested Waterfront+ descriptions need a mobile visibility override. */
 .portfolio-project .wp-figure>figcaption>div>span{display:block!important}
 @media(max-width:640px){
  .portfolio-project :is(
-  .ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
+  .lf-figure,.ftb-figure,.rt-figure,.tc-figure,.soc-figure,.ed-figure,
   .sa-figure,.bab-figure,.gh-figure,.wp-figure
  )>figcaption{
   grid-template-columns:23px minmax(0,1fr)!important;
