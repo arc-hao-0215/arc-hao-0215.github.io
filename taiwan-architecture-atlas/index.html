@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f1eb">
+  <meta name="description" content="臺灣建築關係圖譜：以人物、事務所、教育、作品及出版探索台灣戰後建築文化。">
+  <title>臺灣建築關係圖譜 — Taiwan Architecture, All Connected</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="臺灣建築關係圖譜首頁">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span><strong>臺灣建築關係圖譜</strong><small>TAIWAN ARCHITECTURE, ALL CONNECTED</small></span>
+      </a>
+      <nav class="header-actions" aria-label="主要工具">
+        <span class="edition">RESEARCH EDITION · 2026.10</span>
+        <button type="button" id="storiesBtn">探索路徑 <span aria-hidden="true">↗</span></button>
+        <button type="button" id="guideBtn">閱讀指南</button>
+        <button type="button" id="themeBtn" aria-label="切換深色模式">◐</button>
+      </nav>
+    </header>
+    <main class="layout">
+      <aside class="sidebar" aria-label="探索與篩選">
+        <div class="intro">
+          <div class="eyebrow"><span class="red-dot"></span> AN OPEN RESEARCH ATLAS</div>
+          <h1>看見建築<br><em>之間的關係。</em></h1>
+          <p>從建築師到事務所、學校、作品與出版，透過可查證的連結閱讀台灣戰後建築文化。</p>
+        </div>
+        <label class="search-label" for="searchInput">SEARCH THE NETWORK <kbd>/</kbd></label>
+        <div class="search">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="搜尋人物、建築、事務所…" autocomplete="off">
+          <button type="button" id="searchClear" aria-label="清除搜尋">×</button>
+        </div>
+        <div id="searchResults" class="search-results" aria-live="polite"></div>
+        <div class="sidebar-heading"><span>EXPLORE BY TYPE</span><button type="button" id="allTypes">全部</button></div>
+        <div id="typeFilters" class="filter-list" aria-label="節點類型"></div>
+        <div class="sidebar-heading extra"><span>GEOGRAPHY</span><button type="button" id="allRegions">全部</button></div>
+        <div id="regionFilters" class="region-filters"></div>
+        <div class="sidebar-heading extra"><span>TIME WINDOW</span><span id="yearVal">2026</span></div>
+        <input id="yearRange" type="range" min="1945" max="2026" value="2026" step="1" aria-label="顯示不晚於此年的條目">
+        <div class="time-labels"><span>1945</span><span>2026</span></div>
+        <label class="toggle-row"><input id="hideUndated" type="checkbox"><span>隱藏年份待考節點</span></label>
+        <div class="sidebar-notes">
+          <div class="stats"><span><b id="statNodes">—</b><small>ENTITIES</small></span><span><b id="statEdges">—</b><small>RELATIONS</small></span><span><b id="statSources">—</b><small>SOURCES</small></span></div>
+          <p>這是以可靠來源建立的<strong>起始選樣</strong>，不是完整、排名式的台灣建築師名錄。所有年份待考者均明確標示。</p>
+        </div>
+      </aside>
+      <section class="workspace" aria-label="互動建築文化關係圖">
+        <div class="workspace-toolbar">
+          <div class="workspace-title">
+            <span class="status-pill"><span></span> INTERACTIVE NETWORK</span>
+            <span id="focusLabel">全域視圖 / ALL RELATIONSHIPS</span>
+          </div>
+          <div class="toolbar-actions">
+            <button type="button" id="connectionsBtn" aria-expanded="false">關係類型 <span>⌄</span></button>
+            <button type="button" id="clearFocus" disabled>清除選取 ×</button>
+            <button type="button" id="zoomOut" aria-label="縮小">−</button>
+            <button type="button" id="zoomIn" aria-label="放大">+</button>
+            <button type="button" id="fitView">適配視圖</button>
+          </div>
+          <div id="connectionsPanel" class="connections-panel hidden"></div>
+        </div>
+        <div class="graph-container" id="graphContainer">
+          <svg id="graph" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="依時間與地區排列的台灣建築文化圖譜。選擇節點查看可查證的關係。" tabindex="0"></svg>
+          <div id="hoverTip" class="hover-tip" role="status" aria-live="polite"></div>
+          <div class="map-hint">拖曳平移 · 滾輪縮放 · 點選節點探索 · Esc 返回</div>
+          <div class="map-legend" aria-label="圖例">
+            <span><i class="legend-dot person"></i> 人物</span><span><i class="legend-dot office"></i> 事務所</span><span><i class="legend-dot building"></i> 建築</span><span><i class="legend-dot other"></i> 機構／出版</span>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <div><span class="bottom-number">01 /</span> <strong>每個節點代表一段歷史，每條連線皆附有來源。</strong></div>
+          <a href="methodology.html">資料方法與參考來源 ↗</a>
+        </div>
+      </section>
+      <aside class="detail hidden" id="detailPanel" aria-label="選取的節點詳情">
+        <div class="detail-tools"><span>ENTITY / <span id="detailIndex">01</span></span><button id="closeDetail" type="button" aria-label="關閉詳情">×</button></div>
+        <div class="detail-body">
+          <div class="detail-type" id="detailType"></div>
+          <h2 id="detailTitle"></h2><p class="detail-en" id="detailEnglish"></p>
+          <div class="detail-meta" id="detailMeta"></div>
+          <p class="detail-summary" id="detailSummary"></p>
+          <h3>DOCUMENTED CONNECTIONS <span id="connectionCount"></span></h3>
+          <div id="detailConnections" class="detail-connections"></div>
+          <h3>REFERENCES</h3>
+          <div id="detailSources" class="detail-sources"></div>
+        </div>
+        <div class="detail-footer"><button type="button" id="backDetail">← 上一個</button><button type="button" id="shareDetail">複製節點連結 ↗</button></div>
+      </aside>
+    </main>
+    <div class="dialog-backdrop hidden" id="modalBackdrop"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="dialog-head"><span class="eyebrow">TAIWAN / CULTURE / NETWORK</span><button id="modalClose" type="button" aria-label="關閉">×</button></div>
+      <h2 id="modalTitle"></h2><div id="modalContent"></div>
+    </div></div>
+    <footer class="site-footer"><span>TAIWAN ARCHITECTURE, ALL CONNECTED · AN INDEPENDENT RESEARCH PROTOTYPE</span><a href="https://architectureallatonce.com/" target="_blank" rel="noopener noreferrer">Conceptual reference: Architecture All At Once ↗</a></footer>
+  </div>
+</body></html>
