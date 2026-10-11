@@ -230,7 +230,7 @@
   ["逢甲大學建築學系",1963,"Feng Chia Architecture"],
   ["淡江大學建築學系",1964,"Tamkang Architecture"]
  ];
- historicalSchools.forEach(([name,year,en])=>addNode(name,"institution",year,"S19","臺灣戰後建築教育體系相關單位；圖上年份僅為歷史定位錨點，非經本資料查證的系所成立日期。",en));
+ historicalSchools.forEach(([name,year,en])=>addNode(name,"institution",null,"S19","臺灣戰後建築教育體系相關單位。此版尚未逐一核實成立年度，因此以 UNDATED 顯示，不將年代估計當成史實。",en));
  addEdge("國立成功大學建築學系","今日建築","education","學系曾創辦《今日建築》刊物（1954–1955）",1954,"S22");
  // Work directly documented in 25-year award, including architect attribution.
  addNode("王秋華","person",1993,"S24","臺灣重要建築師；《建築師》雜誌首屆建築25年獎資料記錄其參與中原大學張靜愚紀念圖書館設計。","Wang Chiu-hwa");
