@@ -1,0 +1,117 @@
+/*
+ Research Editorial Motion / 2026-10-11
+ Visual language mirrors the Project section: understated reveal, staggered imagery,
+ current-section tracking and source focus. Never animates research data itself.
+ Progressive enhancement: content is visible without JS, IntersectionObserver,
+ or when prefers-reduced-motion is enabled.
+*/
+.research-article .essay-layout aside nav[aria-label="Essay contents"] > a[href^="#"]{
+  position:relative;
+  border-left:2px solid transparent;
+  padding-left:10px;
+  transition:color .25s ease,border-color .25s ease;
+}
+.research-article .essay-layout aside nav[aria-label="Essay contents"] > a.rm-current,
+.research-article .essay-layout aside nav[aria-label="Essay contents"] > a[aria-current="location"]{
+  color:#252824 !important;
+  border-left-color:#a33d2b;
+}
+.research-article .essay-layout aside nav[aria-label="Essay contents"] > a[href^="#"]:focus-visible{
+  outline:2px solid #a33d2b;
+  outline-offset:3px;
+}
+@media (prefers-reduced-motion:no-preference){
+  /* Opening sequence: matches Lightly in the Forest's quiet entrance. */
+  .research-article.rm-ready .essay-header > .eyebrow{
+    animation:rm-enter .64s cubic-bezier(.22,1,.36,1) both;
+  }
+  .research-article.rm-ready .essay-header > h1{
+    animation:rm-enter .82s .08s cubic-bezier(.22,1,.36,1) both;
+  }
+  .research-article.rm-ready .essay-header > .essay-subtitle{
+    animation:rm-enter .74s .17s cubic-bezier(.22,1,.36,1) both;
+  }
+  .research-article.rm-ready .essay-header > .essay-byline{
+    animation:rm-enter .7s .25s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes rm-enter{
+    from{opacity:0;transform:translate3d(0,10px,0)}
+    to{opacity:1;transform:translate3d(0,0,0)}
+  }
+  /* Chapters/subheads animate once; body paragraphs remain fully readable. */
+  .research-article.rm-ready .rm-heading{
+    opacity:0;
+    transform:translate3d(0,12px,0);
+    transition:opacity .68s cubic-bezier(.22,1,.36,1),transform .68s cubic-bezier(.22,1,.36,1);
+    transition-delay:var(--rm-delay,0ms);
+  }
+  .research-article.rm-ready .rm-heading.rm-visible{
+    opacity:1;
+    transform:translate3d(0,0,0);
+  }
+  .research-article.rm-ready .rm-subheading{
+    transition-duration:.61s;
+    transform:translate3d(0,9px,0);
+  }
+  .research-article.rm-ready .rm-subheading.rm-visible{
+    transform:translate3d(0,0,0);
+  }
+  /* Image and caption enter as one evidence unit, in two gentle beats. */
+  .research-article.rm-ready figure.rm-figure{
+    opacity:0;
+    transform:translate3d(0,15px,0);
+    transition:opacity .78s cubic-bezier(.22,1,.36,1),transform .78s cubic-bezier(.22,1,.36,1);
+    transition-delay:var(--rm-delay,0ms);
+  }
+  .research-article.rm-ready figure.rm-figure.rm-visible{
+    opacity:1;
+    transform:translate3d(0,0,0);
+  }
+  .research-article.rm-ready figure.rm-figure > figcaption{
+    opacity:0;
+    transform:translate3d(0,6px,0);
+    transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1);
+    transition-delay:calc(var(--rm-delay,0ms) + 140ms);
+  }
+  .research-article.rm-ready figure.rm-figure.rm-visible > figcaption{
+    opacity:1;
+    transform:translate3d(0,0,0);
+  }
+  /* Subtle opening-figure entrance; no zoom/crop on maps or analysis plates. */
+  .research-article.rm-ready figure.rm-figure.rm-first.rm-visible{
+    animation:rm-first-figure .9s .24s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes rm-first-figure{
+    from{opacity:.7;transform:translate3d(0,12px,0)}
+    to{opacity:1;transform:translate3d(0,0,0)}
+  }
+  /* Referenced bibliography item briefly becomes easy to locate. */
+  .research-article .essay-source [id^="ref-"].rm-ref-flash{
+    animation:rm-reference-focus 1.45s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes rm-reference-focus{
+    0%{background:rgba(163,61,43,.12);box-shadow:-3px 0 0 #a33d2b}
+    62%{background:rgba(163,61,43,.055);box-shadow:-3px 0 0 rgba(163,61,43,.45)}
+    100%{background:transparent;box-shadow:-3px 0 0 transparent}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .research-article .essay-layout aside nav[aria-label="Essay contents"] > a{transition:none!important}
+  .research-article.rm-ready :is(.rm-heading,figure.rm-figure,figure.rm-figure>figcaption){
+    opacity:1!important;transform:none!important;transition:none!important;animation:none!important
+  }
+  .research-article.rm-ready .essay-header > :is(.eyebrow,h1,.essay-subtitle,.essay-byline){
+    opacity:1!important;transform:none!important;animation:none!important
+  }
+  .research-article .essay-source [id^="ref-"].rm-ref-flash{animation:none!important}
+}
+@media(max-width:760px){
+  .research-article .essay-layout aside nav[aria-label="Essay contents"] > a[href^="#"]{padding-left:7px}
+  /* Shorter mobile motion, with no lateral drift. */
+  @media (prefers-reduced-motion:no-preference){
+    .research-article.rm-ready figure.rm-figure{transform:translate3d(0,10px,0)}
+    .research-article.rm-ready figure.rm-figure.rm-visible{transform:translate3d(0,0,0)}
+    .research-article.rm-ready .rm-heading{transform:translate3d(0,8px,0)}
+    .research-article.rm-ready .rm-heading.rm-visible{transform:translate3d(0,0,0)}
+  }
+}
