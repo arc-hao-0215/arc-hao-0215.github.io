@@ -89,14 +89,8 @@ if(atlas){
  render();
 }
 
-// Load research catalogue on all research pages.
-if (/^research(?:-[a-z0-9-]+)?\.html$/i.test(
-  window.location.pathname.split("/").pop() || ""
-)) {
-  const researchScript = document.createElement("script");
-  researchScript.src = "research-updates.js?v=20261008";
-  document.head.appendChild(researchScript);
-}
+// Research catalogue and essay metadata are maintained in each page's authored HTML.
+// Do not inject the retired research-updates.js overlay, which overwrote current titles.
 
 /* Homepage image carousel: sequential, pauseable and motion-aware. */
 {
