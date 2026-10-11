@@ -55,5 +55,7 @@
  connect("修澤蘭",sz.name,"affiliation","1956年與傅積寬共同創辦",1956,"B21");
  const zhongshan=add("陽明山中山樓","work","B21","修澤蘭設計，1965年獲委託，建築歷史與實際竣工日期需另據文資資料核對。","Chung-Shan Hall");
  connect("修澤蘭",zhongshan.name,"design","1965年受託設計陽明山中山樓（非竣工年）",1965,"B21");
+ const sam=add("山姆・戴維斯","person","B26","國家文藝獎姚仁喜簡介明確稱Sam Davis為其柏克萊大學建築系求學時的老師。其出生年及個別授課期間尚待查證。","Sam Davis");
+ connect("姚仁喜",sam.name,"mentorship","姚仁喜在加州柏克萊求學時的老師（國家文藝獎得主介紹）",undefined,"B26");
  D.biographicalEdition="birth-year anchored with further verified people and mentorship links";
 })();
