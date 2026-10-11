@@ -448,7 +448,19 @@ function renderSelection(){
  if(!n){panel.hidden=true;return;}
  panel.hidden=false;
  const compareText=state.compare?'<div class="compare-selection"><span>COMPARE MODE</span><br>'+(state.compared.length===1?'Select a second entity to discover shared connections and pathways.':"Two selected entities are connected below.")+'</div>':"";
- const row=list.filter(x=>edgeVisible(x.e)).sort((a,b)=>(byId.get(a.n).type==="person"?-1:0)-(byId.get(b.n).type==="person"?-1:0));
+ const stage=x=>{
+   const other=byId.get(x.n);
+   if(x.e.type==="education"&&other?.type==="institution")return 0;
+   if(x.e.type==="affiliation"&&other?.type==="practice")return 1;
+   if(other?.type==="person")return 2;
+   if(other?.type==="work")return 4;
+   return 3;
+ };
+ const row=list.filter(x=>edgeVisible(x.e)).sort((a,b)=>{
+   const sa=stage(a),sb=stage(b);
+   return sa-sb||((factualYear(byId.get(a.n))??a.e.year??9999)-(factualYear(byId.get(b.n))??b.e.year??9999))||
+     (byId.get(a.n).name.localeCompare(byId.get(b.n).name,"zh-Hant"));
+ });
  const tag=D.categories[n.type]?.en||n.type;
  const path=state.compare&&state.compared.length===2?routePath(state.compared[0],state.compared[1]):[];
  const common=state.compare&&state.compared.length===2?
@@ -461,7 +473,7 @@ function renderSelection(){
  }
  inner.innerHTML='<div class="selection-content"><span class="selection-label">'+escape(tag.toUpperCase())+' / ENTITY '+String(nodes.indexOf(n)+1).padStart(3,"0")+'</span>'+
   '<h2>'+escape(n.name)+'</h2><div class="selection-en">'+escape(n.en)+'</div>'+
-  '<div class="selection-meta"><span>REFERENCE YEAR <b>'+(Number.isFinite(n.year)?n.year:'UNDATED')+'</b></span><span>LINKS <b>'+list.length+'</b></span></div>'+
+  '<div class="selection-meta"><span>TIME RECORD <b>'+(n.chronology?escape(n.chronology.basis.toUpperCase()+" "+n.chronology.year):n.type==="work"&&Number.isFinite(n.year)?escape("AWARD "+n.year):n._placementBasis==="relationship-context"?"RELATIVE":Number.isFinite(n.year)?n.year:"UNDATED")+'</b></span><span>LINKS <b>'+list.length+'</b></span></div>'+
   '<p class="selection-desc">'+escape(n.desc)+'</p>'+
   '<p class="chronology-meta">'+escape(n.chronology?.label|| (n._placementBasis==='relationship-context'?'DIAGRAM ORDER ONLY / Not a verified founding, graduation or completion date.':'Chronology referenced to linked evidence.'))+'</p>'+compareText+cmp+timelineHTML(n)+
   '<div class="selection-subhead">DOCUMENTED CONNECTIONS <span>'+row.length+'</span></div>'+
