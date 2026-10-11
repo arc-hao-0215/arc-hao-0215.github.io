@@ -1,0 +1,25 @@
+/* Hong Kong cultural ecosystems — field photography and documentary sources, 2026-10-11 */
+.research-article .essay-body .hk-single,
+.research-article .essay-body .hk-photo-pair {margin:28px 0 34px;min-width:0;}
+.research-article .essay-body .hk-single--opening {margin-top:34px;}
+.research-article .essay-body .hk-photo-pair {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start;}
+.research-article .essay-body .hk-photo-pair--comparison {align-items:start;}
+.research-article .essay-body .hk-figure {margin:0;max-width:100%;min-width:0;overflow:hidden;}
+.research-article .essay-body .hk-figure > a {display:block;overflow:hidden;background:#e7e8e3;line-height:0;cursor:zoom-in;border:0;}
+.research-article .essay-body .hk-figure img {display:block;width:100%;height:auto;max-width:100%;object-fit:contain;transition:transform .35s ease;}
+.research-article .essay-body .hk-figure > a:hover img {transform:scale(1.012);}
+.research-article .essay-body .hk-photo-pair--portraits img {height:auto;aspect-ratio:auto;}
+.research-article .essay-body .hk-single--opening .hk-figure {max-width:700px;margin:0 auto;}
+.research-article .essay-body .hk-single:not(.hk-single--opening) .hk-figure {max-width:860px;}
+.research-article .essay-body .hk-single--archival .hk-figure {max-width:570px;}
+.research-article .essay-body .hk-figure figcaption {display:block!important;padding:11px 0 0!important;margin:0!important;color:#656b63!important;line-height:1.62!important;font-size:12px!important;white-space:normal!important;overflow-wrap:anywhere;}
+.research-article .essay-body .hk-figure .hk-credit {display:block;margin-top:4px;font-size:10.5px!important;line-height:1.6!important;color:#92958c!important;white-space:normal!important;}
+.research-article .essay-body .hk-figure .hk-credit a {color:#757d72!important;text-decoration:none;border-bottom:1px solid #c7cdc3;}
+.research-article .essay-body .hk-figure .hk-credit a:hover {color:#a33522!important;}
+.research-article .essay-body .hk-photo-pair--comparison .hk-figure:first-child img {aspect-ratio:4/3;object-fit:cover;}
+.research-article .essay-body .hk-photo-pair--comparison .hk-figure:nth-child(2) img {aspect-ratio:4/3;object-fit:cover;object-position:center 63%;}
+.research-article .essay-body .hk-single--archival img {max-height:690px;width:auto;max-width:100%;object-fit:contain;}
+.research-article .essay-body .research-table-wrap {overflow-x:auto;}
+@media(max-width:760px){.research-article .essay-body .hk-photo-pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:25px 0 30px;}.research-article .essay-body .hk-figure figcaption{font-size:11px!important;line-height:1.55!important;padding-top:8px!important;}.research-article .essay-body .hk-figure .hk-credit{font-size:9.5px!important;}.research-article .essay-body .hk-single{margin:26px 0 31px;}}
+@media(max-width:460px){.research-article .essay-body .hk-photo-pair--comparison{grid-template-columns:1fr;gap:22px;}.research-article .essay-body .hk-photo-pair--comparison .hk-figure:first-child img,.research-article .essay-body .hk-photo-pair--comparison .hk-figure:nth-child(2) img{aspect-ratio:auto;}}
+@media(prefers-reduced-motion:reduce){.research-article .essay-body .hk-figure img{transition:none;}.research-article .essay-body .hk-figure > a:hover img{transform:none;}}
