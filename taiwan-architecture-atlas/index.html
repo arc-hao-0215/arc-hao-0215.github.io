@@ -7,7 +7,7 @@
 <meta name="description" content="Architecture in Taiwan, All at Once — a living, source-based interactive map of architects, practices, schools, works and discourse.">
 <title>Architecture in Taiwan, All at Once — 臺灣建築關係圖譜</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%23f7f7f4'/%3E%3Ccircle cx='15' cy='20' r='4' fill='%230b0c0c'/%3E%3Ccircle cx='42' cy='15' r='4' fill='%230b0c0c'/%3E%3Ccircle cx='39' cy='46' r='4' fill='%230b0c0c'/%3E%3Cpath d='M15 20 Q22 -1 42 15 M42 15 Q55 29 39 46 M39 46 Q4 51 15 20' fill='none' stroke='%23b75437' stroke-width='1'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="atlas-v2.css?v=20261011-chronology-v3">
+<link rel="stylesheet" href="atlas-v2.css?v=20261011-relations-v1">
 <script defer src="data.js?v=20261011-02"></script>
 <script defer src="expanded-data.js?v=20261011-02"></script>
 <script defer src="academic-data.js?v=20261011-03"></script>
@@ -15,9 +15,10 @@
 <script defer src="education-data.js?v=20261011-05"></script>
 <script defer src="lineage-bridges.js?v=20261011-06"></script>
 <script defer src="chronology-data.js?v=20261011-chronology-v3"></script>
-<script defer src="atlas-v2.js?v=20261011-chronology-v3"></script>
+<script defer src="relationship-grammar.js?v=20261011-relations-v1"></script>
+<script defer src="atlas-v2.js?v=20261011-relations-v1"></script>
 </head>
-<body>
+<body class="night">
 <div class="app">
 <header class="site-head">
   <a class="logotype" href="./" aria-label="Architecture in Taiwan, All at Once homepage">
@@ -47,7 +48,8 @@
 </div>
 <main class="field-wrap" id="field-wrap" aria-label="The architecture relation map">
  <canvas id="network" aria-label="Interactive network visualization. Use search for keyboard navigation." tabindex="0"></canvas>
- <div class="field-caption"><span class="field-serial">NETWORK MAP / 001</span><span>LEFT → RIGHT: EDUCATION / PRACTICE / PEOPLE / WORKS — DATES BY EVIDENCE</span></div>
+ <div class="field-caption"><span class="field-serial">NETWORK MAP / 001</span><span>RELATIONS HAVE DISTINCT MEANINGS, COLORS &amp; LINE STYLES</span></div>
+ <div class="relation-key" id="relation-key" aria-label="關係類型圖例"></div>
  <div class="graph-top-right"><span id="visibility-stats">LOADING DATA…</span><button type="button" id="fit-btn" aria-label="Reset graph view">FIT VIEW ↗</button></div>
  <div class="graph-bottom-left"><span class="blink-dot"></span><b id="active-mode">COMPLETE NETWORK</b><span class="minor">DRAG TO PAN &nbsp; / &nbsp; SCROLL TO ZOOM &nbsp; / &nbsp; SELECT FOR CHRONOLOGY</span></div>
  <div class="graph-bottom-right">
@@ -70,7 +72,7 @@
    <div class="panel-rule"></div>
    <div class="panel-eyebrow">CONNECTION TYPES / 關係類型</div>
    <div id="relation-items"></div>
-   <p class="filter-note">時間座標採研究紀錄與獎項年份，不代表出生或完工年份。所有研究仍在增補與查核。</p>
+   <p class="filter-note">年份可能代表畢業、創立、任職、落成或得獎；點選連線檢查關係類型及來源。</p>
    <div class="panel-bottom"><button type="button" id="all-filter-reset">RESET FILTERS</button><button type="button" data-close="filter-panel">APPLY ↗</button></div>
  </div>
  <div class="highlight-panel floating-panel" id="highlight-panel" hidden>
