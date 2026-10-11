@@ -10,7 +10,7 @@ if(!ctx)return;
 const nodes=D.nodes,edges=D.edges;
 const byId=new Map(nodes.map(n=>[n.id,n]));
 const sources=new Map(D.sources.map(s=>[s.id,s]));
-const types=Object.keys(D.categories), edgeTypes=[...new Set(edges.map(e=>e.type))];
+const types=Object.keys(D.categories), edgeTypes=[...new Set(edges.map(e=>e.semantic||e.type))];
 const typeNames={person:"PEOPLE / 人物",practice:"PRACTICES / 事務所",institution:"SCHOOLS & INSTITUTIONS / 學校與機構",work:"BUILDINGS & PROJECTS / 作品",publication:"PUBLICATIONS / 出版",event:"EXHIBITIONS & AWARDS / 展覽與獎項"};
 const colors={person:"#141a17",practice:"#bb5843",institution:"#466778",work:"#989c97",publication:"#789064",event:"#9a7758"};
 const grammar=D.relationshipGrammar||{};
@@ -212,7 +212,7 @@ function layout(){
  });
 }
 function visible(n){return !!n&&state.types.has(n.type)&&((yearOf(n)===null)||yearOf(n)<=state.year);}
-function edgeVisible(e){return visible(byId.get(e.a))&&visible(byId.get(e.b))&&state.rels.has(e.type)&&(!e.year||e.year<=state.year);}
+function edgeVisible(e){return visible(byId.get(e.a))&&visible(byId.get(e.b))&&state.rels.has(e.semantic||e.type)&&(!e.year||e.year<=state.year);}
 function currentEdges(){return edges.filter(edgeVisible);}
 function currentNodes(){return nodes.filter(visible);}
 function threadSet(){
@@ -505,6 +505,56 @@ function timelineHTML(n){
    '<div class="timeline-steps">'+items+'</div>';
 }
 
+function relationGroupTitle(key,entity){
+ const rules={
+   studied:entity.type==="institution"?"STUDIED HERE":"STUDIED AT",
+   taught:entity.type==="institution"?"FACULTY / TAUGHT HERE":"TAUGHT AT",
+   led:entity.type==="institution"?"LED THIS INSTITUTION":"LED",
+   founded:entity.type==="practice"?"FOUNDED BY":"FOUNDED",
+   worked:entity.type==="practice"?"WORKED HERE":"WORKED AT",
+   associated:"PROFESSIONAL AFFILIATION",
+   collaborated:"COLLABORATED WITH",
+   designed:entity.type==="work"?"DESIGNED BY":"DESIGNED",
+   consulted:"CONTRIBUTED TO",
+   authored:entity.type==="publication"?"WRITTEN BY":"WROTE",
+   recognized:"RECOGNIZED BY",
+   curated:"CURATED / RESEARCHED",
+   belonged:"PART OF / HOSTED BY",
+   contextual:"RELATED SITE CONTEXT"
+ };
+ return rules[key]||semantic({semantic:key}).en;
+}
+function groupedRelationHTML(entity,records){
+ const groups=new Map();
+ for(const item of records){
+   const key=item.e.semantic||"associated";
+   if(!groups.has(key))groups.set(key,[]);
+   groups.get(key).push(item);
+ }
+ return [...groups.entries()]
+   .sort((a,b)=>(grammar[a[0]]?.order??999)-(grammar[b[0]]?.order??999))
+   .map(([key,items])=>{
+     const spec=grammar[key]||semantic(items[0].e);
+     const label=relationGroupTitle(key,entity);
+     const dash=(spec.dash||[]).length?"dashed":"solid";
+     const rows=items.sort((a,b)=>(a.e.year??factualYear(byId.get(a.n))??9999)-(b.e.year??factualYear(byId.get(b.n))??9999))
+       .map(item=>{
+          const other=byId.get(item.n),e=item.e;
+          const origin=(e.src||[]).map(id=>{
+            const s=sources.get(id);
+            return s?'<a href="'+escape(s.url)+'" target="_blank" rel="noopener noreferrer" class="edge-evidence" title="'+escape(s.title)+'">'+escape(id)+' ↗</a>':'<span>'+escape(id)+'</span>';
+          }).join(" ");
+          const year=Number.isFinite(e.year)?'<time class="edge-year">'+escape(e.year)+'</time>':'<span class="edge-year unsure">DATE UNVERIFIED</span>';
+          return '<article class="relation-entry"><button type="button" class="relation-entity-link" data-node="'+escape(other.id)+'"><span>'+escape(other.name)+'</span><span class="relation-link-arrow">↗</span></button>'+
+             '<div class="relation-note">'+escape(e.label||"Documented association")+'</div>'+
+             '<div class="relation-facts">'+year+'<span class="relation-sources">'+origin+'</span></div></article>';
+       }).join("");
+     return '<section class="relation-group" style="--link-color:'+escape(spec.color)+'">'+
+       '<h3 class="relation-group-head"><span class="relation-sample '+dash+'"></span><span>'+escape(label)+'</span><small>'+escape(spec.zh)+'</small><b>'+items.length+'</b></h3>'+
+       rows+'</section>';
+   }).join("");
+}
+
 function renderSelection(){
  const panel=$("#selection-panel"),inner=$("#selection-inner");
  const {n,list,cited}=details(state.selected);
@@ -538,9 +588,9 @@ function renderSelection(){
   '<h2>'+escape(n.name)+'</h2><div class="selection-en">'+escape(n.en)+'</div>'+
   '<div class="selection-meta"><span>TIME RECORD <b>'+(n.chronology?escape(n.chronology.basis.toUpperCase()+" "+n.chronology.year):n.type==="work"&&Number.isFinite(n.year)?escape("AWARD "+n.year):n._placementBasis==="relationship-context"?"RELATIVE":Number.isFinite(n.year)?n.year:"UNDATED")+'</b></span><span>LINKS <b>'+list.length+'</b></span></div>'+
   '<p class="selection-desc">'+escape(n.desc)+'</p>'+
-  '<p class="chronology-meta">'+escape(n.chronology?.label|| (n._placementBasis==='relationship-context'?'DIAGRAM ORDER ONLY / Not a verified founding, graduation or completion date.':'Chronology referenced to linked evidence.'))+'</p>'+compareText+cmp+timelineHTML(n)+
-  '<div class="selection-subhead">DOCUMENTED CONNECTIONS <span>'+row.length+'</span></div>'+
-  row.map(x=>'<button type="button" class="rel-node" data-node="'+escape(x.n)+'"><span><b>'+escape(byId.get(x.n).name)+'</b><small>'+escape(x.e.label)+(x.e.year?' / '+x.e.year:'')+' · '+escape((x.e.src||[]).join(", "))+'</small></span><span class="rel-arrow">↗</span></button>').join("")+
+  '<p class="chronology-meta">'+escape(n.chronology?.label|| (n._placementBasis==='relationship-context'?'DIAGRAM ORDER ONLY / This position is not a documented historical date.':'Chronology referenced to linked evidence.'))+'</p>'+compareText+cmp+
+  '<div class="selection-subhead">RELATIONSHIP TYPES <span>'+row.length+'</span></div>'+
+  groupedRelationHTML(n,row)+timelineHTML(n)+
   '<div class="selection-subhead">SOURCES & REFERENCES <span>'+cited.length+'</span></div>'+
   cited.map(s=>'<a class="source-link" href="'+escape(s.url)+'" target="_blank" rel="noopener noreferrer"><b>↗ '+escape(s.title)+'</b><small>'+escape(s.publisher)+' / '+escape(s.id)+'</small></a>').join("")+
   '<button type="button" class="panel-link" id="copy-node">COPY DIRECT LINK ↗</button></div>';
@@ -564,7 +614,8 @@ function categoriesPanel(){
  const rel=$("#relation-items");rel.replaceChildren();
  edgeTypes.forEach(t=>{
    const label=el("label","relation-check");
-   label.innerHTML='<input type="checkbox" data-rel="'+escape(t)+'" '+(state.rels.has(t)?"checked":"")+'> '+escape(D.relations[t]||t);
+   const spec=grammar[t]||{color:"#a3abb1",en:t,zh:t,dash:[]};
+   label.innerHTML='<input type="checkbox" data-rel="'+escape(t)+'" '+(state.rels.has(t)?"checked":"")+'><i class="relation-filter-sample" style="border-color:'+escape(spec.color)+';border-top-style:'+((spec.dash||[]).length?'dashed':'solid')+'"></i><span>'+escape(spec.en)+' <small>'+escape(spec.zh)+'</small></span>';
    label.querySelector("input").addEventListener("change",e=>{
      e.target.checked?state.rels.add(t):state.rels.delete(t);scheduleDraw();
    });rel.append(label);
@@ -614,7 +665,7 @@ function searchMatches(){
 function showModal(kind){
  closeFloating();
  const guide=kind==="guide",modal=$("#info-modal");
- $("#modal-eyebrow").textContent=guide?"READING THE MAP / QUICK GUIDE":"RESEARCH ATLAS / EDITION 02";
+ $("#modal-eyebrow").textContent=guide?"READING THE MAP / QUICK GUIDE":"RESEARCH ATLAS / RELATION GRAMMAR";
  $("#modal-title").innerHTML=guide?'How to read<br><em>the network.</em>':'Architecture in Taiwan,<br><em>all at once.</em>';
  if(guide){
    $("#modal-body").innerHTML='<p>每個圓點代表一個人物、設計事務所、學校／機構、作品或建築刊物。淡色曲線表示有來源記載的關係；點選後會顯示相關節點、具體關係類型與參考文獻。</p>'+
