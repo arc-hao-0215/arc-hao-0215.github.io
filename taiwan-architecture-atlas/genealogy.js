@@ -320,6 +320,7 @@ function nearest(x,y){
  }
  return best;
 }
+function closeFloating(){$("#floating").hidden=true;}
 function select(id,center=true,record=true){
  const n=byId.get(id);if(!n)return;
  state.selected=id;
