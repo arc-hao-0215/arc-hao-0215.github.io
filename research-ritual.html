@@ -88,19 +88,9 @@
 }
 @media(prefers-reduced-motion:reduce){.rr-figure img{transition:none}}
 </style>
-<script>function rrFallback(img){
-  if(img.dataset.fallback){
-    img.onerror=null;
-    img.src=img.dataset.fallback;
-    const a=img.closest('a');if(a)a.href=img.dataset.fallback;
-    const copy=img.closest('figure')?.querySelector('.rr-cap-copy');
-    if(copy&&img.dataset.fallbackCaption)copy.textContent=img.dataset.fallbackCaption;
-  }else{
-    const fig=img.closest('figure');if(fig)fig.classList.add('rr-hidden');
-  }
-}</script>
+
 <script src="app.js?v=20261008-cursor-v2" defer></script>
-<link rel="stylesheet" href="assets/research-editorial.css?v=20261010-q2"></head>
+<link rel="stylesheet" href="assets/research-editorial.css?v=20261010-q2"><link rel="stylesheet" href="assets/research-system.css?v=20261011-a"><script src="assets/research-system.js?v=20261011-a" defer></script></head>
 <body class="image-free rr-page">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a><nav aria-label="Main navigation"><a href="index.html">Projects</a><a href="research.html" aria-current="page">Research</a><a href="info.html">About</a></nav></header>
@@ -144,7 +134,7 @@
 <p>A route-wide photographic inventory places existing structures, objects and everyday facilities in their geographical context. The distribution is uneven, with concentrations around established passages and stopping points. A second reading draws on 1,729 geolocated social-media images, using kernel-density analysis and Kevin Lynch’s five landscape-image elements—paths, edges, districts, nodes and landmarks—to investigate the geography of recorded photographic attention.</p>
 <figure class="rr-figure rr-figure--wide">
 <a href="assets/research-ritual/05-route-facility-atlas.webp" data-rr-zoom>
-<img src="assets/research-ritual/05-route-facility-atlas.webp" data-fallback="assets/spirited/kora-micro.webp" data-fallback-caption="Regional route map of the Mount Kailash kora, from the existing research archive." onerror="rrFallback(this)" alt="Photographic atlas of existing monasteries, services and ritual objects distributed around the Mount Kailash kora" loading="eager" decoding="async">
+<img src="assets/research-ritual/05-route-facility-atlas.webp" alt="Photographic atlas of existing monasteries, services and ritual objects distributed around the Mount Kailash kora" loading="eager" decoding="async">
 </a>
 <figcaption><span class="rr-figure-num">ATLAS / 01</span><span class="rr-cap-copy">An atlas of existing places — photographic documentation linked to the route, including religious landmarks, everyday buildings, structures and services.</span></figcaption>
 </figure>
@@ -162,7 +152,7 @@
 </div>
 <figure class="rr-figure rr-figure--wide">
 <a href="assets/research-ritual/06-sacred-secular-inventory.webp" data-rr-zoom>
-<img src="assets/research-ritual/06-sacred-secular-inventory.webp" onerror="rrFallback(this)" alt="Cut-out photographic catalogue of sacred and secular built elements along the pilgrimage route" loading="lazy" decoding="async">
+<img src="assets/research-ritual/06-sacred-secular-inventory.webp" alt="Cut-out photographic catalogue of sacred and secular built elements along the pilgrimage route" loading="lazy" decoding="async">
 </a>
 <figcaption><span class="rr-figure-num">ATLAS / 02</span><span class="rr-cap-copy">A sacred–secular material spectrum — classification of existing ritual structures, buildings, visitor services and signs.</span></figcaption>
 </figure>
@@ -175,20 +165,20 @@
 <p>The photographic ranking places documented scenes along an evaluation spectrum, making visible contrasts among ritual markers, built facilities, signs and mountain environments. The boxplots record variation as well as central tendencies. Many evaluated qualities cluster around the centre of the scale; dispersed answers should not be simplified into a claim that the entire landscape is liked or disliked.</p>
 <figure class="rr-figure rr-figure--wide">
 <a href="assets/research-ritual/04-photographic-evaluation-spectrum.webp" data-rr-zoom>
-<img src="assets/research-ritual/04-photographic-evaluation-spectrum.webp" onerror="rrFallback(this)" alt="Numerous photographic samples of the pilgrimage landscape ordered from negative to positive visual evaluation" loading="lazy" decoding="async">
+<img src="assets/research-ritual/04-photographic-evaluation-spectrum.webp" alt="Numerous photographic samples of the pilgrimage landscape ordered from negative to positive visual evaluation" loading="lazy" decoding="async">
 </a>
 <figcaption><span class="rr-figure-num">STUDY / 03</span><span class="rr-cap-copy">Photographic evaluation spectrum — sampled views ordered according to their recorded assessment.</span></figcaption>
 </figure>
 <figure class="rr-figure">
 <a href="assets/research-ritual/03-questionnaire-boxplots.webp" data-rr-zoom>
-<img src="assets/research-ritual/03-questionnaire-boxplots.webp" data-fallback="assets/spirited/perception-climate.webp" data-fallback-caption="Existing research composite illustrating visual evaluation and environmental conditions." onerror="rrFallback(this)" alt="Box-and-whisker plots showing respondent variation in spatial quality, functionality, naturalness and other visual perception measures" loading="lazy" decoding="async">
+<img src="assets/research-ritual/03-questionnaire-boxplots.webp" alt="Box-and-whisker plots showing respondent variation in spatial quality, functionality, naturalness and other visual perception measures" loading="lazy" decoding="async">
 </a>
 <figcaption><span class="rr-figure-num">STUDY / 04</span><span class="rr-cap-copy">Distribution of semantic-differential responses — the boxes show the spread of answers across the evaluated qualities.</span></figcaption>
 </figure>
 <p>The study reported more positive evaluations of religious landmarks and more negative evaluations of certain secular facilities within its sample. These responses reflect respondents’ perceptions, not a judgment from every pilgrim, resident or religious custodian. Visual preference must also be distinguished from necessity, practical function and sacred meaning.</p>
 <figure class="rr-figure rr-figure--portrait">
 <a href="assets/research-ritual/01-visual-evaluation-map.webp" data-rr-zoom>
-<img src="assets/research-ritual/01-visual-evaluation-map.webp" data-fallback="assets/spirited/landscape-mapping.webp" data-fallback-caption="Existing composite of mapped photographic attention and landscape-image analysis along the route." onerror="rrFallback(this)" alt="Territorial map of visual evaluations of existing facilities and landscapes around the Kailash kora" loading="lazy" decoding="async">
+<img src="assets/research-ritual/01-visual-evaluation-map.webp" alt="Territorial map of visual evaluations of existing facilities and landscapes around the Kailash kora" loading="lazy" decoding="async">
 </a>
 <figcaption><span class="rr-figure-num">MAP / 05</span><span class="rr-cap-copy">Spatial distribution of visual evaluation — photographic and facility evaluations read in relation to the wider route.</span></figcaption>
 </figure>
@@ -200,7 +190,7 @@
 <p>Environmental overlays compare terrain, route networks, vegetation, documented wildlife encounters and preliminary indications of geological and natural hazards. These are different classes of evidence: a wildlife photograph establishes a recorded encounter, not population density; a mapped hazard indicator does not establish the probability of danger at a particular structure.</p>
 <figure class="rr-figure rr-figure--portrait">
 <a href="assets/research-ritual/02-environmental-conditions-map.webp" data-rr-zoom>
-<img src="assets/research-ritual/02-environmental-conditions-map.webp" data-fallback="assets/spirited/kora-meso.webp" data-fallback-caption="Wider geographical context of Mount Kailash and its surrounding territory, from the existing research archive." onerror="rrFallback(this)" alt="Environmental mapping of natural hazard indicators and observed wildlife distribution around the pilgrimage route" loading="lazy" decoding="async">
+<img src="assets/research-ritual/02-environmental-conditions-map.webp" alt="Environmental mapping of natural hazard indicators and observed wildlife distribution around the pilgrimage route" loading="lazy" decoding="async">
 </a>
 <figcaption><span class="rr-figure-num">MAP / 06</span><span class="rr-cap-copy">Environmental conditions and risk indicators — a territorial reading of terrain and provisional ecological records.</span></figcaption>
 </figure>
