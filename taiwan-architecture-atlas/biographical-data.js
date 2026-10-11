@@ -25,7 +25,8 @@
     ["B16","高而潘出生、1951成大畢業、1965淡江任教、1966開業｜文化部","https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465","文化部"],
     ["B17","王大閎、貝聿銘及葛羅培於哈佛相關師承｜國家文藝獎","https://www.ncafroc.org.tw/artsaward/winnerDetail%401263","國家文化藝術基金會"],
     ["B18","李祖原建築教育及創業年表｜臺灣建築學會","https://www.architw.org.tw/view_article.php?id=7030","臺灣建築學會"],
-    ["B19","謝英俊淡江學歷（1977）、1984開業｜國家文藝獎","https://www.ncafroc.org.tw/artsaward/winnerDetail%401282","國家文化藝術基金會"]
+    ["B19","謝英俊淡江學歷（1977）、1984開業｜國家文藝獎","https://www.ncafroc.org.tw/artsaward/winnerDetail%401282","國家文化藝術基金會"],
+    ["B26","姚仁喜1951年出生、柏克萊教育背景及Sam Davis授業紀錄｜國家文藝獎","https://www.ncafroc.org.tw/artsaward/winnerDetail%401253","國家文化藝術基金會"]
   ];
   const knownSources=new Set(D.sources.map(s=>s.id));
   refs.forEach(([id,title,url,publisher])=>{if(!knownSources.has(id))D.sources.push({id,title,url,publisher});});
@@ -43,7 +44,7 @@
   mark("漢寶德",1934,"Taiwan — Across Regions",["B02"],2014);
   mark("高而潘",1928,"Taiwan — North",["B03"],2022);
   mark("李祖原",1938,"Taiwan — North",["B04","B18"]);
-  mark("姚仁喜",1951,"Taiwan — North",["B05"]);
+  mark("姚仁喜",1951,"Taiwan — North",["B26"]);
   mark("陳其寬",1921,"Taiwan — Central",["B06"],2007);
   mark("張肇康",1922,"Taiwan — Central",["B07"]);
   mark("貝聿銘",1917,"United States / Global",["B08"],2019);
