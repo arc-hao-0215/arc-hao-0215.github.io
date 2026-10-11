@@ -3,7 +3,7 @@ window.TAIWAN_ATLAS_DATA = {
   "metadata": {
     "title": "臺灣建築關係圖譜",
     "edition": "2026.10",
-    "scope": "1945 年以後台灣建築文化的引證式選樣，涵蓋跨國參與者；非完整名錄。",
+    "scope": "台灣 1945 年後的建築文化引證式起始選樣；包含與台灣建築有明確合作的跨國參與者，不等於完整人物名錄。",
     "axes": "人物為出生年；建築為指定竣工／完成年；其他類型為有文獻的成立或出版年份，未知年份列待考。"
   },
   "regions": [
@@ -182,7 +182,8 @@ window.TAIWAN_ATLAS_DATA = {
       "region": "trans",
       "summary": "與台灣在地團隊合作臺南市美術館二館。",
       "sources": [
-        "https://www.tnam.museum/about_us/building"
+        "https://www.tnam.museum/about_us/building",
+        "https://en.wikipedia.org/wiki/Shigeru_Ban"
       ]
     },
     {
@@ -554,7 +555,116 @@ window.TAIWAN_ATLAS_DATA = {
       "region": "north",
       "summary": "王秋華以名譽發起人身分參與成立。",
       "sources": [
-        "https://lib.cycu.edu.tw/?page_id=19690"
+        "https://lib.cycu.edu.tw/?page_id=19690",
+        "https://wataiwan.org/news.php?category=3&post=3"
+      ]
+    },
+    {
+      "id": "gao",
+      "name": "高而潘",
+      "english": "Kao Er-Pan",
+      "type": "person",
+      "year": 1928,
+      "region": "north",
+      "summary": "戰後台灣第一代建築師，曾設計臺北市立美術館並投身建築教育。",
+      "sources": [
+        "https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465"
+      ]
+    },
+    {
+      "id": "gao-office",
+      "name": "高而潘建築師事務所",
+      "english": "Kao Er-Pan Architects",
+      "type": "office",
+      "year": 1966,
+      "region": "north",
+      "summary": "高而潘於1966年創立的建築事務所。",
+      "sources": [
+        "https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465"
+      ]
+    },
+    {
+      "id": "tfam",
+      "name": "臺北市立美術館",
+      "english": "Taipei Fine Arts Museum",
+      "type": "building",
+      "year": null,
+      "region": "north",
+      "summary": "高而潘代表作之一；此處未使用沒有單獨核對的建成年份。",
+      "sources": [
+        "https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465"
+      ]
+    },
+    {
+      "id": "ncku-arch",
+      "name": "成功大學建築學系",
+      "english": "NCKU Department of Architecture",
+      "type": "school",
+      "year": null,
+      "region": "south",
+      "summary": "高而潘畢業於臺南工學院建築系，是台灣重要的建築教育機構。",
+      "sources": [
+        "https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465"
+      ]
+    },
+    {
+      "id": "tamkang-arch",
+      "name": "淡江大學建築學系",
+      "english": "Tamkang University Architecture",
+      "type": "school",
+      "year": null,
+      "region": "north",
+      "summary": "高而潘曾在1965年起於此教授建築。",
+      "sources": [
+        "https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465"
+      ]
+    },
+    {
+      "id": "oma",
+      "name": "OMA 大都會建築事務所",
+      "english": "Office for Metropolitan Architecture",
+      "type": "office",
+      "year": null,
+      "region": "trans",
+      "summary": "與大元建築工場合作臺北表演藝術中心。",
+      "sources": [
+        "https://www.twarchitect.org.tw/works/%E8%87%BA%E5%8C%97%E8%A1%A8%E6%BC%94%E8%97%9D%E8%A1%93%E4%B8%AD%E5%BF%83/"
+      ]
+    },
+    {
+      "id": "tpac",
+      "name": "臺北表演藝術中心",
+      "english": "Taipei Performing Arts Center",
+      "type": "building",
+      "year": 2022,
+      "region": "north",
+      "summary": "OMA 與姚仁喜｜大元建築工場共同合作的公共劇場建築。",
+      "sources": [
+        "https://www.twarchitect.org.tw/works/%E8%87%BA%E5%8C%97%E8%A1%A8%E6%BC%94%E8%97%9D%E8%A1%93%E4%B8%AD%E5%BF%83/"
+      ]
+    },
+    {
+      "id": "xu-liyu",
+      "name": "許麗玉",
+      "english": "Hsu Li-Yu",
+      "type": "person",
+      "year": null,
+      "region": "north",
+      "summary": "台灣女建築家學會發起人代表與籌備會召集人。",
+      "sources": [
+        "https://wataiwan.org/people.php"
+      ]
+    },
+    {
+      "id": "guo-zhongduan",
+      "name": "郭中端",
+      "english": "Kuo Chung-Tuan",
+      "type": "person",
+      "year": null,
+      "region": "north",
+      "summary": "台灣女建築家學會共同發起人之一。",
+      "sources": [
+        "https://wataiwan.org/people.php"
       ]
     }
   ],
@@ -980,6 +1090,105 @@ window.TAIWAN_ATLAS_DATA = {
       "type": "design",
       "label": "design",
       "source": "https://www.twarchitect.org.tw/works/%E8%87%BA%E5%8D%97%E5%B8%82%E7%BE%8E%E8%A1%93%E9%A4%A8%E4%BA%8C%E9%A4%A8/",
+      "year": null
+    },
+    {
+      "id": "r48",
+      "from": "gao",
+      "to": "gao-office",
+      "type": "found",
+      "label": "創辦",
+      "source": "https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465",
+      "year": null
+    },
+    {
+      "id": "r49",
+      "from": "gao",
+      "to": "tfam",
+      "type": "design",
+      "label": "設計",
+      "source": "https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465",
+      "year": null
+    },
+    {
+      "id": "r50",
+      "from": "gao",
+      "to": "ncku-arch",
+      "type": "education",
+      "label": "畢業",
+      "source": "https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465",
+      "year": null
+    },
+    {
+      "id": "r51",
+      "from": "gao",
+      "to": "tamkang-arch",
+      "type": "education",
+      "label": "任教",
+      "source": "https://www.moc.gov.tw/News_Content.aspx?n=105&s=95465",
+      "year": null
+    },
+    {
+      "id": "r52",
+      "from": "oma",
+      "to": "tpac",
+      "type": "design",
+      "label": "合作設計",
+      "source": "https://www.twarchitect.org.tw/works/%E8%87%BA%E5%8C%97%E8%A1%A8%E6%BC%94%E8%97%9D%E8%A1%93%E4%B8%AD%E5%BF%83/",
+      "year": null
+    },
+    {
+      "id": "r53",
+      "from": "artech",
+      "to": "tpac",
+      "type": "design",
+      "label": "合作設計",
+      "source": "https://www.twarchitect.org.tw/works/%E8%87%BA%E5%8C%97%E8%A1%A8%E6%BC%94%E8%97%9D%E8%A1%93%E4%B8%AD%E5%BF%83/",
+      "year": null
+    },
+    {
+      "id": "r54",
+      "from": "yao",
+      "to": "tpac",
+      "type": "design",
+      "label": "事務所合作設計",
+      "source": "https://www.twarchitect.org.tw/works/%E8%87%BA%E5%8C%97%E8%A1%A8%E6%BC%94%E8%97%9D%E8%A1%93%E4%B8%AD%E5%BF%83/",
+      "year": null
+    },
+    {
+      "id": "r55",
+      "from": "xiu",
+      "to": "women",
+      "type": "found",
+      "label": "名譽發起人（由子代參與）",
+      "source": "https://wataiwan.org/people.php",
+      "year": null
+    },
+    {
+      "id": "r56",
+      "from": "qing",
+      "to": "women",
+      "type": "found",
+      "label": "共同發起",
+      "source": "https://wataiwan.org/people.php",
+      "year": null
+    },
+    {
+      "id": "r57",
+      "from": "xu-liyu",
+      "to": "women",
+      "type": "found",
+      "label": "發起人代表",
+      "source": "https://wataiwan.org/people.php",
+      "year": null
+    },
+    {
+      "id": "r58",
+      "from": "guo-zhongduan",
+      "to": "women",
+      "type": "found",
+      "label": "共同發起",
+      "source": "https://wataiwan.org/people.php",
       "year": null
     }
   ]
