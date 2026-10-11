@@ -600,6 +600,29 @@ function renderSelection(){
    try{await navigator.clipboard.writeText(url);$("#copy-node").textContent="COPIED ✓";}catch(_){$("#copy-node").textContent="COPY FAILED — USE ADDRESS BAR";}
  });
 }
+function renderRelationLegend(){
+ const host=$("#relation-key");
+ if(!host)return;
+ const keys=["studied","worked","founded","collaborated","designed","led"];
+ host.replaceChildren();
+ keys.forEach(key=>{
+   const spec=grammar[key];if(!spec)return;
+   const button=el("button","legend-item");
+   const has=state.rels.has(key);
+   button.type="button";
+   button.setAttribute("aria-pressed",String(has));
+   button.classList.toggle("disabled",!has);
+   button.innerHTML='<i class="legend-line" style="border-top-color:'+escape(spec.color)+';border-top-style:'+(spec.dash?.length?"dashed":"solid")+'"></i><span>'+escape(spec.en)+'</span>';
+   button.addEventListener("click",()=>{
+     has?state.rels.delete(key):state.rels.add(key);
+     renderRelationLegend();categoriesPanel();renderSelection();scheduleDraw();
+   });
+   host.append(button);
+ });
+ const more=el("button","legend-more","ALL TYPES ↗");
+ more.addEventListener("click",()=>openFloating("filter-panel"));host.append(more);
+}
+
 function categoriesPanel(){
  const target=$("#filter-items");target.replaceChildren();
  for(const type of types){
@@ -617,7 +640,7 @@ function categoriesPanel(){
    const spec=grammar[t]||{color:"#a3abb1",en:t,zh:t,dash:[]};
    label.innerHTML='<input type="checkbox" data-rel="'+escape(t)+'" '+(state.rels.has(t)?"checked":"")+'><i class="relation-filter-sample" style="border-color:'+escape(spec.color)+';border-top-style:'+((spec.dash||[]).length?'dashed':'solid')+'"></i><span>'+escape(spec.en)+' <small>'+escape(spec.zh)+'</small></span>';
    label.querySelector("input").addEventListener("change",e=>{
-     e.target.checked?state.rels.add(t):state.rels.delete(t);scheduleDraw();
+     e.target.checked?state.rels.add(t):state.rels.delete(t);renderRelationLegend();renderSelection();scheduleDraw();
    });rel.append(label);
  });
 }
@@ -692,7 +715,7 @@ function exportData(){
  const u=URL.createObjectURL(new Blob([text],{type:"text/csv;charset=utf-8;"}));
  const a=document.createElement("a");a.href=u;a.download="architecture-in-taiwan-atlas-v2.csv";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1500);
 }
-layout();categoriesPanel();renderHighlights();
+layout();categoriesPanel();renderRelationLegend();renderHighlights();
 $("#filter-btn").addEventListener("click",()=>openFloating("filter-panel"));
 $("#highlight-btn").addEventListener("click",()=>openFloating("highlight-panel"));
 document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",closeFloating));
@@ -726,7 +749,7 @@ $("#year-reset").addEventListener("click",()=>{
 });
 $("#all-filter-reset").addEventListener("click",()=>{
  state.types=new Set(types);state.rels=new Set(edgeTypes);state.year=2026;
- $("#year").value=2026;$("#year-label").textContent=2026;categoriesPanel();scheduleDraw();
+ $("#year").value=2026;$("#year-label").textContent=2026;categoriesPanel();renderRelationLegend();renderSelection();scheduleDraw();
 });
 $("#search").addEventListener("input",searchMatches);
 $("#search").addEventListener("keydown",e=>{
