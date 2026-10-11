@@ -9,6 +9,7 @@
   const rules={
     studied:{en:"STUDIED AT",zh:"就讀／畢業",color:"#83afd8",dash:[5,3],order:10},
     mentored:{en:"STUDIED UNDER",zh:"師承／受教",color:"#8cbbeb",dash:[4,2],order:15},
+    family:{en:"FAMILY / KINSHIP",zh:"親屬（不代表師承）",color:"#ab96a7",dash:[2,6],order:65},
     taught:{en:"TAUGHT AT",zh:"任教",color:"#a6c7d7",dash:[2,3],order:20},
     led:{en:"LED",zh:"主持／領導",color:"#dbaf76",dash:[],order:30},
     founded:{en:"FOUNDED",zh:"創辦",color:"#acd0ab",dash:[],order:40},
@@ -30,6 +31,7 @@
     const work=[a,b].find(n=>n?.type==="work");
     const practice=[a,b].find(n=>n?.type==="practice");
     if(e.type==="mentorship")return "mentored";
+    if(e.type==="family")return "family";
     if(e.type==="collaboration")return "collaborated";
     if(e.type==="recognition")return "recognized";
     if(e.type==="context")return "contextual";
@@ -85,5 +87,5 @@
     e.yearKind=yearKind(e);
   });
   D.relationshipGrammar=rules;
-  D.relationLegend=["studied","mentored","taught","led","founded","worked","associated","collaborated","designed","consulted","authored","recognized","curated","belonged","contextual"];
+  D.relationLegend=["studied","mentored","taught","led","founded","worked","associated","family","collaborated","designed","consulted","authored","recognized","curated","belonged","contextual"];
 })();
