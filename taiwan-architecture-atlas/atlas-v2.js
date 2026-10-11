@@ -16,7 +16,7 @@ const colors={person:"#141a17",practice:"#bb5843",institution:"#466778",work:"#9
 const relColors={design:"#a7a9a3",affiliation:"#ae7770",education:"#819695",engineering:"#9b9c94",client:"#a3a7a0"};
 const themes={
  postwar:{label:"Postwar modernism",subtitle:"東海大學、現代主義、戰後專業化",ids:["pei","chen","zhangzk","feng","wang","tunghai","tunghaiarch","luce","sunhall","han"]},
- yilan:{label:"Sheng-Yuan Huang / Career sequence",subtitle:"東海 → 耶魯 → Moss → 黃聲遠 → 田中央 → 作品",ids:(D.stories?.huang||[]).map(s=>byId.get(s.node)?.id).filter(Boolean)},
+ yilan:{label:"Sheng-Yuan Huang / Career sequence",subtitle:"東海 → 耶魯 → Moss → 黃聲遠 → 田中央 → 作品",ids:(D.stories?.huang||[]).map(s=>(byId.get(s.node)||nodes.find(n=>n.name===s.node))?.id).filter(Boolean)},
  practice:{label:"Recent Taiwan architecture",subtitle:"歷屆臺灣建築獎與事務所網絡",ids:[]},
  global:{label:"Taiwan × Global",subtitle:"國際合作與臺灣建築文化",ids:["ito","itoassoc","ntt","oma","tpac","koolhaas","gianotten","mecanoo","weiwuying","houben","pei"]},
  journals:{label:"Architectural discourse",subtitle:"專業刊物與戰後建築史研究",ids:nodes.filter(n=>n.type==="publication").map(n=>n.id)}
@@ -128,7 +128,17 @@ function layout(){
        // NOTE: A pre-existing employer, such as Eric Owen Moss,
        // is explicitly anchored before the person by an actual career date.
      }
-     if(!predecessor||!successor||predecessor._diagramYear===null||successor._diagramYear===null)continue;
+     if(!predecessor||!successor)continue;
+     // If a person has no dated graduation record, keep their position to the
+     // right of a known school rather than placing them in a far-left void.
+     if(predecessor._diagramYear!==null&&successor._diagramYear===null&&!Number.isFinite(successor.chronology?.year)){
+       successor._diagramYear=clampYear(predecessor._diagramYear+3);
+       successor._placementBasis="relationship-context";
+     }else if(predecessor._diagramYear===null&&successor._diagramYear!==null&&!Number.isFinite(predecessor.chronology?.year)){
+       predecessor._diagramYear=clampYear(successor._diagramYear-3);
+       predecessor._placementBasis="relationship-context";
+     }
+     if(predecessor._diagramYear===null||successor._diagramYear===null)continue;
      if(predecessor._diagramYear>=successor._diagramYear){
        // Recorded facts always win over a diagram-layout constraint.
        const fixedA=Number.isFinite(predecessor.chronology?.year);
@@ -392,7 +402,7 @@ function documentedTimeline(n){
  const story=D.stories?.[n.id];
  if(story){
    return story.map((s,i)=>{
-     const other=byId.get(s.node);
+     const other=byId.get(s.node)||nodes.find(n=>n.name===s.node);
      return other?{id:other.id,year:s.year,display:s.year===null?"BEFORE 1993":String(s.year),name:other.name,kind:s.role,label:s.label,src:[s.src],order:i}:null;
    }).filter(Boolean);
  }
