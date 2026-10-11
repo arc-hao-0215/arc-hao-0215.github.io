@@ -33,32 +33,136 @@ const degree=new Map(nodes.map(n=>[n.id,0]));
 edges.forEach(e=>{degree.set(e.a,(degree.get(e.a)||0)+1);degree.set(e.b,(degree.get(e.b)||0)+1);});
 const adjacency=new Map(nodes.map(n=>[n.id,[]]));
 edges.forEach(e=>{adjacency.get(e.a)?.push({n:e.b,e});adjacency.get(e.b)?.push({n:e.a,e});});
-const yearOf=n=>Number.isFinite(n?.year)?Math.min(2026,Math.max(1945,n.year)):null;
+/* Chronology is separate from biography and award history.
+ * Diagram anchors with "relationship-context" are visual estimates ONLY;
+ * factual events are always sourced in n.chronology / edges.
+ */
+const yearOf=n=>{
+ if(!n)return null;
+ if(Number.isFinite(n._diagramYear))return Math.min(2026,Math.max(1945,n._diagramYear));
+ const src=Number.isFinite(n.chronology?.year)?n.chronology.year:n.year;
+ return Number.isFinite(src)?Math.min(2026,Math.max(1945,src)):null;
+};
+const factualYear=n=>Number.isFinite(n?.chronology?.year)?n.chronology.year:(Number.isFinite(n?.year)?n.year:null);
+const eventYears=(n,allowedTypes=null)=>{
+ const out=[];
+ for(const item of adjacency.get(n.id)||[]){
+   if(allowedTypes&&!allowedTypes.includes(item.e.type))continue;
+   if(Number.isFinite(item.e.year))out.push(item.e.year);
+ }
+ return out.sort((a,b)=>a-b);
+};
+const clampYear=y=>Math.max(1945,Math.min(2026,y));
 function layout(){
  const refY=n=>125+pseudo(n.id,4)*1300;
  const yPos=new Map();
- nodes.filter(n=>n.type==="practice").forEach(n=>{yPos.set(n.id,refY(n));});
- nodes.filter(n=>n.type==="institution").forEach(n=>{yPos.set(n.id,refY(n));});
- nodes.filter(n=>n.type==="publication").forEach(n=>{yPos.set(n.id,refY(n));});
+ // Different nodes have different meanings: institutions are antecedents,
+ // people join after documented study, firms precede their buildings.
+ // This is a visual ordering, not a claim about founding without evidence.
+ nodes.forEach(n=>{
+   const explicit=Number.isFinite(n.chronology?.year)?n.chronology.year:null;
+   const events=eventYears(n);
+   const education=eventYears(n,["education"]);
+   const design=eventYears(n,["design","engineering","client"]);
+   const workDates=(adjacency.get(n.id)||[])
+      .map(a=>byId.get(a.n))
+      .filter(x=>x&&x.type==="work")
+      .map(w=>Number.isFinite(w.chronology?.year)?w.chronology.year:w.year)
+      .filter(Number.isFinite)
+      .sort((a,b)=>a-b);
+   let estimate=explicit;
+   let rule=explicit!==null?n.chronology.basis:"contextual";
+   if(estimate===null){
+     if(n.type==="institution"){
+       // A school without sourced founding year precedes its documented
+       // graduates/teachers, rather than being sent to the far-right.
+       estimate=education.length?education[0]-7:
+         events.length?events[0]-7:(Number.isFinite(n.year)?n.year-6:null);
+     }else if(n.type==="practice"){
+       const projectTime=design.length?design[0]:(workDates[0]??null);
+       const joinDates=eventYears(n,["affiliation"]);
+       estimate=projectTime!==null?projectTime-2:
+         joinDates.length?joinDates[0]-1:(Number.isFinite(n.year)?n.year-2:null);
+     }else if(n.type==="person"){
+       const professional=events.filter((y)=>true);
+       const study=education.length?education[education.length-1]:null;
+       const earliestCareer=eventYears(n,["affiliation","design","engineering"]);
+       if(study!==null && earliestCareer.length){
+         estimate=Math.min(study+1,earliestCareer[0]-1);
+       }else if(study!==null)estimate=study+1;
+       else if(earliestCareer.length)estimate=earliestCareer[0]-3;
+       else if(professional.length)estimate=professional[0]-2;
+       else if(Number.isFinite(n.year))estimate=n.year-4;
+     }else{
+       estimate=Number.isFinite(n.year)?n.year:(events[0]??null);
+       rule=Number.isFinite(n.year)?"documented-event":"contextual";
+     }
+     if(estimate===null){
+       // Unspecified chronology: use a dated neighbour as *display context*
+       // when available, NOT as a verified founding / graduation date.
+       const neighbours=(adjacency.get(n.id)||[]).map(o=>byId.get(o.n))
+         .map(other=>Number.isFinite(other?.chronology?.year)?other.chronology.year:other?.year)
+         .filter(Number.isFinite);
+       if(neighbours.length)estimate=Math.min(...neighbours)-5;
+     }
+   }
+   n._diagramYear=estimate===null?null:clampYear(estimate);
+   n._placementBasis=explicit!==null?rule:(estimate===null?"undated":"relationship-context");
+ });
+ // Enforce antecedent phases only on positions with no sourced chronology.
+ for(let pass=0;pass<4;pass++){
+   for(const e of edges){
+     const a=byId.get(e.a),b=byId.get(e.b);if(!a||!b)continue;
+     let predecessor=null,successor=null;
+     if(e.type==="design"){
+       if(a.type==="work"&&b.type==="practice"){predecessor=b;successor=a;}
+       else if(b.type==="work"&&a.type==="practice"){predecessor=a;successor=b;}
+       else if(a.type==="work"&&b.type==="person"){predecessor=b;successor=a;}
+       else if(b.type==="work"&&a.type==="person"){predecessor=a;successor=b;}
+     }else if(e.type==="education"){
+       if(a.type==="institution"&&b.type==="person"){predecessor=a;successor=b;}
+       else if(b.type==="institution"&&a.type==="person"){predecessor=b;successor=a;}
+     }else if(e.type==="affiliation"){
+       if(a.type==="person"&&b.type==="practice"){predecessor=a;successor=b;}
+       else if(b.type==="person"&&a.type==="practice"){predecessor=b;successor=a;}
+       // NOTE: A pre-existing employer, such as Eric Owen Moss,
+       // is explicitly anchored before the person by an actual career date.
+     }
+     if(!predecessor||!successor||predecessor._diagramYear===null||successor._diagramYear===null)continue;
+     if(predecessor._diagramYear>=successor._diagramYear){
+       // Recorded facts always win over a diagram-layout constraint.
+       const fixedA=Number.isFinite(predecessor.chronology?.year);
+       const fixedB=Number.isFinite(successor.chronology?.year);
+       if(!fixedA)predecessor._diagramYear=clampYear(successor._diagramYear-1.5);
+       else if(!fixedB)successor._diagramYear=clampYear(predecessor._diagramYear+1.5);
+     }
+   }
+ }
+ nodes.filter(n=>n.type==="practice").forEach(n=>yPos.set(n.id,refY(n)));
+ nodes.filter(n=>n.type==="institution").forEach(n=>yPos.set(n.id,refY(n)));
+ nodes.filter(n=>n.type==="publication"||n.type==="event").forEach(n=>yPos.set(n.id,refY(n)));
  nodes.filter(n=>n.type==="person").forEach(n=>{
-   const ties=(adjacency.get(n.id)||[]).map(o=>byId.get(o.n)).filter(a=>a&&a.type==="practice");
-   const anchor=ties.length?ties.reduce((a,b)=>a+yPos.get(b.id),0)/ties.length:refY(n);
-   yPos.set(n.id,Math.max(70,Math.min(1480,anchor+(pseudo(n.id,2)-.5)*220)));
+   const ties=(adjacency.get(n.id)||[]).map(o=>byId.get(o.n)).filter(a=>a&&(a.type==="practice"||a.type==="institution"));
+   const known=ties.map(t=>yPos.get(t.id)).filter(Number.isFinite);
+   const anchor=known.length?known.reduce((a,b)=>a+b,0)/known.length:refY(n);
+   yPos.set(n.id,Math.max(70,Math.min(1480,anchor+(pseudo(n.id,2)-.5)*230)));
  });
  nodes.filter(n=>n.type==="work").forEach(n=>{
    const ties=(adjacency.get(n.id)||[]).map(o=>byId.get(o.n)).filter(a=>a&&a.type==="practice");
-   const anchor=ties.length?ties.reduce((a,b)=>a+yPos.get(b.id),0)/ties.length:refY(n);
-   yPos.set(n.id,Math.max(70,Math.min(1480,anchor+(pseudo(n.id,7)-.5)*330)));
+   const known=ties.map(t=>yPos.get(t.id)).filter(Number.isFinite);
+   const anchor=known.length?known.reduce((a,b)=>a+b,0)/known.length:refY(n);
+   yPos.set(n.id,Math.max(70,Math.min(1480,anchor+(pseudo(n.id,7)-.5)*350)));
  });
+ const priority={institution:0,person:1,practice:2,publication:2,event:2,work:3};
  nodes.forEach(n=>{
-   const date=yearOf(n);
+   const date=n._diagramYear;
    const time=date===null?null:(date-1945)/81;
-   n._x=date===null?3530+pseudo(n.id,3)*130:116+time*3280+(pseudo(n.id,3)-.5)*52;
+   n._x=date===null?55+pseudo(n.id,3)*60:116+time*3280+(priority[n.type]||0)*5+(pseudo(n.id,3)-.5)*16;
    n._y=yPos.get(n.id)??refY(n);
    n._radius=n.type==="person"?4.7:n.type==="practice"?4.3:n.type==="institution"?3.9:n.type==="publication"?3.5:2.8;
  });
 }
-function visible(n){return !!n&&state.types.has(n.type)&&(yearOf(n)===null||yearOf(n)<=state.year);}
+function visible(n){return !!n&&state.types.has(n.type)&&((yearOf(n)===null)||yearOf(n)<=state.year);}
 function edgeVisible(e){return visible(byId.get(e.a))&&visible(byId.get(e.b))&&state.rels.has(e.type)&&(!e.year||e.year<=state.year);}
 function currentEdges(){return edges.filter(edgeVisible);}
 function currentNodes(){return nodes.filter(visible);}
@@ -249,7 +353,7 @@ function focusNode(n){
 }
 function select(id,center=false){
  const n=byId.get(id);if(!n)return;
- if(n.year>state.year){state.year=n.year;$("#year").value=n.year;$("#year-label").textContent=n.year;}
+ if(yearOf(n)!==null&&yearOf(n)>state.year){state.year=Math.ceil(yearOf(n));$("#year").value=state.year;$("#year-label").textContent=state.year;}
  state.types.add(n.type);
  if(state.compare){
    if(state.compared.length===2)state.compared=[state.compared[1]];
