@@ -366,8 +366,8 @@ function relationHeading(entity,key){
 function projectRecords(n){
  let officeIds=[];
  if(n.type==="practice")officeIds=[n.id];
- else if(n.type==="person")officeIds=relatedTo(n.id).map(e=>other(e,n.id))
-   .filter(o=>o?.type==="practice"&&["founded","worked","associated"].includes(semantic(relatedTo(n.id).find(e=>other(e,n.id)?.id===o.id)||{}))).map(o=>o.id);
+ else if(n.type==="person")officeIds=relatedTo(n.id).filter(e=>semantic(e)==="founded")
+   .map(e=>other(e,n.id)).filter(o=>o?.type==="practice").map(o=>o.id);
  else return [];
  const pairs=[];
  const seen=new Set();
@@ -409,7 +409,7 @@ function renderDrawer(){
    html+=p.length?p.map(item=>'<button class="work-item" type="button" data-node="'+esc(item.work.id)+'"><span><b>'+esc(item.work.name)+'</b><small>'+esc(item.timeType)+' · '+esc(item.studio.name)+'</small></span><em>'+esc(item.year??"—")+' ↗</em></button>').join(""):'<p class="record-desc">目前尚無已核實並連結的作品紀錄。</p>';
  }
  if(n.type==="person"){
-   const directWork=relatedTo(n.id).filter(e=>other(e,n.id)?.type==="work").length;
+   // Only show complete office portfolios through explicitly documented founders.\n   // Former employment does not imply authorship of work produced by that office.
    const viaOffice=projectRecords(n);
    if(viaOffice.length){
       html+='<div class="works-head"><strong>PROJECTS THROUGH PRACTICES</strong><b>'+viaOffice.length+'</b></div>'+
@@ -503,7 +503,7 @@ function floating(type){
    root.hidden=true;select(n.id);
  }));
  root.querySelector("#clear-highlight")?.addEventListener("click",()=>{state.featured=null;root.hidden=true;clear();resetFit();});
- root.querySelector("#all-connections")?.addEventListener("click",()=>{state.relations=new Set(allRels);floating("connections");schedule();});
+ root.querySelector("#all-connections")?.addEventListener("click",()=>{state.relations=new Set(allRels);root.hidden=true;floating("connections");schedule();});
  root.querySelector("#through")?.addEventListener("input",e=>{state.through=Number(e.target.value);$("#through-label").textContent=state.through;schedule();});
  if(type==="offices"){
    function list(){
