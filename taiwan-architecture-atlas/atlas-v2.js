@@ -28,7 +28,7 @@ function edgeCaption(e,at){
  if(!n)return;
  const p=screen(n);
  const meta=semantic(e);
- const when=Number.isFinite(e.year)?(" · "+e.year):"";
+ const when=Number.isFinite(e.year)?(" · "+(e.yearKind||"RECORD")+" "+e.year):"";
  const label=meta.zh+when;
  const tx=p.x+10, ty=p.y+20+at*13;
  if(tx>W-30||ty<75||ty>H-45||tx<4)return;
@@ -544,7 +544,7 @@ function groupedRelationHTML(entity,records){
             const s=sources.get(id);
             return s?'<a href="'+escape(s.url)+'" target="_blank" rel="noopener noreferrer" class="edge-evidence" title="'+escape(s.title)+'">'+escape(id)+' ↗</a>':'<span>'+escape(id)+'</span>';
           }).join(" ");
-          const year=Number.isFinite(e.year)?'<time class="edge-year">'+escape(e.year)+'</time>':'<span class="edge-year unsure">DATE UNVERIFIED</span>';
+          const year=Number.isFinite(e.year)?'<time class="edge-year">'+escape((e.yearKind||"RECORD")+" "+e.year)+'</time>':'<span class="edge-year unsure">YEAR NOT LISTED</span>';
           return '<article class="relation-entry"><button type="button" class="relation-entity-link" data-node="'+escape(other.id)+'"><span>'+escape(other.name)+'</span><span class="relation-link-arrow">↗</span></button>'+
              '<div class="relation-note">'+escape(e.label||"Documented association")+'</div>'+
              '<div class="relation-facts">'+year+'<span class="relation-sources">'+origin+'</span></div></article>';
