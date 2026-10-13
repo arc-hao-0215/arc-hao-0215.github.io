@@ -275,3 +275,69 @@
     padding-top:12px !important;
   }
 }
+
+
+/* Research / concise evidence-led reading summaries, 2026-10-13.
+   Pure typographic organization: no changes to original figures or media. */
+.research-article .essay-body section.research-brief {
+  display:block !important;
+  margin:-14px 0 64px !important;
+  padding:19px 0 24px !important;
+  border-top:1px solid #d5d8d0 !important;
+  border-bottom:1px solid #d5d8d0 !important;
+  border-left:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  max-width:100%;
+}
+.research-article .essay-body section.research-brief > .eyebrow {
+  display:block; margin:0 0 17px !important;
+  color:#7c827b; font:500 10px/1.6 Arial,Helvetica,sans-serif;
+  letter-spacing:.085em; text-transform:uppercase;
+}
+.research-article .essay-body .research-brief-item {
+  display:grid !important;
+  grid-template-columns:25px minmax(0,1fr);
+  gap:14px; padding:15px 0 !important;
+  border-top:1px solid #ededeb;
+  min-width:0;
+}
+.research-article .essay-body .research-brief-item:first-of-type {border-top:0;}
+.research-article .essay-body .research-brief-number {
+  font:500 10px/1.7 Arial,Helvetica,sans-serif;
+  color:#959a92;
+}
+.research-article .essay-body .research-brief-item h3 {
+  margin:0 0 7px !important;
+  padding:0 !important;
+  font:500 clamp(15px,1.3vw,17px)/1.38 Arial,Helvetica,sans-serif !important;
+  letter-spacing:-.015em; color:#343a36;
+}
+.research-article .essay-body .research-brief-item p {
+  margin:0 0 6px !important;
+  font:400 13px/1.68 Arial,Helvetica,sans-serif !important;
+  color:#4e544f !important; max-width:720px !important;
+}
+.research-article .essay-body .research-brief-item p.research-brief-evidence {
+  margin:9px 0 0 !important;
+  font:400 11px/1.58 Arial,Helvetica,sans-serif !important;
+  color:#7b827b !important;
+}
+.research-article .essay-body .research-brief-evidence a {
+  color:inherit; text-decoration:underline;
+  text-underline-offset:3px;
+}
+.research-article .essay-body .research-editorial-note {
+  display:block; border-left:2px solid #d7dcd4;
+  margin:20px 0 26px !important; padding:1px 0 1px 16px !important;
+  color:#687168 !important; font:400 13px/1.75 Arial,Helvetica,sans-serif !important;
+  background:none !important;
+}
+.research-article .essay-body .research-editorial-note strong {
+  font-weight:600; color:#535b52;
+}
+@media (max-width:760px) {
+ .research-article .essay-body section.research-brief { margin: -14px 0 48px !important; padding:16px 0 20px !important; }
+ .research-article .essay-body .research-brief-item {grid-template-columns:22px minmax(0,1fr);gap:10px}
+ .research-article .essay-body .research-brief-item p {font-size:13px !important}
+}
