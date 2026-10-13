@@ -48,15 +48,18 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
-/* Discourage casual image saving without blocking normal touch gestures. */
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+img { display: block; max-width: 100%; height: auto; }
+/* Prevent casual image saves, but leave normal taps and pinch gestures intact. */
+img[data-no-save] {
   -webkit-user-drag: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+}
+/* On Safari a long press on a linked picture can target its link wrapper. */
+a:has(img[data-no-save]),
+button:has(img[data-no-save]) {
+  -webkit-touch-callout: none;
 }
 h1, h2, h3, h4, p, figure { margin: 0; }
 h1, h2, h3, h4 { font-weight: 400; }
