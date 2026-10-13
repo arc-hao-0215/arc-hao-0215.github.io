@@ -2,10 +2,11 @@
 /* Rurbanity research editorial system — aligned with Netherlands and Gaoligong */
 .rb-page .essay-header{padding-bottom:38px}
 .rb-page .essay-header h1{max-width:1160px}
-.rb-page .essay-layout{grid-template-columns:minmax(184px,.82fr) minmax(0,2.9fr);gap:5%;padding-top:60px}
+/* The page shares the site-wide Research essay grid (1fr / 2.2fr). */
+.rb-page .essay-layout{padding-top:50px}
 .rb-page .essay-layout aside{top:105px;max-height:calc(100vh - 125px)}
-.rb-page .essay-layout aside nav{gap:13px}
-.rb-page .essay-body{max-width:1060px}
+/* Sidebar spacing and hierarchy are provided by research-editorial.css. */
+.rb-page .essay-body{max-width:900px}
 .rb-page .essay-body p{font-size:17px;line-height:1.84}
 .rb-page .essay-body p+p{margin-top:17px}
 .rb-page .essay-body .opening-proposition{font-size:clamp(27px,2.6vw,39px);line-height:1.36;max-width:870px}
@@ -54,8 +55,8 @@
 .rb-page .rb-lightbox-close{position:absolute;right:22px;top:15px;background:transparent;border:1px solid #777;color:#fff;padding:8px 12px;cursor:pointer;font:12px Arial,Helvetica,sans-serif}
 .rb-page .rb-citations-note{font:11px/1.7 Arial,Helvetica,sans-serif;color:var(--grey)}
 .rb-page .essay-body #sources{margin-top:70px}
-@media(max-width:1000px){.rb-page .essay-layout{grid-template-columns:minmax(140px,.75fr) minmax(0,2.6fr);gap:3%}.rb-page .rb-split{grid-template-columns:1fr;gap:22px}.rb-page .rb-split .rb-sidecopy{max-width:750px}}
-@media(max-width:760px){.rb-page .essay-layout{display:block;padding-top:34px}.rb-page .essay-layout aside{position:static;max-height:none;margin:0 0 45px;padding:0}.rb-page .essay-layout aside nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:none}.rb-page .essay-body{max-width:none}.rb-page .rb-section{margin-top:55px;padding-top:25px}.rb-page .rb-definition,.rb-page .rb-comparison{grid-template-columns:1fr;gap:16px}.rb-page .rb-evidence{grid-template-columns:1fr;gap:18px}.rb-page .rb-figure{margin:27px 0 42px}.rb-page .rb-figure figcaption{grid-template-columns:33px 1fr;gap:8px}.rb-page .rb-lightbox{padding:45px 12px 18px}.rb-page .essay-body .rb-section h2{font-size:clamp(27px,7vw,38px)}}
+@media(max-width:1000px){.rb-page .rb-split{grid-template-columns:1fr;gap:22px}.rb-page .rb-split .rb-sidecopy{max-width:750px}}
+@media(max-width:760px){.rb-page .essay-layout{display:block;padding-top:30px}.rb-page .essay-layout aside{position:static;max-height:none;margin:0 0 45px;padding:0}.rb-page .essay-body{max-width:none}.rb-page .rb-section{margin-top:55px;padding-top:25px}.rb-page .rb-definition,.rb-page .rb-comparison{grid-template-columns:1fr;gap:16px}.rb-page .rb-evidence{grid-template-columns:1fr;gap:18px}.rb-page .rb-figure{margin:27px 0 42px}.rb-page .rb-figure figcaption{grid-template-columns:33px 1fr;gap:8px}.rb-page .rb-lightbox{padding:45px 12px 18px}.rb-page .essay-body .rb-section h2{font-size:clamp(27px,7vw,38px)}}
 @media(prefers-reduced-motion:no-preference){.rb-page.rb-motion .rb-section{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}.rb-page.rb-motion .rb-section.rb-inview{opacity:1;transform:none}}
 
 
