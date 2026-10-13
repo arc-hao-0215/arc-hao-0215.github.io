@@ -341,3 +341,9 @@
  .research-article .essay-body .research-brief-item {grid-template-columns:22px minmax(0,1fr);gap:10px}
  .research-article .essay-body .research-brief-item p {font-size:13px !important}
 }
+
+/* Contextual links are after the research and references, never part of the enquiry itself. */
+.research-article .research-related-work{padding:22px 0;margin:26px 0 12px;border-top:1px solid #d9dcd5}
+.research-article .research-related-work .eyebrow{display:block;margin-bottom:9px;color:#858a83;font:500 10px/1.6 Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.research-article .research-related-work a{color:#4a5049;font:400 13px/1.6 Arial,Helvetica,sans-serif;text-decoration:underline;text-underline-offset:4px}
+.research-article .research-related-work a:hover{color:#a33522}
