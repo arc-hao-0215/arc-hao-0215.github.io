@@ -5,20 +5,37 @@
  Progressive enhancement: content is visible without JS, IntersectionObserver,
  or when prefers-reduced-motion is enabled.
 */
-.research-article .essay-layout aside nav[aria-label="Essay contents"] > a[href^="#"]{
-  position:relative;
-  border-left:2px solid transparent;
-  padding-left:10px;
-  transition:color .25s ease,border-color .25s ease;
-}
-.research-article .essay-layout aside nav[aria-label="Essay contents"] > a.rm-current,
-.research-article .essay-layout aside nav[aria-label="Essay contents"] > a[aria-current="location"]{
-  color:#252824 !important;
-  border-left-color:#a33d2b;
-}
-.research-article .essay-layout aside nav[aria-label="Essay contents"] > a[href^="#"]:focus-visible{
-  outline:2px solid #a33d2b;
-  outline-offset:3px;
+/* Scrollspy: nested Research TOC links use .research-toc-group, not nav > a.
+   Maintain current section visibility without changing the 00–04 numbering. */
+@media (min-width:761px) {
+  .research-article .essay-layout aside nav.research-toc a[href^="#"] {
+    position:relative;
+    box-sizing:border-box;
+    border-left:2px solid transparent;
+    padding-left:9px;
+    transition:color .18s ease,border-color .18s ease;
+  }
+  .research-article .essay-layout aside nav.research-toc a.rm-current,
+  .research-article .essay-layout aside nav.research-toc a[aria-current="location"] {
+    color:var(--ink,#252824) !important;
+    border-left-color:#a33d2b;
+    font-weight:600;
+  }
+  .research-article .essay-layout aside nav.research-toc .research-toc-group.rm-section-current > .research-toc-part {
+    color:var(--ink,#252824);
+    font-weight:600;
+  }
+  .research-article .essay-layout aside nav.research-toc a.rm-current:not(.research-toc-part) {
+    background:linear-gradient(to right,rgba(163,61,43,.045),transparent 74%);
+  }
+  .research-article .essay-layout > aside {
+    scrollbar-width:thin;
+    scrollbar-color:#d1d2cc transparent;
+  }
+  .research-article .essay-layout aside nav.research-toc a[href^="#"]:focus-visible {
+    outline:2px solid #a33d2b;
+    outline-offset:3px;
+  }
 }
 @media (prefers-reduced-motion:no-preference){
   /* Opening sequence: matches Lightly in the Forest's quiet entrance. */
@@ -96,7 +113,7 @@
   }
 }
 @media (prefers-reduced-motion:reduce){
-  .research-article .essay-layout aside nav[aria-label="Essay contents"] > a{transition:none!important}
+  .research-article .essay-layout aside nav.research-toc a{transition:none!important}
   .research-article.rm-ready :is(.rm-heading,figure.rm-figure,figure.rm-figure>figcaption){
     opacity:1!important;transform:none!important;transition:none!important;animation:none!important
   }
@@ -106,7 +123,7 @@
   .research-article .essay-source [id^="ref-"].rm-ref-flash{animation:none!important}
 }
 @media(max-width:760px){
-  .research-article .essay-layout aside nav[aria-label="Essay contents"] > a[href^="#"]{padding-left:7px}
+  .research-article .essay-layout aside nav.research-toc a[href^="#"]{padding-left:7px}
   /* Shorter mobile motion, with no lateral drift. */
   @media (prefers-reduced-motion:no-preference){
     .research-article.rm-ready figure.rm-figure{transform:translate3d(0,10px,0)}
