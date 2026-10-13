@@ -347,3 +347,25 @@
 .research-article .research-related-work .eyebrow{display:block;margin-bottom:9px;color:#858a83;font:500 10px/1.6 Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase}
 .research-article .research-related-work a{color:#4a5049;font:400 13px/1.6 Arial,Helvetica,sans-serif;text-decoration:underline;text-underline-offset:4px}
 .research-article .research-related-work a:hover{color:#a33522}
+
+
+/* Reference introductory notes with a left rule must retain an actual inset:
+   the previous general .essay-source > p padding reset erased it. */
+.research-article .essay-body section.essay-source > p.sh-study-note,
+.research-article .essay-body section.essay-source > p[style*="border-left"],
+.research-article .essay-body section.essay-source > p[class*="study-note"] {
+  box-sizing:border-box !important;
+  padding:6px 18px 7px 20px !important;
+  margin:20px 0 29px !important;
+  max-width:min(100%,850px) !important;
+  border-left:2px solid #c5c8c3 !important;
+  line-height:1.75 !important;
+}
+@media (max-width:760px){
+ .research-article .essay-body section.essay-source > p.sh-study-note,
+ .research-article .essay-body section.essay-source > p[style*="border-left"],
+ .research-article .essay-body section.essay-source > p[class*="study-note"] {
+   padding:5px 12px 6px 16px !important;
+   margin:18px 0 26px !important;
+ }
+}
