@@ -333,8 +333,8 @@
  min-width:0;
  max-width:100%;
  display:grid;
- grid-template-columns:50px minmax(0,1fr);
- column-gap:16px;
+ grid-template-columns:minmax(112px,max-content) minmax(0,1fr);
+ column-gap:clamp(18px,2vw,28px);
  align-content:start;
 }
 .bab-page #architecture .bab-movement-narrative>.bab-subsection-label{grid-column:1;grid-row:1;margin:7px 0 0}
@@ -425,6 +425,23 @@
  .bab-page #architecture .bab-movement-two-column>.bab-circulation-plate{grid-column:1;grid-row:2}
  .bab-page #tectonics .bab-models{grid-template-columns:1fr;gap:28px}
  .bab-page #tectonics .bab-models .bab-media-button{aspect-ratio:2/3}
+}
+
+/* 2026-10-13 / Layout safety: the full MOVEMENT label must fit its own rail. */
+.bab-page #architecture .bab-movement-narrative>.bab-subsection-label{
+ min-width:0;white-space:normal;overflow-wrap:break-word;
+}
+.bab-page #architecture .bab-movement-narrative>h3,
+.bab-page #architecture .bab-movement-narrative>.bab-movement-intro{
+ min-width:0;overflow-wrap:break-word;
+}
+/* At intermediate widths, preserve full image and text without compressing the title. */
+@media (min-width:701px) and (max-width:1040px){
+ .bab-page #architecture .bab-movement-two-column{grid-template-columns:minmax(0,1fr);gap:30px}
+ .bab-page #architecture .bab-movement-two-column>.bab-movement-narrative{
+   grid-column:1;grid-row:1;grid-template-columns:minmax(112px,max-content) minmax(0,1fr);
+ }
+ .bab-page #architecture .bab-movement-two-column>.bab-circulation-plate{grid-column:1;grid-row:2}
 }
 </style>
 <link rel="stylesheet" href="project-system.css?v=20261009-v1"><script src="app.js?v=20261008-cursor-v2" defer></script><link rel="stylesheet" href="project-unified.css?v=20261009-editorial-v1">  <link rel="stylesheet" href="project-consistency.css?v=20261010-v1">
