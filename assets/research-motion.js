@@ -13,40 +13,72 @@
   const nav = article.querySelector('.essay-layout aside nav[aria-label="Essay contents"]');
   if (!body) return;
 
-  // Reading-position indicator: only touch existing links to real page anchors.
+  // Desktop reading-position tracking for the nested 00–04 Research sidebar.
+  // Order by actual document position (not sidebar order), so page-specific
+  // rearrangements cannot cause a highlighted link to jump backwards.
   if (nav) {
+    const aside = nav.closest('aside');
+    const desktop = window.matchMedia('(min-width: 761px)');
     const tracked = [...nav.querySelectorAll('a[href^="#"]')].map(link => {
-      const id = decodeURIComponent(link.getAttribute('href').slice(1));
+      let id;
+      try { id = decodeURIComponent(link.getAttribute('href').slice(1)); }
+      catch (_) { return null; }
       const target = id ? document.getElementById(id) : null;
-      return target ? {link, target} : null;
-    }).filter(Boolean);
+      return target ? { link, target } : null;
+    }).filter(Boolean).sort((a, b) => {
+      if (a.target === b.target) return 0;
+      return a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+    });
+    const groups = [...nav.querySelectorAll('.research-toc-group')];
     let frame = 0;
-    let current = -1;
+    let current = null;
+    let lastAsideInput = 0;
+    aside?.addEventListener('wheel', () => { lastAsideInput = Date.now(); }, { passive:true });
+    aside?.addEventListener('pointerdown', () => { lastAsideInput = Date.now(); }, { passive:true });
+
+    const keepVisible = link => {
+      if (!aside || Date.now() - lastAsideInput < 1200) return;
+      if (aside.scrollHeight <= aside.clientHeight + 2) return;
+      const item = link.getBoundingClientRect();
+      const area = aside.getBoundingClientRect();
+      const inset = 24;
+      if (item.top < area.top + inset) aside.scrollTop += item.top - area.top - inset;
+      else if (item.bottom > area.bottom - inset) aside.scrollTop += item.bottom - area.bottom + inset;
+    };
+
     const refresh = () => {
       frame = 0;
       if (!tracked.length) return;
-      const readingLine = Math.min(window.innerHeight * .36, 260);
-      let next = -1;
-      tracked.forEach(({target}, i) => {
-        if (target.getBoundingClientRect().top <= readingLine) next = i;
-      });
-      if (next < 0 && nav.getBoundingClientRect().bottom < readingLine) next = 0;
+      const line = Math.min(240, Math.max(115, window.innerHeight * .27));
+      let next = null;
+      if (desktop.matches) {
+        for (const item of tracked) {
+          if (item.target.getBoundingClientRect().top <= line) next = item;
+          else break;
+        }
+        // Once the article has entered the reading line, begin at Introduction.
+        if (!next && article.getBoundingClientRect().top <= line) next = tracked[0];
+      }
       if (next === current) return;
       current = next;
-      tracked.forEach(({link}, i) => {
-        const active = i === current;
+      tracked.forEach(({link}) => {
+        const active = !!next && link === next.link;
         link.classList.toggle('rm-current', active);
         if (active) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       });
+      const activeGroup = next?.link.closest('.research-toc-group') || null;
+      groups.forEach(group => group.classList.toggle('rm-section-current', group === activeGroup));
+      if (next) keepVisible(next.link);
     };
-    const schedule = () => {
-      if (!frame) frame = window.requestAnimationFrame(refresh);
-    };
-    window.addEventListener('scroll', schedule, {passive:true});
-    window.addEventListener('resize', schedule, {passive:true});
+
+    const schedule = () => { if (!frame) frame = window.requestAnimationFrame(refresh); };
+    window.addEventListener('scroll', schedule, { passive:true });
+    window.addEventListener('resize', schedule, { passive:true });
     window.addEventListener('hashchange', schedule);
     window.addEventListener('pageshow', schedule);
+    window.addEventListener('load', schedule, { once:true });
+    desktop.addEventListener?.('change', schedule);
     refresh();
   }
 
