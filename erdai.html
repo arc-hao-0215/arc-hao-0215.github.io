@@ -252,7 +252,7 @@
  </div>
  <p class="ed-drawing-status" aria-live="off">Basement floor plan + Y–Y section</p>
  <p class="ed-drawing-hint">Automatically alternates between levels. Choose a floor manually, or pause to keep it on screen.</p>
- </div><div class="ed-text-split"><p class="ed-basement-note"><strong>Basement.</strong> Underground galleries for painting, photography, ceramics, calligraphy, sculpture and moving images are linked by a sequence of courts and passages.</p><p class="ed-basement-note"><strong>Y–Y section.</strong> The existing longitudinal section shows how recessed rooms, level changes and light wells connect the museum to the terrain above.</p><p class="ed-ground-note" hidden><strong>Ground floor + X–X section.</strong> The ground-floor plan locates the museum within the contours of the former battery, tracing its public approach, planted roof, exhibition spaces, and retained emplacements. Read alongside it, the X–X section reveals how the new architecture connects to the sloping landscape and the existing fortifications.</p></div></div><div class="ed-drawings" data-view="basement"><figure class="ed-figure ed-drawing ed-plan-figure">
+ </div><div class="ed-text-split"><p class="ed-basement-note"><strong>Basement.</strong> Underground galleries for painting, photography, ceramics, calligraphy, sculpture and moving images are linked by a sequence of courts and passages.</p><p class="ed-basement-note"><strong>Y–Y section.</strong> The existing longitudinal section shows how recessed rooms, level changes and light wells connect the museum to the terrain above.</p><p class="ed-ground-note" hidden><strong>Ground floor.</strong> The ground-floor plan locates the museum within the contours of the former battery, tracing its public approach, planted roof, exhibition spaces, and retained emplacements.</p><p class="ed-ground-note" hidden><strong>X–X section.</strong> Read alongside the plan, the X–X section reveals how the new architecture connects to the sloping landscape and the existing fortifications.</p></div></div><div class="ed-drawings" data-view="basement"><figure class="ed-figure ed-drawing ed-plan-figure">
       <button class="ed-image ed-zoom" type="button" data-title="Basement floor plan" aria-label="Enlarge image: Basement floor plan">
         <img src="assets/erdai/floor-plan.webp" alt="Architectural floor plan showing galleries organized around an angular courtyard with coastal contour lines" width="1600" loading="lazy"  decoding="async">
       </button>
@@ -340,7 +340,6 @@
  const status=document.querySelector('#architecture .ed-drawing-status');
  const plan=holder.querySelector('.ed-plan-figure');
  const section=holder.querySelector('.ed-section-figure');
- const groundNote=document.querySelector('#architecture .ed-ground-note');
  const autoplayButton=document.querySelector('#architecture .ed-autoplay-toggle');
  const autoplayIcon=autoplayButton?.querySelector('.ed-autoplay-icon');
  const autoplayLabel=autoplayButton?.querySelector('.ed-autoplay-label');
@@ -397,7 +396,7 @@
   replaceDrawing(plan,data.plan);
   replaceDrawing(section,data.section);
   status.textContent=data.status;
-  if(groundNote)groundNote.hidden=key!=='ground';
+  document.querySelectorAll('#architecture .ed-ground-note').forEach(n=>n.hidden=key!=='ground');
   document.querySelectorAll('#architecture .ed-basement-note').forEach(n=>n.hidden=key!=='basement');
   controls.forEach(button=>{
    const active=button.dataset.view===key;
