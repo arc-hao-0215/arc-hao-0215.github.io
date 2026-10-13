@@ -24,3 +24,31 @@
   .home-page .project-card, .research-card { animation: none !important; }
   .home-page #other-works .project-image img { transition: none !important; }
 }
+
+/* Shared lightbox tools: small unobtrusive controls above the original image. */
+dialog .hc-lightbox-tools {
+  position: absolute; z-index: 20; top: 14px; left: 14px;
+  display: flex; gap: 6px; align-items: center; padding: 5px;
+  border: 1px solid rgba(0,0,0,.18);
+  background: rgba(245,244,240,.97); color: #151515;
+  font: 12px/1.25 Arial,Helvetica,sans-serif;
+}
+dialog .hc-lightbox-tools button {
+  min-width: 34px; min-height: 34px; padding: 5px 8px;
+  color: #151515; background: transparent; cursor: pointer;
+}
+dialog .hc-lightbox-tools button:hover, dialog .hc-lightbox-tools button:focus-visible {
+  background: rgba(0,0,0,.07); color: #151515;
+}
+dialog .hc-lightbox-tools button:disabled { opacity: .3; cursor: default; }
+dialog .hc-lightbox-tools .hc-zoom-level { min-width: 40px; text-align: center; }
+dialog[open] img:not(.hc-image-pannable) { cursor: zoom-in; }
+dialog[open] img.hc-image-pannable { cursor: grab !important; touch-action: none; }
+dialog[open] img.hc-image-panning { cursor: grabbing !important; transition: none !important; }
+@media (max-width: 640px) {
+  dialog .hc-lightbox-tools { top: 9px; left: 9px; gap: 2px; padding: 3px; }
+  dialog .hc-lightbox-tools button { min-width: 32px; min-height: 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog[open] img { transition: none !important; }
+}

@@ -397,3 +397,119 @@ if(atlas){
     if (document.hidden) hide();
   });
 })();
+
+
+/* Shared image lightbox interaction. Adds accessible zoom/pan to existing dialogs
+   without replacing their open/close logic, images, or captions. */
+(() => {
+  const min = 1, max = 4;
+  document.querySelectorAll('dialog').forEach(dialog => {
+    const image = dialog.querySelector('img');
+    if (!image || dialog.dataset.hcLightbox === 'enhanced') return;
+    dialog.dataset.hcLightbox = 'enhanced';
+    const toolbar = document.createElement('div');
+    toolbar.className = 'hc-lightbox-tools';
+    toolbar.setAttribute('role', 'group');
+    toolbar.setAttribute('aria-label', 'Image zoom controls');
+    toolbar.innerHTML =
+      '<button type="button" data-hc-zoom="out" aria-label="Zoom out">−</button>' +
+      '<span class="hc-zoom-level" aria-live="off">100%</span>' +
+      '<button type="button" data-hc-zoom="in" aria-label="Zoom in">+</button>' +
+      '<button type="button" data-hc-zoom="reset" aria-label="Reset image zoom">Reset</button>';
+    dialog.appendChild(toolbar);
+    const out = toolbar.querySelector('[data-hc-zoom="out"]');
+    const inside = toolbar.querySelector('[data-hc-zoom="in"]');
+    const resetButton = toolbar.querySelector('[data-hc-zoom="reset"]');
+    const level = toolbar.querySelector('.hc-zoom-level');
+    const pointers = new Map();
+    let scale = 1, panX = 0, panY = 0, pinchDistance = 0;
+    let moved = false, suppressClick = false;
+
+    const apply = () => {
+      const extentX = Math.max(0, (scale - 1) * image.offsetWidth / 2);
+      const extentY = Math.max(0, (scale - 1) * image.offsetHeight / 2);
+      panX = Math.max(-extentX, Math.min(extentX, panX));
+      panY = Math.max(-extentY, Math.min(extentY, panY));
+      image.style.transform = 'translate3d(' + panX + 'px,' + panY + 'px,0) scale(' + scale + ')';
+      image.classList.toggle('hc-image-pannable', scale > 1);
+      level.textContent = Math.round(scale * 100) + '%';
+      out.disabled = scale <= min;
+      inside.disabled = scale >= max;
+      resetButton.disabled = scale === min && panX === 0 && panY === 0;
+    };
+    const setScale = value => {
+      scale = Math.max(min, Math.min(max, Math.round(value * 100) / 100));
+      if (scale === min) { panX = 0; panY = 0; }
+      apply();
+    };
+    const reset = () => {
+      pointers.clear();
+      scale = min; panX = 0; panY = 0; pinchDistance = 0;
+      image.classList.remove('hc-image-panning');
+      apply();
+    };
+    inside.addEventListener('click', () => setScale(scale + .25));
+    out.addEventListener('click', () => setScale(scale - .25));
+    resetButton.addEventListener('click', reset);
+    image.setAttribute('draggable', 'false');
+    image.addEventListener('click', event => {
+      if (suppressClick) { event.preventDefault(); suppressClick = false; return; }
+      if (scale === min) setScale(1.5);
+    });
+    image.addEventListener('wheel', event => {
+      if (!event.ctrlKey && !event.metaKey) return;
+      event.preventDefault();
+      setScale(scale + (event.deltaY < 0 ? .25 : -.25));
+    }, { passive: false });
+    image.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'mouse' && (event.button !== 0 || scale <= 1)) return;
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      try { image.setPointerCapture(event.pointerId); } catch (_) {}
+      moved = false;
+      if (pointers.size === 2) {
+        const [a,b] = [...pointers.values()];
+        pinchDistance = Math.hypot(a.x-b.x,a.y-b.y);
+      }
+      if (scale > 1) image.classList.add('hc-image-panning');
+    });
+    image.addEventListener('pointermove', event => {
+      if (!pointers.has(event.pointerId)) return;
+      const previous = pointers.get(event.pointerId);
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      if (pointers.size === 2) {
+        const [a,b] = [...pointers.values()];
+        const distance = Math.hypot(a.x-b.x,a.y-b.y);
+        if (pinchDistance > 0 && Math.abs(distance-pinchDistance)>1) {
+          moved = true;
+          setScale(scale * distance / pinchDistance);
+        }
+        pinchDistance = distance;
+      } else if (scale > 1) {
+        const dx = event.clientX - previous.x;
+        const dy = event.clientY - previous.y;
+        if (Math.abs(dx) + Math.abs(dy) > 1) {
+          moved = true;
+          panX += dx; panY += dy; apply();
+        }
+      }
+    });
+    const endGesture = event => {
+      if (!pointers.has(event.pointerId)) return;
+      pointers.delete(event.pointerId);
+      if (moved) suppressClick = true;
+      if (pointers.size < 2) pinchDistance = 0;
+      if (!pointers.size) image.classList.remove('hc-image-panning');
+    };
+    ['pointerup','pointercancel','lostpointercapture'].forEach(type => image.addEventListener(type,endGesture));
+    dialog.addEventListener('keydown', event => {
+      if (event.target.closest('input,textarea,select,[contenteditable]')) return;
+      if (event.key === '+' || event.key === '=') { event.preventDefault(); setScale(scale + .25); }
+      else if (event.key === '-') { event.preventDefault(); setScale(scale - .25); }
+      else if (event.key === '0') { event.preventDefault(); reset(); }
+    });
+    dialog.addEventListener('close', reset);
+    const observer = new MutationObserver(() => { if (dialog.open) reset(); });
+    observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
+    apply();
+  });
+})();
