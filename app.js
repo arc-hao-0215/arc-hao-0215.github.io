@@ -1,3 +1,34 @@
+/* Site-wide image display protection. Friction only: original image URLs remain public. */
+(() => {
+  const markProtected = image => {
+    image.setAttribute('data-no-save', '');
+    image.draggable = false;
+  };
+  // Mark all authored pictures; new lightbox/gallery images are covered as well.
+  document.querySelectorAll('img').forEach(markProtected);
+  const observer = new MutationObserver(records => {
+    for (const record of records) {
+      for (const node of record.addedNodes) {
+        if (!(node instanceof Element)) continue;
+        if (node.matches('img')) markProtected(node);
+        node.querySelectorAll('img').forEach(markProtected);
+      }
+    }
+  });
+  observer.observe(document.documentElement, {childList: true, subtree: true});
+
+  const isProtectedImage = target => target instanceof Element &&
+    Boolean(target.closest('img[data-no-save]'));
+  document.addEventListener('contextmenu', event => {
+    if (isProtectedImage(event.target)) event.preventDefault();
+  }, true);
+  document.addEventListener('dragstart', event => {
+    if (isProtectedImage(event.target)) event.preventDefault();
+  }, true);
+  // Do not cancel touch or pointer events: carousel, lightbox and pinch gestures
+  // must continue to work on desktop and mobile.
+})();
+
 const $=(s)=>document.querySelector(s),$$=(s)=>[...document.querySelectorAll(s)];
 function setPressed(buttons,active){buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===active)))}
 /* Homepage Grid / Index: short sequential crossfade without changing layout. */
@@ -511,23 +542,6 @@ if(atlas){
     const observer = new MutationObserver(() => { if (dialog.open) reset(); });
     observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
     apply();
-  });
-})();
-
-/* Site-wide image save friction (not copy protection). */
-(() => {
-  // Delegated listeners also cover images added later by galleries and lightboxes.
-  const isImage = target => target instanceof Element && !!target.closest('img');
-  document.addEventListener('contextmenu', event => {
-    if (isImage(event.target)) event.preventDefault();
-  }, true);
-  document.addEventListener('dragstart', event => {
-    if (isImage(event.target)) event.preventDefault();
-  }, true);
-
-  // Keep click, keyboard access, scrolling, pinch zoom and lightbox panning intact.
-  document.querySelectorAll('img').forEach(image => {
-    image.draggable = false;
   });
 })();
 
