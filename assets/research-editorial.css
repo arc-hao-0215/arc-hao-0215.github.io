@@ -422,3 +422,79 @@
   .research-article .essay-body > .research-part-marker {padding:20px 0 6px !important;}
   .research-article .essay-body > .research-part-marker + section {padding-top:8px !important;}
 }
+
+
+/* Research table of contents — the five-part outline, with numbered subsections.
+   Main divisions 00–04 are separate from subsections 03.01–03.nn. */
+.research-article .essay-layout aside nav[aria-label="Essay contents"] {
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  max-width:290px;
+  margin:18px 0 30px;
+  min-width:0;
+}
+.research-article .essay-layout aside .research-toc-group {
+  min-width:0;
+  padding:14px 0 11px;
+  border-top:1px solid var(--line,#d9dad4);
+}
+.research-article .essay-layout aside .research-toc-part {
+  display:block;
+  color:var(--ink,#242724);
+  font:500 11px/1.45 Arial,Helvetica,sans-serif;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  text-decoration:none;
+}
+.research-article .essay-layout aside .research-toc-children {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:10px;
+  padding:12px 0 0 14px;
+  min-width:0;
+}
+.research-article .essay-layout aside .research-toc-sub {
+  display:block;
+  color:var(--grey,#6b706b);
+  font:400 12px/1.55 Arial,Helvetica,sans-serif;
+  letter-spacing:0;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+  min-width:0;
+}
+.research-article .essay-layout aside :is(.research-toc-part,.research-toc-sub):hover,
+.research-article .essay-layout aside :is(.research-toc-part,.research-toc-sub):focus-visible {
+  color:var(--ink,#222);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.research-article .essay-body .research-subsection-index {
+  display:block;
+  font:500 10px/1.55 Arial,Helvetica,sans-serif;
+  letter-spacing:.065em;
+  text-transform:uppercase;
+  color:var(--grey,#797c77);
+  margin:0 0 13px;
+}
+@media(max-width:760px) {
+  .research-article .essay-layout aside nav[aria-label="Essay contents"] {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    column-gap:20px;
+    row-gap:0;
+    max-width:none;
+  }
+  .research-article .essay-layout aside .research-toc-group--research {
+    grid-column:1/-1;
+  }
+  .research-article .essay-layout aside .research-toc-group--research .research-toc-children {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    column-gap:20px;
+  }
+}
+@media(max-width:480px) {
+  .research-article .essay-layout aside nav[aria-label="Essay contents"] {grid-template-columns:1fr;}
+  .research-article .essay-layout aside .research-toc-group--research {grid-column:auto;}
+  .research-article .essay-layout aside .research-toc-group--research .research-toc-children {grid-template-columns:1fr;}
+}
