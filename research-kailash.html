@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reading the Sacred Landscape — Hao Chang</title>
+<meta name="description" content="A visual research atlas of the Mount Kailash kora: ritual spaces, existing structures, landscape perception and environmental conditions.">
+<meta name="theme-color" content="#f5f4f0">
+<link rel="stylesheet" href="style.css?v=20261013-rights-v2">
+<style>
+/* Mount Kailash / Research-only editorial atlas, aligned with Italy and Netherlands enquiries */
+.rr-page .essay-header{padding-bottom:36px}
+.rr-page .essay-header h1{max-width:1140px}
+.rr-page .essay-layout{padding-top:58px;grid-template-columns:minmax(165px,1fr) minmax(0,2.6fr);gap:6.5%}
+.rr-page .essay-layout aside{top:100px;max-height:calc(100vh - 122px)}
+.rr-page .essay-layout aside nav{gap:13px}
+.rr-page .essay-body{max-width:960px}
+.rr-page .essay-body p{max-width:790px;color:#43453f;font:16.5px/1.84 Arial,Helvetica,sans-serif}
+.rr-page .essay-body p+p{margin-top:17px}
+.rr-opening{padding-bottom:9px}
+.rr-page .essay-body .rr-opening .opening-proposition{max-width:850px;color:var(--ink);font:clamp(27px,2.8vw,39px)/1.34 Arial,Helvetica,sans-serif;letter-spacing:-.035em;margin:15px 0 23px}
+.rr-question,.rr-section{border-top:1px solid var(--line);padding-top:28px;margin-top:76px;scroll-margin-top:112px}
+.rr-section-meta{display:flex;gap:15px;justify-content:space-between;align-items:center;margin-bottom:16px}
+.rr-meta-tag{font:10px/1.5 Arial,Helvetica,sans-serif;color:var(--grey);letter-spacing:.06em}
+.rr-page .essay-body .rr-section h2{font:400 clamp(29px,3.2vw,42px)/1.17 Arial,Helvetica,sans-serif;letter-spacing:-.043em;max-width:800px;margin:12px 0 22px}
+.rr-page .essay-body .rr-question h2{font:400 13px/1.5 Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin:0 0 15px}
+.rr-page .essay-body .rr-question p{font:clamp(25px,2.65vw,36px)/1.43 Arial,Helvetica,sans-serif;letter-spacing:-.026em;color:var(--ink);max-width:850px;margin:0}
+.rr-method-strip{margin:28px 0 4px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rr-method-strip>div{font:12px/1.55 Arial,Helvetica,sans-serif;color:var(--grey)}
+.rr-method-strip strong{display:block;color:var(--ink);font:500 clamp(19px,2.3vw,29px)/1.25 Arial,Helvetica,sans-serif;letter-spacing:-.035em;margin-bottom:7px}
+/* All diagrams share the essay's left edge. The shared editorial CSS caps figures at
+   max-width:100%, so the previous 112% width + negative margin shifted them left. */
+.rr-page .essay-body .rr-figure{box-sizing:border-box;min-width:0;width:100%;max-width:100%;margin:34px 0 48px}
+.rr-page .essay-body .rr-figure--wide{width:100%;max-width:100%;margin-left:0;margin-right:0}
+.rr-page .essay-body .rr-figure--portrait{width:min(100%,680px);max-width:100%;margin-left:0;margin-right:0}
+.rr-figure a{display:block;line-height:0;cursor:zoom-in;outline-offset:4px}
+.rr-figure img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;filter:none;background:#f3f2ed;transition:opacity .25s ease}
+.rr-figure a:hover img{opacity:.92}
+.rr-figure figcaption{display:grid;grid-template-columns:76px minmax(0,1fr);gap:13px;margin-top:10px;padding:11px 0 0;border-top:1px solid var(--line);background:transparent;color:var(--grey);font:12px/1.6 Arial,Helvetica,sans-serif}
+.rr-figure-num{font:10px/1.6 Arial,Helvetica,sans-serif;letter-spacing:.06em;color:var(--accent)}
+.rr-figure-note{display:block;margin-top:5px;font-size:11px;color:var(--grey)}
+.rr-figure-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2.2vw,28px);align-items:start;margin:34px 0 43px}
+.rr-figure-pair .rr-figure{margin:0;width:100%}
+.rr-figure-pair .rr-figure figcaption{grid-template-columns:1fr;gap:3px}
+.rr-typology-index{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:31px 0 34px}
+.rr-type{background:var(--paper,#f5f4f0);padding:17px 13px 22px;min-width:0}
+.rr-type>span{color:var(--accent);font:10px Arial,Helvetica,sans-serif;letter-spacing:.08em}
+.rr-type h3{font:400 15px/1.3 Arial,Helvetica,sans-serif;letter-spacing:-.02em;margin:16px 0 8px}
+.rr-page .essay-body .rr-type p{font:12px/1.65 Arial,Helvetica,sans-serif;color:var(--grey);margin:0}
+.rr-analysis{margin:31px 0;border-top:1px solid var(--line)}
+.rr-analysis>div{display:grid;grid-template-columns:minmax(105px,.65fr) minmax(0,2fr);gap:22px;padding:14px 0;border-bottom:1px solid var(--line)}
+.rr-analysis strong{font:500 12px/1.5 Arial,Helvetica,sans-serif}
+.rr-page .essay-body .rr-analysis p{font:13px/1.65 Arial,Helvetica,sans-serif;margin:0;color:var(--grey)}
+.rr-pull{border-left:2px solid var(--accent);margin:36px 0;padding-left:22px;max-width:790px;font:clamp(19px,2.2vw,27px)/1.45 Arial,Helvetica,sans-serif;color:var(--ink);letter-spacing:-.02em}
+.rr-page .research-authorship-block{margin-top:70px}
+.rr-sources{border-top:1px solid var(--ink);padding-top:24px}
+.rr-sources>p{font:14px/1.7 Arial,Helvetica,sans-serif;color:var(--grey)}
+.rr-page .rr-figure.rr-hidden{display:none}
+.rr-lightbox{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;border:0;padding:18px clamp(15px,2.5vw,36px);background:rgba(18,18,18,.978);color:#fff}
+.rr-lightbox::backdrop{background:rgba(0,0,0,.9)}
+.rr-lightbox[open]{display:flex;flex-direction:column;gap:12px}
+.rr-lightbox-head{display:flex;justify-content:space-between;align-items:center;gap:15px;font:12px/1.5 Arial,Helvetica,sans-serif}
+.rr-lightbox button{background:none;border:0;color:#fff;padding:9px;cursor:pointer;font:12px Arial,Helvetica,sans-serif}
+.rr-lightbox button:hover{text-decoration:underline}
+.rr-lightbox img{display:block;min-width:0;min-height:0;max-width:100%;max-height:calc(100dvh - 110px);width:auto;height:auto;object-fit:contain;margin:auto}
+@media(max-width:780px){
+.rr-page .essay-layout{display:block;padding-top:36px}
+.rr-page .essay-layout aside{position:static;max-height:none;overflow:visible;margin-bottom:32px}
+.rr-page .essay-layout aside nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 15px}
+.rr-page .essay-body p{font-size:15.5px}
+.rr-page .essay-body .rr-figure--wide{width:100%;margin-left:0}
+.rr-page .essay-body .rr-figure--portrait{width:100%}
+.rr-section,.rr-question{margin-top:55px}
+.rr-figure-pair{grid-template-columns:1fr;gap:24px}
+.rr-figure-pair .rr-figure figcaption{grid-template-columns:72px minmax(0,1fr);gap:9px}
+.rr-method-strip{gap:10px}
+.rr-typology-index{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:490px){
+.rr-page .essay-header h1{font-size:clamp(38px,10vw,52px)}
+.rr-method-strip{grid-template-columns:1fr;gap:16px}
+.rr-method-strip>div{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:baseline}
+.rr-method-strip strong{margin:0}
+.rr-figure figcaption{grid-template-columns:61px minmax(0,1fr)}
+.rr-type{padding:12px 10px 16px}
+.rr-analysis>div{grid-template-columns:1fr;gap:5px}
+.rr-page .essay-body .rr-section h2{font-size:29px}
+}
+@media(prefers-reduced-motion:reduce){.rr-figure img{transition:none}}
+</style>
+
+<script src="app.js?v=20261013-rights-v2" defer></script>
+<link rel="stylesheet" href="assets/research-editorial.css?v=20261013-reference-spacing-v1"><link rel="stylesheet" href="assets/research-system.css?v=20261011-credits-v1"><script src="assets/research-system.js?v=20261011-a" defer></script><link rel="stylesheet" href="assets/research-motion.css?v=20261011-v1"><script src="assets/research-motion.js?v=20261011-v1" defer></script><!-- Independent research sharing metadata; existing image, no alteration. -->
+<link rel="canonical" href="https://arc-hao-0215.github.io/research-kailash.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hao Chang — Architecture &amp; Research">
+<meta property="og:title" content="Reading the Sacred Landscape — Hao Chang">
+<meta property="og:description" content="A visual research atlas of the Mount Kailash kora: ritual spaces, existing structures, landscape perception and environmental conditions.">
+<meta property="og:url" content="https://arc-hao-0215.github.io/research-kailash.html">
+<meta property="og:image" content="https://arc-hao-0215.github.io/assets/research-ritual/05-route-facility-atlas.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<link rel="stylesheet" href="assets/site-refinements.css?v=20261013-ux1">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261013-hc4">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=20261013-hc4">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261013-hc4">
+<link rel="shortcut icon" href="/favicon.ico?v=20261013-hc4">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261013-hc4">
+<link rel="stylesheet" href="assets/editorial-guides.css?v=20261013-editorial-v1">
+</head>
+<body class="image-free rr-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a><nav aria-label="Main navigation"><a href="index.html">Projects</a><a href="research.html" aria-current="page">Research</a><a href="about.html">About</a></nav></header>
+<main id="main"><article class="research-article">
+<header class="essay-header">
+<a class="eyebrow" href="research.html">Research / Enquiry 07</a>
+<h1>Reading the Sacred Landscape</h1>
+<p class="essay-subtitle">Ritual, Perception, and Material Presence Along the Mount Kailash Kora</p>
+<div class="essay-byline"><span>Ritual / Cultural landscape / Spatial perception</span><span>Mount Kailash · 2024</span><span>Collaborative research</span></div>
+</header>
+<div class="essay-layout">
+<aside><span class="eyebrow">In this enquiry</span>
+<nav aria-label="Essay contents">
+<a href="#opening">Research premise</a>
+<a href="#question">Research enquiry</a><a href="#brief">In brief / Findings</a>
+<a href="#sequence">01 / The kora as a spatial sequence</a>
+<a href="#material">02 / A spectrum of material presence</a>
+<a href="#perception">03 / Measuring perception</a>
+<a href="#environment">04 / Environmental gradients</a>
+<a href="#findings">05 / What the landscape records</a>
+<a href="#limitations">Method and limitations</a>
+<a href="#sources">References</a>
+</nav></aside>
+<div class="essay-body">
+<section id="opening" class="rr-opening">
+<span class="eyebrow">Field enquiry / Reading a ritual landscape</span>
+<p class="opening-proposition">The kora is not a single view of a sacred mountain. It is a sequence of movement, devotion, encounters, and everyday infrastructures.</p>
+<p>Mount Kailash is significant to Buddhists, Hindus, Jains and followers of Bön. Its meaning is experienced through circumambulation: moving between monasteries and worship points, crossing difficult terrain, encountering religious objects and depending on the ordinary facilities that sustain the journey.</p>
+<p>This research brings together photographic inventories, route mapping, landscape-image analysis, visual evaluation and environmental records. It asks how these different forms of evidence help describe a sacred landscape, while acknowledging what photographs and quantified scores cannot explain.</p>
+<div class="rr-method-strip" aria-label="Research evidence">
+<div><strong>1,729</strong>Geolocated publicly shared images analysed for photographic attention</div>
+<div><strong>103</strong>Returned semantic-differential questionnaires</div>
+<div><strong>01—05</strong>Research lenses: movement, material presence, perception, environment and synthesis</div>
+</div>
+</section>
+<section id="question" class="research-question research-question--unified"><h2>Research question</h2><p class="question-text">How do ritual practices, built structures, visual perception and environmental conditions collectively shape the experience of the Mount Kailash pilgrimage landscape?</p></section><section id="brief" class="research-brief" aria-labelledby="brief-heading"><span id="brief-heading" class="eyebrow">In brief / What the evidence shows</span><div class="research-brief-item"><span class="research-brief-number">01</span><div><h3>Pilgrimage is a sequence of different spatial practices</h3><p>Devotional landmarks, passages, shelter, trade and everyday services occupy the same route while holding different kinds of significance.</p><p class="research-brief-evidence">Evidence: Collaborative route inventory, mapped structures and photographic records</p></div></div><div class="research-brief-item"><span class="research-brief-number">02</span><div><h3>Photographic attention is not spiritual value</h3><p>The distribution of 1,729 publicly shared geolocated images describes recorded visibility; neither density nor aesthetic scores represent a consensus of pilgrims or custodians.</p><p class="research-brief-evidence">Evidence: Image-sample analysis; 103 returned semantic-differential questionnaires</p></div></div><div class="research-brief-item"><span class="research-brief-number">03</span><div><h3>Landscape experience changes with environmental conditions</h3><p>Changes in terrain, exposure, vegetation and facilities shape the physical journey, though risk and ecological impacts require additional specialist validation.</p><p class="research-brief-evidence">Evidence: Route and environmental overlays; limitations of available field records</p></div></div></section>
+
+<section class="evidence-guide" aria-label="Reading evidence and interpretation"><div class="evidence-guide-top"><div><span class="editorial-label">How to read the evidence</span><h2>Differentiate visible routes from lived meanings</h2></div></div><div class="evidence-guide-grid"><div class="evidence-guide-item" data-number="01"><h3><a href="#sequence">Field observation / spatial record ↗</a></h3><p>Route mapping and photographic inventories record observable structures, service points and environmental conditions; their coverage depends on where images and observations were made.</p></div><div class="evidence-guide-item" data-number="02"><h3><a href="#material">Documentary / archival evidence ↗</a></h3><p>Published studies of sacred landscapes and the existing route records give historical and methodological context, without replacing the perspectives of pilgrims or cultural custodians.</p></div><div class="evidence-guide-item" data-number="03"><h3><a href="#perception">Interpretation / limits ↗</a></h3><p>Geolocated photograph density and visual evaluation describe recorded attention, not sacred value, consensus, or permission for architectural intervention.</p></div></div><p class="evidence-guide-note">These labels describe the role and limits of evidence in this essay. A photograph, published account and analytical diagram are not interchangeable forms of proof. Original source details remain in the captions and references below.</p></section>
+<section id="sequence" class="rr-section">
+<div class="rr-section-meta"><span class="eyebrow">01 / Territory &amp; route</span><span class="rr-meta-tag">SPATIAL INVENTORY · PHOTOGRAPHIC RECORDS</span></div>
+<h2>The kora as a spatial sequence</h2>
+<p>The journey is punctuated by places of differing significance: monasteries, worship points, the Drolma La Pass, settlements, rest locations and temporary shelters. Some are marked by repeated ritual practice; others arise from the immediate demands of walking, altitude, weather and supply.</p>
+<p>A route-wide photographic inventory places existing structures, objects and everyday facilities in their geographical context. The distribution is uneven, with concentrations around established passages and stopping points. A second reading draws on 1,729 geolocated social-media images, using kernel-density analysis and Kevin Lynch’s five landscape-image elements—paths, edges, districts, nodes and landmarks—to investigate the geography of recorded photographic attention.</p>
+<figure class="rr-figure rr-figure--wide">
+<a href="assets/research-ritual/05-route-facility-atlas.webp" data-rr-zoom>
+<img src="assets/research-ritual/05-route-facility-atlas.webp" alt="Photographic atlas of existing monasteries, services and ritual objects distributed around the Mount Kailash kora" loading="eager" decoding="async">
+</a>
+<figcaption><span class="rr-figure-num">ATLAS / 01</span><span class="rr-cap-copy">An atlas of existing places — photographic documentation linked to the route, including religious landmarks, everyday buildings, structures and services.</span></figcaption>
+</figure>
+<p>The map is a record of documented places, not a complete account of sacred value. A frequently photographed location is not necessarily more important to pilgrims or custodians than one that appears less often in the archive.</p>
+</section>
+<section id="material" class="rr-section">
+<div class="rr-section-meta"><span class="eyebrow">02 / Built and ritual inventory</span><span class="rr-meta-tag">TYPOLOGICAL COMPARISON · MATERIAL OBSERVATION</span></div>
+<h2>A spectrum of material presence</h2>
+<p>Along the same journey, prayer flags, mani stone assemblages, stupas and monasteries coexist with guesthouses, shops, shelters and directional signs. The inventory compares these existing elements by function, construction, material, visibility and relationship to the surrounding terrain.</p>
+<div class="rr-typology-index" aria-label="Existing facility types along the kora">
+<div class="rr-type"><span>01 / RITUAL OBJECTS</span><h3>Mani stones &amp; prayer flags</h3><p>Accumulated offerings and material traces of repeated devotional practices.</p></div>
+<div class="rr-type"><span>02 / RELIGIOUS PLACES</span><h3>Stupas &amp; monasteries</h3><p>Recognisable destinations, thresholds and centres of religious activity.</p></div>
+<div class="rr-type"><span>03 / EVERYDAY SERVICES</span><h3>Guesthouses &amp; shops</h3><p>Accommodation, exchange, supplies and seasonal occupation along the walk.</p></div>
+<div class="rr-type"><span>04 / ROUTE INFORMATION</span><h3>Signs &amp; service markers</h3><p>Directional information, safety notices and visible traces of maintenance.</p></div>
+</div>
+<figure class="rr-figure rr-figure--wide">
+<a href="assets/research-ritual/06-sacred-secular-inventory.webp" data-rr-zoom>
+<img src="assets/research-ritual/06-sacred-secular-inventory.webp" alt="Cut-out photographic catalogue of sacred and secular built elements along the pilgrimage route" loading="lazy" decoding="async">
+</a>
+<figcaption><span class="rr-figure-num">ATLAS / 02</span><span class="rr-cap-copy">A sacred–secular material spectrum — classification of existing ritual structures, buildings, visitor services and signs.</span></figcaption>
+</figure>
+<p>These categories make relationships visible without fixing every object within a binary opposition. A guesthouse may remain part of a ritual journey, while a modest stone assemblage can carry significance far beyond its physical scale. The same corridor is at once devotional and inhabited.</p>
+</section>
+<section id="perception" class="rr-section">
+<div class="rr-section-meta"><span class="eyebrow">03 / Landscape perception</span><span class="rr-meta-tag">SEMANTIC DIFFERENTIAL · PHOTO EVALUATION</span></div>
+<h2>Evaluating perception within a sample</h2><p class="research-editorial-note"><strong>Interpretation and sampling.</strong> The 103 returned questionnaires measure responses within the surveyed group, not all pilgrims. Recruitment details and respondent characteristics are needed before claiming wider representativeness. Perceived beauty or photographic density cannot be used as a measure of religious importance.</p>
+<p>Physical distribution does not explain how a place is experienced. The team therefore combined photographic evaluation with 103 returned semantic-differential questionnaires. The instrument considered spatial quality, functionality, harmony, beauty, cleanliness, safety, distinctiveness, historical association, perceived naturalness and other attributes of the existing landscape and facilities.</p>
+<p>The photographic ranking places documented scenes along an evaluation spectrum, making visible contrasts among ritual markers, built facilities, signs and mountain environments. The boxplots record variation as well as central tendencies. Many evaluated qualities cluster around the centre of the scale; dispersed answers should not be simplified into a claim that the entire landscape is liked or disliked.</p>
+<figure class="rr-figure rr-figure--wide">
+<a href="assets/research-ritual/04-photographic-evaluation-spectrum.webp" data-rr-zoom>
+<img src="assets/research-ritual/04-photographic-evaluation-spectrum.webp" alt="Numerous photographic samples of the pilgrimage landscape ordered from negative to positive visual evaluation" loading="lazy" decoding="async">
+</a>
+<figcaption><span class="rr-figure-num">STUDY / 03</span><span class="rr-cap-copy">Photographic evaluation spectrum — sampled views ordered according to their recorded assessment.</span></figcaption>
+</figure>
+<figure class="rr-figure">
+<a href="assets/research-ritual/03-questionnaire-boxplots.webp" data-rr-zoom>
+<img src="assets/research-ritual/03-questionnaire-boxplots.webp" alt="Box-and-whisker plots showing respondent variation in spatial quality, functionality, naturalness and other visual perception measures" loading="lazy" decoding="async">
+</a>
+<figcaption><span class="rr-figure-num">STUDY / 04</span><span class="rr-cap-copy">Distribution of semantic-differential responses — the boxes show the spread of answers across the evaluated qualities.</span></figcaption>
+</figure>
+<p>The study reported more positive evaluations of religious landmarks and more negative evaluations of certain secular facilities within its sample. These responses reflect respondents’ perceptions, not a judgment from every pilgrim, resident or religious custodian. Visual preference must also be distinguished from necessity, practical function and sacred meaning.</p>
+<figure class="rr-figure rr-figure--portrait">
+<a href="assets/research-ritual/01-visual-evaluation-map.webp" data-rr-zoom>
+<img src="assets/research-ritual/01-visual-evaluation-map.webp" alt="Territorial map of visual evaluations of existing facilities and landscapes around the Kailash kora" loading="lazy" decoding="async">
+</a>
+<figcaption><span class="rr-figure-num">MAP / 05</span><span class="rr-cap-copy">Spatial distribution of visual evaluation — photographic and facility evaluations read in relation to the wider route.</span></figcaption>
+</figure>
+</section>
+<section id="environment" class="rr-section">
+<div class="rr-section-meta"><span class="eyebrow">04 / Territory &amp; environmental conditions</span><span class="rr-meta-tag">TERRAIN · ECOLOGY · INDICATIVE HAZARD RECORDS</span></div>
+<h2>The environmental gradient of pilgrimage</h2>
+<p>The kora traverses markedly different conditions. Valleys, mountain runoff, fragmented ground, high passes, sparse vegetation and alpine meadows change the physical experience of movement. Visibility, exposure and the presence of water or shelter vary across the journey and with the seasons.</p>
+<p>Environmental overlays compare terrain, route networks, vegetation, documented wildlife encounters and preliminary indications of geological and natural hazards. These are different classes of evidence: a wildlife photograph establishes a recorded encounter, not population density; a mapped hazard indicator does not establish the probability of danger at a particular structure.</p>
+<figure class="rr-figure rr-figure--portrait">
+<a href="assets/research-ritual/02-environmental-conditions-map.webp" data-rr-zoom>
+<img src="assets/research-ritual/02-environmental-conditions-map.webp" alt="Environmental mapping of natural hazard indicators and observed wildlife distribution around the pilgrimage route" loading="lazy" decoding="async">
+</a>
+<figcaption><span class="rr-figure-num">MAP / 06</span><span class="rr-cap-copy">Environmental conditions and risk indicators — a territorial reading of terrain and provisional ecological records.</span></figcaption>
+</figure>
+<p>Because the pilgrimage crosses these changing environmental zones within a single ritual sequence, no one photograph, route segment or land-cover category can stand for the whole mountain landscape.</p>
+</section>
+<section id="findings" class="rr-section">
+<div class="rr-section-meta"><span class="eyebrow">05 / Interpretation</span><span class="rr-meta-tag">CROSS-READING THE EVIDENCE</span></div>
+<h2>What the landscape records</h2>
+<p>The different mappings do not describe the same thing. A facility inventory records material presence. Image density registers what a particular group chose to photograph. Questionnaires describe perceptions within a surveyed sample. Environmental overlays indicate changing territorial conditions.</p>
+<div class="rr-analysis" aria-label="Research findings">
+<div><strong>Material presence</strong><p>Sacred markers and ordinary facilities occupy the same pilgrimage corridor but establish different relationships to place, use and duration.</p></div>
+<div><strong>Recorded attention</strong><p>Photographic concentrations reveal patterns of visibility, not a complete hierarchy of cultural or ritual value.</p></div>
+<div><strong>Evaluated perception</strong><p>Ratings show variation and disagreement; no single visual score can explain functional need or spiritual significance.</p></div>
+<div><strong>Environmental variation</strong><p>Terrain and ecological indicators shift along the route, complicating any singular description of the kora.</p></div>
+</div>
+<div class="rr-pull">The mountain is encountered through movement. What is seen, what is used and what is held sacred do not necessarily occupy the same places.</div>
+<p>Read together, these records reveal the kora as a layered cultural landscape: a sequence of religious practice, everyday occupation, perceptions and environmental conditions that overlap without becoming interchangeable.</p>
+</section>
+<section id="limitations" class="rr-section">
+<div class="rr-section-meta"><span class="eyebrow">Method &amp; limitations</span><span class="rr-meta-tag">RESEARCH SCOPE</span></div>
+<h2>What the evidence cannot tell us</h2>
+<p>Social-media imagery is shaped by who takes photographs, where they stop and what they choose to publish. The survey documents responses from 103 returned questionnaires, but cannot establish representative perceptions without its recruitment procedure and respondent characteristics. Geolocated ecological observations remain provisional, while territorial risk assessment requires verified specialist datasets.</p>
+<p>Most importantly, photographic attention and aesthetic evaluation cannot speak for the religious authorities, custodians, residents and pilgrims whose knowledge and practices give these places meaning. Understanding the relationship between ritual significance and spatial occupation requires forms of enquiry beyond those used here.</p>
+</section>
+<section class="research-authorship-block"><h2>Research record &amp; credits</h2><p class="research-authorship">Collaborative studio research · Hao Chang &amp; Mengzhe Lee · 2024<br>Instructor · Yue Cao<br>Methods · Photographic inventory, geolocated-image analysis, landscape mapping, facility typology, semantic-differential survey, environmental overlays</p></section>
+<section id="sources" class="essay-source rr-sources"><h2>Sources &amp; references</h2>
+<ol class="research-bibliography">
+<li id="ref-K1"><span class="source-kind">K1 / Landscape-image framework</span><h3>Kevin Lynch (1960). The Image of the City.</h3><p>The MIT Press. The five landscape-image elements inform the interpretation of paths, edges, districts, nodes and landmarks.</p><a class="reference-url" href="https://mitpress.mit.edu/9780262620017/the-image-of-the-city/" target="_blank" rel="noopener noreferrer">Read reference ↗</a></li>
+<li id="ref-K2"><span class="source-kind">K2 / Sacred landscapes</span><h3>Wild, R. &amp; McLeod, C. (eds.) (2008). Sacred Natural Sites: Guidelines for Protected Area Managers.</h3><p>IUCN Best Practice Protected Area Guidelines Series No. 16. Context for the cultural, spiritual and ecological significance of sacred natural sites.</p><a class="reference-url" href="https://iucn.org/resources/publication/sacred-natural-sites-guidelines-protected-area-managers" target="_blank" rel="noopener noreferrer">Read reference ↗</a></li>
+</ol></section>
+</div></div>
+<section class="research-related" aria-label="Related architectural project"><span class="eyebrow">Related project / Separate design enquiry</span><p><a class="line-link" href="spirited-a-way.html">Spirited A Way →</a></p></section><div class="research-next"><a class="line-link" href="research.html">← All enquiries</a><a href="research-shichahai.html"><span class="eyebrow">Next enquiry / 08</span><span>Whose Waterfront? →</span></a></div>
+</article></main>
+<footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><nav class="footer-links" aria-label="Footer links"><a href="mailto:haochang0215@gmail.com">Get in touch</a><a href="image-credits.html">Image Credits &amp; Rights</a></nav><span class="footer-copyright">© 2026 Hao Chang</span></footer>
+<dialog class="rr-lightbox" id="rr-image-dialog" aria-label="Research image viewer"><div class="rr-lightbox-head"><span id="rr-lightbox-title">Research / Image</span><button type="button" id="rr-lightbox-close" aria-label="Close image">Close ×</button></div><img id="rr-lightbox-image" src="" alt=""></dialog>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const dialog=document.getElementById('rr-image-dialog');
+  const full=document.getElementById('rr-lightbox-image');
+  const label=document.getElementById('rr-lightbox-title');
+  document.querySelectorAll('[data-rr-zoom]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      if(!dialog?.showModal)return;
+      e.preventDefault();
+      const img=a.querySelector('img');
+      full.src=a.href;full.alt=img?.alt||'Research image';
+      label.textContent=a.closest('figure')?.querySelector('.rr-cap-copy')?.textContent||'Research image';
+      dialog.showModal();
+    });
+  });
+  document.getElementById('rr-lightbox-close')?.addEventListener('click',()=>dialog.close());
+  dialog?.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+  dialog?.addEventListener('close',()=>{full.removeAttribute('src')});
+});
+</script>
+</body></html>
