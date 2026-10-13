@@ -29,29 +29,125 @@
 .research-article .essay-source .research-bibliography h3{font-size:13px!important;line-height:1.55!important}
 .research-article .essay-source .research-bibliography p{font-size:12px!important}
 .research-article .essay-source .research-bibliography .reference-url{font-size:11.5px!important}
-.rs-viewer{position:fixed;inset:0;box-sizing:border-box;width:100vw;max-width:none;max-height:none;height:100dvh;margin:0;padding:0;border:0;background:#181a18;color:#fff;overscroll-behavior:contain}
-.rs-viewer::backdrop{background:rgba(0,0,0,.88)}
-.rs-viewer[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
-.rs-viewer *{box-sizing:border-box}
-.rs-viewer-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:12px clamp(14px,2vw,30px);border-bottom:1px solid #454843;background:#181a18;font:12px/1.5 Arial,Helvetica,sans-serif}
-.rs-viewer-label{font-weight:600;letter-spacing:.05em}
-.rs-viewer-actions{display:flex;gap:4px;flex-wrap:wrap}
-.rs-viewer button,.rs-viewer-file{border:1px solid #545952;background:#252824;border-radius:2px;padding:8px 12px;color:#f3f3ee;font:12px/1.4 Arial,Helvetica,sans-serif;cursor:pointer;text-decoration:none}
-.rs-viewer button:hover,.rs-viewer-file:hover{background:#3c4039}
-.rs-viewer button:focus-visible,.rs-viewer-file:focus-visible{outline:2px solid #fff;outline-offset:2px}
-.rs-viewer button:disabled{opacity:.35;cursor:default}
-.rs-viewer-viewport{min-height:0;min-width:0;overflow:auto;overscroll-behavior:contain;background:#111310;scrollbar-color:#777 #252824}
-.rs-viewer-stage{display:flex;align-items:center;justify-content:center;min-width:100%;min-height:100%;width:max-content;height:max-content;margin:auto}
-.rs-viewer-stage img{display:block;max-width:none!important;max-height:none!important;height:auto;object-fit:contain;flex:none;box-shadow:0 0 0 1px #333}
-.rs-viewer-footer{padding:12px clamp(14px,2vw,30px);border-top:1px solid #454843;background:#181a18;font:11.5px/1.55 Arial,Helvetica,sans-serif;color:#c8cac3;max-height:20vh;overflow:auto}
-.rs-viewer-footer p{margin:0;max-width:1000px}
-.rs-viewer-footer .rs-viewer-help{margin-top:4px;color:#969a93;font-size:10px}
-@media(max-width:760px){
-.research-article .essay-body figure.rs-figure>figcaption{grid-template-columns:57px minmax(0,1fr)!important;gap:9px!important}
-.research-article .essay-body .rs-caption-copy{font-size:12px!important}
-.rs-viewer-toolbar{padding:9px 12px}
-.rs-viewer button,.rs-viewer-file{padding:7px 9px}
-.rs-viewer-footer{padding:10px 12px}
+/* Research figure viewer: a single shared editorial lightbox on every essay. */
+.rs-viewer {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #f5f4f0;
+  color: #20221f;
+  overscroll-behavior: contain;
+}
+.rs-viewer::backdrop { background: rgba(10,12,11,.91); }
+.rs-viewer[open] { display: grid; grid-template-rows: auto minmax(0,1fr) auto; }
+.rs-viewer * { box-sizing: border-box; }
+.rs-viewer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px clamp(15px,2.2vw,34px);
+  border-bottom: 1px solid #d2d2cb;
+  background: #f5f4f0;
+  font: 12px/1.4 Arial,Helvetica,sans-serif;
+}
+.rs-viewer-label { flex:none; color:#42443f; font-weight:600; letter-spacing:.06em; }
+.rs-viewer-actions { display:flex; align-items:center; gap:5px; flex-wrap:wrap; justify-content:flex-end; }
+.rs-viewer button {
+  position: static;
+  inset: auto;
+  width:auto;
+  min-height: 34px;
+  padding: 6px 11px;
+  border: 1px solid #d4d4cd;
+  border-radius: 2px;
+  background: transparent;
+  color: #22241f;
+  font: 12px/1.4 Arial,Helvetica,sans-serif;
+  cursor: pointer;
+  white-space:nowrap;
+}
+.rs-viewer button:hover { background: #e5e5df; }
+.rs-viewer button:focus-visible { outline: 2px solid #30332d; outline-offset: 2px; }
+.rs-viewer button:disabled { opacity: .35; cursor: default; }
+.rs-viewer-zoom { min-width: 43px; padding: 0 3px; text-align:center; font: 12px Arial,Helvetica,sans-serif; }
+.rs-viewer-viewport {
+  position:relative;
+  min-width:0;
+  min-height:0;
+  overflow:auto;
+  overscroll-behavior: contain;
+  background: #e8e9e5;
+  scrollbar-color: #a4a5a0 #e8e9e5;
+}
+.rs-viewer-stage {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:100%;
+  min-height:100%;
+  width:max-content;
+  height:max-content;
+  margin:auto;
+  padding:20px;
+}
+.rs-viewer-stage img {
+  display:block;
+  flex:none;
+  width:auto;
+  height:auto;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain;
+  border:0;
+  background:#fff;
+  box-shadow:0 2px 16px rgba(0,0,0,.09);
+  -webkit-user-drag:none;
+  -webkit-touch-callout:none;
+}
+.rs-viewer-status {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  margin:0;
+  width: min(420px,80vw);
+  padding:18px;
+  text-align:center;
+  color:#686c64;
+  background:#f5f4f0;
+  font:13px/1.6 Arial,Helvetica,sans-serif;
+  pointer-events:none;
+}
+.rs-viewer-footer {
+  padding:12px clamp(15px,2.2vw,34px);
+  border-top:1px solid #d2d2cb;
+  background:#f5f4f0;
+  font:11.5px/1.55 Arial,Helvetica,sans-serif;
+  color:#575b54;
+  max-height:17vh;
+  overflow:auto;
+}
+.rs-viewer-footer p { margin:0; max-width:1100px; }
+.rs-viewer-footer .rs-viewer-help { margin-top:4px; font-size:10px; color:#8b8e87; }
+@media(max-width:760px) {
+  .research-article .essay-body figure.rs-figure>figcaption {
+    grid-template-columns:57px minmax(0,1fr)!important;
+    gap:9px!important;
+  }
+  .research-article .essay-body .rs-caption-copy { font-size:12px!important; }
+  .rs-viewer-toolbar { flex-direction:column; align-items:stretch; gap:8px; padding:9px 12px; }
+  .rs-viewer-actions { justify-content:flex-start; }
+  .rs-viewer button { padding:6px 8px; min-height:32px; font-size:11px; }
+  .rs-viewer-stage { padding:12px; }
+  .rs-viewer-footer { padding:10px 12px; max-height:20vh; }
 }
 /* Research catalogue protocol: a quiet note, not a callout. */
 .research-catalogue .research-catalogue-protocol{max-width:840px;margin:10px 0 21px;padding:13px 0;border-top:1px solid #dedfd9;border-bottom:1px solid #dedfd9;color:#797d75;font:400 12px/1.7 Arial,Helvetica,sans-serif;letter-spacing:0}
