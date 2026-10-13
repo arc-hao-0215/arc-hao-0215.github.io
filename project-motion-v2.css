@@ -158,3 +158,14 @@
   transition:none!important
  }
 }
+
+/* 2026-10-13 / Restore the inset displaced by page-local paragraph padding.
+   The animated rule sits to the LEFT of text, never through the text itself. */
+@media (min-width:1001px){
+  .bab-page.portfolio-project.pm-v2 #architecture
+  .bab-movement-steps.pm-reading-list>p.pm-reading-item{padding-left:18px}
+  .gh-page.portfolio-project.pm-v2
+  .gh-element-list.pm-reading-list>li.pm-reading-item,
+  .wp-page.portfolio-project.pm-v2
+  .wp-facts.pm-reading-list>p.pm-reading-item{padding-left:14px}
+}
