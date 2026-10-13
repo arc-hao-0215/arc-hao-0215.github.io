@@ -47,7 +47,13 @@
     if (!image) return;
     const trigger = image.closest('a,button');
     if (!trigger || !figure.contains(trigger) || caption.contains(trigger)) return;
-    const full = trigger.getAttribute('data-full') || trigger.getAttribute('data-ga-zoom') || (trigger.getAttribute('href') !== '#' ? trigger.getAttribute('href') : '') || image.getAttribute('src');
+    // A linked source page (e.g. Wikimedia Commons HTML) is not an image.
+    // Prefer the high-resolution image URL only when it really is image media.
+    const href = trigger.getAttribute('href') || '';
+    const isImageFile = /\.(?:avif|gif|jpe?g|png|svg|webp)(?:[?#]|$)/i.test(href);
+    const full = trigger.getAttribute('data-full') ||
+      trigger.getAttribute('data-ga-zoom') ||
+      (isImageFile ? href : '') || image.currentSrc || image.getAttribute('src');
     if (!full) return;
     trigger.setAttribute('data-rs-view','');
     trigger.setAttribute('aria-label','Enlarge figure ' + numberString + ': ' + (image.alt || 'Research image'));
@@ -58,77 +64,146 @@
     if (image.complete && !image.naturalWidth) figure.classList.add('rs-missing-image');
   });
   if (!items.length || typeof HTMLDialogElement === 'undefined') return;
+
   const dlg = document.createElement('dialog');
   dlg.className = 'rs-viewer';
   dlg.setAttribute('aria-label', 'Research figure viewer');
-  dlg.innerHTML = '<div class="rs-viewer-toolbar"><span class="rs-viewer-label"></span><div class="rs-viewer-actions"><button type="button" data-rs-act="previous" aria-label="Previous image">← Previous</button><button type="button" data-rs-act="next" aria-label="Next image">Next →</button><button type="button" data-rs-act="minus" aria-label="Zoom out">−</button><button type="button" data-rs-act="plus" aria-label="Zoom in">+</button><button type="button" data-rs-act="fit" aria-label="Fit image to screen">Fit</button><a class="rs-viewer-file" href="#" target="_blank" rel="noopener" aria-label="Open original image file">Image file ↗</a><button type="button" data-rs-act="close" aria-label="Close image viewer">Close ×</button></div></div><div class="rs-viewer-viewport" tabindex="0"><div class="rs-viewer-stage"><img alt=""></div></div><div class="rs-viewer-footer"><p></p><p class="rs-viewer-help">Click an image to inspect it. Use + / − to zoom, arrow keys to browse, Esc to close; the original figure caption remains on the page.</p></div>';
+  dlg.innerHTML =
+    '<div class="rs-viewer-toolbar">' +
+      '<span class="rs-viewer-label" aria-live="polite"></span>' +
+      '<div class="rs-viewer-actions">' +
+        '<button type="button" data-rs-act="previous" aria-label="Previous image">← Previous</button>' +
+        '<button type="button" data-rs-act="next" aria-label="Next image">Next →</button>' +
+        '<button type="button" data-rs-act="minus" aria-label="Zoom out">−</button>' +
+        '<span class="rs-viewer-zoom" aria-live="off">100%</span>' +
+        '<button type="button" data-rs-act="plus" aria-label="Zoom in">+</button>' +
+        '<button type="button" data-rs-act="fit" aria-label="Fit image to screen">Fit</button>' +
+        '<button type="button" data-rs-act="close" aria-label="Close image viewer">Close ×</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="rs-viewer-viewport" tabindex="0">' +
+      '<div class="rs-viewer-stage"><img alt="" draggable="false"></div>' +
+      '<p class="rs-viewer-status" role="status" hidden></p>' +
+    '</div>' +
+    '<div class="rs-viewer-footer"><p class="rs-viewer-caption"></p>' +
+      '<p class="rs-viewer-help">Use + / − to inspect details, ← / → to browse, Esc to close. Captions and source credits remain on the research page.</p></div>';
   document.body.appendChild(dlg);
   const fullImage = dlg.querySelector('.rs-viewer-stage img');
   const viewport = dlg.querySelector('.rs-viewer-viewport');
-  const fileLink = dlg.querySelector('.rs-viewer-file');
   const label = dlg.querySelector('.rs-viewer-label');
-  const footer = dlg.querySelector('.rs-viewer-footer p');
-  let active = 0, zoom = 1, returnFocus = null;
+  const footer = dlg.querySelector('.rs-viewer-caption');
+  const status = dlg.querySelector('.rs-viewer-status');
+  const indicator = dlg.querySelector('.rs-viewer-zoom');
+  let active = 0, zoom = 1, returnFocus = null, displayToken = 0, usingFallback = false;
+  let fittedWidth = 0;
+  const currentItem = () => items[active];
+
   function fitImage() {
-    if (!fullImage.naturalWidth || !dlg.open) return;
-    const w = Math.max(1, viewport.clientWidth - 36);
-    const h = Math.max(1, viewport.clientHeight - 36);
-    const fit = Math.min(w / fullImage.naturalWidth, h / fullImage.naturalHeight, 1);
-    fullImage.style.width = Math.round(fullImage.naturalWidth * fit * zoom) + 'px';
-    fullImage.style.height = Math.round(fullImage.naturalHeight * fit * zoom) + 'px';
+    if (!dlg.open || !fullImage.naturalWidth || !fullImage.naturalHeight) return;
+    const w = Math.max(160, viewport.clientWidth - 40);
+    const h = Math.max(120, viewport.clientHeight - 40);
+    const base = Math.min(1, w / fullImage.naturalWidth, h / fullImage.naturalHeight);
+    fittedWidth = Math.max(1, Math.round(fullImage.naturalWidth * base));
+    applyZoom();
+  }
+  function applyZoom() {
+    indicator.textContent = Math.round(zoom * 100) + '%';
+    if (!fittedWidth) return;
+    fullImage.style.width = Math.round(fittedWidth * zoom) + 'px';
+    fullImage.style.height = 'auto';
+    dlg.querySelector('[data-rs-act="minus"]').disabled = zoom <= 1;
+    dlg.querySelector('[data-rs-act="plus"]').disabled = zoom >= 5;
+  }
+  function showImage(src, fallback = false) {
+    usingFallback = fallback;
+    fullImage.removeAttribute('src');
+    fullImage.style.width = '';
+    fullImage.style.height = '';
+    fittedWidth = 0;
+    status.hidden = false;
+    status.textContent = 'Loading image…';
+    fullImage.src = new URL(src, document.baseURI).href;
+    if (fullImage.complete && fullImage.naturalWidth) requestAnimationFrame(fitImage);
   }
   function display(next) {
     active = (next + items.length) % items.length;
-    const item = items[active];
+    const item = currentItem();
+    displayToken++;
     zoom = 1;
-    label.textContent = 'FIG. ' + item.number + ' · ' + (active + 1) + ' / ' + items.length;
-    footer.textContent = item.caption.textContent.replace(/\s+/g,' ').trim();
+    indicator.textContent = '100%';
+    label.textContent = 'FIG. ' + item.number + '  ·  ' + (active + 1) + ' / ' + items.length;
+    footer.textContent = item.caption.textContent.replace(/\s+/g, ' ').trim();
     fullImage.alt = item.image.alt || 'Research figure ' + item.number;
-    fullImage.removeAttribute('src');
-    fullImage.src = new URL(item.full, document.baseURI).href;
-    fullImage.style.width = 'auto';
-    fullImage.style.height = 'auto';
-    fileLink.href = fullImage.src;
-    viewport.scrollLeft = 0;
-    viewport.scrollTop = 0;
-    fitImage();
+    viewport.scrollLeft = viewport.scrollTop = 0;
+    showImage(item.full);
   }
-  fullImage.addEventListener('load', fitImage);
-  fullImage.addEventListener('error',()=>{footer.textContent = 'The full-size image could not be loaded. Please check the source image file.';});
-  function changeZoom(multiplier) {
-    zoom = Math.max(1, Math.min(6, Math.round(zoom * multiplier * 100) / 100));
-    fitImage();
+  fullImage.addEventListener('load', () => {
+    status.hidden = true;
+    requestAnimationFrame(fitImage);
+  });
+  fullImage.addEventListener('error', () => {
+    const item = currentItem();
+    const thumb = item.image.currentSrc || item.image.src;
+    if (!usingFallback && thumb && new URL(thumb, document.baseURI).href !== fullImage.src) {
+      showImage(thumb, true);
+      return;
+    }
+    status.hidden = false;
+    status.textContent = 'This image could not be loaded. Its caption and original source remain available on the research page.';
+  });
+  function changeZoom(factor) {
+    zoom = Math.max(1, Math.min(5, Math.round(zoom * factor * 100) / 100));
+    applyZoom();
   }
-  document.addEventListener('click', event => {
+  function openViewer(event) {
     const target = event.target.closest?.('[data-rs-view]');
     if (!target || !article.contains(target)) return;
-    const idx = items.findIndex(i=>i.trigger === target);
+    const idx = items.findIndex(item => item.trigger === target);
     if (idx < 0) return;
-    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     event.stopImmediatePropagation();
-    if (!dlg.showModal) return;
     returnFocus = target;
     if (!dlg.open) dlg.showModal();
     display(idx);
     dlg.querySelector('[data-rs-act="close"]').focus();
+  }
+  // Capture before older, page-specific gallery handlers; only image controls
+  // are intercepted. Bibliography and source-credit links remain untouched.
+  document.addEventListener('click', openViewer, true);
+  document.addEventListener('auxclick', event => {
+    const trigger = event.target.closest?.('[data-rs-view]');
+    if (trigger && article.contains(trigger)) event.preventDefault();
   }, true);
   dlg.addEventListener('click', event => {
     const button = event.target.closest?.('[data-rs-act]');
-    if (button) {
-      const action = button.dataset.rsAct;
-      if (action === 'close') dlg.close();
-      else if (action === 'previous') display(active - 1);
-      else if (action === 'next') display(active + 1);
-      else if (action === 'plus') changeZoom(1.5);
-      else if (action === 'minus') changeZoom(1 / 1.5);
-      else if (action === 'fit') {zoom=1;fitImage();viewport.scrollLeft=0;viewport.scrollTop=0;}
-    } else if (event.target === dlg) dlg.close();
+    if (!button) {
+      if (event.target === dlg) dlg.close();
+      return;
+    }
+    const action = button.dataset.rsAct;
+    if (action === 'close') dlg.close();
+    else if (action === 'previous') display(active - 1);
+    else if (action === 'next') display(active + 1);
+    else if (action === 'plus') changeZoom(1.25);
+    else if (action === 'minus') changeZoom(1 / 1.25);
+    else if (action === 'fit') {
+      zoom = 1; fitImage();
+      viewport.scrollLeft = viewport.scrollTop = 0;
+    }
   });
-  dlg.addEventListener('keydown',event=>{
-    if (event.key === 'ArrowRight' && event.target !== viewport) {event.preventDefault();display(active+1);}
-    if (event.key === 'ArrowLeft' && event.target !== viewport) {event.preventDefault();display(active-1);}
+  dlg.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight') { event.preventDefault(); display(active + 1); }
+    else if (event.key === 'ArrowLeft') { event.preventDefault(); display(active - 1); }
+    else if (event.key === '+' || event.key === '=') { event.preventDefault(); changeZoom(1.25); }
+    else if (event.key === '-') { event.preventDefault(); changeZoom(1 / 1.25); }
+    else if (event.key === '0') { event.preventDefault(); zoom = 1; fitImage(); }
   });
-  dlg.addEventListener('close',()=>{fullImage.removeAttribute('src');returnFocus?.focus();});
-  window.addEventListener('resize',fitImage,{passive:true});
+  dlg.addEventListener('close', () => {
+    displayToken++;
+    fullImage.removeAttribute('src');
+    status.hidden = true;
+    fittedWidth = 0;
+    returnFocus?.focus({preventScroll:true});
+  });
+  window.addEventListener('resize', fitImage, {passive:true});
 })();
