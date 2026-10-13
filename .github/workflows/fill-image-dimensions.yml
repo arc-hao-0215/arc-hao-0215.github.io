@@ -7,6 +7,12 @@ on:
       - 'sitemap.xml'
       - 'scripts/fill_image_dimensions.py'
       - '.github/workflows/fill-image-dimensions.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'scripts/fill_image_dimensions.py'
+      - '.github/workflows/fill-image-dimensions.yml'
   workflow_dispatch:
 permissions:
   contents: write
@@ -14,6 +20,16 @@ concurrency:
   group: image-dimensions-main
   cancel-in-progress: false
 jobs:
+  verify-image-script:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate syntax and image annotation
+        run: |
+          python3 -m py_compile scripts/fill_image_dimensions.py
+          python3 scripts/fill_image_dimensions.py
+          git diff --check
   annotate-images:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
