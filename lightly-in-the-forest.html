@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lightly in the Forest — Hao Chang</title>
+  <meta name="description" content="Lightly in the Forest: a low-impact eco-retreat along the Ancient Tea Trail in the Gaoligong Mountains, Yunnan. A network of paths, shared spaces, raised timber cabins and bathing facilities engages the working tea landscape with minimal intervention.">
+  <meta name="theme-color" content="#f5f4f0">
+  <link rel="stylesheet" href="style.css?v=20261013-rights-v2">
+  <script src="app.js?v=20261013-rights-v2" defer></script>
+  <style>
+/* Lightly in the Forest — project editorial v2. Namespaced to protect all other pages. */
+.lf-page{--lf-paper:#f5f4f0;--lf-ink:#181917;--lf-muted:#686963;--lf-rule:#d0cec8;--lf-red:#8c332b;color:var(--lf-ink)}
+.lf-page main{padding:0 var(--gutter);max-width:1800px;margin-left:auto;margin-right:auto}
+.lf-page .lf-project-head{padding:34px 0 25px}
+.lf-page .lf-heading-top{display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--lf-muted);font:11px/1.5 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.lf-page .lf-heading-top a{color:var(--lf-ink);border-bottom:1px solid var(--lf-rule);padding-bottom:3px}
+.lf-page .lf-project-head h1{margin:19px 0 12px;font-size:clamp(44px,6.15vw,92px);font-weight:400;letter-spacing:-.061em;line-height:1.025;text-wrap:balance}
+.lf-page .lf-project-type{font-size:clamp(17px,1.55vw,21px);line-height:1.5}
+.lf-page .lf-meta{display:flex;flex-wrap:wrap;gap:7px 19px;align-items:baseline;margin-top:16px;color:var(--lf-muted);font:12px/1.6 Arial,sans-serif}
+.lf-page .lf-meta span+span:before{content:"/";margin-right:19px;color:#adaaa4}
+.lf-page .lf-recognition{margin-top:13px;font:12px/1.5 Arial,sans-serif;color:var(--lf-red)}
+.lf-page .lf-figure{min-width:0;margin:0}
+.lf-page .lf-media-button{position:relative;display:block;width:100%;padding:0;margin:0;overflow:hidden;background:#eae9e5;cursor:zoom-in;color:inherit}
+.lf-page .lf-media-button img{display:block;width:100%;height:auto;max-width:none;object-fit:contain;transition:filter .22s ease}
+.lf-page .lf-media-button:hover img{filter:brightness(.97)}
+.lf-page .lf-media-button:focus-visible{outline:2px solid var(--lf-red);outline-offset:3px}
+.lf-page .lf-figure figcaption{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px 14px;align-items:start;max-width:100%;padding:12px 0 0;color:var(--lf-muted);font:12px/1.5 Arial,sans-serif}
+.lf-page .lf-fig-number{font-variant-numeric:tabular-nums;color:var(--lf-red)}
+.lf-page .lf-caption-text{min-width:0;overflow-wrap:anywhere}
+.lf-page .lf-caption-text strong{display:block;margin-bottom:3px;color:var(--lf-ink);font-size:13px;font-weight:400}
+.lf-page .lf-fig-action{white-space:nowrap;font-size:11px;color:#92918a}
+.lf-page .lf-figure--hero .lf-media-button{height:clamp(380px,52vw,690px);background:#cbd0c8}
+.lf-page .lf-figure--hero .lf-media-button img{height:100%;object-fit:cover;object-position:center 63%}
+.lf-page .lf-figure--hero figcaption{border-bottom:1px solid var(--lf-rule);padding-bottom:19px}
+.lf-page .lf-opening{display:grid;grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);gap:clamp(35px,8vw,125px);align-items:start;padding:76px 0 74px}
+.lf-page .lf-kicker{display:block;color:var(--lf-red);font:11px/1.6 Arial,sans-serif;letter-spacing:.085em;text-transform:uppercase;margin-bottom:16px}
+.lf-page .lf-opening h2{max-width:630px;font-size:clamp(30px,3.35vw,49px);font-weight:400;line-height:1.17;letter-spacing:-.038em;text-wrap:balance}
+.lf-page .lf-opening-copy{max-width:590px;font:17px/1.78 Georgia,"Times New Roman",serif;color:#454641}
+.lf-page .lf-opening-copy p+p{margin-top:15px}
+.lf-page .lf-onpage{display:flex;align-items:center;gap:clamp(14px,2.3vw,34px);overflow-x:auto;scrollbar-width:thin;border-top:1px solid var(--lf-rule);border-bottom:1px solid var(--lf-rule);padding:16px 0;color:var(--lf-muted);font:11px/1.5 Arial,sans-serif;white-space:nowrap}
+.lf-page .lf-onpage .lf-nav-label{color:var(--lf-red);letter-spacing:.04em;margin-right:auto}
+.lf-page .lf-onpage a{flex-shrink:0;transition:color .2s}
+.lf-page .lf-onpage a:hover{color:var(--lf-red)}
+.lf-page .lf-section{padding:85px 0 95px;border-bottom:1px solid var(--lf-rule);scroll-margin-top:35px}
+.lf-page .lf-chapter-head{display:grid;grid-template-columns:96px minmax(0,1.05fr) minmax(0,.95fr);gap:24px 34px;align-items:start;margin-bottom:34px}
+.lf-page .lf-chapter-head .lf-kicker{margin-top:9px}
+.lf-page .lf-chapter-head h2{font-size:clamp(30px,3.2vw,48px);font-weight:400;line-height:1.17;letter-spacing:-.044em;max-width:680px;text-wrap:balance}
+.lf-page .lf-chapter-head p{max-width:510px;font:16px/1.76 Georgia,"Times New Roman",serif;color:#50504c}
+.lf-page .lf-figure--drawing .lf-media-button{background:#eeede9}
+.lf-page .lf-figure--drawing .lf-media-button img{object-fit:contain}
+.lf-page .lf-media-note{font:12px/1.6 Arial,sans-serif;color:var(--lf-muted)}
+/* Mirror the chapter heading's three-column grid so both rows share their text baselines. */
+.lf-page .lf-issue-lead{display:grid;grid-template-columns:96px minmax(0,1.05fr) minmax(0,.95fr);gap:24px 34px;align-items:start;margin:0 0 36px}
+.lf-page .lf-issue-lead h3{grid-column:2;max-width:680px;font-size:clamp(30px,3.2vw,48px);font-weight:400;line-height:1.17;letter-spacing:-.044em;text-wrap:balance}
+.lf-page .lf-issue-lead p{grid-column:3;max-width:510px;color:#50504c;font:16px/1.76 Georgia,"Times New Roman",serif}
+.lf-page .lf-conditions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.lf-page .lf-condition{border-top:1px solid var(--lf-rule);padding-top:19px}
+.lf-page .lf-condition b{display:block;margin-bottom:15px;color:var(--lf-red);font:11px/1.5 Arial,sans-serif;font-weight:400;letter-spacing:.07em}
+.lf-page .lf-condition h3{font-size:clamp(18px,1.8vw,24px);font-weight:400;line-height:1.25;letter-spacing:-.025em;margin:0 0 10px}
+.lf-page .lf-condition p{max-width:340px;color:#575852;font:14px/1.75 Arial,sans-serif}
+.lf-page .lf-strategy-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:36px 0 75px}
+.lf-page .lf-strategy-principles article{padding-top:17px;border-top:1px solid var(--lf-rule)}
+.lf-page .lf-strategy-principles small{display:block;color:var(--lf-red);font-size:11px;margin-bottom:10px}
+.lf-page .lf-strategy-principles h3{font-size:19px;letter-spacing:-.02em;margin-bottom:9px}
+.lf-page .lf-strategy-principles p{font:14px/1.72 Arial,sans-serif;color:#565750}
+.lf-page .lf-subsection-label{display:block;margin:0 0 10px;font-size:11px;color:var(--lf-red);letter-spacing:.08em;text-transform:uppercase}
+.lf-page .lf-subsection-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:24px}
+.lf-page .lf-subsection-head h3{font-size:clamp(23px,2.25vw,33px);line-height:1.25;letter-spacing:-.035em}
+.lf-page .lf-subsection-head p{font:15px/1.76 Georgia,"Times New Roman",serif;color:#50504c;max-width:550px}
+.lf-page .lf-plan-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(290px,.7fr);gap:clamp(38px,6vw,96px);align-items:start}
+.lf-page .lf-plan-notes{position:sticky;top:35px;padding-top:25px}
+.lf-page .lf-plan-notes h3{font-size:clamp(25px,2.35vw,35px);line-height:1.2;letter-spacing:-.032em;max-width:400px;margin-bottom:20px}
+.lf-page .lf-plan-notes>p{max-width:410px;font:15px/1.77 Georgia,"Times New Roman",serif;color:#555650}
+.lf-page .lf-plan-list{margin-top:36px;list-style:none;padding:0}
+.lf-page .lf-plan-list li{display:grid;grid-template-columns:25px 1fr;gap:12px;align-items:start;padding:16px 0;border-top:1px solid var(--lf-rule);font:13px/1.65 Arial,sans-serif;color:#5a5a54}
+.lf-page .lf-plan-list span{color:var(--lf-red)}
+.lf-page .lf-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(17px,2.2vw,28px);align-items:start}
+.lf-page .lf-pair .lf-media-button img{aspect-ratio:2048/1579;object-fit:cover}
+.lf-page .lf-spatial-part+.lf-spatial-part{margin-top:80px}
+.lf-page .lf-spatial-part .lf-figure--drawing{margin-top:33px}
+.lf-page .lf-section--construction .lf-figure--drawing{margin-bottom:42px}
+.lf-page .lf-model-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.6fr);gap:clamp(30px,6vw,94px);align-items:center}
+.lf-page .lf-figure--model .lf-media-button{background:#161616}
+.lf-page .lf-model-note h3{font-size:clamp(23px,2vw,32px);line-height:1.25;letter-spacing:-.03em;margin-bottom:17px}
+.lf-page .lf-model-note p{font:15px/1.79 Georgia,"Times New Roman",serif;color:#50504c}
+.lf-page #film>.lf-kicker{margin:0 0 25px}
+.lf-page .lf-film-player{width:100%;max-width:none;margin:0;aspect-ratio:16/9;background:#151515}
+.lf-page .lf-film-player iframe{display:block;width:100%;height:100%;border:0}
+.lf-page .lf-film-foot{display:flex;justify-content:flex-end;gap:25px;margin:13px 0 0;color:var(--lf-muted);font:12px/1.6 Arial,sans-serif}
+.lf-page .lf-film-foot a{text-decoration:underline;text-underline-offset:4px;color:var(--lf-ink)}
+.lf-page .lf-conclusion{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.35fr);gap:32px;padding:39px 0;border-bottom:1px solid var(--lf-rule)}
+.lf-page .lf-conclusion p{max-width:810px;font:13px/1.78 Arial,sans-serif;color:var(--lf-muted)}
+.lf-page .lf-related{display:flex;justify-content:space-between;gap:25px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--lf-rule);font:13px/1.6 Arial,sans-serif}
+.lf-page .lf-related span{color:var(--lf-muted)}
+.lf-page .lf-related a{border-bottom:1px solid currentColor;padding-bottom:3px}
+.lf-page .credits{margin-top:0}
+.lf-page .next-project{margin-top:5px;padding-right:0}
+.lf-page #lf-lightbox{position:fixed;width:min(96vw,1500px);max-width:96vw;max-height:94vh;padding:48px 25px 20px;background:#f5f4f0;border:0;box-shadow:0 20px 75px #0005}
+.lf-page #lf-lightbox::backdrop{background:rgba(15,16,14,.91)}
+.lf-page #lf-lightbox img{display:block;max-width:100%;max-height:77vh;width:auto;height:auto;margin:auto;object-fit:contain}
+.lf-page #lf-lightbox p{margin:12px auto 0;font:12px/1.6 Arial,sans-serif;text-align:center;color:var(--lf-muted)}
+.lf-page #lf-lightbox .lf-close{position:absolute;right:17px;top:11px;padding:8px;font:13px/1.4 Arial,sans-serif;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1000px){
+ .lf-page .lf-chapter-head{grid-template-columns:72px 1fr;gap:12px 25px}
+ .lf-page .lf-chapter-head p{grid-column:2}
+ .lf-page .lf-issue-lead{grid-template-columns:72px minmax(0,1fr);gap:12px 25px}
+ .lf-page .lf-issue-lead h3,.lf-page .lf-issue-lead p{grid-column:2}
+ .lf-page .lf-plan-layout{grid-template-columns:minmax(0,1.1fr) minmax(240px,.9fr);gap:36px}
+ .lf-page .lf-plan-notes{position:static}
+}
+@media(max-width:700px){
+ .lf-page .lf-project-head{padding:23px 0 22px}
+ .lf-page .lf-project-head h1{margin:16px 0 12px;font-size:clamp(43px,10.2vw,64px)}
+ .lf-page .lf-meta{gap:4px 12px}
+ .lf-page .lf-meta span+span:before{margin-right:12px}
+ .lf-page .lf-figure--hero .lf-media-button{height:clamp(320px,95vw,520px)}
+ .lf-page .lf-figure--hero .lf-media-button img{object-position:48% 65%}
+ .lf-page .lf-figure figcaption{grid-template-columns:25px 1fr;gap:7px;padding-top:10px}
+ .lf-page .lf-fig-action{display:none}
+ .lf-page .lf-opening{display:block;padding:52px 0 48px}
+ .lf-page .lf-opening h2{margin-bottom:25px}
+ .lf-page .lf-opening-copy{font-size:16px}
+ .lf-page .lf-onpage{gap:22px}
+ .lf-page .lf-onpage .lf-nav-label{margin-right:0}
+ .lf-page .lf-section{padding:54px 0 62px}
+ .lf-page .lf-chapter-head{grid-template-columns:1fr;gap:12px;margin-bottom:25px}
+ .lf-page .lf-chapter-head .lf-kicker{margin:0}
+ .lf-page .lf-chapter-head p{grid-column:auto;font-size:15px}
+ .lf-page .lf-issue-lead{grid-template-columns:1fr;gap:13px;margin-bottom:25px}
+ .lf-page .lf-issue-lead h3,.lf-page .lf-issue-lead p{grid-column:1}
+ .lf-page .lf-issue-lead p{font-size:15px}
+ .lf-page .lf-conditions,.lf-page .lf-strategy-principles{grid-template-columns:1fr;gap:18px}
+ .lf-page .lf-condition p{max-width:550px}
+ .lf-page .lf-strategy-principles{margin:30px 0 52px}
+ .lf-page .lf-subsection-head{grid-template-columns:1fr;gap:12px}
+ .lf-page .lf-subsection-head p{font-size:15px}
+ .lf-page .lf-plan-layout{grid-template-columns:1fr;gap:25px}
+ .lf-page .lf-plan-notes{order:-1;padding:0}
+ .lf-page .lf-plan-list{margin-top:20px}
+ .lf-page .lf-pair{grid-template-columns:1fr;gap:29px}
+ .lf-page .lf-spatial-part+.lf-spatial-part{margin-top:58px}
+ .lf-page .lf-model-layout{grid-template-columns:1fr;gap:28px}
+ .lf-page .lf-film-foot,.lf-page .lf-related{flex-direction:column;align-items:flex-start;gap:9px}
+ .lf-page .lf-conclusion{grid-template-columns:1fr;gap:8px}
+ .lf-page #lf-lightbox{padding:44px 12px 18px}
+}
+@media(prefers-reduced-motion:reduce){.lf-page .lf-media-button img{transition:none}}
+</style>
+<link rel="stylesheet" href="project-system.css?v=20261009-v1">
+
+<style id="lf-chapter-motion-v1">
+/* Project-only experiment: quiet chapter transitions and a persistent reading index. */
+.lf-page .lf-onpage{
+  position:sticky;top:0;z-index:80;
+  background:rgba(245,244,240,.97);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  padding:14px 0;
+  box-shadow:0 9px 22px rgba(24,25,23,.035);
+  scrollbar-width:none;
+}
+.lf-page .lf-onpage::-webkit-scrollbar{display:none}
+.lf-page .lf-onpage .lf-nav-label{min-width:117px;font-size:10px;letter-spacing:.07em}
+.lf-page .lf-onpage a{position:relative;padding:4px 0;color:var(--lf-muted);transition:color .25s ease}
+.lf-page .lf-onpage a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--lf-red);transform:scaleX(0);transform-origin:left;
+  transition:transform .42s cubic-bezier(.22,1,.36,1)
+}
+.lf-page .lf-onpage a[aria-current="location"]{color:var(--lf-ink)}
+.lf-page .lf-onpage a[aria-current="location"]::after{transform:scaleX(1)}
+.lf-page .lf-scroll-progress{
+  position:fixed;left:0;top:0;width:100%;height:2px;
+  transform:scaleX(0);transform-origin:left;background:var(--lf-red);
+  z-index:110;pointer-events:none
+}
+.lf-page .lf-section{
+  position:relative;
+  padding-top:clamp(95px,7.7vw,128px);
+  scroll-margin-top:78px
+}
+.lf-page .lf-section::before{
+  content:"";position:absolute;left:0;top:-1px;
+  width:min(132px,32%);height:1px;background:var(--lf-red);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .85s cubic-bezier(.22,1,.36,1)
+}
+.lf-page .lf-section.lf-entered::before{transform:scaleX(1)}
+.lf-page.lf-motion-ready .lf-chapter-head>*{
+  opacity:0;transform:translateY(15px);
+  transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)
+}
+.lf-page.lf-motion-ready .lf-chapter-head>h2{transition-delay:.08s}
+.lf-page.lf-motion-ready .lf-chapter-head>p{transition-delay:.16s}
+.lf-page.lf-motion-ready .lf-chapter-head.lf-in-view>*{
+  opacity:1;transform:translateY(0)
+}
+.lf-page #film .lf-chapter-head{margin-bottom:32px}
+.lf-page .lf-plan-notes{top:90px}
+@media(max-width:1000px){.lf-page .lf-plan-notes{position:static}}
+@media(max-width:700px){
+  .lf-page .lf-onpage{padding:12px 0;gap:23px}
+  .lf-page .lf-onpage .lf-nav-label{display:none}
+  .lf-page .lf-section{padding-top:76px;scroll-margin-top:65px}
+  .lf-page .lf-chapter-head{margin-bottom:30px}
+}
+@media(prefers-reduced-motion:reduce){
+  .lf-page .lf-onpage a,.lf-page .lf-onpage a::after,
+  .lf-page .lf-section::before,
+  .lf-page .lf-chapter-head>*{transition:none!important;animation:none!important}
+  .lf-page .lf-chapter-head>*{opacity:1!important;transform:none!important}
+}
+</style>
+  <link rel="stylesheet" href="project-consistency.css?v=20261013-overlapfix-v1">
+  <link rel="stylesheet" href="assets/lightly/editorial-motion-v2.css?v=20261010-v2">
+  <script src="project-consistency.js?v=20261010-v1" defer></script>
+  <script src="assets/lightly/editorial-motion-v2.js?v=20261010-v2" defer></script>
+  <link rel="stylesheet" href="project-ending.css?v=20261010-v2">
+  <link rel="stylesheet" href="project-image-captions.css?v=20261011-v2">
+<link rel="stylesheet" href="assets/site-refinements.css?v=20261013-ux1">
+<!-- Search and sharing metadata; reuse existing imagery. -->
+<link rel="canonical" href="https://arc-hao-0215.github.io/lightly-in-the-forest.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hao Chang — Architecture &amp; Research">
+<meta property="og:title" content="Lightly in the Forest — Hao Chang">
+<meta property="og:description" content="Lightly in the Forest: a low-impact eco-retreat along the Ancient Tea Trail in the Gaoligong Mountains, Yunnan. A network of paths, shared spaces, raised timber cabins and bathing facilities engages the working tea landscape with minimal intervention.">
+<meta property="og:url" content="https://arc-hao-0215.github.io/lightly-in-the-forest.html">
+<meta property="og:image" content="https://arc-hao-0215.github.io/assets/lightly-in-the-forest-hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261013-hc4">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=20261013-hc4">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261013-hc4">
+<link rel="shortcut icon" href="/favicon.ico?v=20261013-hc4">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261013-hc4">
+<link rel="stylesheet" href="assets/editorial-guides.css?v=20261013-editorial-v1">
+</head>
+<body class="lf-page portfolio-project">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="index.html">HAO CHANG</a>
+    <nav aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <main id="main">
+<header class="lf-project-head">
+  <div class="lf-heading-top"><a href="index.html">Projects / 01</a><span>Architecture · 2026</span></div>
+  <h1>Lightly in the Forest</h1>
+  <p class="lf-project-type">Eco-Resort Design</p>
+  <div class="lf-meta"><span>Gaoligong Mountains, Yunnan</span><span>Tea Heritage · Ecology · Low-Impact Architecture</span><span>Graduation Design</span></div>
+  <p class="lf-recognition">Outstanding Graduation Thesis · Tsinghua University</p>
+</header>
+<figure class="lf-figure lf-figure--hero"><button class="lf-media-button lf-zoom" type="button" data-title="An architecture at the scale of a clearing" aria-label="Enlarge: An architecture at the scale of a clearing"><img src="assets/lightly/hero-forest.webp" width="2048" height="1595" fetchpriority="high" loading="eager" decoding="async" alt="Two lightweight timber cabins placed in clearings on a forested mountain slope"></button><figcaption><span class="lf-fig-number">01</span><span class="lf-caption-text"><strong>An architecture at the scale of a clearing</strong>Dispersed timber accommodation follows existing paths and the slope rather than concentrating the retreat in one large building.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+<section class="lf-opening" aria-labelledby="lf-opening-title">
+  <div><span class="lf-kicker">Project proposition</span><h2 id="lf-opening-title">Dispersed accommodation within a working tea landscape.</h2></div>
+  <div class="lf-opening-copy"><p>At Fenglaoye Ancient Tea Garden, tea production, historical routes and forested slopes already structure everyday occupation. The retreat proposal distributes reception, rest stops and lodging along that landscape rather than consolidating them on a cleared platform. Existing drawings explain the relationship between programme, access and terrain; the environmental performance of the proposal has not been measured.</p><p>The proposal distributes small places to arrive, meet, rest and stay along a network of trails. Public programmes gather closer to existing facilities; lighter structures occupy selected forest clearings. From the site plan to the timber connection, architecture is treated as a careful addition rather than a replacement.</p></div>
+</section>
+<nav class="lf-onpage" aria-label="Sections of this project"><span class="lf-nav-label" data-lf-reading-label>Explore the project</span><a href="#context">01 Context</a><a href="#issue">02 Site Issue</a><a href="#approach">03 Approach</a><a href="#architecture">04 Architecture</a><a href="#construction">05 Construction</a><a href="#film">06 Film</a></nav>
+<section class="lf-section" id="context" aria-labelledby="context-title">
+ <div class="lf-chapter-head"><span class="lf-kicker">01 / Context</span><h2 id="context-title">Tea production, inherited routes and the forested slope.</h2><p>The Tea Horse Trail connects tea gardens, a factory, Dahaoping Village and cultural landmarks across the Gaoligong foothills. The site belongs to this larger landscape of production, movement and memory before it belongs to any architectural proposal.</p></div>
+ <figure class="lf-figure lf-figure--drawing"><button class="lf-media-button lf-zoom" type="button" data-title="Tea Horse Trail / territorial setting" aria-label="Enlarge: Tea Horse Trail / territorial setting"><img src="assets/lightly/tea-horse-trail.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Territorial map showing the Tea Horse Trail, tea farm, tea factory, Dahaoping Village, cultural markers and mountainous paths"></button><figcaption><span class="lf-fig-number">02</span><span class="lf-caption-text"><strong>Tea Horse Trail / territorial setting</strong>The site is part of a wider network of tea production, village life, historical routes and mountain ecology.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+</section>
+<section class="lf-section" id="issue" aria-labelledby="issue-title">
+ <div class="lf-chapter-head"><span class="lf-kicker">02 / Site issue</span><h2 id="issue-title">Where should buildings touch a steep, inhabited landscape?</h2><p>The design decision is where each intervention meets the terrain. Reception and collective programmes remain near the accessible edge, while smaller structures occupy selected clearings. The strategy drawing shows intended distribution, not a verified construction footprint or tree-root impact assessment.</p></div>
+ <div class="lf-issue-lead"><h3>More visitors need not mean one larger footprint.</h3><p>Building a conventional, consolidated resort would risk treating paths, slope and canopy as vacant land to be reorganized. The project instead starts from the existing spatial relationships and asks what the mountain can accommodate with fewer, more deliberate interventions.</p></div>
+ <div class="lf-conditions">
+  <article class="lf-condition"><b>01 / CULTURE</b><h3>Production before tourism</h3><p>Tea cultivation, the village and inherited paths give the site an active life beyond the visitor programme.</p></article>
+  <article class="lf-condition"><b>02 / TERRAIN</b><h3>Topography as a constraint</h3><p>Sloping ground and tree cover argue for careful placement rather than extensive grading and continuous foundations.</p></article>
+  <article class="lf-condition"><b>03 / ACCESS</b><h3>Connection without saturation</h3><p>Different degrees of public access and privacy need a legible network, not a uniform spread of buildings.</p></article>
+ </div>
+</section>
+
+<section class="editorial-lens" aria-label="Design reading guide"><div class="editorial-lens-top"><div><span class="editorial-label">Design reading / 03 decisions</span><h2>How the landscape sets the architectural footprint</h2></div></div><div class="editorial-lens-grid"><div class="editorial-lens-item"><h3><a href="#approach">Route before footprint ↗</a></h3><p>The site strategy locates arrival, rest and lodging along existing movement patterns instead of treating the mountain as a cleared development plot.</p></div><div class="editorial-lens-item"><h3><a href="#architecture">Section before form ↗</a></h3><p>Read the settlement sequence together with the steep slope: gathering spaces and smaller rooms occupy different positions and degrees of exposure.</p></div><div class="editorial-lens-item"><h3><a href="#construction">Contact before enclosure ↗</a></h3><p>The point-support and dry-assembly studies explain how proposed buildings touch the ground. Reversibility is a design intention, not evidence of a built performance result.</p></div></div></section>
+<section class="lf-section" id="approach" aria-labelledby="approach-title">
+ <div class="lf-chapter-head"><span class="lf-kicker">03 / Design approach</span><h2 id="approach-title">Distributing arrival, rest and lodging along existing routes.</h2><p>Routes establish a sequence from shared arrival to secluded accommodation. The plan locates collective uses near existing facilities and smaller pauses along the trail, distinguishing degrees of access and privacy without treating the slope as a uniform development parcel.</p></div>
+ <figure class="lf-figure lf-figure--drawing"><button class="lf-media-button lf-zoom" type="button" data-title="A distributed strategy across the working tea landscape" aria-label="Enlarge: A distributed strategy across the working tea landscape"><img src="assets/lightly/project-strategy.webp" width="2048" height="1446" loading="lazy" decoding="async" alt="Strategy plan locating the public core, cabins, dispersed intervention clusters and paths on the forested site"></button><figcaption><span class="lf-fig-number">03</span><span class="lf-caption-text"><strong>A distributed strategy across the working tea landscape</strong>A public core near the existing facilities branches into quieter clusters and smaller stopping points along the route.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+ <div class="lf-strategy-principles">
+  <article><small>01 / CONCENTRATE</small><h3>Gather collective uses</h3><p>Arrival, reception and workshop programmes remain closer to the accessible public core.</p></article>
+  <article><small>02 / CONNECT</small><h3>Work with the trail</h3><p>Junctions, viewing points and short pauses give the route an architectural rhythm.</p></article>
+  <article><small>03 / DISPERSE</small><h3>Place buildings in clearings</h3><p>Smaller accommodation clusters negotiate privacy, trees and terrain at a more intimate scale.</p></article>
+ </div>
+ <div class="lf-plan-layout">
+  <figure class="lf-figure lf-figure--drawing lf-figure--plan"><button class="lf-media-button lf-zoom" type="button" data-title="Site plan / architecture as a sequence of stops" aria-label="Enlarge: Site plan / architecture as a sequence of stops"><img src="assets/lightly/site-plan.webp" width="1448" height="2048" loading="lazy" decoding="async" alt="Detailed vertical site plan locating reception, tea workshop, accommodation, trails, junction decks, bathing and scenic platforms"></button><figcaption><span class="lf-fig-number">04</span><span class="lf-caption-text"><strong>Site plan / architecture as a sequence of stops</strong>The full plan traces the transition from arrival and shared amenities to more private forest clearings.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  <aside class="lf-plan-notes"><span class="lf-subsection-label">Reading the master plan</span><h3>From the shared edge to the forest interior.</h3><p>The plan brings the broad strategy down to individual pieces of architecture. Access is organized as a changing sequence, with the most collective uses near arrival and quieter programmes further along the paths.</p>
+   <ol class="lf-plan-list"><li><span>01</span><div><strong>Arrive and gather.</strong> Reception and tea-related facilities anchor the more accessible portion of the site.</div></li><li><span>02</span><div><strong>Move and pause.</strong> Junction decks, shelters and viewing platforms punctuate the walking network.</div></li><li><span>03</span><div><strong>Stay and withdraw.</strong> Cabins and bathing areas occupy selected locations within the tree canopy.</div></li></ol>
+  </aside>
+ </div>
+</section>
+<section class="lf-section" id="architecture" aria-labelledby="architecture-title">
+ <div class="lf-chapter-head"><span class="lf-kicker">04 / Architecture</span><h2 id="architecture-title">Three scales of inhabiting the mountain.</h2><p>Rather than one repeated architectural object, the project proposes different relationships with the ground: a more collective arrival, open thresholds along the trail and intimate spaces within the forest.</p></div>
+ <div class="lf-spatial-part"><div class="lf-subsection-head"><div><span class="lf-subsection-label">A / The shared ground</span><h3>An arrival shaped by the slope.</h3></div><p>The reception pavilion brings collective programmes together at an accessible point. Its sectional relationship to the hillside introduces a gradual transition from infrastructure to landscape.</p></div>
+ <figure class="lf-figure lf-figure--drawing"><button class="lf-media-button lf-zoom" type="button" data-title="The reception pavilion / a shared threshold" aria-label="Enlarge: The reception pavilion / a shared threshold"><img src="assets/lightly/reception-section.webp" width="2048" height="700" loading="lazy" decoding="async" alt="Long architectural section through a timber reception pavilion and sloped terrain"></button><figcaption><span class="lf-fig-number">05</span><span class="lf-caption-text"><strong>The reception pavilion / a shared threshold</strong>Collective functions are organized at the accessible edge of the site, with the section negotiating built space and sloping ground.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+ </div>
+ <div class="lf-spatial-part"><div class="lf-subsection-head"><div><span class="lf-subsection-label">B / Along the trail</span><h3>Timber and stone stopping points along the trail.</h3></div><p>Small material shifts change how visitors move and stop. Timber creates an open, inhabited platform; stone gathers and frames a moment along the path.</p></div>
+ <div class="lf-pair"><figure class="lf-figure "><button class="lf-media-button lf-zoom" type="button" data-title="The timber junction" aria-label="Enlarge: The timber junction"><img src="assets/lightly/junction-timber.webp" width="2048" height="1579" loading="lazy" decoding="async" alt="Forest pathway junction with timber decking, bench, bamboo screening and planting"></button><figcaption><span class="lf-fig-number">06</span><span class="lf-caption-text"><strong>The timber junction</strong>A small resting deck makes the route itself a place to stop, sit and encounter others.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><figure class="lf-figure "><button class="lf-media-button lf-zoom" type="button" data-title="The stone threshold" aria-label="Enlarge: The stone threshold"><img src="assets/lightly/junction-stone.webp" width="2048" height="1579" loading="lazy" decoding="async" alt="Walkers passing between stone walls and bamboo planting on the mountain path"></button><figcaption><span class="lf-fig-number">07</span><span class="lf-caption-text"><strong>The stone threshold</strong>A compressed passage between textured walls opens toward a longer view of the mountain.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div></div>
+ <div class="lf-spatial-part"><div class="lf-subsection-head"><div><span class="lf-subsection-label">C / Within the forest</span><h3>More intimate forms of inhabitation.</h3></div><p>Accommodation and bathing provide contrasting atmospheres: a lightweight room with an open edge and a more enclosed stone setting facing the mountain.</p></div>
+ <div class="lf-pair"><figure class="lf-figure "><button class="lf-media-button lf-zoom" type="button" data-title="A room that opens to the trees" aria-label="Enlarge: A room that opens to the trees"><img src="assets/lightly/cabin-interior.webp" width="2048" height="1579" loading="lazy" decoding="async" alt="Timber cabin interior opening toward a deck and surrounding forest through screens"></button><figcaption><span class="lf-fig-number">08</span><span class="lf-caption-text"><strong>A room that opens to the trees</strong>Sliding screens and a continuous deck extend everyday occupation beyond the enclosed room.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><figure class="lf-figure "><button class="lf-media-button lf-zoom" type="button" data-title="Stone bathing / an enclosed foreground" aria-label="Enlarge: Stone bathing / an enclosed foreground"><img src="assets/lightly/stone-bathing.webp" width="2048" height="1579" loading="lazy" decoding="async" alt="Stone-lined outdoor bathing pool facing misty mountains"></button><figcaption><span class="lf-fig-number">09</span><span class="lf-caption-text"><strong>Stone bathing / an enclosed foreground</strong>A sheltered stone edge frames the distant ridgeline and a more intimate ritual of inhabitation.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div><figure class="lf-figure lf-figure--drawing"><button class="lf-media-button lf-zoom" type="button" data-title="Cabin section / holding the ground lightly" aria-label="Enlarge: Cabin section / holding the ground lightly"><img src="assets/lightly/cabin-section.webp" width="2048" height="923" loading="lazy" decoding="async" alt="Section drawing of an elevated timber cabin on a sloping forest site, showing roof, deck and point foundations"></button><figcaption><span class="lf-fig-number">10</span><span class="lf-caption-text"><strong>Cabin section / elevated ground contact</strong>Individual supports raise the occupied floor above sloping ground. Footing design, slope stability and tree-root protection require technical review.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+</section>
+<section class="lf-section lf-section--construction" id="construction" aria-labelledby="construction-title">
+ <div class="lf-chapter-head"><span class="lf-kicker">05 / Construction</span><h2 id="construction-title">Point foundations and separable building layers.</h2><p>The cabin section and exploded drawing separate elevated ground supports, structural timber, roof, floor and replaceable screens. This dry-assembly concept aims to reduce continuous excavation and facilitate future maintenance. Structural stability, foundation performance and actual reversibility remain to be verified.</p></div>
+ <figure class="lf-figure lf-figure--drawing"><button class="lf-media-button lf-zoom" type="button" data-title="An assembly of replaceable layers" aria-label="Enlarge: An assembly of replaceable layers"><img src="assets/lightly/construction-assembly.webp" width="1857" height="965" loading="lazy" decoding="async" alt="Exploded construction axonometric showing timber posts, beams, bamboo ceiling, roof, screens, decks, stairs and foundation points"></button><figcaption><span class="lf-fig-number">11</span><span class="lf-caption-text"><strong>Exploded assembly / separable construction layers</strong>Roof, frame, screens, deck and supports are distinguished as parts of a proposed dry-assembly system; full reversibility is not yet proven.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+ <div class="lf-model-layout"><figure class="lf-figure lf-figure--model"><button class="lf-media-button lf-zoom" type="button" data-title="Physical model / inhabiting the hillside" aria-label="Enlarge: Physical model / inhabiting the hillside"><img src="assets/lightly/physical-model.webp" width="2048" height="1365" loading="lazy" decoding="async" alt="Physical scale model of elevated cabins in a forested slope, illuminated against a dark background"></button><figcaption><span class="lf-fig-number">12</span><span class="lf-caption-text"><strong>Physical model / inhabiting the hillside</strong>The model returns to the original question of scale: how a small group of buildings occupies a much larger landscape.</span><span class="lf-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><div class="lf-model-note"><span class="lf-subsection-label">Physical model / spatial test</span><h3>Testing building scale against the hillside.</h3><p>The physical model compares the size and spacing of proposed cabins with the wooded hillside. It demonstrates intended visual scale, not measured ecological impact or completed construction.</p></div></div>
+</section>
+<section class="lf-section" id="film" aria-labelledby="film-title">
+ <div class="lf-chapter-head"><span class="lf-kicker">06 / Project film</span><h2 id="film-title">The project in motion.</h2><p>A film bringing together the mountain setting, architectural interventions and spatial sequence.</p></div>
+ <div class="lf-film-player"><iframe src="https://www.youtube-nocookie.com/embed/fqSlG03t6jA?rel=0" title="Lightly in the Forest — Graduation Design Film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+ <div class="lf-film-foot"><a href="https://youtu.be/fqSlG03t6jA" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div>
+</section>
+<!-- Unified project ending: related research (where applicable), information, next project -->
+<section class="pe-ending" aria-label="Project information and navigation">
+<section class="pe-related" aria-labelledby="pe-research-01"><span class="pe-label" id="pe-research-01">Related Research</span><div class="pe-related-main"><div class="pe-related-copy"><h2><a href="research-gaoligong.html">A Working Mountain</a></h2><p>Independent field research on the Ancient Tea Trail, tea cultures, landscape ecology and everyday mountain life.</p></div><a class="pe-research-link" href="research-gaoligong.html" aria-label="Explore independent research: A Working Mountain">Explore research <span aria-hidden="true">↗</span></a></div></section>
+<section class="pe-info" aria-labelledby="pe-information-01"><h2 class="pe-label" id="pe-information-01">Project Information</h2><dl class="pe-meta">
+<div class="pe-field"><dt>Year</dt><dd>2025–2026</dd></div>
+<div class="pe-field"><dt>Location</dt><dd>Gaoligong Mountains, Yunnan</dd></div>
+<div class="pe-field"><dt>Project type</dt><dd>Graduation design</dd></div>
+<div class="pe-field"><dt>Status</dt><dd>Unbuilt academic proposal</dd></div>
+<div class="pe-field"><dt>Design</dt><dd>Hao Chang</dd></div>
+<div class="pe-field"><dt>Instructor</dt><dd>Martijn de Geus</dd></div>
+<div class="pe-field"><dt>Institution</dt><dd>Tsinghua University / Politecnico di Torino collaboration</dd></div>
+<div class="pe-field"><dt>Exhibition</dt><dd>Castello del Valentino, Turin · April 2026</dd></div>
+</dl></section>
+<a class="pe-next" href="first-teaching-building-renewal.html" aria-label="Next project 02: First Teaching Building Renewal"><span class="pe-label">Next Project <span class="pe-count">02 / 10</span></span><div class="pe-next-main"><h2>First Teaching Building Renewal</h2><span class="pe-arrow" aria-hidden="true">↗</span></div></a>
+</section>
+<dialog id="lf-lightbox" aria-label="Enlarged project image"><button type="button" class="lf-close" aria-label="Close image">Close ×</button><img alt=""><p></p></dialog>
+</main>
+  <footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><nav class="footer-links" aria-label="Footer links"><a href="mailto:haochang0215@gmail.com">Get in touch</a><a href="image-credits.html">Image Credits &amp; Rights</a></nav><span class="footer-copyright">© 2026 Hao Chang</span></footer>
+  <script>
+    (() => {
+      const dialog = document.querySelector('#lf-lightbox');
+      if (!dialog || typeof dialog.showModal !== 'function') return;
+      const enlarged = dialog.querySelector('img');
+      const label = dialog.querySelector('p');
+      let trigger = null;
+      document.querySelectorAll('.lf-zoom').forEach(button => button.addEventListener('click', () => {
+        trigger = button;
+        const image = button.querySelector('img');
+        enlarged.src = image.currentSrc || image.src;
+        enlarged.alt = image.alt;
+        label.textContent = button.dataset.title || image.alt;
+        dialog.showModal();
+      }));
+      dialog.querySelector('.lf-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', () => { enlarged.removeAttribute('src'); trigger?.focus(); });
+    })();
+  </script>
+
+<script id="lf-chapter-motion-script">
+(() => {
+  const nav = document.querySelector('.lf-onpage');
+  if (!nav) return;
+  const label = nav.querySelector('[data-lf-reading-label]');
+  const chapters = [...nav.querySelectorAll('a[href^="#"]')]
+    .map(link => ({link, section:document.getElementById(link.getAttribute('href').slice(1))}))
+    .filter(item => item.section);
+  if (!chapters.length) return;
+
+  const progressBar = document.createElement('div');
+  progressBar.className = 'lf-scroll-progress';
+  progressBar.setAttribute('aria-hidden','true');
+  document.body.appendChild(progressBar);
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let active = null;
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    progressBar.style.transform = 'scaleX(' + Math.max(0,Math.min(1,window.scrollY / maxScroll)) + ')';
+
+    const threshold = nav.getBoundingClientRect().height + Math.min(140, window.innerHeight * .23);
+    let current = null;
+    if (nav.getBoundingClientRect().top <= 1) {
+      for (const item of chapters) {
+        if (item.section.getBoundingClientRect().top <= threshold) current = item;
+      }
+    }
+    if (current === active) return;
+    active = current;
+    chapters.forEach(item => {
+      if (item === current) item.link.setAttribute('aria-current','location');
+      else item.link.removeAttribute('aria-current');
+    });
+    if (label) label.textContent = current
+      ? 'READING ' + String(chapters.indexOf(current)+1).padStart(2,'0') + ' / ' + String(chapters.length).padStart(2,'0')
+      : 'Explore the project';
+    if (current && nav.scrollWidth > nav.clientWidth) {
+      const rect = current.link.getBoundingClientRect();
+      const navRect = nav.getBoundingClientRect();
+      const target = nav.scrollLeft + (rect.left - navRect.left) - (nav.clientWidth - rect.width) / 2;
+      nav.scrollTo({left:target,behavior:reduced.matches?'auto':'smooth'});
+    }
+  };
+  const schedule = () => {if (!frame) frame=requestAnimationFrame(update)};
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  window.addEventListener('hashchange',schedule);
+
+  if ('IntersectionObserver' in window) {
+    const lineObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('lf-entered');
+          lineObserver.unobserve(entry.target);
+        }
+      });
+    },{rootMargin:'0px 0px -10% 0px',threshold:0});
+    chapters.forEach(item => lineObserver.observe(item.section));
+
+    if (!reduced.matches) {
+      const heads = [...document.querySelectorAll('.lf-section .lf-chapter-head')];
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('lf-in-view');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },{rootMargin:'0px 0px -7% 0px',threshold:.05});
+      heads.forEach(head => revealObserver.observe(head));
+      if (heads.length) document.body.classList.add('lf-motion-ready');
+    }
+  } else {
+    chapters.forEach(item => item.section.classList.add('lf-entered'));
+  }
+  update();
+})();
+</script>
+</body>
+</html>

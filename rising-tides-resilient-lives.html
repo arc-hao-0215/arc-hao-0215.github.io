@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rising Tides, Resilient Lives — Hao Chang</title>
+<meta name="description" content="Rising Tides, Resilient Lives proposes an adaptable civic infrastructure at Kampung Melayu along Jakarta's Ciliwung River. Elevated circulation, wetlands, shared rooms and modular dwellings support collective life across dry and flood seasons.">
+<meta name="theme-color" content="#f5f4f0">
+<link rel="stylesheet" href="style.css?v=20261013-rights-v2">
+<script src="app.js?v=20261013-rights-v2" defer></script>
+<style>
+/* Rising Tides editorial page. Scoped so other pages are unaffected. */
+.rt-page{--rt-paper:#f5f4f0;--rt-ink:#181917;--rt-muted:#666761;--rt-rule:#d0cec8;--rt-red:#8c332b;color:var(--rt-ink)}
+.rt-page main{padding:0 var(--gutter);max-width:1800px;margin:0 auto}
+.rt-page .rt-project-head{padding:34px 0 25px}
+.rt-page .rt-heading-top{display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--rt-muted);font:11px/1.5 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.rt-page .rt-heading-top a{color:var(--rt-ink);border-bottom:1px solid var(--rt-rule);padding-bottom:3px}
+.rt-page .rt-project-head h1{margin:19px 0 12px;font-size:clamp(43px,6.15vw,92px);font-weight:400;letter-spacing:-.061em;line-height:1.025;text-wrap:balance}
+.rt-page .rt-project-type{font-size:clamp(17px,1.55vw,21px);line-height:1.5}
+.rt-page .rt-meta{display:flex;flex-wrap:wrap;gap:7px 19px;align-items:baseline;margin-top:16px;color:var(--rt-muted);font:12px/1.6 Arial,sans-serif}
+.rt-page .rt-meta span+span:before{content:"/";margin-right:19px;color:#adaaa4}
+.rt-page .rt-recognition{margin-top:13px;font:12px/1.5 Arial,sans-serif;color:var(--rt-red)}
+.rt-page .rt-figure{min-width:0;margin:0}
+.rt-page .rt-media-button{position:relative;display:block;width:100%;border:0;padding:0;margin:0;overflow:hidden;background:#eae9e5;cursor:zoom-in;color:inherit;text-align:left}
+.rt-page .rt-media-button img{display:block;width:100%;height:auto;max-width:none;object-fit:contain;transition:filter .22s ease}
+.rt-page .rt-media-button:hover img{filter:brightness(.975)}
+.rt-page .rt-media-button:focus-visible{outline:2px solid var(--rt-red);outline-offset:3px}
+.rt-page .rt-figure figcaption{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px 14px;align-items:start;padding:12px 0 0;color:var(--rt-muted);font:12px/1.5 Arial,sans-serif}
+.rt-page .rt-fig-number{font-variant-numeric:tabular-nums;color:var(--rt-red)}
+.rt-page .rt-caption-text{min-width:0;overflow-wrap:anywhere}
+.rt-page .rt-caption-text strong{display:block;margin-bottom:3px;color:var(--rt-ink);font-size:13px;font-weight:400}
+.rt-page .rt-fig-action{white-space:nowrap;font-size:11px;color:#92918a}
+.rt-page .rt-hero .rt-media-button{height:clamp(420px,55vw,825px);background:#c7cbc6}
+.rt-page .rt-hero .rt-media-button img{width:100%;height:100%;object-fit:cover;object-position:center 52%}
+.rt-page .rt-hero figcaption{border-bottom:1px solid var(--rt-rule);padding-bottom:19px}
+.rt-page .rt-opening{display:grid;grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);gap:clamp(35px,8vw,125px);align-items:start;padding:76px 0 74px}
+.rt-page .rt-kicker{display:block;color:var(--rt-red);font:11px/1.6 Arial,sans-serif;letter-spacing:.085em;text-transform:uppercase;margin-bottom:16px}
+.rt-page .rt-opening h2{max-width:630px;font-size:clamp(30px,3.35vw,49px);font-weight:400;line-height:1.17;letter-spacing:-.038em;text-wrap:balance}
+.rt-page .rt-opening-copy{max-width:590px;font:17px/1.78 Georgia,"Times New Roman",serif;color:#454641}
+.rt-page .rt-opening-copy p+p{margin-top:15px}
+.rt-page .rt-onpage{display:flex;align-items:center;gap:clamp(14px,2.3vw,34px);overflow-x:auto;scrollbar-width:thin;border-top:1px solid var(--rt-rule);border-bottom:1px solid var(--rt-rule);padding:16px 0;color:var(--rt-muted);font:11px/1.5 Arial,sans-serif;white-space:nowrap}
+.rt-page .rt-onpage .rt-nav-label{color:var(--rt-red);letter-spacing:.04em;margin-right:auto}
+.rt-page .rt-onpage a{flex-shrink:0;transition:color .2s}
+.rt-page .rt-onpage a:hover{color:var(--rt-red)}
+.rt-page .rt-section{padding:85px 0 95px;border-bottom:1px solid var(--rt-rule);scroll-margin-top:35px}
+.rt-page .rt-chapter-head{display:grid;grid-template-columns:96px minmax(0,1.05fr) minmax(0,.95fr);gap:24px 34px;align-items:start;margin-bottom:34px}
+.rt-page .rt-chapter-head .rt-kicker{margin-top:9px}
+.rt-page .rt-chapter-head h2{font-size:clamp(30px,3.2vw,48px);font-weight:400;line-height:1.17;letter-spacing:-.044em;max-width:680px;text-wrap:balance}
+.rt-page .rt-chapter-head p{max-width:510px;font:16px/1.76 Georgia,"Times New Roman",serif;color:#50504c}
+.rt-page .rt-context-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(26px,4.5vw,70px);align-items:start}
+.rt-page .rt-context-notes{display:grid;gap:33px;padding-top:2px;align-content:start}
+.rt-page .rt-small-heading{color:var(--rt-red);font:11px/1.5 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.rt-page .rt-context-notes h3{font-size:clamp(22px,2.1vw,33px);letter-spacing:-.035em;font-weight:400;line-height:1.25;max-width:490px;margin:10px 0 14px}
+.rt-page .rt-context-notes p,.rt-page .rt-season-copy p,.rt-page .rt-pair-intro p{font:15px/1.78 Georgia,"Times New Roman",serif;color:#50504c;max-width:530px}
+.rt-page .rt-context-notes p+p,.rt-page .rt-season-copy p+p{margin-top:12px}
+.rt-page .rt-compare-head{display:flex;align-items:baseline;justify-content:space-between;gap:30px;flex-wrap:wrap;margin:8px 0 21px}
+.rt-page .rt-compare-head h3{font-size:clamp(23px,2.15vw,32px);font-weight:400;letter-spacing:-.032em}
+.rt-page .rt-compare-head p{font:14px/1.75 Arial,sans-serif;color:var(--rt-muted);max-width:580px}
+.rt-page .rt-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(17px,2.2vw,28px);align-items:start}
+.rt-page .rt-strategy{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(35px,6vw,95px);align-items:center;margin-top:68px}
+.rt-page .rt-strategy .rt-figure{max-width:820px}
+.rt-page .rt-principles{display:grid;gap:0}
+.rt-page .rt-principles article{padding:17px 0 20px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-principles small{display:block;color:var(--rt-red);font:11px/1.5 Arial,sans-serif;margin-bottom:9px}
+.rt-page .rt-principles h3{font:400 21px/1.35 Arial,sans-serif;letter-spacing:-.02em;margin-bottom:8px}
+.rt-page .rt-principles p{font:14px/1.7 Arial,sans-serif;color:#575852;max-width:440px}
+.rt-page .rt-season+.rt-season{margin-top:85px}
+.rt-page .rt-season-top{display:grid;grid-template-columns:minmax(220px,.34fr) minmax(0,1fr);gap:clamp(26px,4vw,75px);align-items:center}
+.rt-page .rt-season-copy .rt-small-heading{display:block;margin-bottom:12px}
+.rt-page .rt-season-copy h3{font-size:clamp(29px,3vw,43px);font-weight:400;line-height:1.2;letter-spacing:-.042em;margin-bottom:18px}
+.rt-page .rt-season-section{margin-top:29px}
+.rt-page .rt-season-section .rt-media-button{background:#f0efeb}
+.rt-page .rt-water-pair{display:grid;gap:54px}
+.rt-page .rt-water-pair .rt-figure{max-width:100%}
+.rt-page .rt-water-pair .rt-media-button{background:#f1f0ec}
+.rt-page .rt-water-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:0 0 45px}
+.rt-page .rt-water-points article{border-top:1px solid var(--rt-rule);padding-top:17px}
+.rt-page .rt-water-points h3{font:400 19px/1.35 Arial,sans-serif;letter-spacing:-.02em;margin-bottom:9px}
+.rt-page .rt-water-points p{font:14px/1.72 Arial,sans-serif;color:#575852}
+.rt-page .rt-assembly-intro{max-width:810px;margin:0 0 35px 130px;font:15px/1.77 Georgia,"Times New Roman",serif;color:#50504c}
+.rt-page .rt-assembly-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,3.5vw,55px);align-items:start}
+.rt-page .rt-assembly-grid .rt-media-button{background:#f1f0ed}
+.rt-page .rt-conclusion{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.35fr);gap:32px;padding:39px 0;border-bottom:1px solid var(--rt-rule)}
+.rt-page .rt-conclusion p{max-width:810px;font:13px/1.78 Arial,sans-serif;color:var(--rt-muted)}
+.rt-page .rt-related{display:flex;justify-content:space-between;gap:25px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--rt-rule);font:13px/1.6 Arial,sans-serif}
+.rt-page .rt-related span{color:var(--rt-muted)}
+.rt-page .rt-related a{border-bottom:1px solid currentColor;padding-bottom:3px}
+.rt-page .credits{margin-top:0}
+.rt-page .next-project{margin-top:5px;padding-right:0}
+.rt-page #rt-lightbox{position:fixed;width:min(96vw,1500px);max-width:96vw;max-height:94vh;padding:48px 25px 20px;background:#f5f4f0;border:0;box-shadow:0 20px 75px #0005}
+.rt-page #rt-lightbox::backdrop{background:rgba(15,16,14,.91)}
+.rt-page #rt-lightbox img{display:block;max-width:100%;max-height:77vh;width:auto;height:auto;margin:auto;object-fit:contain}
+.rt-page #rt-lightbox p{margin:12px auto 0;font:12px/1.6 Arial,sans-serif;text-align:center;color:var(--rt-muted)}
+.rt-page #rt-lightbox .rt-close{position:absolute;right:17px;top:11px;padding:8px;font:13px/1.4 Arial,sans-serif;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1000px){
+ .rt-page .rt-chapter-head{grid-template-columns:72px minmax(0,1fr);gap:12px 25px}
+ .rt-page .rt-chapter-head p{grid-column:2}
+ .rt-page .rt-context-grid{gap:26px}
+ .rt-page .rt-season-top{grid-template-columns:minmax(165px,.38fr) minmax(0,1fr);gap:25px}
+ .rt-page .rt-assembly-intro{margin-left:97px}
+}
+@media(max-width:700px){
+ .rt-page .rt-project-head{padding:23px 0 22px}
+ .rt-page .rt-project-head h1{margin:16px 0 12px;font-size:clamp(43px,10.2vw,64px)}
+ .rt-page .rt-meta{gap:4px 12px}
+ .rt-page .rt-meta span+span:before{margin-right:12px}
+ .rt-page .rt-hero .rt-media-button{height:clamp(340px,87vw,560px)}
+ .rt-page .rt-hero .rt-media-button img{object-position:center 55%}
+ .rt-page .rt-figure figcaption{grid-template-columns:25px minmax(0,1fr);gap:7px;padding-top:10px}
+ .rt-page .rt-fig-action{display:none}
+ .rt-page .rt-opening{display:block;padding:52px 0 48px}
+ .rt-page .rt-opening h2{margin-bottom:25px}
+ .rt-page .rt-opening-copy{font-size:16px}
+ .rt-page .rt-onpage{gap:22px}
+ .rt-page .rt-onpage .rt-nav-label{margin-right:0}
+ .rt-page .rt-section{padding:54px 0 62px}
+ .rt-page .rt-chapter-head{grid-template-columns:1fr;gap:12px;margin-bottom:25px}
+ .rt-page .rt-chapter-head .rt-kicker{margin:0}
+ .rt-page .rt-chapter-head p{grid-column:auto;font-size:15px}
+ .rt-page .rt-context-grid,.rt-page .rt-compare,.rt-page .rt-strategy,.rt-page .rt-water-points,.rt-page .rt-assembly-grid{grid-template-columns:1fr}
+ .rt-page .rt-context-notes{gap:25px}
+ .rt-page .rt-strategy{gap:28px;margin-top:50px}
+ .rt-page .rt-principles{gap:4px}
+ .rt-page .rt-season+.rt-season{margin-top:65px}
+ .rt-page .rt-season-top{grid-template-columns:1fr}
+ .rt-page .rt-season-copy h3{font-size:32px}
+ .rt-page .rt-season-section{margin-top:18px}
+ .rt-page .rt-water-pair{gap:36px}
+ .rt-page .rt-water-points{gap:18px}
+ .rt-page .rt-assembly-intro{margin:0 0 28px}
+ .rt-page .rt-assembly-grid{gap:35px}
+ .rt-page .rt-conclusion{grid-template-columns:1fr;gap:8px}
+ .rt-page .rt-related{flex-direction:column;align-items:flex-start;gap:9px}
+ .rt-page #rt-lightbox{padding:44px 12px 18px}
+}
+
+/* Seasonal comparison: consistent left / right reading across chapters 03–04. */
+.rt-page .rt-comparison-set{margin-top:34px}
+.rt-page .rt-comparison-set--first{margin-top:0}
+.rt-page .rt-comparison-set+.rt-comparison-set{margin-top:59px}
+.rt-page .rt-comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(22px,3.8vw,64px);align-items:start}
+.rt-page .rt-comparison-grid>*{min-width:0}
+.rt-page .rt-comparison-set--first .rt-comparison-grid{align-items:stretch}
+.rt-page .rt-comparison-set--first .rt-comparison-tile{display:grid;grid-template-rows:1fr auto}
+.rt-page .rt-comparison-tile{min-width:0}
+.rt-page .rt-season-description{min-height:0;padding:16px 0 20px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-season-description .rt-small-heading{display:block;margin-bottom:11px}
+.rt-page .rt-season-description h3{font-size:clamp(31px,3vw,44px);font-weight:400;line-height:1.15;letter-spacing:-.045em;margin:0 0 18px}
+.rt-page .rt-season-description p{font:15px/1.76 Georgia,"Times New Roman",serif;color:#50504c;max-width:585px}
+.rt-page .rt-season-description p+p{margin-top:10px}
+.rt-page .rt-comparison-tile .rt-media-button{background:transparent}
+.rt-page .rt-comparison-tile .rt-media-button img{display:block;width:100%;height:auto;object-fit:contain;object-position:center}
+.rt-page .rt-comparison-tile .rt-figure figcaption{grid-template-columns:28px minmax(0,1fr);padding-top:11px}
+.rt-page .rt-comparison-tile .rt-fig-action{display:none}
+.rt-page .rt-comparison-set-heading{display:flex;align-items:baseline;justify-content:space-between;gap:22px;margin-bottom:21px;padding-top:22px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-comparison-set-heading p{font:13px/1.7 Arial,sans-serif;color:var(--rt-muted);max-width:640px}
+.rt-page .rt-tile-heading{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:0 0 12px;font:11px/1.5 Arial,sans-serif;letter-spacing:.04em;color:var(--rt-muted)}
+.rt-page .rt-tile-heading span:first-child{font-weight:600;color:var(--rt-ink);font-size:12px;letter-spacing:0}
+.rt-page .rt-comparison-tile--long .rt-media-button img{width:100%;height:auto;max-height:none;object-fit:contain}
+.rt-page .rt-water-points--after{margin:53px 0 0;padding-top:0}
+@media(max-width:1000px){
+  .rt-page .rt-season-description p{font-size:14px}
+}
+@media(max-width:700px){
+ .rt-page .rt-comparison-grid{grid-template-columns:minmax(0,1fr);gap:30px}
+ .rt-page .rt-comparison-set+.rt-comparison-set{margin-top:47px}
+ .rt-page .rt-season-description{min-height:0;padding:13px 0 19px}
+ .rt-page .rt-season-description h3{font-size:34px;margin-bottom:13px}
+ .rt-page .rt-season-description p{font-size:15px}
+ .rt-page .rt-comparison-set-heading{display:block;margin-bottom:21px}
+ .rt-page .rt-comparison-set-heading p{margin-top:10px}
+ .rt-page .rt-water-points--after{margin-top:45px}
+}
+
+
+/* Chapter alignment and seasonal comparisons: 2026-10-08 revision */
+.rt-page .rt-chapter-head{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);grid-template-areas:"kicker kicker" "title summary";align-items:start;column-gap:clamp(30px,5.5vw,90px);row-gap:14px;margin-bottom:clamp(32px,4.4vw,58px)}
+.rt-page .rt-chapter-head .rt-kicker{grid-area:kicker;margin:0}
+.rt-page .rt-chapter-head h2{grid-area:title}
+.rt-page .rt-chapter-head p{grid-area:summary;margin:2px 0 0;font:15px/1.75 Georgia,"Times New Roman",serif}
+.rt-page .rt-context-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,5vw,74px)}
+.rt-page .rt-context-visuals{min-width:0;display:grid;gap:clamp(28px,3.5vw,54px)}
+.rt-page .rt-context-notes{display:block;padding-top:3px}
+.rt-page .rt-context-seasonal{padding-top:18px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-inline-heading{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:16px;font:12px/1.5 Arial,sans-serif;color:var(--rt-muted)}
+.rt-page .rt-context-visuals .rt-figure figcaption{grid-template-columns:25px minmax(0,1fr)}
+.rt-page .rt-context-visuals .rt-fig-action{display:none}
+.rt-page .rt-strategy{margin-top:0;align-items:center}
+.rt-page .rt-compare-block{margin-top:clamp(52px,7vw,100px)}
+.rt-page .rt-compare-head{display:flex;align-items:baseline;justify-content:space-between;gap:25px;margin:0 0 23px;padding-top:19px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-compare-head p{font:13px/1.7 Arial,sans-serif;max-width:510px;color:var(--rt-muted)}
+.rt-page .rt-season-head{padding:14px 0 15px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-season-head h3{font-size:clamp(30px,3vw,45px);font-weight:400;letter-spacing:-.04em;line-height:1.15;margin:7px 0}
+.rt-page .rt-season-head p{font:12px/1.55 Arial,sans-serif;color:var(--rt-muted)}
+.rt-page .rt-comparison-grid{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(26px,4vw,68px);align-items:start}
+.rt-page .rt-comparison-grid:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--rt-rule);opacity:.65;pointer-events:none}
+.rt-page .rt-comparison-tile{display:block;min-width:0}
+.rt-page .rt-comparison-tile .rt-figure figcaption{grid-template-columns:26px minmax(0,1fr);gap:9px;padding-top:10px}
+.rt-page .rt-comparison-narrative{border-top:1px solid var(--rt-rule);padding-top:14px;margin-top:18px;font:15px/1.7 Georgia,"Times New Roman",serif;color:#50504c}
+.rt-page .rt-sectional-comparison{margin-top:clamp(55px,6.8vw,93px)}
+.rt-page .rt-section-strip{padding-bottom:25px}
+.rt-page .rt-section-strip+.rt-section-strip{padding-top:26px;margin-top:8px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-section-strip-label{display:flex;justify-content:space-between;gap:14px;margin-bottom:15px;font:11px/1.5 Arial,sans-serif;color:var(--rt-muted)}
+.rt-page .rt-section-strip-label span:first-child{font-weight:600;color:var(--rt-ink);letter-spacing:.04em}
+.rt-page .rt-section-strip .rt-media-button img{width:100%;height:auto;object-fit:contain}
+.rt-page .rt-context-visuals .rt-media-button,.rt-page .rt-strategy .rt-media-button,.rt-page .rt-compare .rt-media-button,.rt-page .rt-comparison-tile .rt-media-button,.rt-page .rt-section-strip .rt-media-button,.rt-page .rt-assembly-grid .rt-media-button{background:transparent}
+.rt-page .rt-comparison-set--first .rt-comparison-grid--water{align-items:start}
+.rt-page .rt-comparison-set--first .rt-comparison-grid--water .rt-comparison-tile{display:block;grid-template-rows:none}
+.rt-page .rt-comparison-grid--water .rt-tile-heading{border-top:1px solid var(--rt-rule);padding-top:15px}
+.rt-page .rt-water-points--after{margin-top:56px}
+@media(max-width:900px){.rt-page .rt-chapter-head{grid-template-columns:1fr;grid-template-areas:"kicker" "title" "summary";row-gap:12px}.rt-page .rt-chapter-head p{max-width:650px}}
+@media(max-width:700px){.rt-page .rt-context-grid{grid-template-columns:1fr}.rt-page .rt-context-notes{margin-top:25px}.rt-page .rt-inline-heading{display:block}.rt-page .rt-inline-heading .rt-small-heading{display:block;margin-bottom:6px}.rt-page .rt-compare-head{display:block}.rt-page .rt-compare-head p{margin-top:11px}.rt-page .rt-comparison-grid{grid-template-columns:1fr;gap:32px}.rt-page .rt-comparison-grid:before{display:none}.rt-page .rt-season-head h3{font-size:34px}.rt-page .rt-sectional-comparison{margin-top:53px}}
+
+@media(prefers-reduced-motion:reduce){.rt-page .rt-media-button img{transition:none}}
+
+/* October 2026: paired seasonal explanation, draggable section comparison, left-text / right-image assembly */
+.rt-page .rt-context-season-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,5vw,74px);align-items:start;margin-top:clamp(36px,5.2vw,75px);padding-top:20px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-context-visuals{display:block}
+.rt-page .rt-context-season-row .rt-context-seasonal{padding:0;border:0;min-width:0}
+.rt-page .rt-context-season-notes{min-width:0;padding-top:clamp(3px,1.4vw,19px)}
+.rt-page .rt-context-season-notes h3{font-size:clamp(25px,2.65vw,39px);font-weight:400;line-height:1.19;letter-spacing:-.04em;max-width:520px;margin:12px 0 18px}
+.rt-page .rt-context-season-intro,.rt-page .rt-season-text-blocks p{font:15px/1.78 Georgia,"Times New Roman",serif;color:#50504c;max-width:520px}
+.rt-page .rt-season-text-blocks{margin-top:clamp(23px,3.2vw,47px)}
+.rt-page .rt-season-text-blocks article{padding:19px 0 22px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-season-text-blocks h4{margin:7px 0 10px;font:400 clamp(19px,1.8vw,26px)/1.25 Arial,sans-serif;letter-spacing:-.035em}
+.rt-page .rt-season-text-blocks .rt-small-heading{font-size:10px}
+.rt-page .rt-section-compare-labels{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 12px;color:var(--rt-red);font:11px/1.6 Arial,sans-serif;letter-spacing:.065em}
+.rt-page .rt-section-compare-labels span:last-child{text-align:right}
+.rt-page .rt-section-compare-labels small{display:block;color:var(--rt-muted);font-size:11px;letter-spacing:0;text-transform:none}
+.rt-page .rt-section-compare-frame{position:relative;isolation:isolate;overflow:hidden;background:#e8e8e6;width:100%;line-height:0}
+.rt-page .rt-section-compare-frame>img{display:block;width:100%;height:auto}
+.rt-page .rt-section-compare-wet{position:absolute;inset:0;overflow:hidden;clip-path:inset(0 0 0 var(--rt-reveal));pointer-events:none}
+.rt-page .rt-section-compare-wet img{display:block;width:100%;height:100%;object-fit:fill}
+.rt-page .rt-section-compare-divider{position:absolute;z-index:2;left:var(--rt-reveal);top:0;bottom:0;width:2px;transform:translateX(-50%);background:var(--rt-red);pointer-events:none}
+.rt-page .rt-section-compare-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--rt-red);border-radius:50%;background:var(--rt-paper);color:var(--rt-ink);font:24px/1 Arial,sans-serif;letter-spacing:-.09em;box-shadow:0 2px 8px #0002}
+.rt-page .rt-section-compare-range{position:absolute;inset:0;z-index:3;display:block;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:ew-resize;touch-action:pan-y;appearance:none;-webkit-appearance:none}
+.rt-page .rt-section-compare-frame:focus-within{outline:2px solid var(--rt-red);outline-offset:3px}
+.rt-page .rt-section-compare-bottom{display:flex;justify-content:space-between;gap:20px 35px;align-items:flex-start;margin-top:13px}
+.rt-page .rt-section-compare-caption{display:flex;gap:15px;max-width:650px;font:12px/1.55 Arial,sans-serif;color:var(--rt-muted)}
+.rt-page .rt-section-compare-caption strong{display:block;color:var(--rt-ink);font-size:13px;font-weight:400;margin-bottom:4px}
+.rt-page .rt-section-compare-actions{display:flex;gap:15px;flex-wrap:wrap;justify-content:flex-end}
+.rt-page .rt-section-compare-actions button{padding:2px 0 5px;border:0;border-bottom:1px solid var(--rt-rule);color:var(--rt-ink);background:transparent;font:12px/1.5 Arial,sans-serif;cursor:zoom-in}
+.rt-page .rt-section-compare-actions button:hover{border-color:var(--rt-ink)}
+.rt-page .rt-section-compare-actions button:focus-visible{outline:2px solid var(--rt-red);outline-offset:3px}
+.rt-page .rt-assembly-stack{display:grid;gap:clamp(58px,7vw,110px)}
+.rt-page .rt-assembly-pair{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);align-items:start;gap:clamp(30px,5.5vw,95px)}
+.rt-page .rt-assembly-pair+.rt-assembly-pair{padding-top:clamp(28px,4vw,55px);border-top:1px solid var(--rt-rule)}
+.rt-page .rt-assembly-copy{max-width:490px;min-width:0}
+.rt-page .rt-assembly-copy h2{font:400 clamp(31px,3.25vw,49px)/1.18 Arial,sans-serif;letter-spacing:-.045em;margin:0 0 26px;text-wrap:balance}
+.rt-page .rt-assembly-copy h3{font:400 clamp(23px,2.3vw,34px)/1.24 Arial,sans-serif;letter-spacing:-.035em;margin:12px 0 17px}
+.rt-page .rt-assembly-copy p{font:15px/1.78 Georgia,"Times New Roman",serif;color:#50504c;margin:0 0 15px}
+.rt-page .rt-assembly-note{border-top:1px solid var(--rt-rule);padding-top:23px;margin-top:clamp(30px,5vw,78px)}
+.rt-page .rt-assembly-pair>.rt-figure{min-width:0}
+.rt-page .rt-assembly-pair .rt-media-button{background:transparent}
+.rt-page .rt-assembly-pair .rt-media-button img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:700px){
+ .rt-page .rt-context-season-row{grid-template-columns:minmax(0,1fr);gap:24px;margin-top:39px}
+ .rt-page .rt-context-season-notes{padding-top:6px}
+ .rt-page .rt-context-season-notes h3{font-size:31px}
+ .rt-page .rt-section-compare-labels{font-size:10px}
+ .rt-page .rt-section-compare-labels small{font-size:10px}
+ .rt-page .rt-section-compare-handle{width:33px;height:33px;font-size:19px}
+ .rt-page .rt-section-compare-bottom{flex-direction:column}
+ .rt-page .rt-section-compare-actions{justify-content:flex-start}
+ .rt-page .rt-assembly-stack{gap:47px}
+ .rt-page .rt-assembly-pair{grid-template-columns:minmax(0,1fr);gap:20px}
+ .rt-page .rt-assembly-pair+.rt-assembly-pair{padding-top:30px}
+ .rt-page .rt-assembly-note{margin-top:33px}
+}
+
+
+/* 2026-10-10: image-width alignment and complete uncropped construction boards. */
+.rt-page .rt-strategy{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(26px,4vw,68px);align-items:start}
+.rt-page .rt-strategy>.rt-figure{width:100%;max-width:100%;min-width:0}
+.rt-page .rt-strategy .rt-media-button,.rt-page .rt-assembly-pair .rt-media-button{width:100%;height:auto;overflow:visible;background:transparent}
+.rt-page .rt-strategy .rt-media-button img,.rt-page .rt-assembly-pair .rt-media-button img{display:block;width:100%;max-width:100%;height:auto;max-height:none;object-fit:contain;object-position:center top;aspect-ratio:auto}
+.rt-page .rt-assembly-pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(26px,4vw,68px);align-items:start}
+.rt-page .rt-assembly-pair>.rt-figure{width:100%;max-width:100%;min-width:0}
+.rt-page .rt-assembly-stack{gap:clamp(54px,6vw,86px)}
+.rt-page .rt-assembly-copy{max-width:490px}
+.rt-page .rt-assembly-copy>p{margin-top:16px}
+.rt-page .rt-assembly-detail{margin-top:clamp(27px,3.5vw,48px)}
+.rt-page .rt-assembly-detail article{padding:19px 0 21px;border-top:1px solid var(--rt-rule)}
+.rt-page .rt-assembly-detail h3{font:400 clamp(19px,1.65vw,24px)/1.32 Arial,Helvetica,sans-serif;letter-spacing:-.03em;margin:10px 0 9px}
+.rt-page .rt-assembly-detail p{font:14px/1.75 Georgia,"Times New Roman",serif;color:#50504c;margin:0}
+@media(max-width:700px){
+ .rt-page .rt-strategy,.rt-page .rt-assembly-pair{grid-template-columns:minmax(0,1fr);gap:25px}
+ .rt-page .rt-assembly-detail{margin-top:27px}
+ .rt-page .rt-assembly-stack{gap:45px}
+}
+</style>
+<link rel="stylesheet" href="project-system.css?v=20261009-v1">
+<link rel="stylesheet" href="project-unified.css?v=20261009-editorial-v1">  <link rel="stylesheet" href="project-consistency.css?v=20261013-overlapfix-v1">
+  <script src="project-consistency.js?v=20261010-v1" defer></script>
+  <link rel="stylesheet" href="project-motion-v2.css?v=20261013-overlapfix-v1">
+  <script src="project-motion-v2.js?v=20261010-v1" defer></script>
+  <link rel="stylesheet" href="project-ending.css?v=20261010-v2">
+  <link rel="stylesheet" href="project-image-captions.css?v=20261011-v1">
+<link rel="stylesheet" href="assets/site-refinements.css?v=20261013-ux1">
+<!-- Search and sharing metadata; reuse existing imagery. -->
+<link rel="canonical" href="https://arc-hao-0215.github.io/rising-tides-resilient-lives.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hao Chang — Architecture &amp; Research">
+<meta property="og:title" content="Rising Tides, Resilient Lives — Hao Chang">
+<meta property="og:description" content="Rising Tides, Resilient Lives proposes an adaptable civic infrastructure at Kampung Melayu along Jakarta">
+<meta property="og:url" content="https://arc-hao-0215.github.io/rising-tides-resilient-lives.html">
+<meta property="og:image" content="https://arc-hao-0215.github.io/assets/rising-tides-resilient-lives-hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261013-hc4">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=20261013-hc4">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261013-hc4">
+<link rel="shortcut icon" href="/favicon.ico?v=20261013-hc4">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261013-hc4">
+<link rel="stylesheet" href="assets/editorial-guides.css?v=20261013-editorial-v1">
+</head>
+<body class="rt-page portfolio-project pm-v2">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="index.html">HAO CHANG</a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Projects</a><a href="research.html">Research</a><a href="about.html">About</a></nav></header>
+<main id="main">
+<header class="rt-project-head">
+ <div class="rt-heading-top"><a href="index.html">Projects / 03</a><span>Architecture · 2025</span></div>
+ <h1>Rising Tides, Resilient Lives</h1>
+ <p class="rt-project-type">Water-Resilient Community Design</p>
+ <div class="rt-meta"><span>Kampung Melayu, Jakarta</span><span>Flood Resilience · Civic Infrastructure · Collective Life</span><span>2025</span></div>
+ <p class="rt-recognition">Unbuilt academic design proposal · Flood-adaptation infrastructure</p>
+</header>
+<figure class="rt-figure rt-hero"><button class="rt-media-button rt-zoom" type="button" data-title="Life at the river edge" aria-label="Enlarge: Life at the river edge"><img src="assets/rising/rising-hero.webp" width="1920" height="1477" loading="eager" fetchpriority="high" decoding="async" alt="Architectural rendering of a landscaped riverbank, community dwellings and raised walkways beneath an elevated railway, with a small boat in the foreground"></button><figcaption><span class="rt-fig-number">01</span><span class="rt-caption-text"><strong>Life at the river edge</strong>A civic landscape beneath the railway viaduct brings water, mobility and everyday collective life into one adaptable spatial system.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+<section class="rt-opening" aria-labelledby="rt-opening-title">
+ <div><span class="rt-kicker">Project proposition</span><h2 id="rt-opening-title">Shared river-edge infrastructure across changing water conditions.</h2></div>
+ <div class="rt-opening-copy"><p>At Kampung Melayu, inundation can interrupt neighbourhood movement, access to daily services and use of the river edge. The academic proposal places planted ground, elevated circulation, adaptable dwellings and shared facilities beneath and alongside the railway viaduct. Its seasonal drawings compare intended conditions of occupation; they do not constitute hydraulic modelling or a verified evacuation plan.</p><p>Rather than treating protection and everyday use as separate questions, the proposal gathers routes, workshops, markets, dwellings and ecological systems into one adaptive civic network. Its sectional organisation changes with water levels: a public landscape in ordinary conditions, and a connected framework for access and refuge during flooding.</p></div>
+</section>
+<nav class="rt-onpage" aria-label="Sections of this project"><span class="rt-nav-label">Explore the project</span><a href="#context">01 Context</a><a href="#strategy">02 Strategy</a><a href="#seasons">03 Two Seasons</a><a href="#water">04 Water Systems</a><a href="#assembly">05 Assembly</a></nav>
+<section class="rt-section" id="context" aria-labelledby="context-title">
+ <div class="rt-chapter-head"><span class="rt-kicker">01 / Urban context</span><h2 id="context-title">Flood exposure and everyday access along the Ciliwung.</h2><p>The Ciliwung passes through densely inhabited communities where flooding, changes to drainage and exposure of existing settlements intersect. The design reads the river edge and elevated railway as shared infrastructure rather than leftover space.</p></div>
+
+ <div class="rt-context-grid">
+  <div class="rt-context-visuals"><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Jakarta / river and urban exposure" aria-label="Enlarge: Jakarta / river and urban exposure"><img src="assets/rising/rising-context-map.webp" width="939" height="1161" loading="lazy"  decoding="async" alt="Composite city-scale map of Jakarta marking the Ciliwung River, Kampung Melayu, population density and risk-related annotations"></button><figcaption><span class="rt-fig-number">02</span><span class="rt-caption-text"><strong>Jakarta / river and urban exposure</strong>Territorial study situating Kampung Melayu along the Ciliwung in relation to settlement density, flood exposure, canals and the city's wider environmental pressures.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+  <div class="rt-context-notes"><div><span class="rt-small-heading">The condition</span><h3>Movement and shared facilities during inundation.</h3><p>When water occupies the ground, access to neighbours, services and shared places can become as important as the condition of individual buildings. Any spatial response needs to address these connections, not just lift structures above a presumed level.</p><p>Metropolitan subsidence and coastal processes are part of Jakarta's wider water story, but the riverine flood exposure at Kampung Melayu must be distinguished from the city's northern tidal conditions.</p></div></div>
+ </div>
+ <div class="rt-context-season-row">
+  <div class="rt-context-seasonal">
+   <div class="rt-inline-heading"><span class="rt-small-heading">Seasonal context</span><span>From macro analysis to everyday responses</span></div>
+   <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="A seasonal pattern of adaptation" aria-label="Enlarge: A seasonal pattern of adaptation"><img src="assets/rising/rising-response-chart.webp" width="935" height="775" loading="lazy"  decoding="async" alt="Diagram showing seasonal shifts in rainfall and flood response, with silhouettes indicating daily life across changing water levels"></button><figcaption><span class="rt-fig-number">03</span><span class="rt-caption-text"><strong>Seasonal adaptation / conceptual water conditions</strong>A comparison of likely changes in everyday occupation across wetter and drier conditions; the illustrated water levels are scenarios rather than measured flood-design elevations.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  </div>
+  <div class="rt-context-season-notes">
+   <span class="rt-small-heading">Everyday adaptation</span>
+   <h3>Two seasons, two ways of living with water.</h3>
+   <p class="rt-context-season-intro">The rhythm of the river shapes when the ground can be occupied, how neighbours move, and where collective life takes place.</p>
+   <div class="rt-season-text-blocks">
+    <article><span class="rt-small-heading">01 / Musim Kemarau</span><h4>Dry Season</h4><p>When the water recedes, streets and river edges become everyday public spaces for gathering, trade and movement. Access to shared services and the river landscape remains essential.</p></article>
+    <article><span class="rt-small-heading">02 / Musim Hujan</span><h4>Wet Season</h4><p>As water rises, activities and routes shift to higher ground. Continued access, places of refuge and connections between neighbours become more important as low-lying areas flood.</p></article>
+   </div>
+  </div>
+ </div>
+</section>
+<section class="rt-section" id="strategy" aria-labelledby="strategy-title">
+ <div class="rt-chapter-head"><span class="rt-kicker">02 / Design strategy</span><h2 id="strategy-title">Connecting planted ground, raised routes and civic rooms.</h2><p>The proposal combines lower-level planted landscapes that can accommodate water, raised circulation serving selected communal rooms and distributed neighbourhood facilities. Site diagrams describe how these parts meet the existing riverbank and viaduct. Flood design levels, actual water-storage capacity and responsibility for maintenance are not determined by the scheme.</p></div>
+ <div class="rt-strategy">
+  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Three linked spatial strategies" aria-label="Enlarge: Three linked spatial strategies"><img src="assets/rising/rising-framework-axon.webp" width="945" height="773" loading="lazy"  decoding="async" alt="Research and design framework diagram with three small architectural axonometric drawings for ecological restoration, floating refuge and community hub"></button><figcaption><span class="rt-fig-number">04</span><span class="rt-caption-text"><strong>Three linked spatial strategies</strong>Ecological restoration, adaptable shelter and a community hub are drawn as interdependent parts of the proposed network.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  <div class="rt-principles">
+   <article><small>01 / RESTORE</small><h3>Make room for water</h3><p>Wetlands and river-edge landscapes create space to examine filtration, ecological continuity and flood storage alongside urban occupation.</p></article>
+   <article><small>02 / ADAPT</small><h3>Keep essential access above the ground</h3><p>Raised routes and adaptable dwellings propose continuity of movement and safer gathering during high-water conditions.</p></article>
+   <article><small>03 / SHARE</small><h3>Concentrate collective services</h3><p>Workshops, markets, shared rooms and neighbourhood facilities turn the intervention into an everyday civic resource rather than an isolated emergency facility.</p></article>
+  </div>
+ </div>
+
+ <div class="rt-compare-block"> <div class="rt-compare-head"><h3>Existing ground / proposed civic ground</h3><p>Two sections show how an underused and vulnerable river edge might be reorganised as a connected landscape of public access, water treatment and shared occupation.</p></div>
+ <div class="rt-compare">
+  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Existing waterfront condition" aria-label="Enlarge: Existing waterfront condition"><img src="assets/rising/rising-existing-section.webp" width="936" height="380" loading="lazy"  decoding="async" alt="Existing black-and-white section of the Ciliwung riverbank, buildings, polluted river edge and viaduct"></button><figcaption><span class="rt-fig-number">05</span><span class="rt-caption-text"><strong>Existing waterfront condition</strong>A diagram of the riverbank, informal settlement and the elevated railway structure before the proposed intervention.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  <figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Integrated civic and ecological corridor" aria-label="Enlarge: Integrated civic and ecological corridor"><img src="assets/rising/rising-proposed-section.webp" width="936" height="368" loading="lazy"  decoding="async" alt="Proposed black-and-white section of an elevated civic corridor, wetlands and modular support structures beneath the viaduct"></button><figcaption><span class="rt-fig-number">06</span><span class="rt-caption-text"><strong>Integrated civic and ecological corridor</strong>The proposal aligns elevated circulation, public rooms, planted buffers and new support infrastructure across the river edge.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+ </div>
+
+ </div>
+</section>
+
+<section class="editorial-lens" aria-label="Design reading guide"><div class="editorial-lens-top"><div><span class="editorial-label">Design reading / 03 decisions</span><h2>Test one framework in two water conditions</h2></div></div><div class="editorial-lens-grid"><div class="editorial-lens-item"><h3><a href="#seasons">Compare the seasonal sections ↗</a></h3><p>Use the dry- and flood-season views to identify which paths, facilities and occupied levels change, and which must remain accessible.</p></div><div class="editorial-lens-item"><h3><a href="#water">Follow water and services ↗</a></h3><p>The water-management diagrams describe the relationship between planted ground, drainage and shared facilities; they do not establish a measured flood-protection standard.</p></div><div class="editorial-lens-item"><h3><a href="#assembly">Read the replaceable layers ↗</a></h3><p>The frame, enclosure and services are separated to explain adaptation over time. Dimensions and resilience outcomes would require further technical verification.</p></div></div></section>
+<section class="rt-section" id="seasons" aria-labelledby="seasons-title">
+ <div class="rt-chapter-head"><span class="rt-kicker">03 / Spatial adaptation</span><h2 id="seasons-title">One spatial framework across dry and flood seasons.</h2><p>The seasonal comparison presents the same architectural network under two illustrated scenarios. During ordinary dry conditions, planted ground and shared outdoor spaces are usable. During the proposed flood condition, elevated decks and rooms become the main occupied route. Diagrammatic flood lines are not surveyed design-flood elevations.</p></div>
+ <div class="rt-comparison-grid rt-comparison-grid--render">
+  <div class="rt-comparison-tile"><div class="rt-season-head"><span class="rt-small-heading">01 / Musim Kemarau</span><h3>Dry Season</h3><p>Daily use / public ground</p></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="An everyday elevated street" aria-label="Enlarge: An everyday elevated street"><img src="assets/rising/rising-dry-civic.webp" width="1264" height="770" loading="lazy"  decoding="async" alt="Architectural rendering of children and residents using the timber boardwalk and shared rooms during the dry season"></button><figcaption><span class="rt-fig-number">07</span><span class="rt-caption-text"><strong>Raised circulation / shared daily uses</strong>The elevated deck connects workshops, public rooms and neighbourhood paths. Continued access during an actual flood requires verified levels, safety and connections.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><p class="rt-comparison-narrative">The raised neighbourhood street connects workshops, markets, shared rooms and the accessible river landscape.</p></div>
+  <div class="rt-comparison-tile"><div class="rt-season-head"><span class="rt-small-heading">02 / Musim Hujan</span><h3>Flood Season</h3><p>High water / access and refuge</p></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="A network that changes with the flood" aria-label="Enlarge: A network that changes with the flood"><img src="assets/rising/rising-flood-refuge.webp" width="1264" height="770" loading="lazy"  decoding="async" alt="Rendering of flooded courtyards, boats and people occupying elevated timber walkways beneath the railway viaduct"></button><figcaption><span class="rt-fig-number">08</span><span class="rt-caption-text"><strong>Flood scenario / proposed access and refuge</strong>Raised routes, temporary gathering and boat connections show a possible response to inundated ground; no certified refuge capacity is claimed.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure><p class="rt-comparison-narrative">The same network may provide boat landings, higher-level movement and temporary refuge. Emergency operation still requires testing.</p></div>
+ </div>
+ <div class="rt-sectional-comparison" aria-label="Compare dry and wet season architectural sections">
+  <div class="rt-compare-head"><h3>Continuous sections</h3><p>Drag the central handle left or right to reveal how the same architecture responds to dry and flood seasons. Both complete sections are available to enlarge.</p></div>
+  <div class="rt-section-compare-labels"><span>01 / DRY SEASON <small>Everyday civic ground</small></span><span>02 / WET SEASON <small>Elevated access and refuge</small></span></div>
+  <div class="rt-section-compare-frame" style="--rt-reveal:50%">
+   <img src="assets/rising/rising-dry-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long architectural section showing active communal uses and raised circulation in dry conditions">
+   <div class="rt-section-compare-wet"><img src="assets/rising/rising-flood-section.webp" width="1908" height="351" loading="lazy"  decoding="async" alt="Long black-and-white section of community spaces and elevated dwellings during inundation"></div>
+   <div class="rt-section-compare-divider" aria-hidden="true"><span class="rt-section-compare-handle">↔</span></div>
+   <input class="rt-section-compare-range" type="range" min="0" max="100" step="1" value="50" aria-label="Compare the dry season on the left and the wet season on the right" aria-valuetext="50% dry season and 50% wet season">
+  </div>
+  <div class="rt-section-compare-bottom">
+   <div class="rt-section-compare-caption"><span class="rt-fig-number">09–10</span><div><strong>One continuous section / changing water levels</strong><p>The dry-season civic ground transitions into a network of elevated access and temporary refuge during inundation.</p></div></div>
+   <div class="rt-section-compare-actions"><button type="button" class="rt-zoom" data-image="assets/rising/rising-dry-section.webp" data-title="Dry season / continuous civic section" data-alt="Full long section illustrating everyday civic activities in the dry season">View dry section ↗</button><button type="button" class="rt-zoom" data-image="assets/rising/rising-flood-section.webp" data-title="Flood season / continuous refuge section" data-alt="Full long section illustrating elevated access and refuge during the flood season">View wet section ↗</button></div>
+  </div>
+ </div>
+</section>
+<section class="rt-section" id="water" aria-labelledby="water-title">
+ <div class="rt-chapter-head"><span class="rt-kicker">04 / Environmental systems</span><h2 id="water-title">Water infrastructure across the two seasonal scenarios.</h2><p>The water-system drawings contrast everyday public and planted areas with lower ground under inundation. They illustrate proposed retention, treatment and access relationships, not tested purification rates, hydraulic capacity or reliability during an emergency.</p></div>
+ <div class="rt-comparison-set rt-comparison-set--first" aria-label="Seasonal water systems comparison">
+  <div class="rt-comparison-grid rt-comparison-grid--water">
+   <div class="rt-comparison-tile"><div class="rt-tile-heading"><span>Dry Season</span><span>Daily treatment &amp; cultivation</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Dry season / water and public life" aria-label="Enlarge: Dry season / water and public life"><img src="assets/rising/rising-water-dry.webp" width="1590" height="572" loading="lazy"  decoding="async" alt="Section-perspective drawing of public buildings, river-edge wetlands, rainwater treatment, community farm and water infrastructure in the dry season"></button><figcaption><span class="rt-fig-number">11</span><span class="rt-caption-text"><strong>Water systems / dry season</strong>Wetlands, treatment areas, community farming and public activity.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+   <div class="rt-comparison-tile"><div class="rt-tile-heading"><span>Flood Season</span><span>High-water adaptation</span></div><figure class="rt-figure "><button class="rt-media-button rt-zoom" type="button" data-title="Flood season / adaptable environmental infrastructure" aria-label="Enlarge: Flood season / adaptable environmental infrastructure"><img src="assets/rising/rising-water-flood.webp" width="1590" height="574" loading="lazy"  decoding="async" alt="Section-perspective drawing of the same raised buildings and floating shelter units in flood conditions"></button><figcaption><span class="rt-fig-number">12</span><span class="rt-caption-text"><strong>Water systems / flood season</strong>Elevated rooms, refuge and boat routes amid inundated lower ground.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure></div>
+  </div>
+ </div>
+</section>
+<section class="rt-section rt-assembly-section" id="assembly" aria-labelledby="assembly-title">
+ <div class="rt-assembly-stack">
+  <div class="rt-assembly-pair">
+   <div class="rt-assembly-copy">
+    <span class="rt-kicker">05 / Modular construction</span>
+    <h2 id="assembly-title">Frame, enclosure and environmental services as distinct layers.</h2>
+    <p>The exploded dwelling diagram separates structural frame, enclosure, raised floor, foundation concept and accessible environmental equipment. Such separability supports a proposed replacement and maintenance strategy. Frame connections, flood loading, foundations and service capacity still require specialist verification.</p>
+    <div class="rt-assembly-detail">
+     <article><span class="rt-small-heading">01 / Envelope</span><h3>Replaceable layers for everyday life.</h3><p>Bamboo wall and flooring panels, a wooden ceiling and screened openings define the inhabited spaces without becoming the main load-bearing system. This distinction makes ventilation, shading and component replacement part of the architectural logic rather than afterthoughts.</p></article>
+     <article><span class="rt-small-heading">02 / Structure</span><h3>A raised frame with identifiable connections.</h3><p>Columns, primary beams and joint connectors establish a shared support grid, while the diagram proposes telescopic concrete foundations below the occupied deck. Their dimensions, flood resistance and suitability beside the railway would still require site-specific engineering.</p></article>
+     <article><span class="rt-small-heading">03 / Climate and water</span><h3>Environmental services as accessible parts.</h3><p>Rainwater gutters, solar panels, the proposed HydroHarvest system, sediment retention and storage units are shown as distinct assemblies. Keeping these systems visible and serviceable offers a basis for maintenance and phased installation; the drawing does not establish verified treatment performance.</p></article>
+    </div>
+   </div>
+   <figure class="rt-figure"><button class="rt-media-button rt-zoom" type="button" data-title="Prefabricated, community-assembled dwelling / complete drawing" aria-label="Enlarge complete prefabricated dwelling drawing"><img src="assets/rising/rising-assembly-exploded-full.jpg" width="1526" height="2047" loading="lazy" decoding="async" alt="Complete uncropped exploded axonometric showing the roof, bamboo enclosure, structural frame, joint connectors, telescopic foundations, rainwater collection and storage, sediment retention, solar panels and delivery truck"></button><figcaption><span class="rt-fig-number">13</span><span class="rt-caption-text"><strong>Dwelling / separated structural and environmental layers</strong>The exploded study distinguishes the main frame, replaceable enclosure, foundations and water or energy systems; performance remains untested.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  </div>
+  <div class="rt-assembly-pair">
+   <div class="rt-assembly-copy">
+    <span class="rt-small-heading">02 / Collective construction</span>
+    <h3>A proposed construction and consultation sequence.</h3>
+    <p>The six-panel drawing sets out a proposed process from delivery and resident consultation to foundations, frame assembly and installation of services. This is a construction scenario, not evidence of a completed building or confirmed community participation. Training, ownership, safety and maintenance would require local agreement before implementation.</p>
+    <div class="rt-assembly-detail">
+     <article><span class="rt-small-heading">From delivery to occupation</span><h3>Sequencing allows participation at different scales.</h3><p>The illustrations connect specialist work, local decision-making and straightforward assembly tasks. Prefabrication may limit prolonged disruption on a constrained riverbank, while a consistent structural kit could allow components to be installed or replaced in phases.</p></article>
+     <article><span class="rt-small-heading">Collective agency</span><h3>Consultation comes before construction.</h3><p>Participation is not simply a source of labour. Decisions about layout, shared uses, maintenance and access would need to be negotiated with residents before any construction sequence is fixed. Training, safe installation, financing and long-term stewardship remain essential questions for further development.</p></article>
+    </div>
+   </div>
+   <figure class="rt-figure"><button class="rt-media-button rt-zoom" type="button" data-title="Six stages of collaborative assembly / complete storyboard" aria-label="Enlarge complete six-stage assembly storyboard"><img src="assets/rising/rising-assembly-process-full.jpg" width="1753" height="2048" loading="lazy" decoding="async" alt="Complete uncropped six-stage storyboard: prefabricated delivery, community consultation, ground anchoring, cooperative frame assembly, ventilation and HydroHarvest installation, and rooftop solar installation"></button><figcaption><span class="rt-fig-number">14</span><span class="rt-caption-text"><strong>Six stages of collaborative assembly</strong>From modular delivery and community consultation to groundwork, frame construction and installation of water, ventilation and solar systems.</span><span class="rt-fig-action" aria-hidden="true">Enlarge ↗</span></figcaption></figure>
+  </div>
+ </div>
+</section>
+<!-- Unified project ending: related research (where applicable), information, next project -->
+<section class="pe-ending" aria-label="Project information and navigation">
+<section class="pe-related" aria-labelledby="pe-research-03"><span class="pe-label" id="pe-research-03">Related Research</span><div class="pe-related-main"><div class="pe-related-copy"><h2><a href="research-jakarta-flood-adaptation.html">When the River Occupies the Street</a></h2><p>Independent research into documented flooding, adaptation and everyday life along the Ciliwung River.</p></div><a class="pe-research-link" href="research-jakarta-flood-adaptation.html" aria-label="Explore independent research: When the River Occupies the Street">Explore research <span aria-hidden="true">↗</span></a></div></section>
+<section class="pe-info" aria-labelledby="pe-information-03"><h2 class="pe-label" id="pe-information-03">Project Information</h2><dl class="pe-meta">
+<div class="pe-field"><dt>Year</dt><dd>2025</dd></div>
+<div class="pe-field"><dt>Location</dt><dd>Kampung Melayu, Jakarta</dd></div>
+<div class="pe-field"><dt>Project type</dt><dd>Civic infrastructure / flood adaptation</dd></div>
+<div class="pe-field"><dt>Status</dt><dd>Unbuilt academic proposal</dd></div>
+<div class="pe-field"><dt>Design</dt><dd>Hao Chang</dd></div>
+<div class="pe-field"><dt>Instructor</dt><dd>Martijn de Geus</dd></div>
+<div class="pe-field"><dt>Institution</dt><dd>Tsinghua University</dd></div>
+</dl></section>
+<a class="pe-next" href="the-condenser.html" aria-label="Next project 04: The Condenser"><span class="pe-label">Next Project <span class="pe-count">04 / 10</span></span><div class="pe-next-main"><h2>The Condenser</h2><span class="pe-arrow" aria-hidden="true">↗</span></div></a>
+</section>
+<dialog id="rt-lightbox" aria-label="Enlarged project image"><button type="button" class="rt-close" aria-label="Close image">Close ×</button><img alt=""><p></p></dialog>
+</main>
+<footer><a class="wordmark" href="index.html">HAO CHANG</a><p>Architecture, research &amp; collective life.</p><nav class="footer-links" aria-label="Footer links"><a href="mailto:haochang0215@gmail.com">Get in touch</a><a href="image-credits.html">Image Credits &amp; Rights</a></nav><span class="footer-copyright">© 2026 Hao Chang</span></footer>
+<script>
+(() => {
+ const dialog=document.querySelector('#rt-lightbox');
+ if (!dialog || typeof dialog.showModal!=='function') return;
+ const enlarged=dialog.querySelector('img');
+ const label=dialog.querySelector('p');
+ let trigger=null;
+ document.querySelectorAll('.rt-zoom').forEach(button=>button.addEventListener('click',()=>{
+  trigger=button;
+  const image=button.querySelector('img');
+  enlarged.src=image?(image.currentSrc||image.src):button.dataset.image;
+  enlarged.alt=image?image.alt:(button.dataset.alt||'');
+  label.textContent=button.dataset.title||enlarged.alt;
+  dialog.showModal();
+ }));
+ dialog.querySelector('.rt-close').addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+ dialog.addEventListener('close',()=>{enlarged.removeAttribute('src');trigger?.focus()});
+})();
+
+(() => {
+ document.querySelectorAll('.rt-section-compare-frame').forEach(frame=>{
+  const range=frame.querySelector('.rt-section-compare-range');
+  if(!range)return;
+  const update=()=>{
+   const value=Number(range.value);
+   frame.style.setProperty('--rt-reveal',value+'%');
+   range.setAttribute('aria-valuetext',value+'% dry season and '+(100-value)+'% wet season');
+  };
+  range.addEventListener('input',update);
+  update();
+ });
+})();
+</script>
+</body>
+</html>
