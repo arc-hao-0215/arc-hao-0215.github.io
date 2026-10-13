@@ -16,10 +16,10 @@ from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
 SITE = Path(__file__).resolve().parents[1]
-IMG = re.compile(r"<img\\b[^>]*>", re.IGNORECASE | re.DOTALL)
-SRC = re.compile(r"""\\bsrc\\s*=\\s*(["'])(.*?)\\1""", re.IGNORECASE | re.DOTALL)
-W = re.compile(r"""\\bwidth\\s*=\\s*(["'])(.*?)\\1""", re.IGNORECASE)
-H = re.compile(r"""\\bheight\\s*=\\s*(["'])(.*?)\\1""", re.IGNORECASE)
+IMG = re.compile(r"<img\b[^>]*>", re.IGNORECASE | re.DOTALL)
+SRC = re.compile(r"""\bsrc\s*=\s*(["'])(.*?)\1""", re.IGNORECASE | re.DOTALL)
+W = re.compile(r"""\bwidth\s*=\s*(["'])(.*?)\1""", re.IGNORECASE)
+H = re.compile(r"""\bheight\s*=\s*(["'])(.*?)\1""", re.IGNORECASE)
 
 
 def dimensions(path: Path) -> tuple[int, int] | None:
@@ -29,18 +29,18 @@ def dimensions(path: Path) -> tuple[int, int] | None:
             root = ET.parse(path).getroot()
             box = root.get("viewBox") or root.get("viewbox")
             if box:
-                values = [float(x) for x in re.split(r"[\\s,]+", box.strip())]
+                values = [float(x) for x in re.split(r"[\s,]+", box.strip())]
                 if len(values) == 4 and values[2] > 0 and values[3] > 0:
                     return round(values[2]), round(values[3])
             def px(value: str | None) -> int | None:
                 if not value:
                     return None
-                m = re.fullmatch(r"([\\d.]+)(?:px)?", value.strip())
+                m = re.fullmatch(r"([\d.]+)(?:px)?", value.strip())
                 return round(float(m.group(1))) if m else None
             w, h = px(root.get("width")), px(root.get("height"))
             return (w, h) if w and h else None
         data = path.read_bytes()
-        if data.startswith(b"\\x89PNG\\r\\n\\x1a\\n") and len(data) >= 24:
+        if data.startswith(b"\x89PNG\r\n\x1a\n") and len(data) >= 24:
             return struct.unpack(">II", data[16:24])
         if data[:3] == b"GIF" and len(data) >= 10:
             return struct.unpack("<HH", data[6:10])
@@ -49,14 +49,14 @@ def dimensions(path: Path) -> tuple[int, int] | None:
             if kind == b"VP8X":
                 return (1 + int.from_bytes(data[24:27], "little"),
                         1 + int.from_bytes(data[27:30], "little"))
-            if kind == b"VP8 " and data[23:26] == b"\\x9d\\x01\\x2a":
+            if kind == b"VP8 " and data[23:26] == b"\x9d\x01\x2a":
                 return (int.from_bytes(data[26:28], "little") & 0x3FFF,
                         int.from_bytes(data[28:30], "little") & 0x3FFF)
             if kind == b"VP8L" and data[20] == 0x2F:
                 a, b, c, d = data[21:25]
                 return (1 + a + ((b & 0x3F) << 8),
                         1 + (b >> 6) + (c << 2) + ((d & 0x0F) << 10))
-        if data.startswith(b"\\xff\\xd8"):
+        if data.startswith(b"\xff\xd8"):
             i = 2
             sof = {0xC0,0xC1,0xC2,0xC3,0xC5,0xC6,0xC7,0xC9,0xCA,0xCB,0xCD,0xCE,0xCF}
             while i < len(data) - 9:
