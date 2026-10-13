@@ -2,7 +2,7 @@ const $=(s)=>document.querySelector(s),$$=(s)=>[...document.querySelectorAll(s)]
 function setPressed(buttons,active){buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===active)))}
 /* Homepage Grid / Index: short sequential crossfade without changing layout. */
 {
-  const modeButtons = $('[data-mode]');
+  const modeButtons = $$('[data-mode]');
   const views = { visual: $('#visual-view'), index: $('#index-view') };
   if (modeButtons.length && views.visual && views.index) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
