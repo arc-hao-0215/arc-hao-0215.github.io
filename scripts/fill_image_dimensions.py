@@ -40,6 +40,20 @@ def dimensions(path: Path) -> tuple[int, int] | None:
             w, h = px(root.get("width")), px(root.get("height"))
             return (w, h) if w and h else None
         data = path.read_bytes()
+        # AVIF/HEIF stores pixel dimensions in the spatial-extents (ispe) box.
+        # Match a valid box header, not an incidental occurrence of 'ispe'.
+        if ext in {".avif", ".heic", ".heif"} and data[4:8] == b"ftyp":
+            for m in re.finditer(b"ispe", data):
+                start = m.start() - 4
+                if start < 0:
+                    continue
+                box_size = int.from_bytes(data[start:start+4], "big")
+                if box_size < 20 or start + box_size > len(data):
+                    continue
+                w = int.from_bytes(data[m.end()+4:m.end()+8], "big")
+                h = int.from_bytes(data[m.end()+8:m.end()+12], "big")
+                if 0 < w <= 65535 and 0 < h <= 65535:
+                    return (w, h)
         if data.startswith(b"\x89PNG\r\n\x1a\n") and len(data) >= 24:
             return struct.unpack(">II", data[16:24])
         if data[:3] == b"GIF" and len(data) >= 10:

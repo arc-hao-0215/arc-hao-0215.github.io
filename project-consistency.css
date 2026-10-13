@@ -9,8 +9,8 @@
   --pc-muted:#60615c;
   --pc-rule:#d0cec8;
   --pc-accent:#8c332b;
-  --pc-max:1680px;
-  --pc-chapter-space:clamp(76px,6.4vw,104px);
+  --pc-max:var(--site-max-width,1680px);
+  --pc-chapter-space:var(--section-gap,clamp(76px,6.4vw,104px));
   --pc-heading-gap:clamp(26px,3vw,40px);
   --pc-control-h:36px;
   color:var(--pc-ink);
@@ -128,7 +128,7 @@
   column-gap:14px;
   row-gap:8px;
   align-items:start;
-  padding-top:12px;
+  padding-top:var(--caption-gap,12px);
   color:var(--pc-muted);
   font:400 12px/1.55 Arial,Helvetica,sans-serif;
   max-width:100%;

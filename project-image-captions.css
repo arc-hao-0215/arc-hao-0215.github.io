@@ -23,7 +23,7 @@
  height:auto!important;
  max-height:none!important;
  overflow:visible!important;
- padding-top:12px;
+ padding-top:var(--caption-gap,12px);
  font:400 12px/1.58 Arial,Helvetica,sans-serif;
 }
 .portfolio-project :is(
