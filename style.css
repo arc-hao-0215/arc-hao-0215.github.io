@@ -12,7 +12,15 @@
   --grey: #696965;
   --line: #cecdc8;
   --accent: #8c332b;
-  --gutter: clamp(22px, 4.4vw, 84px);
+  /* Shared site-wide layout tokens. Existing proportions are preserved. */
+  --page-gutter: clamp(22px, 4.4vw, 84px);
+  --gutter: var(--page-gutter);
+  --site-max-width: 1680px;
+  --content-width: 1160px;
+  --reading-width: 760px;
+  --section-gap: clamp(76px, 6.4vw, 104px);
+  --caption-gap: 10px;
+  --footer-gap: 70px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -86,7 +94,7 @@ footer {
   /* Keep the footer rule and all four items aligned with the main content gutters. */
   width: calc(100% - var(--gutter) - var(--gutter));
   max-width: calc(1800px - var(--gutter) - var(--gutter));
-  margin: 70px auto 0;
+  margin: var(--footer-gap) auto 0;
   padding: 30px 0 40px;
   color: var(--grey);
   font-size: 12px;
