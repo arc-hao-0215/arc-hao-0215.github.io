@@ -433,8 +433,14 @@ if(atlas){
 /* Shared image lightbox interaction. Adds accessible zoom/pan to existing dialogs
    without replacing their open/close logic, images, or captions. */
 (() => {
+  // Editorial research essays have a dedicated figure viewer; do not inject
+  // a second toolbar into their legacy research dialogs.
+  if (document.querySelector('.research-article')) return;
   const min = 1, max = 4;
   document.querySelectorAll('dialog').forEach(dialog => {
+    // Avoid duplicating a gallery's own zoom controls.
+    if (dialog.matches('.rs-viewer, .civic-lightbox, .ga-lightbox') ||
+        dialog.querySelector('.rs-viewer-actions, .civic-lightbox-controls, [data-hc-zoom]')) return;
     const image = dialog.querySelector('img');
     if (!image || dialog.dataset.hcLightbox === 'enhanced') return;
     dialog.dataset.hcLightbox = 'enhanced';
