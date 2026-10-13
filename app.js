@@ -103,6 +103,7 @@ if(atlas){
   if (slides.length && dots.length && caption && title && place) {
     let active = 0;
     let paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let hoverPause = false;
     let timer = null;
     const show = (index) => {
       active = (index + slides.length) % slides.length;
@@ -119,8 +120,37 @@ if(atlas){
     const stop = () => { if (timer !== null) { clearInterval(timer); timer = null; } };
     const start = () => {
       stop();
-      if (!paused && !document.hidden) timer = setInterval(() => show(active + 1), 6000);
+      if (!paused && !hoverPause && !document.hidden) timer = setInterval(() => show(active + 1), 6000);
     };
+    // Pausing is temporary for hovered/focused carousel content; the Pause button is persistent.
+    const carousel = document.querySelector('.hero-carousel');
+    if (carousel) {
+      carousel.addEventListener('pointerenter', event => {
+        if (event.pointerType === 'mouse') { hoverPause = true; stop(); }
+      });
+      carousel.addEventListener('pointerleave', event => {
+        if (event.pointerType === 'mouse') { hoverPause = false; start(); }
+      });
+      carousel.addEventListener('focusin', () => { hoverPause = true; stop(); });
+      carousel.addEventListener('focusout', event => {
+        if (!carousel.contains(event.relatedTarget)) { hoverPause = false; start(); }
+      });
+      // Preserve vertical scrolling on touchscreens; only intentional horizontal gestures switch slides.
+      let swipeOrigin = null;
+      carousel.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'touch') swipeOrigin = { x: event.clientX, y: event.clientY };
+      }, { passive: true });
+      carousel.addEventListener('pointerup', event => {
+        if (event.pointerType !== 'touch' || !swipeOrigin) return;
+        const dx = event.clientX - swipeOrigin.x, dy = event.clientY - swipeOrigin.y;
+        swipeOrigin = null;
+        if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.35) {
+          show(active + (dx < 0 ? 1 : -1));
+          start();
+        }
+      }, { passive: true });
+      carousel.addEventListener('pointercancel', () => { swipeOrigin = null; });
+    }
     dots.forEach((dot) => dot.addEventListener('click', () => {
       show(Number(dot.dataset.slide || 0));
       start();
@@ -155,10 +185,11 @@ if(atlas){
    Existing images and gallery behaviours are otherwise untouched. */
 (() => {
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-  if (!finePointer.matches || !document.body) return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  // Native pointer is less distracting when the user requests reduced motion.
+  if (!finePointer.matches || reducedMotion.matches || !document.body) return;
 
   const root = document.documentElement;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const cursor = document.createElement('div');
   cursor.className = 'hc-cursor';
   cursor.setAttribute('aria-hidden', 'true');
@@ -327,13 +358,21 @@ if(atlas){
     }
     place(dot, targetX, targetY);
     const action = target && target.closest('a, button, [role="button"], [role="link"]');
-    const image = target && target.closest('img');
-    const view = !!action && (
-      action.matches('.project-image, .lf-zoom, .bab-zoom, .soc-image-button, .zoom') ||
-      (!!image && action.contains(image))
+    const zoomAction = action && (
+      action.matches('.zoom, .lf-zoom, .bab-zoom, .soc-image-button, [class*="-zoom"], [aria-label^="Enlarge"], [data-full]') ||
+      (action.tagName === 'BUTTON' && !!action.querySelector('img') && !action.closest('.hero-carousel'))
     );
+    const imageNavigation = action && (
+      action.matches('.project-image, .research-card-image') ||
+      !!action.closest('.project-card, .research-card, .other-works-grid') ||
+      (action.matches('a') && action.closest('.hero-carousel'))
+    );
+    const view = !!zoomAction;
+    const open = !!imageNavigation && !view;
     cursor.classList.toggle('is-view', view);
-    cursor.classList.toggle('is-link', !!action && !view);
+    cursor.classList.toggle('is-open', open);
+    cursor.classList.toggle('is-link', !!action && !view && !open);
+    cursor.querySelector('.hc-cursor-label').textContent = view ? 'VIEW' : open ? 'OPEN' : '';
     updateColor();
     root.classList.add('hc-cursor-active');
     if (!frame) frame = requestAnimationFrame(follow);

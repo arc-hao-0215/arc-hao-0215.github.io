@@ -1,0 +1,26 @@
+/* Editorial refinements — additive, shared, no image/figure transformations. */
+.home-page .hero-carousel { touch-action: pan-y; }
+.home-page #selected-work .project-card .project-context { color: var(--grey); }
+.home-page #other-works { margin-top: clamp(48px, 6vw, 110px); }
+.home-page #other-works .other-works-grid { grid-template-columns: repeat(4,minmax(0,1fr)); padding-top: 25px; }
+.home-page #other-works .other-works-grid .project-card { min-width: 0; }
+.home-page #other-works .project-context { color: var(--grey); }
+@media (max-width: 1100px) {
+  .home-page #other-works .other-works-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 640px) {
+  .home-page #other-works .other-works-grid { grid-template-columns: 1fr; }
+  .home-page #other-works .section-bar { align-items: flex-start; gap: 14px; }
+}
+@media (hover:hover) and (pointer:fine) {
+  .hc-cursor.is-open .hc-cursor-ring { width: 56px; height: 56px; }
+  .hc-cursor.is-open .hc-cursor-dot { opacity: 0; }
+  .hc-cursor.is-open .hc-cursor-label { opacity: 1; transform: scale(1); }
+  html.hc-cursor-modal dialog[open] button { cursor: pointer; }
+  html.hc-cursor-modal dialog[open] img { cursor: zoom-in; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-page .hero-carousel .hero-slide img { transition: none !important; animation: none !important; }
+  .home-page .project-card, .research-card { animation: none !important; }
+  .home-page #other-works .project-image img { transition: none !important; }
+}
