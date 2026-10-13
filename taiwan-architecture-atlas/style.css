@@ -17,3 +17,8 @@
 
 /* Atlas legibility and independent highlight controls */
 .node text{font-size:21px}.node .node-year{font-size:14px}.axis-label{font-size:16px}.axis-sub{font-size:13px}.axis-year{font-size:15px}.highlight-filters{display:flex;flex-wrap:wrap;gap:7px}.highlight-chip{border:1px solid var(--rule);border-radius:20px;padding:7px 10px;background:transparent;color:var(--muted);font-size:11px}.highlight-chip.active{color:var(--paper);background:var(--red);border-color:var(--red)}.highlight-chip:hover{border-color:var(--ink)}
+
+/* Copyright and image rights link across atlas pages. */
+.site-footer .atlas-rights{white-space:nowrap}
+.methodology-rights-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;border-top:1px solid var(--rule);max-width:890px;margin:0 auto 36px;padding:25px 30px;font-size:12px}
+.methodology-rights-footer a{text-decoration:underline;text-underline-offset:4px}

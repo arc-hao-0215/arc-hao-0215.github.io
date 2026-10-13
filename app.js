@@ -513,3 +513,24 @@ if(atlas){
     apply();
   });
 })();
+
+/* Sitewide rights footer; idempotent for statically linked pages. */
+(() => {
+  const add = () => {
+    const footer = document.querySelector("body > footer");
+    if (!footer || footer.querySelector('a[href="image-credits.html"]')) return;
+    const mail = footer.querySelector('a[href^="mailto:"]');
+    if (!mail) return;
+    const nav = document.createElement("nav");
+    nav.className = "footer-links";
+    nav.setAttribute("aria-label","Footer links");
+    const a = document.createElement("a");
+    a.href = "image-credits.html";
+    a.textContent = "Image Credits & Rights";
+    mail.replaceWith(nav);
+    nav.append(mail,a);
+    [...footer.children].filter(x=>x.tagName==="SPAN"&&x.textContent.includes("2026")).forEach(x=>x.classList.add("footer-copyright"));
+  };
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",add,{once:true});
+  else add();
+})();

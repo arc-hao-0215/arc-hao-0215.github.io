@@ -1130,3 +1130,21 @@ dialog p { margin-top: 15px; font-size: 12px; }
 @media (prefers-reduced-motion: reduce) {
   .hc-cursor-ring, .hc-cursor-label { transition: none !important; }
 }
+
+/* Shared Image Credits & Rights footer — preserves the four-column layout. */
+footer .footer-links{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:flex-end;gap:8px 20px;min-width:0}
+footer .footer-links a{color:var(--ink);line-height:1.55;text-decoration:none}
+footer .footer-links a:hover,footer .footer-links a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+footer .footer-copyright{white-space:nowrap}
+@media(max-width:1050px){
+footer{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+footer>.wordmark{grid-column:1;grid-row:1}
+footer>p{grid-column:1;grid-row:2;min-width:0}
+footer>.footer-links{grid-column:2;grid-row:1;justify-self:end}
+footer>.footer-copyright{grid-column:2;grid-row:2;justify-self:end;text-align:right}
+}
+@media(max-width:640px){
+footer{gap:12px 16px}
+footer>.footer-links{flex-direction:column;flex-wrap:nowrap;align-items:flex-end;gap:7px;text-align:right}
+footer>.footer-copyright{white-space:normal}
+}
