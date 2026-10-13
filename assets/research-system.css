@@ -1,8 +1,6 @@
 /* Shared research publication system, 2026-10-11.
    Standardises semantics/interaction without changing each essay's image layout. */
 .research-article{--rs-ink:#252824;--rs-muted:#747870;--rs-rule:#dadcd6}
-.research-article .essay-header h1{font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(38px,5vw,68px)!important;font-weight:400!important;line-height:1.09!important;letter-spacing:-.042em!important}
-.research-article .essay-header .essay-subtitle{font-size:clamp(17px,1.7vw,21px)!important;line-height:1.5!important}
 .research-article .essay-body :is(.nl-section,.rr-section,.civic-section)>h2,
 .research-article .essay-body>section:not(.essay-source):not(#question):not(.research-authorship-block)>h2{font:400 clamp(29px,2.8vw,36px)/1.2 Arial,Helvetica,sans-serif!important;letter-spacing:-.028em!important;color:var(--rs-ink)}
 .research-article .essay-body :is(.nl-section,.rr-section,.civic-section)>h3,
