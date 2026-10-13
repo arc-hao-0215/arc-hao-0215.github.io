@@ -22,3 +22,7 @@
  .editorial-lens p,.evidence-guide p{max-width:none;font-size:14px;}
 }
 @media (prefers-reduced-motion:reduce){.editorial-lens h3 a{transition:none;}}
+
+.evidence-guide h3 a{text-decoration:underline;text-decoration-color:var(--line,#cecdc8);text-underline-offset:5px;transition:text-decoration-color .2s;}
+.evidence-guide h3 a:hover,.evidence-guide h3 a:focus-visible{text-decoration-color:currentColor;}
+@media (prefers-reduced-motion:reduce){.evidence-guide h3 a{transition:none;}}
