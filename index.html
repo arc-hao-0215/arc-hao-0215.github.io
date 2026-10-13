@@ -12,6 +12,11 @@
   <!-- Homepage-only typography. No changes to style.css required. -->
   <style>
     /* Uniform four-level project hierarchy in Grid view */
+    /* Compact vertical rhythm between Project grid rows only. */
+    #selected-work #visual-view {
+      row-gap: 20px;
+    }
+
     #selected-work .editorial-grid .project-card {
       display: flex;
       flex-direction: column;
@@ -21,7 +26,7 @@
     #selected-work .editorial-grid .card-caption {
       flex: 1 1 auto;
       align-content: start;
-      padding-bottom: 24px;
+      padding-bottom: 15px;
       border-bottom: 1px solid var(--line);
     }
 
@@ -99,6 +104,7 @@
     }
 
     @media (max-width: 640px) {
+      #selected-work #visual-view { row-gap: 18px; }
       #selected-work .editorial-grid .card-caption h2 { font-size: 20px; }
       #selected-work .editorial-grid .card-caption .project-subtitle {
         margin-bottom: 9px;
