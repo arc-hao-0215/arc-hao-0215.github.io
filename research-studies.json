@@ -346,7 +346,7 @@
       }
     ],
     "kind": "Field research",
-    "project": "ancient-trails",
+    "project": "lightly-in-the-forest",
     "cta_label": "View Gaoligong design →",
     "number": "02",
     "subtitle": "Walking, production and the everyday economy of the Via Francigena",
@@ -359,7 +359,7 @@
     "theme": "Heritage / Production / Ecology",
     "place": "Gaoligong Mountains",
     "year": "2026",
-    "project": "ancient-trails",
+    "project": "lightly-in-the-forest",
     "image": "gaoligong-network",
     "lon": 98.65,
     "lat": 24.98,
@@ -693,12 +693,12 @@
   },
   {
     "number": "05",
-    "slug": "research-water",
+    "slug": "research-jakarta-flood-adaptation",
     "title": "When the River Occupies the Street",
     "theme": "Water / Collective life",
     "place": "Kampung Melayu · Jakarta",
     "year": "2025",
-    "project": "rising-tides",
+    "project": "rising-tides-resilient-lives",
     "image": "jakarta-research",
     "lon": 106.866,
     "lat": -6.224,
@@ -899,7 +899,7 @@
     "theme": "Performance / Programme / Public access",
     "place": "Wudaokou · Beijing",
     "year": "2025",
-    "project": "theater-design",
+    "project": "the-condenser",
     "image": "theater-section",
     "lon": 116.338,
     "lat": 39.994,
@@ -1011,7 +1011,7 @@
         "paragraphs": [
           "The decisive scenario removes the performance. The auditoria are closed, technical work is limited and there is no audience to populate the foyer. Can the ground, stair and roof sequence still form a useful civic place? Which parts could operate independently, and which would require staffing or environmental systems disproportionate to their use?",
           "This test makes shared space an accountable part of the brief. Independent access, a clear boundary to controlled rooms, places to sit and a feasible maintenance arrangement are more persuasive than a general claim of flexibility. If a proposed public area cannot remain open under these conditions, its public role should be described more narrowly.",
-          "The research produces criteria rather than proof of social transformation. The <a href=\"theater-design.html\">design page</a> shows how the proposal arranges entrances, performance volumes, the gathering stair and roof. Those decisions can now be evaluated against a specific promise: a theatre that contributes to urban life before the curtain rises, with the limits of that promise made explicit."
+          "The research produces criteria rather than proof of social transformation. The <a href=\"the-condenser.html\">design page</a> shows how the proposal arranges entrances, performance volumes, the gathering stair and roof. Those decisions can now be evaluated against a specific promise: a theatre that contributes to urban life before the curtain rises, with the limits of that promise made explicit."
         ],
         "table": null
       }
@@ -1019,12 +1019,12 @@
   },
   {
     "number": "07",
-    "slug": "research-ground",
+    "slug": "research-penghu-military-landscape",
     "title": "After the Battery",
     "theme": "Memory / Landscape",
     "place": "Fenggui Peninsula · Penghu Archipelago",
     "year": "2024",
-    "project": "erdai",
+    "project": "disarming-the-landscape",
     "image": "erdai-map",
     "lon": 119.545,
     "lat": 23.538,
@@ -1202,7 +1202,7 @@
   },
   {
     "number": "08",
-    "slug": "research-ritual",
+    "slug": "research-kailash",
     "title": "The Right to Remain Unbuilt",
     "theme": "Ritual / Ecology",
     "place": "Mount Kailash",
@@ -1582,7 +1582,7 @@
   },
   {
     "number": "10",
-    "slug": "research-civic",
+    "slug": "research-beijing-civic-space",
     "title": "The Public Floor",
     "theme": "Knowledge / Public life",
     "place": "Beijing",

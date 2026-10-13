@@ -1,6 +1,6 @@
 # Portfolio Project Editorial Standard
 
-Reference pages: **Lightly in the Forest** (`ancient-trails.html`) and **Disarming the Landscape** (`erdai.html`).
+Reference pages: **Lightly in the Forest** (`lightly-in-the-forest.html`) and **Disarming the Landscape** (`disarming-the-landscape.html`).
 
 ## One system, not one identical layout
 
@@ -47,12 +47,12 @@ Every project page should use the same editorial hierarchy, image caption system
 
 Shared overrides are in `project-unified.css`, loaded **after page-local styles**, with versioned stylesheet URLs to avoid stale cached layouts. It is linked by seven pages:
 
-- `rising-tides.html`
-- `theater-design.html`
+- `rising-tides-resilient-lives.html`
+- `the-condenser.html`
 - `scaffold-of-care.html`
 - `spirited-a-way.html`
 - `books-above-bustles.html`
-- `teaching-building.html`
+- `learning-in-between.html`
 - `waterfront-plus.html`
 
 The two reference pages retain their carefully authored local presentation. `project-system.css` is an earlier baseline used on several pages; avoid adding further one-off overrides when a shared rule belongs in the new stylesheet.

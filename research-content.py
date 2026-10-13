@@ -18,7 +18,7 @@ svg+='</g><g class="world-land">'+''.join(f'<path d="{path}"/>' for path in path
 # A shared anchor gives nearby studies separate, keyboard-reachable targets.
 groups={}
 for e in studies:
- group='Beijing' if e['slug'] in ['research-shichahai','research-civic','research-theater'] else 'Taiwan' if e['slug'] in ['research-ground','research-rurbanity'] else e['slug']
+ group='Beijing' if e['slug'] in ['research-shichahai','research-beijing-civic-space','research-theater'] else 'Taiwan' if e['slug'] in ['research-penghu-military-landscape','research-rurbanity'] else e['slug']
  groups.setdefault(group,[]).append(e)
 for group,items in groups.items():
  lon=sum(e['lon'] for e in items)/len(items);lat=sum(e['lat'] for e in items)/len(items)

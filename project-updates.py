@@ -32,7 +32,7 @@ IMPORTANT:
 ADDITIONAL_PROJECTS = [
     dict(
         id="04",
-        slug="theater-design",
+        slug="the-condenser",
         title="The Condenser",
         name="The Condenser",
         place="Wudaokou, Beijing",
@@ -57,7 +57,7 @@ ADDITIONAL_PROJECTS = [
     ),
     dict(
         id="02",
-        slug="first-teaching-building",
+        slug="first-teaching-building-renewal",
         title="First Teaching Building Renewal",
         name="First Teaching Building Renewal",
         place="Tsinghua University, Beijing",
@@ -126,7 +126,7 @@ for new_project in ADDITIONAL_PROJECTS:
 for p in projects:
     slug = p["slug"]
 
-    if slug == "teaching-building":
+    if slug == "learning-in-between":
         # This is the 2024 competition, NOT the separate 2025 commission.
         p.update(
             year="2024",
@@ -158,10 +158,10 @@ for p in projects:
         if chinese_recognition not in p["credit"]:
             p["credit"] += "<br>" + chinese_recognition
 
-    elif slug == "ancient-trails":
+    elif slug == "lightly-in-the-forest":
         p["award"] = "Outstanding Graduation Thesis · Tsinghua University"
 
-    elif slug == "rising-tides":
+    elif slug == "rising-tides-resilient-lives":
         p["award"] = "SOM China Fellowship · Winner"
 
 
@@ -170,7 +170,7 @@ for p in projects:
 # ---------------------------------------------------------------------
 
 PROJECT_DETAILS = {
-    "ancient-trails": dict(
+    "lightly-in-the-forest": dict(
         title="Lightly in the Forest",
         subtitle="Eco-Resort Design",
         place="Gaoligong Mountains, Yunnan",
@@ -179,7 +179,7 @@ PROJECT_DETAILS = {
         year="2026",
         type="Graduation design & territorial research",
     ),
-    "first-teaching-building": dict(
+    "first-teaching-building-renewal": dict(
         title="First Teaching Building Renewal",
         subtitle="University Classroom Renovation",
         place="Tsinghua University, Beijing",
@@ -188,7 +188,7 @@ PROJECT_DETAILS = {
         year="2025–2026",
         type="Commissioned project",
     ),
-    "rising-tides": dict(
+    "rising-tides-resilient-lives": dict(
         title="Rising Tides, Resilient Lives",
         subtitle="Water-Resilient Community Design",
         place="Kampung Melayu, Jakarta",
@@ -197,7 +197,7 @@ PROJECT_DETAILS = {
         year="2025",
         type="Architecture & research",
     ),
-    "theater-design": dict(
+    "the-condenser": dict(
         title="The Condenser",
         subtitle="Theater & Civic Space Design",
         place="Wudaokou, Beijing",
@@ -215,7 +215,7 @@ PROJECT_DETAILS = {
         year="2025",
         type="Academic project · Mixed-Use Architecture",
     ),
-    "erdai": dict(
+    "disarming-the-landscape": dict(
         title="Disarming the Landscape",
         subtitle="Erdai Art Museum & Military Heritage Reuse",
         place="Fenggui Peninsula, Penghu",
@@ -242,7 +242,7 @@ PROJECT_DETAILS = {
         year="2024",
         type="Civic architecture",
     ),
-    "teaching-building": dict(
+    "learning-in-between": dict(
         title="Learning in Between",
         subtitle="Campus Atrium Design",
         place="Tsinghua University, Beijing",
@@ -318,15 +318,15 @@ for p in projects:
 # ---------------------------------------------------------------------
 
 PROJECT_ORDER = [
-    "ancient-trails",          # 01
-    "first-teaching-building", # 02
-    "rising-tides",            # 03
-    "theater-design",          # 04
+    "lightly-in-the-forest",          # 01
+    "first-teaching-building-renewal", # 02
+    "rising-tides-resilient-lives",            # 03
+    "the-condenser",          # 04
     "scaffold-of-care",        # 05
-    "erdai",                   # 06
+    "disarming-the-landscape",                   # 06
     "spirited-a-way",          # 07
     "books-above-bustles",     # 08
-    "teaching-building",       # 09
+    "learning-in-between",       # 09
     "waterfront-plus",         # 10
     "selected-studies",        # 11 (always last)
 ]

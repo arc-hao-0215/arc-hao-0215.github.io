@@ -46,7 +46,7 @@
         "Factories and settlements cannot be understood as isolated points on a map. This inquiry examines how industrial development, changing land use and collective rights reshape the relationship between people and territory."
     },
     {
-      file: "research-water.html",
+      file: "research-jakarta-flood-adaptation.html",
       year: "2025",
       title: "Beyond the Raised Floor",
       subtitle: "Flood Adaptation & Community Infrastructure",
@@ -66,7 +66,7 @@
         "A theatre's civic role extends beyond scheduled performances. This study explores how entrances, foyers and shared spaces can support public life even when the auditorium is closed."
     },
     {
-      file: "research-ground.html",
+      file: "research-penghu-military-landscape.html",
       year: "2024",
       title: "After the Battery",
       subtitle: "Military Heritage & Landscape Reuse",
@@ -76,7 +76,7 @@
         "Transforming a former coastal battery into an art museum requires more than introducing a new programme. This investigation considers how public access and cultural use can coexist with the site's military history."
     },
     {
-      file: "research-ritual.html",
+      file: "research-kailash.html",
       year: "2024",
       title: "When Not to Build",
       subtitle: "Pilgrimage, Ecology & Minimal Intervention",
@@ -96,7 +96,7 @@
         "Opening a historic waterfront can expand public life while increasing pressure on nearby communities. This study examines who benefits from improved access and how heritage, local life and public space can coexist."
     },
     {
-      file: "research-civic.html",
+      file: "research-beijing-civic-space.html",
       year: "2024",
       title: "The Public Floor",
       subtitle: "Urban Libraries & Civic Ground Space",

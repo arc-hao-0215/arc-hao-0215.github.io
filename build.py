@@ -44,13 +44,13 @@ from typing import Any
 # ---------------------------------------------------------------------------
 
 BASE_PROJECTS: list[dict[str, str]] = [
-    dict(slug="rising-tides", name="Rising Tides, Resilient Lives", image="jakarta-hero",
+    dict(slug="rising-tides-resilient-lives", name="Rising Tides, Resilient Lives", image="jakarta-hero",
          year="2025", place="Jakarta, Indonesia", field="Water / Collective life",
          type="Architecture & research", award="SOM China Fellowship — Winner",
          question="How can flood-prone infrastructure become a civic sanctuary?",
          credit="Individual project · Hao Chang<br>Instructor: Martijn de Geus<br>"
                 "Kampung Melayu, Jakarta · February–March 2025"),
-    dict(slug="erdai", name="Erdai Art Museum", image="erdai-hero", year="2024",
+    dict(slug="disarming-the-landscape", name="Erdai Art Museum", image="erdai-hero", year="2024",
          place="Penghu, Taiwan", field="Memory / Landscape",
          type="Architecture & adaptive reuse", award="",
          question="How can a landscape of defence become a place of reflection?",
@@ -70,7 +70,7 @@ BASE_PROJECTS: list[dict[str, str]] = [
          credit="Collaborative studio · Hao Chang & Mengzhe Lee<br>"
                 "Hao's role: lead concept, diagrams, modeling, and sections<br>"
                 "Instructor: Martijn de Geus · April–June 2024"),
-    dict(slug="teaching-building", name="Learning Beyond the Classroom", image="teaching",
+    dict(slug="learning-in-between", name="Learning Beyond the Classroom", image="teaching",
          year="2024–", place="Beijing, China", field="Learning / Adaptive reuse",
          type="Competition & commission", award="",
          question="What if circulation space became a place to stay?",
@@ -82,7 +82,7 @@ BASE_PROJECTS: list[dict[str, str]] = [
          question="Other ways of observing, making, and inhabiting.",
          credit="Selected work by Hao Chang<br>Performance photographs document "
                 "collaborative productions; roles are identified in captions."),
-    dict(slug="ancient-trails", name="Ancient Trails and Their Possible Futures",
+    dict(slug="lightly-in-the-forest", name="Ancient Trails and Their Possible Futures",
          image="gaoligong-project", year="2026", place="Gaoligong Mountain, Yunnan",
          field="Heritage / Production / Ecology",
          type="Graduation design & territorial research",
