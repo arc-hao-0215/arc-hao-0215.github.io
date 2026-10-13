@@ -261,3 +261,25 @@
 .portfolio-project .gh-plan-controls .ps-play-toggle{order:1}
 .portfolio-project .gh-plan-controls .ps-prev{order:2}
 .portfolio-project .gh-plan-controls .ps-next{order:3}
+
+/* 2026-10-13 / Keep longer editorial headings inside their own grid tracks.
+   Protects desktop, tablet and browser-zoom layouts without changing images. */
+.portfolio-project :is(
+  .lf-chapter-head,.ftb-chapter,.rt-chapter-head,.tc-chapter-head,
+  .soc-chapter-head,.ed-chapter-head,.sa-section-heading,.bab-chapter-head,
+  .gh-chapter-head,.wp-chapter,.bab-subsection-head,.lf-subsection-head,
+  .tc-subhead,.ed-scene-head,.gh-subhead,.sa-subhead
+) :is(h2,h3,p){
+  min-width:0;
+  overflow-wrap:break-word;
+}
+.portfolio-project :is(
+  .lf-kicker,.ftb-kicker,.rt-kicker,.tc-kicker,.soc-kicker,
+  .ed-kicker,.sa-kicker,.bab-kicker,.gh-kicker,.wp-label,
+  .bab-subsection-label,.lf-subsection-label
+){
+  min-width:0;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:break-word;
+}
