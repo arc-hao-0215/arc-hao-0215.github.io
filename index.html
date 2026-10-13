@@ -382,6 +382,68 @@
       }
     }
 
+  
+    /* Clearly communicate the three professional scales without changing the hero headline. */
+    body.home-page .hero-discipline {
+      max-width: 52rem;
+      margin: clamp(12px, 2.2vh, 24px) 0 0;
+      color: rgba(255,255,255,.94);
+      font: 400 clamp(12px, 1.15vw, 15px)/1.5 Arial,Helvetica,sans-serif;
+      letter-spacing: .055em;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+    @media (max-width: 640px) {
+      /* A short phone viewport should show the full hero, not force 720px height. */
+      body.home-page .hero-carousel {
+        height: 100svh;
+        min-height: 0;
+        max-height: none;
+      }
+      body.home-page .hero-carousel .hero-copy {
+        padding-top: clamp(75px, 11svh, 110px);
+        padding-bottom: clamp(128px, 22svh, 180px);
+        gap: clamp(12px, 2svh, 26px);
+        min-height: 0;
+      }
+      body.home-page .hero-carousel .hero-copy h1 {
+        font-size: clamp(27px, 7.5vw, 43px);
+        line-height: 1.12;
+      }
+      body.home-page .hero-discipline {
+        margin-top: 2px;
+        font-size: 11px;
+        line-height: 1.5;
+        letter-spacing: .035em;
+      }
+      body.home-page .hero-carousel .hero-copy .intro-aside {
+        gap: 22px;
+        font-size: 11px;
+      }
+      body.home-page .hero-carousel .hero-bottom {
+        bottom: max(12px, env(safe-area-inset-bottom));
+        gap: 7px;
+      }
+      body.home-page .hero-bottom .hero-controls button {
+        min-width: 36px;
+        min-height: 40px;
+      }
+      body.home-page .hero-bottom .hero-controls #hero-pause {
+        min-width: 49px;
+      }
+    }
+    @media (max-width: 640px) and (max-height: 620px) {
+      body.home-page .hero-carousel .hero-copy {
+        justify-content: flex-start;
+        padding-top: 74px;
+        padding-bottom: 105px;
+        gap: 10px;
+      }
+      body.home-page .hero-carousel .hero-copy h1 {font-size:clamp(25px,6.8vw,34px);line-height:1.08;}
+      body.home-page .hero-carousel .hero-copy .intro-aside {gap:16px;font-size:10px;}
+      body.home-page .hero-discipline {font-size:10px;}
+    }
+
   </style>
 <link rel="stylesheet" href="assets/site-refinements.css?v=20261013-ux1">
 <!-- Search and sharing metadata; reuse existing imagery. -->
@@ -432,6 +494,7 @@
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-copy">
         <h1><span class="home-hero-line">Architecture across</span><span class="home-hero-line">changing landscapes,</span><span class="home-hero-line">infrastructures, and</span><span class="home-hero-line">collective life.</span></h1>
+        <p class="hero-discipline">Architecture <span aria-hidden="true">·</span> Urban Infrastructure <span aria-hidden="true">·</span> Environmental Research</p>
         <div class="intro-aside">
           <p>Hao Chang<br>Architectural designer</p>
           <p>Selected work<br>2024–2026</p>
