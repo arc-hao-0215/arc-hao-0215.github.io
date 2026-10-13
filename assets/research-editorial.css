@@ -369,3 +369,56 @@
    margin:18px 0 26px !important;
  }
 }
+
+
+/* Research five-part editorial rhythm: prevent adjacent sections from stacking
+   large margins and doubled horizontal rules. All ten enquiries share this.
+   2026-10-13 */
+.research-article .essay-body section#question.research-question--unified {
+  margin:clamp(26px,3vw,42px) 0 0 !important;
+  padding:20px 0 24px !important;
+  border-top:1px solid var(--research-rule,#d9dad4) !important;
+  border-bottom:1px solid var(--research-rule,#d9dad4) !important;
+}
+.research-article .essay-body section.research-brief {
+  margin:0 !important;
+  padding:20px 0 26px !important;
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+.research-article .essay-body section.evidence-guide {
+  margin:0 auto !important;
+  padding:23px 0 28px !important;
+  border-top:1px solid var(--research-rule,#d9dad4) !important;
+  border-bottom:0 !important;
+}
+.research-article .essay-body > .research-part-marker {
+  box-sizing:border-box;
+  margin:0 !important;
+  padding:23px 0 8px !important;
+  border-top:1px solid var(--research-rule,#d9dad4);
+  scroll-margin-top:112px;
+}
+.research-article .essay-body > .research-part-marker > .eyebrow {
+  display:block;
+  margin:0 !important;
+  font:500 10px/1.6 Arial,Helvetica,sans-serif !important;
+  letter-spacing:.085em;
+  text-transform:uppercase;
+  color:#7c827b;
+}
+.research-article .essay-body > .research-part-marker + section {
+  margin-top:0 !important;
+  padding-top:8px !important;
+  border-top:0 !important;
+}
+@media (max-width:760px) {
+  .research-article .essay-body section#question.research-question--unified {
+    margin-top:24px !important;
+    padding:17px 0 20px !important;
+  }
+  .research-article .essay-body section.research-brief {padding:17px 0 22px !important;}
+  .research-article .essay-body section.evidence-guide {padding:20px 0 24px !important;}
+  .research-article .essay-body > .research-part-marker {padding:20px 0 6px !important;}
+  .research-article .essay-body > .research-part-marker + section {padding-top:8px !important;}
+}
