@@ -514,5 +514,22 @@ if(atlas){
   });
 })();
 
+/* Site-wide image save friction (not copy protection). */
+(() => {
+  // Delegated listeners also cover images added later by galleries and lightboxes.
+  const isImage = target => target instanceof Element && !!target.closest('img');
+  document.addEventListener('contextmenu', event => {
+    if (isImage(event.target)) event.preventDefault();
+  }, true);
+  document.addEventListener('dragstart', event => {
+    if (isImage(event.target)) event.preventDefault();
+  }, true);
+
+  // Keep click, keyboard access, scrolling, pinch zoom and lightbox panning intact.
+  document.querySelectorAll('img').forEach(image => {
+    image.draggable = false;
+  });
+})();
+
 /* Footer links and copyright are declared in each page's semantic HTML.
    No DOM reconstruction or year-based guessing is needed. */
