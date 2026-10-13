@@ -19,7 +19,7 @@
   --content-width: 1160px;
   --reading-width: 760px;
   --section-gap: clamp(76px, 6.4vw, 104px);
-  --caption-gap: 10px;
+  --caption-gap: 12px;
   --footer-gap: 70px;
 }
 
