@@ -76,9 +76,9 @@
   object-fit:cover!important;
   transition:transform .35s ease;
 }
-/* 3:2 crop independently checked against the original photo: M+ tower and horizontal volume remain visible. */
-.research-article .essay-body .hk-side-feature--opening .hk-feature-figure > a {aspect-ratio:3/2;}
-.research-article .essay-body .hk-side-feature--opening .hk-feature-figure img {object-position:center 56%!important;}
+/* The replacement photograph is 4:3: preserve the full M+ skyline and waterfront frame. */
+.research-article .essay-body .hk-side-feature--opening .hk-feature-figure > a {aspect-ratio:1707/1279;}
+.research-article .essay-body .hk-side-feature--opening .hk-feature-figure img {object-position:center center!important;}
 /* Align the historic Tong Chong Street photo with the bottom of the source so its road is present. */
 .research-article .essay-body .hk-side-feature--public .hk-feature-figure > a {aspect-ratio:16/9;}
 .research-article .essay-body .hk-side-feature--public .hk-feature-figure img {object-position:center bottom!important;}
@@ -92,7 +92,7 @@
 @media(max-width:760px) {
   .research-article .essay-body .hk-side-feature__text > p:not(.opening-proposition) {font-size:16px;line-height:1.76;}
   .research-article .essay-body .hk-side-feature .hk-feature-figure {margin-top:22px!important;}
-  .research-article .essay-body .hk-side-feature--opening .hk-feature-figure > a {aspect-ratio:3/2;}
+  .research-article .essay-body .hk-side-feature--opening .hk-feature-figure > a {aspect-ratio:1707/1279;}
   .research-article .essay-body .hk-side-feature--public .hk-feature-figure > a {aspect-ratio:16/10;}
 }
 @media(prefers-reduced-motion:reduce) {
